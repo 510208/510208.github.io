@@ -1,0 +1,42 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "企鵝哥電腦小站",
+    "description": "",
+    "home_page_url": "https://510208.github.io",
+    "feed_url": "https://510208.github.io/feed.json",
+    "user_comment": "",
+    "icon": "https://510208.github.io/media/website/510208-MarkMaker-Logo.svg",
+    "author": {
+        "name": "510208企鵝哥"
+    },
+    "items": [
+        {
+            "id": "https://510208.github.io/ding-yue-qi-e-gehuo-de-zui-xin-dian-nao-jiao-xue-ying-pian.html",
+            "url": "https://510208.github.io/ding-yue-qi-e-gehuo-de-zui-xin-dian-nao-jiao-xue-ying-pian.html",
+            "title": "訂閱企鵝哥，獲得最新電腦教學影片",
+            "summary": "為甚麼企鵝哥那麼厲害？ 訂閱這個頻道就懂了！",
+            "content_html": "<p>為甚麼企鵝哥那麼厲害？</p>\n<p> </p>\n<p>訂閱這個頻道就懂了！</p>",
+            "author": {
+                "name": "510208企鵝哥"
+            },
+            "tags": [
+            ],
+            "date_published": "2022-12-21T19:34:43+08:00",
+            "date_modified": "2022-12-21T19:34:43+08:00"
+        },
+        {
+            "id": "https://510208.github.io/yi-pian-ce-shi-wen-zhang.html",
+            "url": "https://510208.github.io/yi-pian-ce-shi-wen-zhang.html",
+            "title": "一篇測試文章",
+            "summary": "這只是一篇由Publii扔上去的測試文章而已",
+            "content_html": "<p>這只是一篇由Publii扔上去的測試文章而已</p>\n<p> </p>",
+            "author": {
+                "name": "510208企鵝哥"
+            },
+            "tags": [
+            ],
+            "date_published": "2022-12-18T19:07:41+08:00",
+            "date_modified": "2022-12-18T19:07:41+08:00"
+        }
+    ]
+}
