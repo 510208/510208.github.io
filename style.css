@@ -351,3 +351,47 @@ img::selection {
 img::-moz-selection {
   background: transparent;
 }
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center; /* 將清單文字置中 */
+}
+
+.menu li {
+    margin-bottom: 10px;
+    display: inline-block; /* 將清單項目水平排列 */
+    width: 47%; /* 調整每個清單項目的寬度 */
+    text-align: center;
+}
+
+.menu a {
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.menu a:hover {
+    color: #274029;
+}
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.headerMe {
+    text-decoration: none;
+}
+
+.header img {
+    width: 100px; /* 調整頭像的寬度 */
+    height: 100px; /* 調整頭像的高度 */
+    border-radius: 50%; /* 將圖像的邊框半徑設置為50%以創建圓形 */
+    border: 2px solid #000; /* 設置邊框的寬度和顏色 */
+    object-fit: cover; /* 確保圖像完全填滿圓圈 */
+}
