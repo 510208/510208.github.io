@@ -1,0 +1,353 @@
+/*
+ *                                |~~~~~~~|
+ *                                |       |
+ *                                |       |
+ *                                |       |
+ *                                |       |
+ *                                |       |
+ *     |~.\\\_\~~~~~~~~~~~~~~xx~~~         ~~~~~~~~~~~~~~~~~~~~~/_//;~|
+ *     |  \  o \_         ,XXXXX),                         _..-~ o /  |
+ *     |    ~~\  ~-.     XXXXX`)))),                 _.--~~   .-~~~   |
+ *      ~~~~~~~`\   ~\~~~XXX' _/ ';))     |~~~~~~..-~     _.-~ ~~~~~~~
+ *               `\   ~~--`_\~\, ;;;\)__.---.~~~      _.-~
+ *                 ~-.       `:;;/;; \          _..-~~
+ *                    ~-._      `''        /-~-~
+ *                        `\              /  /
+ *                          |         ,   | |
+ *                           |  '        /  |
+ *                            \/;          |
+ *                             ;;          |
+ *                             `;   .       |
+ *                             |~~~-----.....|
+ *                            | \             \
+ *                           | /\~~--...__    |
+ *                           (|  `\       __-\|
+ *                           ||    \_   /~    |
+ *                           |)     \~-'      |
+ *                            |      | \      '
+ *                            |      |  \    :
+ *                             \     |  |    |
+ *                              |    )  (    )
+ *                               \  /;  /\  |
+ *                               |    |/   |
+ *                               |    |   |
+ *                                \  .'  ||
+ *                                |  |  | |
+ *                                (  | |  |
+ *                                |   \ \ |
+ *                                || o `.)|
+ *                                |`\\) |
+ *                                |       |
+ *                                |       |
+ */
+
+
+.github-link {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #fff;
+    margin-right: 10px;
+}
+
+.github-link img {
+    width: 20px;
+    height: 20px;
+}
+
+.github-link:hover .triangle {
+    border-right-color: #60712F;   
+}
+
+a {
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    padding-bottom: 2px; /* 設置底線與文字之間的距離 */
+}
+
+@font-face {
+    font-family: 'Noto Sans TC';
+    src: url('https://fonts.gstatic.com/s/notosanstc/v11/NotoSansTC-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Noto Sans TC';
+    src: url('https://fonts.gstatic.com/s/notosanstc/v11/NotoSansTC-Light.ttf') format('truetype');
+    font-weight: lighter;
+}
+
+body {
+    font-family: 'Noto Sans TC', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #181F1C;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    animation: fadeIn 1s ease-in; /* 使用fadeIn動畫效果，持續1秒 */
+}
+
+h1, p {
+    font-family: 'Noto Sans TC', Arial, sans-serif;
+}
+
+h1 {
+    font-weight: bold;
+    color: #274029;
+}
+
+p {
+    font-weight: lighter;
+    color: #60712F;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+h1, p {
+    color: #666666;
+}
+
+.download-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #274029; /* 深綠色背景 */
+    text-decoration: none;
+    border-radius: 4px;
+    color: #ffffff;
+    transition: background-color width 1s,height 1s ease; /* 添加過渡效果 */
+    position: relative;
+    overflow: hidden;
+}
+
+.download-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: #578351;
+    color: #ffffff;
+    border-radius: 50%;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.download-button:hover {
+    background-color: #859949;
+}
+
+.download-button:hover::before {
+    transform: translate(-50%, -50%) scale(100); /* 放大到整個按鈕大小 */
+    opacity: 1;
+}
+
+.features-container, .tutorial-container, .sponsor-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.features-column, .tutorial-column, .sponsor-column {
+    flex: 1;
+    margin-right: 30px;
+    text-align: left;
+}
+
+h2 {
+    text-align: center;
+    color: #014b01;
+    animation: fadeIn 1s ease-in-out, scaleIn 0.5s ease-in-out;
+}
+
+.badges-container {
+    margin-top: 30px;
+}
+
+.badge {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.donate_icon li {
+    list-style-type: none;
+}
+
+.donate_icon li:before {
+    content: none;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+ol, ul, li {
+    color: #274029;
+    text-align: left;
+}
+
+.code-container {
+    position: relative;
+    background-color: #f5f5f5;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+pre {
+    margin: 0;
+}
+
+.code-container code {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #333333;
+}
+
+.donate-footer-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #402727;
+    text-decoration: none;
+    border-radius: 4px;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.copy-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px 10px;
+    background-color: #60712F;
+    border: none;
+    color: #ffffff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.copy-button:hover {
+    background-color: #274029;
+}
+
+.deployment-container {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.deployment-container h2 {
+    color: #181F1C;
+}
+
+.deployment-container .code-container {
+    position: relative;
+    background-color: #f5f5f5;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.deployment-container pre {
+    margin: 0;
+}
+
+.deployment-container code {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #333333;
+}
+
+.copy-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px 10px;
+    background-color: #60712F;
+    border: none;
+    color: #ffffff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.copy-button:hover {
+    background-color: #274029;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  0% { transform: scale(0.5); }
+  100% { transform: scale(1); }
+}
+
+a.normalA {
+  color: #274029;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+
+a.normalA::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #274029;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+a.normalA:hover::after {
+  width: 95%;
+}
+
+hr {
+  display: block;
+  border-style: inset;
+  border-width: 1px;
+  width: 60%;
+}
+
+::selection {
+  background: #60712F;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: #60712F;
+  color: #fff;
+}
+
+img::selection {
+  background: transparent;
+}
+
+img::-moz-selection {
+  background: transparent;
+}
