@@ -162,17 +162,19 @@ h1, p {
     opacity: 1;
 }
 
-.features-container, .tutorial-container, .sponsor-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
+.image-container {
+    display: flex; /* 將兩個欄位設置為彈性容器 */
 }
-
-.features-column, .tutorial-column, .sponsor-column {
-    flex: 1;
-    margin-right: 30px;
-    text-align: left;
+  
+.column {
+    flex: 1; /* 兩個欄位平均佔據可用空間 */
+    margin: 10px; /* 調整欄位之間的間距 */
 }
+  
+.column img {
+    width: 100%; /* 讓圖片填滿欄位的寬度 */
+    height: auto; /* 根據圖片比例自動計算高度 */
+}  
 
 h2 {
     text-align: center;
@@ -386,12 +388,47 @@ img::-moz-selection {
 
 .headerMe {
     text-decoration: none;
+    width: fit-content;
 }
 
 .header img {
-    width: 100px; /* 調整頭像的寬度 */
-    height: 100px; /* 調整頭像的高度 */
+    width: 50px; /* 調整頭像的寬度 */
+    height: 50px; /* 調整頭像的高度 */
     border-radius: 50%; /* 將圖像的邊框半徑設置為50%以創建圓形 */
     border: 2px solid #000; /* 設置邊框的寬度和顏色 */
     object-fit: cover; /* 確保圖像完全填滿圓圈 */
 }
+
+.center {
+    text-align: center;
+}
+
+.friend-list {
+    list-style: none;
+    padding: 0;
+    width: 600px;
+    margin: 0 auto; /* 設定左右邊界為自動，將清單置中 */
+    display: flex;
+    flex-wrap: wrap; /* 允許清單換行 */
+    justify-content: space-between; /* 在每一行中將項目置於兩端 */
+}
+  
+.friend-list li {
+    width: 280px; /* 每欄寬度 */
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+  
+.friend-list img {
+    width: 40px; /* 設定頭像的寬度 */
+    height: 40px; /* 設定頭像的高度 */
+    border-radius: 50%; /* 將頭像製作成圓形 */
+    margin-right: 10px;
+}
+  
+.friend-list a {
+    text-decoration: none;
+    color: #333;
+}
+  
