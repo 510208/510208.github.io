@@ -431,4 +431,12 @@ img::-moz-selection {
     text-decoration: none;
     color: #333;
 }
-  
+
+.footer {
+    height: 3em;
+    background-color: #d1d1d1;
+}
+.inner {
+    display: flex; /* ★ */
+    align-items: center; /* ★ */
+}
