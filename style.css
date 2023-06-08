@@ -472,3 +472,23 @@ img::-moz-selection {
     filter: Alpha(opacity=0);
     transform: translateY(150%);
 }
+
+/* 網頁捲軸【寬度】 */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+/* 網頁捲軸【背景】顏色 */
+::-webkit-scrollbar-track {
+    background: #cfcfcf;
+}
+  
+/* 網頁捲軸【把手】顏色 */
+::-webkit-scrollbar-thumb {
+    background: #5e5e5e;
+}
+  
+/* 網頁捲軸【滑過時】把手的顏色 */
+::-webkit-scrollbar-thumb:hover {
+    background: #fff;
+}
