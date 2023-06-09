@@ -518,6 +518,7 @@ ul.check li::before {
     background-position: center;
     vertical-align: middle;
     margin-right: 0.5em;
+    font-weight: 700;
 }
   
 ul.error li::before {
@@ -526,6 +527,20 @@ ul.error li::before {
     width: 1em;
     height: 1em;
     background-image: url(close.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    margin-right: 0.5em;
+    font-weight: 700;
+}
+
+ul.alert li::before {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-image: url(alert.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
