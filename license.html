@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="style.css">
     <title>GNU通用公共授權條款（GPL）版本3.0的可用與不可用列表</title>
+    <script src="gotop.js" charset="utf-8"></script>
 </head>
 <body>
     <script>
@@ -41,5 +42,31 @@
             <p>這只是一個簡要的列表，詳細的GPL 3.0條款可以在<a class="normalA" href="https://www.gnu.org/licenses/gpl-3.0.html/">GNU官方網站</a>上找到。</p>
         </div>
     </div>
+    <!-- 回頂端 -->
+    <script>
+        $(document).ready(function () {
+        // 捲軸偵測距離頂部超過 50 才顯示按鈕
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 50) {
+            if ($(".back-top").hasClass("hide")) {
+                $(".back-top").toggleClass("hide");
+            }
+            } else {
+            $(".back-top").addClass("hide");
+            }
+        });
+
+        // 點擊按鈕回頂部
+        $(".back-top").on("click", function (event) {
+            $("html, body").animate(
+            {
+                scrollTop: 0
+            },
+            500 // 回頂部時間為 500 毫秒
+            );
+        });
+    });
+    </script>
+    <div class="back-top hide" title="回頂部"></div>
 </body>
 </html>
