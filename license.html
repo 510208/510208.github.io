@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>GNU通用公共授權條款（GPL）版本3.0的可用與不可用列表</title>
+</head>
+<body>
+    <script>
+        $(document).ready(function() {
+            $('ul').each(function() {
+                var ulClass = $(this).attr('class');
+                $(this).find('li').addClass(ulClass);
+            });
+        });
+    </script>
+    <div class="section-h-middle">
+        <div class="header">
+            <a href="https://www.gnu.org/licenses/gpl-3.0.html/" class="headerMe"><h1>GNU通用公共授權條款（GPL）版本3.0的可用與不可用列表</h1></a>
+        </div>
+        <div class="deployment-container">
+            <h2>可用的行為：</h2>
+            <ul class="check">
+                <li>使用軟體</li>
+                <li>修改軟體</li>
+                <li>分發軟體</li>
+                <li>以及其他在GPL 3.0條款下明確允許的行為</li>
+            </ul>
+        </div>
+        <div class="deployment-container">
+            <h2>不可用的行為：</h2>
+            <ul class="error">
+                <li>將GPL 3.0軟體納入專有軟體中</li>
+                <li>將GPL 3.0軟體的衍生作品使用專有許可發布</li>
+                <li>從GPL 3.0軟體派生的專有程式碼和擴充功能的使用</li>
+                <li>從GPL 3.0軟體派生的專有程式碼和擴充功能的分發</li>
+                <li>移除或修改GPL 3.0條款要求的版權聲明和許可條款</li>
+                <li>以及其他在GPL 3.0條款下明確禁止的行為</li>
+            </ul>
+        </div>
+        <div class="abort">
+            <p>這只是一個簡要的列表，詳細的GPL 3.0條款可以在<a class="normalA" href="https://www.gnu.org/licenses/gpl-3.0.html/">GNU官方網站</a>上找到。</p>
+        </div>
+    </div>
+</body>
+</html>

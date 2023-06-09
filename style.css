@@ -176,7 +176,7 @@ h1, p {
     height: auto; /* 根據圖片比例自動計算高度 */
 }  
 
-h2 {
+h1, h2 {
     text-align: center;
     color: #014b01;
     animation: fadeIn 1s ease-in-out, scaleIn 0.5s ease-in-out;
@@ -492,3 +492,42 @@ img::-moz-selection {
 ::-webkit-scrollbar-thumb:hover {
     background: #fff;
 }
+
+/* 文字水平置中 */
+.section-h-middle {
+    width: 50%;
+    height: 200px;
+    margin: 10px auto;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul.check li::before {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-image: url(check.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    margin-right: 0.5em;
+}
+  
+ul.error li::before {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-image: url(close.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    margin-right: 0.5em;
+}
+  
