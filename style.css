@@ -331,44 +331,44 @@ a.normalA {
 }
 
 a.normalA::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background-color: #274029;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: width 0.3s ease;
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #274029;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
 }
 
 a.normalA:hover::after {
-  width: 95%;
+    width: 95%;
 }
 
 hr {
-  display: block;
-  border-style: inset;
-  border-width: 1px;
-  width: 60%;
+    display: block;
+    border-style: inset;
+    border-width: 1px;
+    width: 60%;
 }
 
 ::selection {
-  background: #60712F;
-  color: #fff;
+    background: #60712F;
+    color: #fff;
 }
 
 ::-moz-selection {
-  background: #60712F;
-  color: #fff;
+    background: #60712F;
+    color: #fff;
 }
 
 img::selection {
-  background: transparent;
+    background: transparent;
 }
 
 img::-moz-selection {
-  background: transparent;
+    background: transparent;
 }
 
 .menu ul {
@@ -376,6 +376,13 @@ img::-moz-selection {
     padding: 0;
     margin: 0;
     text-align: center; /* 將清單文字置中 */
+}
+
+.button-div{
+    margin: 50px auto;
+    width: 600px;
+    font-size: 20px;
+    line-height: 1.5;
 }
 
 .menu li {
@@ -429,21 +436,21 @@ img::-moz-selection {
     flex-wrap: wrap; /* 允許清單換行 */
     justify-content: space-between; /* 在每一行中將項目置於兩端 */
 }
-  
+
 .friend-list li {
     width: 280px; /* 每欄寬度 */
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
-  
+
 .friend-list img {
     width: 40px; /* 設定頭像的寬度 */
     height: 40px; /* 設定頭像的高度 */
     border-radius: 50%; /* 將頭像製作成圓形 */
     margin-right: 10px;
 }
-  
+
 .friend-list a {
     text-decoration: none;
     color: #333;
@@ -530,7 +537,7 @@ ul.check li::before {
     margin-right: 0.5em;
     font-weight: 700;
 }
-  
+
 ul.error li::before {
     content: "";
     display: inline-block;
