@@ -123,6 +123,10 @@ h1, h2, h3, h4 {
     font-weight: 900;
 }
 
+h3 {
+     margin-bottom: 0;
+}
+
 h1 {
     font-weight: bold;
     color: #274029;
