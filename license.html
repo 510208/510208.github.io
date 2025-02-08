@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>GNU通用公共授權條款（GPL）版本3.0的可用與不可用列表</title>
+    <script src="gotop.js" charset="utf-8"></script>
+    <!-- Meta元標記 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="description" content="請注意！欲使用企鵝歌的軟體必看！！">
+    <meta name="keywords" content="HTML, CSS, JavaScript, 510208, License, licenses">
+    <meta name="author" content="510208">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <script>
+        $(document).ready(function() {
+            $('ul').each(function() {
+                var ulClass = $(this).attr('class');
+                $(this).find('li').addClass(ulClass);
+            });
+        });
+    </script>
+    <div class="section-h-middle">
+        <div class="header">
+            <a href="https://www.gnu.org/licenses/gpl-3.0.html" class="headerMe"><h1>GNU通用公共授權條款（GPL）版本3.0的可用與不可用列表</h1></a>
+        </div>
+        <hr>
+        <div class="deployment-container">
+            <h2>可用的行為：</h2>
+            <ul class="check">
+                <li>使用軟體</li>
+                <li>修改軟體</li>
+                <li>分發軟體</li>
+                <li>以及其他在GPL 3.0條款下明確允許的行為</li>
+            </ul>
+        </div>
+        <div class="deployment-container">
+            <h2>不可用的行為：</h2>
+            <ul class="error">
+                <li>將GPL 3.0軟體納入專有軟體中</li>
+                <li>將GPL 3.0軟體的衍生作品使用專有許可發布</li>
+                <li>從GPL 3.0軟體派生的專有程式碼和擴充功能的使用</li>
+                <li>從GPL 3.0軟體派生的專有程式碼和擴充功能的分發</li>
+                <li>移除或修改GPL 3.0條款要求的版權聲明和許可條款</li>
+                <li>以及其他在GPL 3.0條款下明確禁止的行為</li>
+            </ul>
+        </div>
+        <div class="deployment-container">
+            <h2>需注意的行為</h2>
+            <ul class="alert">
+                <li><strong>於網際網路分享此軟體</strong><br>如果使用者將自己的網站作為備份點，我允許；但若您假裝此軟體為您所製作，我將不排除採取法律途徑</li>
+                <li><strong>利用自媒體或書面媒體分享此專案</strong><br>如果使用者保持介紹的方式，我允許；但若您假裝此軟體為您所製作，我將不排除採取法律途徑</li>
+                <li><strong>利用廣告或圖像分享功能分享此專案</strong><br>如果使用者保持宣傳的方式，我允許；但若您假裝此軟體為您所製作，我將不排除採取法律途徑</li>
+                <li><strong>在個人或公司網站Project頁面發布此專案</strong><br>如果使用者以介紹方式置放，且有附上網站來源，則我不會進行警告，但若在未通知作者狀況下使用且未附上來源，則我將可能採取法律途徑</li>
+            </ul>
+        </div>
+        <hr>
+        <div class="abort">
+            <p>這只是一個簡要的列表，詳細的GPL 3.0條款可以在<a class="normalA" href="https://www.gnu.org/licenses/gpl-3.0.html/">GNU官方網站</a>上找到。</p>
+            <br>
+            <span style="color:red;"><strong><p>此列表上的所有內容皆具法律效力，且一律套用到510208所開發的所有專案中，如有違反則可依法告發。但如果是在改編、移植、介紹、在商業機構內使用等情形，且未違反上方要求者，不會受到法律限制</p></strong></span>
+        </div>
+    </div>
+    <!-- 回頂端 -->
+    <script>
+        $(document).ready(function () {
+        // 捲軸偵測距離頂部超過 50 才顯示按鈕
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 50) {
+            if ($(".back-top").hasClass("hide")) {
+                $(".back-top").toggleClass("hide");
+            }
+            } else {
+            $(".back-top").addClass("hide");
+            }
+        });
+
+        // 點擊按鈕回頂部
+        $(".back-top").on("click", function (event) {
+            $("html, body").animate(
+            {
+                scrollTop: 0
+            },
+            500 // 回頂部時間為 500 毫秒
+            );
+        });
+    });
+    </script>
+    <div class="back-top hide" title="回頂部"></div>
+    <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+</body>
+</html>
