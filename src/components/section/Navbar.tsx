@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Gravatar } from "../ui/Gravatar";
 import { ModeToggle } from "../ui/mode-toggle";
 
@@ -9,33 +10,35 @@ export const Navbar = () => {
           {/* 品牌名稱 - 左側 */}
           <div className="flex-shrink-0 flex items-center space-x-2">
             <Gravatar size="40" className="rounded-md" />
-            <h1 className="text-black dark:text-white text-2xl font-normal font-noto capitalize">
-              SamHacker
-            </h1>
+            <Link to="/">
+              <h1 className="text-black dark:text-white text-2xl font-normal font-noto capitalize">
+                SamHacker
+              </h1>
+            </Link>
           </div>
 
           {/* 導航選單 - 右側，在手機版隱藏 */}
           <div className="hidden md:flex items-center space-x-8">
-            <a
-              href="#about"
+            <Link
+              to="/about"
               className="text-black dark:text-white text-sm font-medium font-noto uppercase hover:text-neutral-600 dark:hover:text-neutral-500 transition-colors px-4 py-2 rounded-md"
             >
               ABOUT
-            </a>
+            </Link>
             <span className="text-neutral-400 text-sm font-noto">/</span>
-            <a
-              href="#projects"
+            <Link
+              to="/projects"
               className="text-black dark:text-white text-sm font-medium font-noto uppercase hover:text-neutral-600 dark:hover:text-neutral-500 transition-colors px-4 py-2 rounded-md"
             >
               PROJECTS
-            </a>
+            </Link>
             <span className="text-neutral-400 text-sm font-noto">/</span>
-            <a
-              href="#blog"
-              className="text-black dark:text-white text-sm font-medium font-noto uppercase hover:text-neutral-600 dark:hover:text-neutral-500 transition-colors px-4 py-2 rounded-md"
+            <Link
+              to="https://samhacker.xyz"
+              className="text-black dark:text-white text-sm font-medium font-noto uppercase hover:bg-neutral-50 hover:text-neutral-600 dark:hover:text-neutral-500 transition-colors px-4 py-2 rounded-md"
             >
               BLOG
-            </a>
+            </Link>
             <span className="text-neutral-400 text-sm font-noto">/</span>
             <ModeToggle />
           </div>
