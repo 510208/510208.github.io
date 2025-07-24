@@ -18,11 +18,13 @@ export const HeroSection = () => {
                 SamHacker
               </h2>
               <div className="font-noto text-lg text-gray-600 dark:text-gray-300 leading-7 max-w-md mx-auto lg:mx-0">
-                <p className="mb-0">我是一個熱愛分享技術的部落客，</p>
                 <p className="mb-0">
+                  我是一個熱愛分享技術的部落客，
+                  <br />
                   專注於 Minecraft 開服、網站建設、開源軟體等領域。
+                  <br />
+                  我的目標是讓更多人能夠輕鬆學習和應用技術。
                 </p>
-                <p>我的目標是讓更多人能夠輕鬆學習和應用技術。</p>
               </div>
             </div>
           </div>
