@@ -139,8 +139,8 @@ export const SkillGrid = () => {
     <section className="w-full py-16">
       <div className="container mx-auto px-4">
         {/* 技能圖標網格 */}
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-8 grid-rows-2 gap-4 h-[200px]">
+        <div className="max-w-xl md:max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 grid-rows-8 gap-x-0 gap-y-30 md:grid-cols-8 md:grid-rows-2 md:gap-4 h-[200px]">
             {skillIcons.map((skill) => (
               <SkillIcon key={skill.name} skill={skill} />
             ))}
