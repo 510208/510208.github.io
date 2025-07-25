@@ -4,6 +4,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Badge } from "@/components/ui/badge";
+import Marquee from "react-fast-marquee";
 
 // 定義單一技能的資料結構
 interface Skill {
@@ -174,13 +175,18 @@ export const SkillGrid = () => {
         {/* 跑馬燈技能標籤 */}
         <div className="mt-8 md:mt-12 w-full relative py-4">
           {/* 跑馬燈容器 */}
-          <div className="flex animate-marquee gap-4 whitespace-nowrap -rotate-1">
+          <Marquee
+            className="flex whitespace-nowrap -rotate-1"
+            pauseOnHover={true}
+            speed={50}
+            loop={0}
+          >
             {/* 第一組標籤 */}
             {skillIcons.map((skill) => (
               <Badge
                 key={skill.name}
                 variant="outline"
-                className="flex-shrink-0 px-3 py-1.5 text-sm font-medium bg-muted/30 text-muted-foreground border-muted hover:bg-accent hover:text-accent-foreground transition-colors font-inter cursor-default"
+                className="flex-shrink-0 px-3 py-1.5 text-sm font-medium bg-muted/30 text-muted-foreground border-muted hover:bg-accent hover:text-accent-foreground transition-colors font-inter cursor-default mr-5"
                 style={{
                   backgroundImage: `linear-gradient(to right, ${skill.gradientColors.join(
                     ", "
@@ -205,7 +211,7 @@ export const SkillGrid = () => {
               </Badge>
             ))}
             {/* 第二組標籤（無縫銜接） */}
-            {skillIcons.map((skill) => (
+            {/* {skillIcons.map((skill) => (
               <Badge
                 key={skill.name}
                 variant="outline"
@@ -232,8 +238,8 @@ export const SkillGrid = () => {
                 />
                 {skill.name}
               </Badge>
-            ))}
-          </div>
+            ))} */}
+          </Marquee>
         </div>
       </div>
     </section>
