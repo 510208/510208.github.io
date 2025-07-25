@@ -44,7 +44,7 @@ export const HeroSection = () => {
 
             {/* 背景方格 - 深色模式 */}
             <div
-              className="absolute inset-0 opacity-0 dark:opacity-40 transition-opacity duration-300"
+              className="absolute inset-0 opacity-0 dark:opacity-10 transition-opacity duration-300"
               style={{
                 backgroundImage: `url('/assets/dark_bg-grid.svg')`,
                 backgroundSize: "contain",
