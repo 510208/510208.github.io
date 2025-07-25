@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/section/Navbar";
+import { Navbar } from "@/components/section/Home/Navbar";
 
 export const About = () => {
   return (

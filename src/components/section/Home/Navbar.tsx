@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Gravatar } from "../ui/Gravatar";
-import { ModeToggle } from "../ui/mode-toggle";
+import { Gravatar } from "../../ui/Gravatar";
+import { ModeToggle } from "../../ui/mode-toggle";
 
 export const Navbar = () => {
   return (
