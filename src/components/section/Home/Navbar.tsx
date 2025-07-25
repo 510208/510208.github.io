@@ -3,13 +3,31 @@ import { Gravatar } from "../../ui/Gravatar";
 import { ModeToggle } from "../../ui/mode-toggle";
 // @ts-expect-error: react-headroom does not have TypeScript types
 import Headroom from "react-headroom";
+import { useState, useEffect } from "react";
 
 export const Navbar = () => {
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);  
+  
   return (
     <Headroom className="sticky top-0 z-999999">
       <nav
         id="navbar"
-        className="bg-white/50 border-none dark:bg-neutral-900/50 backdrop-blur-md"
+        className={`border-none backdrop-blur-md ${
+          isSticky
+          ? "bg-white/50 dark:bg-neutral-900/50"
+          : "bg-gray-100 dark:bg-neutral-900"
+        }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
