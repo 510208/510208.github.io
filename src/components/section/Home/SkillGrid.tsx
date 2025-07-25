@@ -172,9 +172,9 @@ export const SkillGrid = () => {
         </div>
 
         {/* 跑馬燈技能標籤 */}
-        <div className="mt-8 md:mt-12 w-full overflow-hidden relative py-4">
+        <div className="mt-8 md:mt-12 w-full relative py-4">
           {/* 跑馬燈容器 */}
-          <div className="flex animate-marquee gap-4 whitespace-nowrap">
+          <div className="flex animate-marquee gap-4 whitespace-nowrap -rotate-1">
             {/* 第一組標籤 */}
             {skillIcons.map((skill) => (
               <Badge
@@ -233,41 +233,6 @@ export const SkillGrid = () => {
                 {skill.name}
               </Badge>
             ))}
-            {/* 第三組標籤（確保無縫循環） */}
-            {/* {skillIcons.map((skill) => (
-              <Badge
-                key={skill.name}
-                variant="outline"
-                className="flex-shrink-0 px-3 py-1.5 text-sm font-medium bg-muted/30 text-muted-foreground border-muted hover:bg-accent hover:text-accent-foreground transition-colors font-inter cursor-default"
-                style={{
-                  backgroundImage: `linear-gradient(to right, ${skill.gradientColors.join(
-                    ", "
-                  )} 0%, transparent 90%)`,
-                }}
-              >
-                <img
-                  src={`/assets/skill-icons/${skill.fileName}`}
-                  alt={skill.name}
-                  className="w-4 h-4 md:w-6 md:h-6 object-contain mr-1 dark:hidden"
-                  loading="lazy"
-                />
-                <img
-                  src={`/assets/skill-icons/${
-                    skill.darkFileName || skill.fileName
-                  }`}
-                  alt={skill.name}
-                  className="w-4 h-4 md:w-6 md:h-6 object-contain mr-1 hidden dark:block"
-                  loading="lazy"
-                />
-                {skill.name}
-              </Badge>
-            ))} */}
-          </div>
-
-          {/* 左右漸層遮罩 */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-background via-background/90 to-transparent z-10"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-background via-background/90 to-transparent z-10"></div>
           </div>
         </div>
       </div>
