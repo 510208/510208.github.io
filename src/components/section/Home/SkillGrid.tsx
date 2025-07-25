@@ -84,6 +84,24 @@ const skillIcons: Skill[] = [
     gradientColors: ["rgba(136, 184, 88, 0.4)"],
     position: { row: 2, col: 8 },
   },
+  {
+    name: "Node.js",
+    fileName: "nodejs_symbol.svg",
+    gradientColors: ["rgba(0, 153, 68, 0.4)"],
+    position: { row: 1, col: 1 },
+  },
+  {
+    name: "React",
+    fileName: "react_symbol.svg",
+    gradientColors: ["rgba(97, 218, 251, 0.4)"],
+    position: { row: 1, col: 5 },
+  },
+  {
+    name: "Nginx",
+    fileName: "nginx_symbol.svg",
+    gradientColors: ["rgba(97, 218, 251, 0.4)"],
+    position: { row: 1, col: 5 },
+  },
 ];
 
 interface SkillIconProps {
@@ -94,7 +112,7 @@ interface SkillIconProps {
 const SkillIcon = ({ skill, isDesktop = false }: SkillIconProps) => {
   return (
     <Tooltip>
-      <TooltipContent className="bg-neutral-800 text-white p-2 rounded-lg shadow-lg">
+      <TooltipContent className="bg-neutral-800 text-white dark:bg-neutral-200 p-2 rounded-lg shadow-lg">
         <p className="text-sm font-medium text-neutral-200 dark:text-neutral-800">
           {skill.name}
         </p>
@@ -120,7 +138,7 @@ const SkillIcon = ({ skill, isDesktop = false }: SkillIconProps) => {
             <img
               src={`/assets/skill-icons/${skill.fileName}`}
               alt={skill.name}
-              className={`w-6 h-6 md:w-10 md:h-10 object-contain filter ${
+              className={`w-12 h-12 md:w-10 md:h-10 object-contain filter ${
                 skill.darkFileName ? "dark:hidden" : ""
               }`}
               loading="lazy"
@@ -130,7 +148,7 @@ const SkillIcon = ({ skill, isDesktop = false }: SkillIconProps) => {
               <img
                 src={`/assets/skill-icons/${skill.darkFileName}`}
                 alt={skill.name}
-                className="w-6 h-6 md:w-10 md:h-10 object-contain filter hidden dark:block"
+                className="w-12 h-12 md:w-10 md:h-10 object-contain filter hidden dark:block"
                 loading="lazy"
               />
             )}
@@ -211,11 +229,11 @@ export const SkillGrid = () => {
               </Badge>
             ))}
             {/* 第二組標籤（無縫銜接） */}
-            {/* {skillIcons.map((skill) => (
+            {skillIcons.map((skill) => (
               <Badge
                 key={skill.name}
                 variant="outline"
-                className="flex-shrink-0 px-3 py-1.5 text-sm font-medium bg-muted/30 text-muted-foreground border-muted hover:bg-accent hover:text-accent-foreground transition-colors font-inter cursor-default"
+                className="flex-shrink-0 px-3 py-1.5 text-sm font-medium bg-muted/30 text-muted-foreground border-muted hover:bg-accent hover:text-accent-foreground transition-colors font-inter cursor-default mr-5"
                 style={{
                   backgroundImage: `linear-gradient(to right, ${skill.gradientColors.join(
                     ", "
@@ -238,7 +256,7 @@ export const SkillGrid = () => {
                 />
                 {skill.name}
               </Badge>
-            ))} */}
+            ))}
           </Marquee>
         </div>
       </div>

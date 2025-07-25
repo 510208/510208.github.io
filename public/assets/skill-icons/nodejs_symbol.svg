@@ -1,0 +1,50 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 51" width="44" height="51">
+	<title>nodejsDark</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m214-28v79.38h-267v-79.38z"/>
+		</clipPath>
+		<linearGradient id="g1" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-15.43,36.14,-38.508,-16.441,30.758,9.188)">
+			<stop offset="0" stop-color="#3f8b3d"/>
+			<stop offset=".64" stop-color="#3f873f"/>
+			<stop offset=".93" stop-color="#3da92e"/>
+			<stop offset="1" stop-color="#3dae2b"/>
+		</linearGradient>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp2">
+			<path d="m23.3 1.05q-0.27-0.16-0.57-0.24-0.29-0.08-0.6-0.08-0.31 0-0.61 0.08-0.3 0.08-0.57 0.24l-19.37 11.25c-0.74 0.41-1.15 1.2-1.15 2.04v22.55c0 0.83 0.46 1.62 1.15 2.03l19.37 11.26q0.27 0.15 0.57 0.23 0.3 0.08 0.61 0.08 0.31 0 0.6-0.08 0.3-0.08 0.57-0.23l19.37-11.26c0.74-0.41 1.16-1.2 1.16-2.03v-22.55c0-0.84-0.46-1.62-1.16-2.04z"/>
+		</clipPath>
+		<linearGradient id="g2" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(49.2,-26.4,24.114,44.94,19.228,27.428)">
+			<stop offset=".14" stop-color="#3f873f"/>
+			<stop offset=".4" stop-color="#52a044"/>
+			<stop offset=".71" stop-color="#64b749"/>
+			<stop offset=".91" stop-color="#6abf4b"/>
+		</linearGradient>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp3">
+			<path d="m23.3 1.05q-0.27-0.16-0.57-0.24-0.29-0.08-0.6-0.08-0.31 0-0.61 0.08-0.3 0.08-0.57 0.24l-19.37 11.25c-0.74 0.41-1.15 1.2-1.15 2.04v22.55c0 0.83 0.46 1.62 1.15 2.03l19.37 11.26q0.27 0.15 0.57 0.23 0.3 0.08 0.61 0.08 0.31 0 0.6-0.08 0.3-0.08 0.57-0.23l19.37-11.26c0.74-0.41 1.16-1.2 1.16-2.03v-22.55c0-0.84-0.46-1.62-1.16-2.04z"/>
+		</clipPath>
+		<linearGradient id="g3" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(43.75,0,0,52.965,1.097,25.427)">
+			<stop offset=".09" stop-color="#6abf4b"/>
+			<stop offset=".29" stop-color="#64b749"/>
+			<stop offset=".6" stop-color="#52a044"/>
+			<stop offset=".86" stop-color="#3f873f"/>
+		</linearGradient>
+	</defs>
+	<style>
+		.s0 { fill: url(#g1) } 
+		.s1 { fill: url(#g2) } 
+		.s2 { fill: url(#g3) } 
+	</style>
+	<g id="Clip-Path" clip-path="url(#cp1)">
+		<g>
+			<g>
+				<path class="s0" d="m23.3 1q-0.3-0.1-0.6-0.2-0.3-0.1-0.6-0.1-0.3 0-0.6 0.1-0.3 0.1-0.5 0.2l-19.4 11.3c-0.8 0.4-1.2 1.2-1.2 2v22.6c0 0.8 0.5 1.6 1.2 2l19.4 11.3q0.2 0.1 0.5 0.2 0.3 0.1 0.6 0.1 0.3 0 0.6-0.1 0.3-0.1 0.6-0.2l19.4-11.3c0.7-0.4 1.1-1.2 1.1-2v-22.6c0-0.8-0.4-1.6-1.1-2z"/>
+				<g id="Clip-Path" clip-path="url(#cp2)">
+					<path class="s1" d="m22.1-0.4l21.5 13-21.5 39.1-21.5-13z"/>
+				</g>
+				<g id="Clip-Path" clip-path="url(#cp3)">
+					<path class="s2" d="m22.5-0.1l-21.5 13 21.5 39.1 21.6-13z"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>
