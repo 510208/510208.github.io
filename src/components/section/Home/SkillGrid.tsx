@@ -3,6 +3,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Badge } from "@/components/ui/badge";
 
 // 定義單一技能的資料結構
 interface Skill {
@@ -86,9 +87,10 @@ const skillIcons: Skill[] = [
 
 interface SkillIconProps {
   skill: Skill;
+  isDesktop?: boolean; // 新增屬性來判斷是否為桌面版布局
 }
 
-const SkillIcon = ({ skill }: SkillIconProps) => {
+const SkillIcon = ({ skill, isDesktop = false }: SkillIconProps) => {
   return (
     <Tooltip>
       <TooltipContent className="bg-neutral-800 text-white p-2 rounded-lg shadow-lg">
@@ -98,22 +100,26 @@ const SkillIcon = ({ skill }: SkillIconProps) => {
       </TooltipContent>
       <TooltipTrigger>
         <div
-          className={`relative overflow-hidden rounded-xl aspect-square transition-all duration-300 hover:scale-110`}
+          className={`relative overflow-hidden rounded-lg md:rounded-xl aspect-square transition-all duration-300 hover:scale-110 w-full h-auto min-h-[60px] md:min-h-[80px]`}
           style={{
             background: `radial-gradient(50% 50% at 50% 50%, ${skill.gradientColors.join(
               ", "
             )} 0%, transparent 90%)`,
-            borderRadius: "10px",
-            gridColumnStart: skill.position.col,
-            gridRowStart: skill.position.row,
+            // 只在桌面版布局時使用 grid positioning
+            ...(isDesktop
+              ? {
+                  gridColumnStart: skill.position.col,
+                  gridRowStart: skill.position.row,
+                }
+              : {}),
           }}
         >
-          <div className="absolute inset-0 flex items-center justify-center p-5">
+          <div className="absolute inset-0 flex items-center justify-center p-3 md:p-5">
             {/* 預設圖示 (淺色模式，或當沒有深色圖示時的後備) */}
             <img
               src={`/assets/skill-icons/${skill.fileName}`}
               alt={skill.name}
-              className={`w-10 h-10 object-contain filter ${
+              className={`w-6 h-6 md:w-10 md:h-10 object-contain filter ${
                 skill.darkFileName ? "dark:hidden" : ""
               }`}
               loading="lazy"
@@ -123,7 +129,7 @@ const SkillIcon = ({ skill }: SkillIconProps) => {
               <img
                 src={`/assets/skill-icons/${skill.darkFileName}`}
                 alt={skill.name}
-                className="w-10 h-10 object-contain filter hidden dark:block"
+                className="w-6 h-6 md:w-10 md:h-10 object-contain filter hidden dark:block"
                 loading="lazy"
               />
             )}
@@ -136,14 +142,132 @@ const SkillIcon = ({ skill }: SkillIconProps) => {
 
 export const SkillGrid = () => {
   return (
-    <section className="w-full py-16">
+    <section className="w-full py-8 md:py-16">
       <div className="container mx-auto px-4">
+        {/* 標題區塊 */}
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 md:mb-4 font-noto">
+            技術技能
+          </h2>
+          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto font-noto px-4">
+            我熟悉的各種技術和工具，涵蓋前端開發、後端技術、設計工具等領域
+          </p>
+        </div>
+
         {/* 技能圖標網格 */}
-        <div className="max-w-xl md:max-w-4xl mx-auto">
-          <div className="grid grid-cols-2 grid-rows-8 gap-x-0 gap-y-30 md:grid-cols-8 md:grid-rows-2 md:gap-4 h-[200px]">
+        <div className="max-w-sm sm:max-w-md md:max-w-4xl mx-auto">
+          {/* 手機版：3列布局，自動行數 */}
+          <div className="grid grid-cols-3 gap-3 sm:gap-4 md:hidden">
             {skillIcons.map((skill) => (
-              <SkillIcon key={skill.name} skill={skill} />
+              <SkillIcon key={skill.name} skill={skill} isDesktop={false} />
             ))}
+          </div>
+
+          {/* 桌面版：8列2行布局 */}
+          <div className="hidden md:grid md:grid-cols-8 md:grid-rows-2 md:gap-4 md:h-[200px]">
+            {skillIcons.map((skill) => (
+              <SkillIcon key={skill.name} skill={skill} isDesktop={true} />
+            ))}
+          </div>
+        </div>
+
+        {/* 跑馬燈技能標籤 */}
+        <div className="mt-8 md:mt-12 w-full overflow-hidden relative py-4">
+          {/* 跑馬燈容器 */}
+          <div className="flex animate-marquee gap-4 whitespace-nowrap">
+            {/* 第一組標籤 */}
+            {skillIcons.map((skill) => (
+              <Badge
+                key={skill.name}
+                variant="outline"
+                className="flex-shrink-0 px-3 py-1.5 text-sm font-medium bg-muted/30 text-muted-foreground border-muted hover:bg-accent hover:text-accent-foreground transition-colors font-inter cursor-default"
+                style={{
+                  backgroundImage: `linear-gradient(to right, ${skill.gradientColors.join(
+                    ", "
+                  )} 0%, transparent 90%)`,
+                }}
+              >
+                <img
+                  src={`/assets/skill-icons/${skill.fileName}`}
+                  alt={skill.name}
+                  className="w-4 h-4 md:w-6 md:h-6 object-contain mr-1 dark:hidden"
+                  loading="lazy"
+                />
+                <img
+                  src={`/assets/skill-icons/${
+                    skill.darkFileName || skill.fileName
+                  }`}
+                  alt={skill.name}
+                  className="w-4 h-4 md:w-6 md:h-6 object-contain mr-1 hidden dark:block"
+                  loading="lazy"
+                />
+                {skill.name}
+              </Badge>
+            ))}
+            {/* 第二組標籤（無縫銜接） */}
+            {skillIcons.map((skill) => (
+              <Badge
+                key={skill.name}
+                variant="outline"
+                className="flex-shrink-0 px-3 py-1.5 text-sm font-medium bg-muted/30 text-muted-foreground border-muted hover:bg-accent hover:text-accent-foreground transition-colors font-inter cursor-default"
+                style={{
+                  backgroundImage: `linear-gradient(to right, ${skill.gradientColors.join(
+                    ", "
+                  )} 0%, transparent 90%)`,
+                }}
+              >
+                <img
+                  src={`/assets/skill-icons/${skill.fileName}`}
+                  alt={skill.name}
+                  className="w-4 h-4 md:w-6 md:h-6 object-contain mr-1 dark:hidden"
+                  loading="lazy"
+                />
+                <img
+                  src={`/assets/skill-icons/${
+                    skill.darkFileName || skill.fileName
+                  }`}
+                  alt={skill.name}
+                  className="w-4 h-4 md:w-6 md:h-6 object-contain mr-1 hidden dark:block"
+                  loading="lazy"
+                />
+                {skill.name}
+              </Badge>
+            ))}
+            {/* 第三組標籤（確保無縫循環） */}
+            {/* {skillIcons.map((skill) => (
+              <Badge
+                key={skill.name}
+                variant="outline"
+                className="flex-shrink-0 px-3 py-1.5 text-sm font-medium bg-muted/30 text-muted-foreground border-muted hover:bg-accent hover:text-accent-foreground transition-colors font-inter cursor-default"
+                style={{
+                  backgroundImage: `linear-gradient(to right, ${skill.gradientColors.join(
+                    ", "
+                  )} 0%, transparent 90%)`,
+                }}
+              >
+                <img
+                  src={`/assets/skill-icons/${skill.fileName}`}
+                  alt={skill.name}
+                  className="w-4 h-4 md:w-6 md:h-6 object-contain mr-1 dark:hidden"
+                  loading="lazy"
+                />
+                <img
+                  src={`/assets/skill-icons/${
+                    skill.darkFileName || skill.fileName
+                  }`}
+                  alt={skill.name}
+                  className="w-4 h-4 md:w-6 md:h-6 object-contain mr-1 hidden dark:block"
+                  loading="lazy"
+                />
+                {skill.name}
+              </Badge>
+            ))} */}
+          </div>
+
+          {/* 左右漸層遮罩 */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-background via-background/90 to-transparent z-10"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-background via-background/90 to-transparent z-10"></div>
           </div>
         </div>
       </div>
