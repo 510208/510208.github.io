@@ -131,3 +131,22 @@
     font-family: "Fira Code Variable", monospace;
   }
 }
+
+/* 跑馬燈動畫 */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.33%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+  /* 暫停動畫當滑鼠懸停時 */
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
