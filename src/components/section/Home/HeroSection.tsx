@@ -2,9 +2,9 @@ export const HeroSection = () => {
   return (
     <section className="relative bg-gray-100 dark:bg-neutral-900 min-h-screen overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen">
-        <div className="flex flex-col lg:flex-row items-center justify-between h-full py-16">
+        <div className="flex flex-col lg:flex-row items-center justify-between h-full pt-8">
           {/* Div Left - 文字內容 */}
-          <div className="relative w-full lg:w-1/2 z-10 text-center lg:text-left md:pt-8 lg:pt-0 md:h-auto">
+          <div className="relative w-full lg:w-1/2 z-10 text-center pt-40 lg:text-left md:pt-8 lg:pt-0 md:h-auto">
             {/* 背景文字 - absolute positioning */}
             <div className="absolute -inset-x-10 flex items-center justify-center lg:justify-start">
               <h1 className="-inset-y-200 font-inter font-black text-5xl sm:text-7xl lg:text-8xl xl:text-9xl text-black/10 dark:text-white/10 select-none whitespace-nowrap">
@@ -54,13 +54,11 @@ export const HeroSection = () => {
             />
 
             {/* 角色圖片 */}
-            <div
-              className="absolute inset-0 bg-center bg-contain bg-no-repeat"
-              style={{
-                backgroundImage: `url('/assets/misana-character.png')`,
-                backgroundSize: "450px",
-                backgroundPosition: "center bottom",
-              }}
+            <img
+              src="/assets/misana-character.png"
+              alt="Misana Character"
+              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-full max-h-96 lg:max-h-full w-auto object-contain object-bottom"
+              style={{ maxWidth: "550px" }}
             />
           </div>
         </div>
