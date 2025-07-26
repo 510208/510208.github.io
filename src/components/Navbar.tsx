@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Gravatar } from "../../ui/Gravatar";
-import { ModeToggle } from "../../ui/mode-toggle";
+import { Gravatar } from "./ui/Gravatar";
+import { ModeToggle } from "./ui/mode-toggle";
 // @ts-expect-error: react-headroom does not have TypeScript types
 import Headroom from "react-headroom";
 import { useState, useEffect } from "react";
@@ -17,16 +17,16 @@ export const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);  
-  
+  }, []);
+
   return (
     <Headroom className="sticky top-0 z-999999">
       <nav
         id="navbar"
         className={`border-none backdrop-blur-md ${
           isSticky
-          ? "bg-white/50 dark:bg-neutral-900/50"
-          : "bg-gray-100 dark:bg-neutral-900"
+            ? "bg-white/50 dark:bg-neutral-900/50"
+            : "bg-gray-100 dark:bg-neutral-900"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,7 +59,7 @@ export const Navbar = () => {
               <span className="text-neutral-400 text-sm font-noto">/</span>
               <Link
                 to="https://samhacker.xyz"
-                className="text-black dark:text-white text-sm font-medium font-noto uppercase hover:bg-neutral-50 hover:text-neutral-600 dark:hover:text-neutral-500 transition-colors px-4 py-2 rounded-md"
+                className="text-black dark:text-white text-sm font-medium font-noto uppercase hover:bg-neutral-900 dark:hover:bg-neutral-50 hover:text-neutral-50 dark:hover:text-neutral-500 transition-colors px-4 py-2 rounded-md"
               >
                 BLOG
               </Link>
