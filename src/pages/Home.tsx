@@ -1,6 +1,7 @@
 import { HeroSection } from "../components/section/Home/HeroSection";
-import { Navbar } from "../components/section/Home/Navbar";
+import { Navbar } from "../components/Navbar";
 import { SkillGrid } from "../components/section/Home/SkillGrid";
+import IntroSection from "../components/section/Home/IntroSection";
 
 export const Home = () => {
   return (
@@ -8,6 +9,7 @@ export const Home = () => {
       <Navbar />
       <HeroSection />
       <SkillGrid />
+      <IntroSection />
     </>
   );
 };

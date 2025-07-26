@@ -1,0 +1,145 @@
+/* IntroSection 共用樣式 */
+
+.intro-section {
+  @apply relative w-full min-h-[598px] px-4 py-8;
+}
+
+.intro-container {
+  @apply max-w-7xl mx-auto flex flex-col-reverse lg:flex-row gap-8 lg:gap-12 items-center min-h-[598px];
+}
+
+/* 左側區域 */
+.intro-left {
+  @apply flex-1 relative;
+}
+
+.intro-bg-text {
+  @apply absolute font-black text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-none whitespace-nowrap select-none pointer-events-none;
+  @apply text-black/5 dark:text-white/10;
+  @apply -translate-x-8 md:-translate-x-12 lg:-translate-x-16 xl:-translate-x-24;
+}
+
+.intro-title {
+  @apply relative z-10 text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+  @apply text-black dark:text-white;
+}
+
+.intro-cards-grid {
+  @apply grid grid-cols-2 gap-5 mt-8 w-full max-w-[400px];
+}
+
+.intro-card {
+  @apply bg-gray-100/80 dark:bg-white/10 rounded-lg p-4 h-[140px] overflow-hidden;
+  @apply border border-gray-200/50 dark:border-white/6;
+  @apply backdrop-blur-sm flex flex-col;
+}
+
+.intro-card-icon-bg {
+  @apply w-9 h-9 rounded-lg mb-2;
+  background-image: radial-gradient(
+    circle at center,
+    rgba(104, 159, 99, 0.6) 0%,
+    rgba(180, 207, 177, 0.3) 50%,
+    transparent 100%
+  );
+}
+
+.dark .intro-card-icon-bg {
+  background-image: radial-gradient(
+    circle at center,
+    rgba(104, 159, 99, 0.6) 0%,
+    rgba(78, 119, 74, 0.45) 25%,
+    rgba(52, 80, 50, 0.3) 50%,
+    transparent 100%
+  );
+}
+
+.intro-card-icon {
+  @apply w-6 h-6;
+}
+
+.intro-card-title {
+  @apply font-bold text-xl leading-normal mb-1;
+  @apply text-black dark:text-white;
+  font-family: "Inter", "Noto Sans JP", sans-serif;
+}
+
+.intro-card-desc {
+  @apply text-sm leading-normal whitespace-pre-line flex-1;
+  @apply text-gray-600 dark:text-gray-400;
+  font-family: "Inter", "Noto Sans JP", sans-serif;
+}
+
+/* 右側區域 */
+.intro-right {
+  @apply flex-1 relative;
+}
+
+.intro-bg-pattern {
+  @apply absolute inset-0 opacity-50 dark:opacity-30;
+  @apply bg-gradient-to-b from-transparent via-gray-100/20 to-transparent;
+}
+
+.intro-description {
+  @apply relative z-10 text-lg leading-relaxed;
+  @apply text-gray-700 dark:text-gray-300;
+  font-family: "Noto Sans TC", "Noto Sans", sans-serif;
+}
+
+.intro-footnote {
+  @apply text-xs text-gray-500 dark:text-gray-400;
+}
+
+.intro-footnote-link {
+  @apply underline decoration-solid underline-offset-2;
+}
+
+/* 響應式設計 */
+@media (max-width: 1023px) {
+  .intro-bg-text {
+    @apply text-center relative translate-x-0 mb-4;
+    @apply text-5xl md:text-6xl;
+  }
+
+  .intro-title {
+    @apply text-center text-3xl md:text-4xl;
+  }
+
+  .intro-cards-grid {
+    @apply mx-auto;
+  }
+
+  .intro-description {
+    @apply text-center;
+  }
+}
+
+@media (max-width: 767px) {
+  .intro-section {
+    @apply px-4 py-6;
+  }
+
+  .intro-container {
+    @apply gap-6;
+  }
+
+  .intro-cards-grid {
+    @apply gap-3;
+  }
+
+  .intro-card {
+    @apply h-[120px] p-3;
+  }
+
+  .intro-card-title {
+    @apply text-lg;
+  }
+
+  .intro-card-desc {
+    @apply text-xs;
+  }
+
+  .intro-description {
+    @apply text-base;
+  }
+}
