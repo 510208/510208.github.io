@@ -100,7 +100,7 @@ const skillIcons: Skill[] = [
     name: "Nginx",
     fileName: "nginx_symbol.svg",
     gradientColors: ["rgba(0, 153, 0, 0.4)"],
-    position: { row: 1, col: 5 },
+    position: { row: 1, col: 6 },
   },
 ];
 
