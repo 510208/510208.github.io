@@ -9,7 +9,6 @@ const MinecraftSkinViewer = React.lazy(
   () => import("@/components/ui/MCPlayer")
 );
 import { GlowCapture, Glow } from "@codaworks/react-glow";
-// 圖標組件
 
 interface InfoCardProps {
   icon: React.ReactNode;
