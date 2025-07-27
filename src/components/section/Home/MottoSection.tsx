@@ -19,8 +19,7 @@ export const MottoSection = () => {
           <div className="font-medium text-black dark:text-white italic">
             <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-2 sm:mb-4 font-noto">
               知識的力量來自於分享，
-            </p>
-            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-noto">
+              <br />
               而成就的喜悅來自於共同與成長
             </p>
           </div>
