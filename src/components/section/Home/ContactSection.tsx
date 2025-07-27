@@ -134,7 +134,7 @@ export const ContactSection: React.FC = () => {
       icon: <img src={wordpressLogo} alt="Blog" className="w-6 h-6" />,
       title: "Blog",
       subtitle: "Samhacker Blog",
-      link: "https://samhacker.blog",
+      link: "https://samhacker.xyz",
       gradientColors: ["rgba(56, 88, 233, 0.6)", "rgba(106, 130, 239, 0.45)"],
     },
   ];
