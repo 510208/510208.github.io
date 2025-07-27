@@ -243,16 +243,14 @@ export const SkillGrid = () => {
                 }}
               >
                 <img
-                  src={`/assets/skill-icons/${skill.fileName}`}
+                  src={skill.fileName}
                   alt={skill.name}
                   className="w-4 h-4 md:w-6 md:h-6 object-contain mr-1 dark:hidden"
                   loading="lazy"
                 />
                 <img
-                  src={`/assets/skill-icons/${
-                    skill.darkFileName || skill.fileName
-                  }`}
-                  alt={skill.name}
+                  src={skill.darkFileName || skill.fileName}
+                  alt={skill.darkFileName || skill.fileName}
                   className="w-4 h-4 md:w-6 md:h-6 object-contain mr-1 hidden dark:block"
                   loading="lazy"
                 />
@@ -272,16 +270,14 @@ export const SkillGrid = () => {
                 }}
               >
                 <img
-                  src={`/assets/skill-icons/${skill.fileName}`}
+                  src={skill.fileName}
                   alt={skill.name}
                   className="w-4 h-4 md:w-6 md:h-6 object-contain mr-1 dark:hidden"
                   loading="lazy"
                 />
                 <img
-                  src={`/assets/skill-icons/${
-                    skill.darkFileName || skill.fileName
-                  }`}
-                  alt={skill.name}
+                  src={skill.darkFileName || skill.fileName}
+                  alt={skill.darkFileName || skill.fileName}
                   className="w-4 h-4 md:w-6 md:h-6 object-contain mr-1 hidden dark:block"
                   loading="lazy"
                 />
