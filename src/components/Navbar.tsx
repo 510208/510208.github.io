@@ -35,7 +35,7 @@ export const Navbar = () => {
             <div className="flex-shrink-0 flex items-center space-x-2">
               <Gravatar size="40" className="rounded-md" />
               <Link to="/">
-                <h1 className="text-black dark:text-white text-2xl font-normal font-noto capitalize">
+                <h1 className="text-black dark:text-white text-2xl font-normal font-noto capitalize cursor-pointer">
                   SamHacker
                 </h1>
               </Link>

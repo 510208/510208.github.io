@@ -1,3 +1,5 @@
+import TypeIt from "typeit-react";
+
 export const MottoSection = () => {
   return (
     <section className="relative w-full min-h-[377px] flex items-center justify-center py-16 px-4">
@@ -17,11 +19,28 @@ export const MottoSection = () => {
         {/* 前景文字 - 主要內容 */}
         <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
           <div className="font-medium text-black dark:text-white italic">
-            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-2 sm:mb-4 font-noto">
-              知識的力量來自於分享，
+            <TypeIt
+              options={{ loop: true, waitUntilVisible: true, speed: 120 }}
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-2 sm:mb-4 font-noto"
+              getBeforeInit={(instance) => {
+                instance
+                  .type("知識的力量來自於分享，")
+                  .pause(750)
+                  .type("<br />")
+                  .pause(500)
+                  .type("而成就的喜悅來自於共同與成長。")
+                  .pause(750)
+                  .delete(40)
+                  .go();
+
+                // Remember to return it!
+                return instance;
+              }}
+            >
+              {/* 知識的力量來自於分享，
               <br />
-              而成就的喜悅來自於共同與成長
-            </p>
+              而成就的喜悅來自於共同與成長。 */}
+            </TypeIt>
           </div>
         </div>
       </div>
