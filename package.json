@@ -30,7 +30,8 @@
     "react-router-dom": "^7.7.0",
     "skin3d": "^0.0.12",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "typeit-react": "^2.7.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",

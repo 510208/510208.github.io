@@ -6,6 +6,23 @@ import {
 import { Badge } from "@/components/ui/badge";
 import Marquee from "react-fast-marquee";
 
+// 匯入圖示
+import davinci_symbol from "@/assets/skill-icons/davinci_symbol.svg";
+import figma_symbol from "@/assets/skill-icons/figma_symbol.svg";
+import git_symbol from "@/assets/skill-icons/git_symbol.svg";
+import js_symbol from "@/assets/skill-icons/js_symbol.svg";
+import linux_symbol from "@/assets/skill-icons/linux_symbol.svg";
+import minecraft_symbol from "@/assets/skill-icons/minecraft_symbol.svg";
+import nextjs_symbol from "@/assets/skill-icons/nextjs_symbol.svg";
+import nextjs_symbol_dark from "@/assets/skill-icons/nextjs_symbol_dark.svg";
+import nginx_symbol from "@/assets/skill-icons/nginx_symbol.svg";
+import nodejs_symbol from "@/assets/skill-icons/nodejs_symbol.svg";
+import python_symbol from "@/assets/skill-icons/python_symbol.svg";
+import react_symbol from "@/assets/skill-icons/react_symbol.svg";
+import scratch_symbol from "@/assets/skill-icons/scratch_symbol.svg";
+import svelte_symbol from "@/assets/skill-icons/svelte_symbol.svg";
+import wordpresscom_symbol from "@/assets/skill-icons/wordpresscom_symbol.svg";
+
 // 定義單一技能的資料結構
 interface Skill {
   name: string;
@@ -19,86 +36,86 @@ interface Skill {
 const skillIcons: Skill[] = [
   {
     name: "WordPress",
-    fileName: "wordpresscom_symbol.svg",
+    fileName: wordpresscom_symbol,
     gradientColors: ["rgba(56, 88, 233, 0.4)"],
     position: { row: 1, col: 2 },
   },
   {
     name: "Python",
-    fileName: "python_symbol.svg",
+    fileName: python_symbol,
     gradientColors: ["rgba(255, 212, 59, 0.4)"],
     position: { row: 1, col: 3 },
   },
   {
     name: "Git",
-    fileName: "git_symbol.svg",
+    fileName: git_symbol,
     gradientColors: ["rgba(240, 81, 51, 0.4)"],
     position: { row: 1, col: 4 },
   },
   {
     name: "JavaScript",
-    fileName: "js_symbol.svg",
+    fileName: js_symbol,
     gradientColors: ["rgba(104, 159, 99, 0.4)"],
     position: { row: 1, col: 6 },
   },
   {
     name: "Scratch",
-    fileName: "scratch_symbol.svg",
+    fileName: scratch_symbol,
     gradientColors: ["rgba(249, 168, 58, 0.4)"],
     position: { row: 1, col: 7 },
   },
   {
     name: "Next.js",
-    fileName: "nextjs_symbol.svg",
-    darkFileName: "nextjs_symbol_dark.svg",
+    fileName: nextjs_symbol,
+    darkFileName: nextjs_symbol_dark,
     gradientColors: ["rgba(103, 103, 103, 0.4)"],
     position: { row: 2, col: 1 },
   },
   {
     name: "Linux",
-    fileName: "linux_symbol.svg",
+    fileName: linux_symbol,
     gradientColors: ["rgba(247, 184, 32, 0.4)"],
     position: { row: 2, col: 3 },
   },
   {
     name: "DaVinci Resolve",
-    fileName: "davinci_symbol.svg",
+    fileName: davinci_symbol,
     gradientColors: ["rgba(56, 155, 216, 0.4)"],
     position: { row: 2, col: 4 },
   },
   {
     name: "Figma",
-    fileName: "figma_symbol.svg",
+    fileName: figma_symbol,
     gradientColors: ["rgba(162, 89, 255, 0.4)"],
     position: { row: 2, col: 5 },
   },
   {
     name: "Svelte",
-    fileName: "svelte_symbol.svg",
+    fileName: svelte_symbol,
     gradientColors: ["rgba(255, 62, 0, 0.4)"],
     position: { row: 2, col: 7 },
   },
   {
     name: "Minecraft",
-    fileName: "minecraft_symbol.svg",
+    fileName: minecraft_symbol,
     gradientColors: ["rgba(136, 184, 88, 0.4)"],
     position: { row: 2, col: 8 },
   },
   {
     name: "Node.js",
-    fileName: "nodejs_symbol.svg",
+    fileName: nodejs_symbol,
     gradientColors: ["rgba(0, 153, 68, 0.4)"],
     position: { row: 1, col: 1 },
   },
   {
     name: "React",
-    fileName: "react_symbol.svg",
+    fileName: react_symbol,
     gradientColors: ["rgba(97, 218, 251, 0.4)"],
     position: { row: 1, col: 5 },
   },
   {
     name: "Nginx",
-    fileName: "nginx_symbol.svg",
+    fileName: nginx_symbol,
     gradientColors: ["rgba(0, 153, 0, 0.4)"],
     position: { row: 1, col: 6 },
   },
@@ -136,7 +153,7 @@ const SkillIcon = ({ skill, isDesktop = false }: SkillIconProps) => {
           <div className="absolute inset-0 flex items-center justify-center p-3 md:p-5">
             {/* 預設圖示 (淺色模式，或當沒有深色圖示時的後備) */}
             <img
-              src={`/assets/skill-icons/${skill.fileName}`}
+              src={skill.fileName}
               alt={skill.name}
               className={`w-12 h-12 md:w-10 md:h-10 object-contain filter ${
                 skill.darkFileName ? "dark:hidden" : ""
@@ -146,7 +163,7 @@ const SkillIcon = ({ skill, isDesktop = false }: SkillIconProps) => {
             {/* 深色模式專用圖示 (僅當 darkFileName 存在時渲染) */}
             {skill.darkFileName && (
               <img
-                src={`/assets/skill-icons/${skill.darkFileName}`}
+                src={skill.darkFileName}
                 alt={skill.name}
                 className="w-12 h-12 md:w-10 md:h-10 object-contain filter hidden dark:block"
                 loading="lazy"
@@ -164,13 +181,27 @@ export const SkillGrid = () => {
     <section className="w-full py-8 md:py-16">
       <div className="container mx-auto px-4">
         {/* 標題區塊 */}
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 md:mb-4 font-noto">
-            技術技能
-          </h2>
-          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto font-noto px-4">
-            我熟悉的各種技術和工具，涵蓋前端開發、後端技術、設計工具等領域
-          </p>
+        <div className="relative text-center mb-8 md:mb-12">
+          {/* 背景文字 - 淡化效果 */}
+          <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+            <div
+              className="bg-clip-text bg-gradient-to-r font-black font-inter text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-center whitespace-nowrap
+                         from-transparent via-black/10 to-transparent dark:via-white/20 leading-none select-none pointer-events-none"
+              style={{ WebkitTextFillColor: "transparent" }}
+            >
+              SKILLS & TECHNOLOGIES
+            </div>
+          </div>
+
+          {/* 前景內容 */}
+          <div className="relative z-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 md:mb-4 font-noto">
+              技術技能
+            </h2>
+            <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto font-noto px-4">
+              我熟悉的各種技術和工具，涵蓋前端開發、後端技術、設計工具等領域
+            </p>
+          </div>
         </div>
 
         {/* 技能圖標網格 */}
@@ -212,16 +243,14 @@ export const SkillGrid = () => {
                 }}
               >
                 <img
-                  src={`/assets/skill-icons/${skill.fileName}`}
+                  src={skill.fileName}
                   alt={skill.name}
                   className="w-4 h-4 md:w-6 md:h-6 object-contain mr-1 dark:hidden"
                   loading="lazy"
                 />
                 <img
-                  src={`/assets/skill-icons/${
-                    skill.darkFileName || skill.fileName
-                  }`}
-                  alt={skill.name}
+                  src={skill.darkFileName || skill.fileName}
+                  alt={skill.darkFileName || skill.fileName}
                   className="w-4 h-4 md:w-6 md:h-6 object-contain mr-1 hidden dark:block"
                   loading="lazy"
                 />
@@ -241,16 +270,14 @@ export const SkillGrid = () => {
                 }}
               >
                 <img
-                  src={`/assets/skill-icons/${skill.fileName}`}
+                  src={skill.fileName}
                   alt={skill.name}
                   className="w-4 h-4 md:w-6 md:h-6 object-contain mr-1 dark:hidden"
                   loading="lazy"
                 />
                 <img
-                  src={`/assets/skill-icons/${
-                    skill.darkFileName || skill.fileName
-                  }`}
-                  alt={skill.name}
+                  src={skill.darkFileName || skill.fileName}
+                  alt={skill.darkFileName || skill.fileName}
                   className="w-4 h-4 md:w-6 md:h-6 object-contain mr-1 hidden dark:block"
                   loading="lazy"
                 />
