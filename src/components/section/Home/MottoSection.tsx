@@ -6,10 +6,11 @@ export const MottoSection = () => {
         <div className="absolute inset-0 flex items-center justify-center">
           <div
             className="bg-clip-text bg-gradient-to-r font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[96px] text-center whitespace-nowrap
-                       from-transparent via-black/15 to-transparent dark:via-white/30 leading-none font-inter"
+                       from-transparent via-black/15 to-transparent dark:via-white/30 leading-none font-inter overflow-hidden"
             style={{ WebkitTextFillColor: "transparent" }}
           >
-            Never gonna give you up
+            The power of knowledge lies in sharing, and the joy of achievement
+            comes from growing together.
           </div>
         </div>
 

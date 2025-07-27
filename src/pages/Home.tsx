@@ -3,6 +3,7 @@ import { Navbar } from "../components/Navbar";
 import { SkillGrid } from "../components/section/Home/SkillGrid";
 import IntroSection from "../components/section/Home/IntroSection";
 import MottoSection from "@/components/section/Home/MottoSection";
+import ContactSection from "../components/section/Home/ContactSection";
 
 export const Home = () => {
   return (
@@ -12,6 +13,7 @@ export const Home = () => {
       <SkillGrid />
       <IntroSection />
       <MottoSection />
+      <ContactSection />
     </>
   );
 };
