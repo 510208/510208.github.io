@@ -19,15 +19,6 @@ export const Footer: React.FC = () => {
       {/* 背景裝飾 */}
       <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
         {/* 大型背景文字 */}
-        {/* <div className="text-center select-none pointer-events-none">
-          <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-200/10 dark:text-white/5 leading-none">
-            DESIGNED BY
-          </div>
-          <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none mt-2">
-            <span className="text-gray-200/10 dark:text-white/5">SAM</span>
-            <span className="text-green-500/30">HACKER</span>
-          </div>
-        </div> */}
         <img
           src="/assets/light_footer-background.png"
           alt="Background Decoration"
