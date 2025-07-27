@@ -55,7 +55,7 @@ export const Footer: React.FC = () => {
             {/* 社交媒體圖標 */}
 
             <a
-              href="https://www.threads.com/@samhacker.xyz"
+              href="https://www.penana.com/user/234799/samhacker"
               target="_blank"
               rel="noopener noreferrer"
               className="w-6 h-6 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors duration-200"
