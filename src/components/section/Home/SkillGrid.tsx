@@ -164,13 +164,27 @@ export const SkillGrid = () => {
     <section className="w-full py-8 md:py-16">
       <div className="container mx-auto px-4">
         {/* 標題區塊 */}
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 md:mb-4 font-noto">
-            技術技能
-          </h2>
-          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto font-noto px-4">
-            我熟悉的各種技術和工具，涵蓋前端開發、後端技術、設計工具等領域
-          </p>
+        <div className="relative text-center mb-8 md:mb-12">
+          {/* 背景文字 - 淡化效果 */}
+          <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+            <div
+              className="bg-clip-text bg-gradient-to-r font-black font-inter text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-center whitespace-nowrap
+                         from-transparent via-black/10 to-transparent dark:via-white/20 leading-none select-none pointer-events-none"
+              style={{ WebkitTextFillColor: "transparent" }}
+            >
+              SKILLS & TECHNOLOGIES
+            </div>
+          </div>
+
+          {/* 前景內容 */}
+          <div className="relative z-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 md:mb-4 font-noto">
+              技術技能
+            </h2>
+            <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto font-noto px-4">
+              我熟悉的各種技術和工具，涵蓋前端開發、後端技術、設計工具等領域
+            </p>
+          </div>
         </div>
 
         {/* 技能圖標網格 */}
