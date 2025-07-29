@@ -14,7 +14,7 @@ export const Projects = () => {
           backgroundAuthorUrl="https://www.pexels.com/zh-tw/@realtoughcandy/"
         />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-5 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* 專案卡片範例 */}
             <div className="bg-gray-50 dark:bg-neutral-800 rounded-lg p-6 hover:shadow-lg transition-shadow">
               <h3 className="text-xl font-semibold text-neutral-950 dark:text-white mb-3 font-inter">
