@@ -9,8 +9,6 @@ import wordpressLogo from "@/assets/contact-icons/wordpresscom_symbol.svg"; // v
 import githubSymbol from "@/assets/contact-icons/github_symbol.svg"; // v
 import roc_flag from "@/assets/contact-icons/roc_flag.svg"; // v
 
-import { Glow, GlowCapture } from "@codaworks/react-glow";
-
 // 聯絡資訊卡片介面
 interface ContactCardProps {
   icon: React.ReactNode;
@@ -30,7 +28,7 @@ const ContactCard: React.FC<ContactCardProps> = ({
   gradientColors,
 }) => {
   const cardContent = (
-    <Glow className="relative bg-gray-100/90 dark:bg-white/10 border border-gray-200/50 dark:border-white/6 rounded-lg p-4 h-36 sm:h-40 transition-all duration-300 group">
+    <div className="relative bg-gray-100/90 dark:bg-white/10 border border-gray-200/50 dark:border-white/6 rounded-lg p-4 h-36 sm:h-40 transition-all duration-300 group">
       {/* 圖標背景 */}
       <div
         className="w-9 h-9 rounded-lg flex items-center justify-center mb-3"
@@ -53,7 +51,7 @@ const ContactCard: React.FC<ContactCardProps> = ({
         <p className="mb-0 leading-normal">{subtitle}</p>
         {description && <p className="mb-0 leading-normal">{description}</p>}
       </div>
-    </Glow>
+    </div>
   );
 
   return link ? (
@@ -140,7 +138,7 @@ export const ContactSection: React.FC = () => {
   ];
 
   return (
-    <GlowCapture>
+    <div>
       <section className="relative w-full min-h-[598px] px-4 py-8 md:px-6 lg:px-8 bg-white dark:bg-black">
         <div className="max-w-7xl mx-auto">
           {/* 標題區塊 */}
@@ -189,7 +187,7 @@ export const ContactSection: React.FC = () => {
           </div>
         </div>
       </section>
-    </GlowCapture>
+    </div>
   );
 };
 

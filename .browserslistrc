@@ -1,0 +1,9 @@
+Chrome >= 51
+Edge >= 15
+Safari >= 10
+Firefox >= 54
+Opera >= 38
+iOS >= 10
+not ie <= 11
+Android >= 5
+not IE <= 11
