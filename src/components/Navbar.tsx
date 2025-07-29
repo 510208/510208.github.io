@@ -4,6 +4,12 @@ import { ModeToggle } from "./ui/mode-toggle";
 // @ts-expect-error: react-headroom does not have TypeScript types
 import Headroom from "react-headroom";
 import { useState, useEffect } from "react";
+import { UsersRound, FolderGit, Newspaper } from "lucide-react";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
 
 export const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -18,6 +24,24 @@ export const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const menuItems = [
+    {
+      label: "FRIENDS",
+      to: "/friends",
+      icon: <UsersRound size={18} />,
+    },
+    {
+      label: "PROJECTS",
+      to: "/projects",
+      icon: <FolderGit size={18} />,
+    },
+    {
+      label: "BLOG",
+      to: "https://samhacker.xyz",
+      icon: <Newspaper size={18} />,
+    },
+  ];
 
   return (
     <Headroom className="sticky top-0 z-999999">
@@ -42,34 +66,69 @@ export const Navbar = () => {
             </div>
 
             {/* 導航選單 - 右側，在手機版隱藏 */}
-            <div className="hidden md:flex items-center space-x-8">
-              <Link
-                to="/about"
-                className="text-black dark:text-white text-sm font-medium font-noto uppercase hover:text-neutral-600 dark:hover:text-neutral-500 transition-colors px-4 py-2 rounded-md"
-              >
-                ABOUT
-              </Link>
-              <span className="text-neutral-400 text-sm font-noto">/</span>
-              <Link
-                to="/projects"
-                className="text-black dark:text-white text-sm font-medium font-noto uppercase hover:text-neutral-600 dark:hover:text-neutral-500 transition-colors px-4 py-2 rounded-md"
-              >
-                PROJECTS
-              </Link>
-              <span className="text-neutral-400 text-sm font-noto">/</span>
-              <Link
-                to="https://samhacker.xyz"
-                className="text-black dark:text-white text-sm font-medium font-noto uppercase hover:bg-neutral-900 dark:hover:bg-neutral-50 hover:text-neutral-50 dark:hover:text-neutral-500 transition-colors px-4 py-2 rounded-md"
-              >
-                BLOG
-              </Link>
-              <span className="text-neutral-400 text-sm font-noto">/</span>
-              <ModeToggle />
-            </div>
+            <NavigationMenu className="hidden md:flex items-center">
+              <NavigationMenuList className="flex items-center space-x-7">
+                {menuItems.map((item) => (
+                  <>
+                    <NavigationMenuItem key={item.label}>
+                      <Link
+                        to={item.to}
+                        className={`text-sm font-medium font-noto uppercase transition-colors px-4 py-2 rounded-md ${
+                          item.label === "BLOG"
+                            ? "hover:text-neutral-50 dark:hover:text-neutral-900 hover:bg-gray-800 dark:hover:bg-neutral-100"
+                            : "hover:text-neutral-600 dark:hover:text-neutral-500 text-black dark:text-white"
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    </NavigationMenuItem>
 
-            {/* 手機版漢堡選單按鈕（可選，目前隱藏選單） */}
-            <div className="md:hidden">
-              {/* 如果需要可以在這裡加入漢堡選單按鈕 */}
+                    {/* 分隔符號 */}
+                    {item.label !== "BLOG" && (
+                      <NavigationMenuItem>
+                        <span className="text-neutral-400 text-sm font-noto">
+                          /
+                        </span>
+                      </NavigationMenuItem>
+                    )}
+                    {item.label === "BLOG" && (
+                      <NavigationMenuItem>
+                        <span className="text-neutral-400 text-sm font-noto mr-7.5">
+                          /
+                        </span>
+                      </NavigationMenuItem>
+                    )}
+                  </>
+                ))}
+              </NavigationMenuList>
+              <ModeToggle />
+            </NavigationMenu>
+
+            {/* 手機版漢堡選單按鈕 */}
+            <div className="md:hidden flex">
+              <NavigationMenu className="md:hidden items-center">
+                <NavigationMenuList className="flex items-center space-x-3">
+                  {menuItems.map((item) => (
+                    <>
+                      <NavigationMenuItem key={item.label}>
+                        <Link
+                          to={item.to}
+                          className={`text-sm font-medium font-noto uppercase transition-colors px-4 py-2 rounded-md ${
+                            item.label === "BLOG"
+                              ? "hover:text-neutral-50 dark:hover:text-neutral-900 hover:bg-gray-800 dark:hover:bg-neutral-100"
+                              : "hover:text-neutral-600 dark:hover:text-neutral-500 text-black dark:text-white"
+                          }`}
+                        >
+                          {item.icon}
+                        </Link>
+                      </NavigationMenuItem>
+                    </>
+                  ))}
+                </NavigationMenuList>
+                <div className="ml-4">
+                  <ModeToggle />
+                </div>
+              </NavigationMenu>
             </div>
           </div>
         </div>
