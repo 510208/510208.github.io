@@ -77,7 +77,7 @@
 }
 
 .dark {
-  --background: oklch(0.22 0 0);
+  --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -149,4 +149,8 @@
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+.hyperlink {
+  @apply inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline;
 }
