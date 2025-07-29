@@ -29,7 +29,14 @@ export const MottoSection = () => {
                   .type("<br />")
                   .pause(500)
                   .type("而成就的喜悅來自於共同與成長。")
+                  .pause(1000)
+                  .delete(40)
+                  .type("寧願最後徒勞無功，")
                   .pause(750)
+                  .type("<br />")
+                  .pause(500)
+                  .type("也不選擇無動於衷。")
+                  .pause(1000)
                   .delete(40)
                   .go();
 

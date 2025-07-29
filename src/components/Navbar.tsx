@@ -4,7 +4,7 @@ import { ModeToggle } from "./ui/mode-toggle";
 // @ts-expect-error: react-headroom does not have TypeScript types
 import Headroom from "react-headroom";
 import { useState, useEffect } from "react";
-import { AlignRight } from "lucide-react";
+import { UsersRound, FolderGit, Newspaper } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -25,31 +25,21 @@ export const Navbar = () => {
     };
   }, []);
 
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
-
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [mobileMenuOpen]);
-
   const menuItems = [
     {
-      label: "ABOUT",
-      to: "/about",
+      label: "FRIENDS",
+      to: "/friends",
+      icon: <UsersRound size={18} />,
     },
     {
       label: "PROJECTS",
       to: "/projects",
+      icon: <FolderGit size={18} />,
     },
     {
       label: "BLOG",
       to: "https://samhacker.xyz",
+      icon: <Newspaper size={18} />,
     },
   ];
 
@@ -115,52 +105,30 @@ export const Navbar = () => {
             </NavigationMenu>
 
             {/* 手機版漢堡選單按鈕 */}
-            <div className="md:hidden">
-              <button
-                className="p-2 rounded-md text-black dark:text-white"
-                onClick={toggleMobileMenu}
-              >
-                <span className="text-neutral-400 text-sm font-noto">/</span>
-                <ModeToggle />
-              </button>
-            </div>
-
-            {/* 手機版漢堡選單按鈕 */}
-            <div className="md:hidden">
-              <button
-                className="p-2 rounded-md text-black dark:text-white"
-                onClick={toggleMobileMenu}
-              >
-                <AlignRight />
-              </button>
-            </div>
-
-            {/* 手機版導航選單 - 在手機版顯示 */}
-            <div
-              className={`md:hidden absolute top-16 right-0 bg-white dark:bg-neutral-900 shadow-lg rounded-md w-48 h-[100vh] ${
-                mobileMenuOpen ? "block" : "hidden"
-              }`}
-            >
-              <div className="flex flex-col items-start p-4 space-y-2">
-                <Link
-                  to="/about"
-                  className="text-black dark:text-white text-sm font-medium font-noto uppercase hover:text-neutral-600 dark:hover:text-neutral-500 transition-colors"
-                >
-                  ABOUT
-                </Link>
-                <Link
-                  to="/projects"
-                  className="text-black dark:text-white text-sm font-medium font-noto uppercase hover:text-neutral-600 dark:hover:text-neutral-500 transition-colors"
-                >
-                  PROJECTS
-                </Link>
-                <Link
-                  to="https://samhacker.xyz"
-                  className="text-black dark:text-white text-sm font-medium font-noto uppercase hover:bg-neutral-900 dark:hover:bg-neutral-50 hover:text-neutral-50 dark:hover:text-neutral-500 transition-colors"
-                >
-                  BLOG
-                </Link>
-              </div>
+            <div className="md:hidden flex">
+              <NavigationMenu className="md:hidden items-center">
+                <NavigationMenuList className="flex items-center space-x-3">
+                  {menuItems.map((item) => (
+                    <>
+                      <NavigationMenuItem key={item.label}>
+                        <Link
+                          to={item.to}
+                          className={`text-sm font-medium font-noto uppercase transition-colors px-4 py-2 rounded-md ${
+                            item.label === "BLOG"
+                              ? "hover:text-neutral-50 dark:hover:text-neutral-900 hover:bg-gray-800 dark:hover:bg-neutral-100"
+                              : "hover:text-neutral-600 dark:hover:text-neutral-500 text-black dark:text-white"
+                          }`}
+                        >
+                          {item.icon}
+                        </Link>
+                      </NavigationMenuItem>
+                    </>
+                  ))}
+                </NavigationMenuList>
+                <div className="ml-4">
+                  <ModeToggle />
+                </div>
+              </NavigationMenu>
             </div>
           </div>
         </div>
