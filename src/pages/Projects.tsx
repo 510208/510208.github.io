@@ -5,7 +5,7 @@ export const Projects = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-white dark:bg-neutral-900">
+      <div className="min-h-screen">
         <GeneralHeroSection
           title="我的專案"
           subtitle="這裡展示了我的一些開源專案和技術作品，涵蓋了網站開發、Minecraft 相關工具等多個領域。"

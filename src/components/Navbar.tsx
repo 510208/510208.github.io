@@ -69,11 +69,11 @@ export const Navbar = () => {
             <NavigationMenu className="hidden md:flex items-center">
               <NavigationMenuList className="flex items-center space-x-7">
                 {menuItems.map((item) => (
-                  <>
-                    <NavigationMenuItem key={item.label}>
+                  <div key={item.label}>
+                    <NavigationMenuItem>
                       <Link
                         to={item.to}
-                        className={`text-sm font-medium font-noto uppercase transition-colors px-4 py-2 rounded-md ${
+                        className={`text-sm font-medium font-noto uppercase transition-colors px-4 py-2 rounded-md mr-7.5 ${
                           item.label === "BLOG"
                             ? "hover:text-neutral-50 dark:hover:text-neutral-900 hover:bg-gray-800 dark:hover:bg-neutral-100"
                             : "hover:text-neutral-600 dark:hover:text-neutral-500 text-black dark:text-white"
@@ -81,24 +81,20 @@ export const Navbar = () => {
                       >
                         {item.label}
                       </Link>
-                    </NavigationMenuItem>
 
-                    {/* 分隔符號 */}
-                    {item.label !== "BLOG" && (
-                      <NavigationMenuItem>
+                      {/* 分隔符號 */}
+                      {item.label !== "BLOG" && (
                         <span className="text-neutral-400 text-sm font-noto">
                           /
                         </span>
-                      </NavigationMenuItem>
-                    )}
-                    {item.label === "BLOG" && (
-                      <NavigationMenuItem>
+                      )}
+                      {item.label === "BLOG" && (
                         <span className="text-neutral-400 text-sm font-noto mr-7.5">
                           /
                         </span>
-                      </NavigationMenuItem>
-                    )}
-                  </>
+                      )}
+                    </NavigationMenuItem>
+                  </div>
                 ))}
               </NavigationMenuList>
               <ModeToggle />
@@ -109,8 +105,8 @@ export const Navbar = () => {
               <NavigationMenu className="md:hidden items-center">
                 <NavigationMenuList className="flex items-center space-x-3">
                   {menuItems.map((item) => (
-                    <>
-                      <NavigationMenuItem key={item.label}>
+                    <div key={item.label}>
+                      <NavigationMenuItem>
                         <Link
                           to={item.to}
                           className={`text-sm font-medium font-noto uppercase transition-colors px-4 py-2 rounded-md ${
@@ -122,7 +118,7 @@ export const Navbar = () => {
                           {item.icon}
                         </Link>
                       </NavigationMenuItem>
-                    </>
+                    </div>
                   ))}
                 </NavigationMenuList>
                 <div className="ml-4">

@@ -8,7 +8,6 @@ import {
 const MinecraftSkinViewer = React.lazy(
   () => import("@/components/ui/MCPlayer")
 );
-import { GlowCapture, Glow } from "@codaworks/react-glow";
 
 interface InfoCardProps {
   icon: React.ReactNode;
@@ -17,7 +16,7 @@ interface InfoCardProps {
 }
 
 const InfoCard: React.FC<InfoCardProps> = ({ icon, title, description }) => (
-  <Glow
+  <div
     color="rgba(104, 159, 99, 0.6)"
     className="bg-gray-100/90 dark:bg-white/10 border border-gray-200/50 dark:border-white/6 rounded-lg p-4 h-[140px] sm:h-[160px] flex flex-col"
   >
@@ -42,7 +41,7 @@ const InfoCard: React.FC<InfoCardProps> = ({ icon, title, description }) => (
     <div className="font-noto text-sm leading-normal whitespace-pre-line text-gray-600 dark:text-gray-400 flex-1 glowable-text">
       {description}
     </div>
-  </Glow>
+  </div>
 );
 
 const IntroSection: React.FC = () => {
@@ -85,18 +84,16 @@ const IntroSection: React.FC = () => {
           </div>
 
           {/* 資訊卡片網格 */}
-          <GlowCapture>
-            <div className="grid grid-cols-2 gap-5 mt-4 lg:mt-[20px] w-full max-w-[400px] max-lg:mx-auto max-sm:gap-3">
-              {infoCards.map((card, index) => (
-                <InfoCard
-                  key={index}
-                  icon={card.icon}
-                  title={card.title}
-                  description={card.description}
-                />
-              ))}
-            </div>
-          </GlowCapture>
+          <div className="grid grid-cols-2 gap-5 mt-4 lg:mt-[20px] w-full max-w-[400px] max-lg:mx-auto max-sm:gap-3">
+            {infoCards.map((card, index) => (
+              <InfoCard
+                key={index}
+                icon={card.icon}
+                title={card.title}
+                description={card.description}
+              />
+            ))}
+          </div>
         </div>
 
         {/* 右側區域 */}
