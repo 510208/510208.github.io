@@ -34,7 +34,7 @@ export function FriendList() {
       links: [
         {
           icon: <Earth />,
-          to: "https://example.com",
+          to: "https://zhenyuan.dev",
           label: "個人網站",
         },
         {
