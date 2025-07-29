@@ -68,7 +68,7 @@ export function FriendList() {
       links: [
         {
           icon: <Github />,
-          to: "https://github.com/T3chHAX0R", // 替換為實際連結
+          to: "https://github.com/T3chHAX0R",
           label: "GitHub",
         },
       ],
