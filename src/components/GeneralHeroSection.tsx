@@ -17,7 +17,7 @@ export const GeneralHeroSection = ({
 }: GeneralHeroSectionProps) => {
   return (
     <section
-      className="my-16 max-w-[1200px] mx-auto bg-transparent overflow-hidden relative rounded-2xl"
+      className="w-100vw lg:my-16 lg:max-w-[1200px] mx-auto bg-transparent overflow-hidden relative lg:rounded-2xl"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
