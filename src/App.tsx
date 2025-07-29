@@ -6,7 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { Home } from "./pages/Home";
-import { About } from "./pages/About";
+import { Friends } from "./pages/Friends";
 import { Projects } from "./pages/Projects";
 import { ReactLenis } from "lenis/react";
 import { useState, useEffect } from "react";
@@ -34,7 +34,7 @@ function AnimatedRoutes() {
     >
       <Routes location={displayLocation}>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/friends" element={<Friends />} />
         <Route path="/projects" element={<Projects />} />
       </Routes>
     </div>
