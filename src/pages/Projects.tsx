@@ -1,3 +1,4 @@
+import { GeneralHeroSection } from "@/components/GeneralHeroSection";
 import { Navbar } from "@/components/Navbar";
 
 export const Projects = () => {
@@ -5,17 +6,14 @@ export const Projects = () => {
     <>
       <Navbar />
       <div className="min-h-screen bg-white dark:bg-neutral-900">
+        <GeneralHeroSection
+          title="我的專案"
+          subtitle="這裡展示了我的一些開源專案和技術作品，涵蓋了網站開發、Minecraft 相關工具等多個領域。"
+          backgroundImage="/assets/page_background/projects_bg.webp"
+          backgroundAuthor="RealToughCandy.com"
+          backgroundAuthorUrl="https://www.pexels.com/zh-tw/@realtoughcandy/"
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-neutral-950 dark:text-white mb-8 font-inter">
-              我的專案
-            </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-300 font-noto max-w-2xl mx-auto">
-              這裡展示了我的一些開源專案和技術作品， 涵蓋了網站開發、Minecraft
-              相關工具等多個領域。
-            </p>
-          </div>
-
           <div className="grid grid-cols-5 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* 專案卡片範例 */}
             <div className="bg-gray-50 dark:bg-neutral-800 rounded-lg p-6 hover:shadow-lg transition-shadow">
