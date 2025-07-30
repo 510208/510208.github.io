@@ -101,7 +101,12 @@ export const ProjectsList = () => {
                 <li className="mb-2 flex items-center gap-2">
                   <Languages size={18} />
                   <strong>語言:</strong>
-                  <p>{project.language}</p>
+                  <p>
+                    <i
+                      className={`devicon-${project.language?.toLowerCase()}-plain`}
+                    ></i>
+                    {project.language}
+                  </p>
                 </li>
               )}
               {typeof project.stargazers_count === "number" && (
