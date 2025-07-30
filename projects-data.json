@@ -1,15 +1,15 @@
 [
   {
     "name": "510208.github.io",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/2b4cbc173444af01707d533fa5bdef764fb8e6d4ce3ba3be819cc7e135372af0/510208/510208.github.io",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/0e877971eb92783a775da1e26aac939c861688022fbec06c3b94c3c9fb593a4d/510208/510208.github.io",
     "description": null,
     "html_url": "https://github.com/510208/510208.github.io",
     "language": "TypeScript",
-    "updated_at": "2025-07-30T04:51:12Z",
+    "updated_at": "2025-07-30T04:51:45Z",
     "stargazers_count": 1,
     "forks_count": 0,
     "topics": [],
-    "license": null,
+    "license": "GNU General Public License v3.0",
     "fork": false,
     "slug": "510208-github-io"
   },
