@@ -102,10 +102,16 @@ export const ProjectsList = () => {
                   <Languages size={18} />
                   <strong>語言:</strong>
                   <p>
-                    <i
-                      className={`devicon-${project.language?.toLowerCase()}-plain`}
-                    ></i>
-                    {project.language}
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <i
+                          className={`devicon-${project.language.toLowerCase()}-plain colored text-l`}
+                        ></i>
+                      </TooltipTrigger>
+                      <TooltipContent side="bottom">
+                        {project.language}
+                      </TooltipContent>
+                    </Tooltip>
                   </p>
                 </li>
               )}
