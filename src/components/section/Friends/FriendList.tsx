@@ -17,6 +17,7 @@ import { Earth, Github, Instagram, Twitch, Youtube } from "lucide-react";
 
 import discordSymbol from "@/assets/contact-icons/discord_symbol.svg"; // v
 import penana from "@/assets/contact-icons/penana_symbol.svg"; // v
+import micropedia from "@/assets/contact-icons/micropedia_logo.svg"; // v
 
 export function FriendList() {
   const friends = [
@@ -216,6 +217,47 @@ export function FriendList() {
           icon: <Instagram />,
           to: "https://www.instagram.com/miaomiaomiao4035/",
           label: "Instagram",
+        },
+      ],
+    },
+    {
+      image: "/assets/friend_photo/jingyu.webp",
+      name: "司馬定瑄（張靜羽）",
+      slug: "jingyu",
+      description: (
+        <>
+          張靜羽（英文:<i>JingYu</i>），舊稱維仁，微國國際政治家，曾任
+          <a
+            href="/wiki/%E7%B4%85%E8%8A%B1%E5%9D%82%E6%B0%91%E4%B8%BB%E5%85%B1%E5%92%8C%E5%9C%8B"
+            title="紅花坂民主共和國"
+            className="hyperlink"
+          >
+            紅花坂民主共和國
+          </a>{" "}
+          副總統、
+          <a
+            href="/wiki/%E8%8A%B1%E5%9D%82%E5%9C%8B%E6%B0%91%E9%BB%A8"
+            title="花坂國民黨"
+            className="hyperlink"
+          >
+            花坂國民黨
+          </a>{" "}
+          副黨主席、
+          <a
+            href="/wiki/%E5%A8%81%E7%88%BE%E8%98%AD%E7%8E%8B%E5%9C%8B"
+            title="威爾蘭王國"
+            className="hyperlink"
+          >
+            威爾蘭王國
+          </a>{" "}
+          外務部官員。現今活躍於Facebook、discord。
+        </>
+      ),
+      links: [
+        {
+          icon: <img src={micropedia} alt="微國家百科" className="w-4 h-4" />,
+          to: "https://www.micropedia.uk/wiki/%E5%BC%B5%E7%B6%AD%E4%BB%81",
+          label: "微國家百科",
         },
       ],
     },

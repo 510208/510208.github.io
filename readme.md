@@ -1,69 +1,96 @@
-# React + TypeScript + Vite
+# 510208.github.io
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://510208.github.io)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-deployed-blue?logo=github)](https://510208.github.io)
+[![React](https://img.shields.io/badge/React-19.1.0-61DAFB?logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Latest-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-7.0.5-646CFF?logo=vite)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.1.11-38B2AC?logo=tailwindcss)](https://tailwindcss.com/)
 
-Currently, two official plugins are available:
+> 我的個人網站，展示我的專案作品集、技能和友好連結。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 功能特色
 
-## Expanding the ESLint configuration
+- **響應式設計** - 完美適配桌面、平板和手機
+- **暗色模式支援** - 自動適應系統主題偏好
+- **動態專案展示** - 自動從 GitHub API 獲取專案資訊
+- **流暢動畫效果** - 使用 Lenis 和 TypeIt 提供優雅的使用者體驗
+- **粒子背景特效** - 使用 @tsparticles 創造視覺吸引力
+- **SEO 優化** - 完整的 meta 標籤和 sitemap
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 快速開始
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+# 克隆專案
+git clone https://github.com/510208/510208.github.io.git
+cd 510208.github.io
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+# 安裝依賴
+npm install
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# 設置環境變數
+cp .env.example .env
+# 編輯 .env 文件，填入您的 GitHub Token
+
+# 啟動開發服務器
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ 技術棧
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **React 19.1.0** + **TypeScript** - 現代化前端開發
+- **Vite 7.0.5** - 快速構建工具
+- **Tailwind CSS 4.1.11** - 實用優先的 CSS 框架
+- **Radix UI** - 無樣式、可訪問的 UI 組件
+- **Three.js** - 3D 圖形渲染
+- **@tsparticles** - 粒子系統
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📝 可用腳本
+
+```bash
+npm run dev          # 開發模式
+npm run build        # 構建專案
+npm run preview      # 預覽構建結果
+npm run lint         # 代碼檢查
 ```
+
+## 📁 文檔
+
+詳細的文檔和設置指南請查看：
+
+- [完整文檔](./docs/README.md) - 詳細的專案說明
+- [設置指南](./docs/SETUP.md) - GitHub Token 設置和環境配置
+
+## 🎨 專案結構
+
+```
+510208.github.io/
+├── docs/                      # 文檔資料夾
+├── public/                    # 靜態資源
+├── scripts/                   # 構建腳本
+├── src/                       # 源代碼
+│   ├── components/            # React 組件
+│   ├── pages/                 # 頁面組件
+│   └── ...
+├── .env.example              # 環境變數範本
+└── package.json              # 專案配置
+```
+
+## 🚀 部署
+
+專案已配置為自動部署到 GitHub Pages。推送到 `main` 分支即可自動構建和部署。
+
+## 📄 授權條款
+
+本專案採用 MIT 授權條款。
+
+## 📧 聯絡方式
+
+- **GitHub**: [@510208](https://github.com/510208)
+- **網站**: [https://510208.github.io](https://510208.github.io)
+
+---
+
+<p align="center">
+  用 ❤️ 與 <a href="https://reactjs.org/">React</a> 製作
+</p>
