@@ -21,6 +21,9 @@ const Friends = lazy(() =>
 const Projects = lazy(() =>
   import("./pages/Projects").then((module) => ({ default: module.Projects }))
 );
+const NotFound = lazy(() =>
+  import("./pages/NotFound").then((module) => ({ default: module.NotFound }))
+);
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -48,6 +51,7 @@ function AnimatedRoutes() {
           <Route path="/" element={<Home />} />
           <Route path="/friends" element={<Friends />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </div>
