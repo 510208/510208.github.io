@@ -79,7 +79,7 @@ export const GeneralHeroSection = ({
                 },
                 onHover: {
                   enable: true,
-                  mode: "attract",
+                  mode: "repulse",
                 },
                 resize: {
                   enable: true,
