@@ -1,0 +1,1 @@
+import{j as t}from"./react-gCFYpapW.js";import"./@sooro-io-Dbi3fEdE.js";const o=()=>t.jsxs("div",{className:"bg-white dark:bg-black text-black dark:text-white",children:[t.jsx("h1",{children:"404 - Not Found"}),t.jsx("p",{children:"抱歉，您所尋找的頁面不存在。"})]});export{o as NotFound};

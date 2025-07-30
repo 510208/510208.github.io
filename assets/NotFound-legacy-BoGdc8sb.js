@@ -1,0 +1,1 @@
+System.register(["./react-legacy-BiWnKvCG.js","./@sooro-io-legacy-uKwZVfSZ.js"],function(e,t){"use strict";var n;return{setters:[function(e){n=e.j},null],execute:function(){e("NotFound",function(){return n.jsxs("div",{className:"bg-white dark:bg-black text-black dark:text-white",children:[n.jsx("h1",{children:"404 - Not Found"}),n.jsx("p",{children:"抱歉，您所尋找的頁面不存在。"})]})})}}});
