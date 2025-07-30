@@ -1,0 +1,46 @@
+import { Octokit } from "@octokit/rest";
+
+function fetchGitHubRepos(username: string = "510208") {
+  const octokit = new Octokit();
+  const resp = octokit.rest.repos.listForUser({
+    username,
+    type: "owner",
+    sort: "updated",
+    direction: "desc",
+  });
+  return resp.then((response) =>
+    response.data.map((repo) => ({
+      ...repo,
+      opengraphImageUrl: getOpenGraphImageUrl(repo.owner.login, repo.name),
+      slug: repo.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+    }))
+  );
+}
+
+export async function getGitHubData() {
+  try {
+    const response = await fetchGitHubRepos();
+    const resp = response.data.map((repo) => ({
+      name: repo.name,
+      opengraphImageUrl: repo.opengraphImageUrl,
+      description: repo.description,
+      html_url: repo.html_url,
+      language: repo.language,
+      updated_at: repo.updated_at,
+      stargazers_count: repo.stargazers_count,
+      forks_count: repo.forks_count,
+      topics: repo.topics,
+      license: repo.license ? repo.license.name : null,
+      fork: repo.fork,
+      slug: repo.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+    }));
+    console.log("GitHub data fetched successfully:", resp);
+    // 過濾掉Fork的專案
+    const filtered = resp.filter((repo) => !repo.fork);
+    console.log("Filtered GitHub data (non-forked):", filtered);
+    return filtered;
+  } catch (error) {
+    console.error("Error fetching GitHub data:", error);
+    return [];
+  }
+}
