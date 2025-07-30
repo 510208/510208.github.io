@@ -5,9 +5,19 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { Link } from "react-router-dom";
+import { Languages, GitFork, Scale, Star } from "lucide-react";
 
 type Project = {
   opengraphImageUrl: string;
@@ -72,25 +82,96 @@ export const ProjectsList = () => {
       {projects.map((project) => (
         <Card
           key={project.name}
-          className="bg-white dark:bg-neutral-800 min-h-[400px] transition-transform transform duration-300 hover:scale-101 overflow-hidden"
+          className="bg-white dark:bg-neutral-800 min-h-[400px] transition-transform transform duration-300 hover:scale-101 px-2 py-2 overflow-hidden pb-6"
         >
           <img
             src={project.opengraphImageUrl}
             alt={`${project.name} 的縮圖`}
-            className="w-full h-auto object-cover mt-0 transition-all duration-300 ease-in-out dark:invert"
+            className="w-full rounded-md h-auto object-cover mt-0 transition-all duration-300 ease-in-out dark:brightness-70"
           />
-          <CardHeader>
+          <CardHeader className="mt-2 min-h-[100px]">
             <CardTitle>{project.name}</CardTitle>
-            <CardDescription>{project.description}</CardDescription>
+            <CardDescription className="text-sm text-gray-600 dark:text-gray-400">
+              {project.description || "?"}
+            </CardDescription>
           </CardHeader>
-          <CardContent>
-            <p>Language: {project.language}</p>
-            <p>Updated at: {project.updated_at}</p>
-            <p>Stars: {project.stargazers_count}</p>
-            <p>Forks: {project.forks_count}</p>
-            <p>License: {project.license}</p>
-            <p>Topics: {project.topics?.join(", ")}</p>
+          <CardContent className="min-h-[200px]">
+            <ul className="space-y-2 list-none">
+              {project.language && (
+                <li className="mb-2 flex items-center gap-2">
+                  <Languages size={18} />
+                  <strong>語言:</strong>
+                  <p>{project.language}</p>
+                </li>
+              )}
+              {typeof project.stargazers_count === "number" && (
+                <li className="mb-2 flex items-center gap-2">
+                  <Star size={18} />
+                  <strong>星標:</strong>
+                  <p>{project.stargazers_count}</p>
+                </li>
+              )}
+              {typeof project.forks_count === "number" && (
+                <li className="mb-2 flex items-center gap-2">
+                  <GitFork size={18} />
+                  <strong>Fork:</strong>
+                  <p>{project.forks_count}</p>
+                </li>
+              )}
+              {project.license && (
+                <li className="mb-2 flex items-center gap-2">
+                  <Scale size={18} />
+                  <strong>授權:</strong>
+                  <p>{project.license}</p>
+                </li>
+              )}
+              {project.topics && project.topics.length > 0 && (
+                <li className="mb-2 flex items-center gap-2">
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      {project.topics.slice(0, 3).map((topic) => (
+                        <Link
+                          key={topic}
+                          to={`https://github.com/topics/${topic}`}
+                        >
+                          <Badge>{topic}</Badge>
+                        </Link>
+                      ))}
+                    </div>
+                    <div className="mt-1">
+                      {project.topics.length > 3 && (
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <Badge variant="outline">
+                              +{project.topics.length - 3} more
+                            </Badge>
+                          </TooltipTrigger>
+                          <TooltipContent
+                            side="bottom"
+                            align="start"
+                            className="max-w-[220px] flex flex-wrap"
+                          >
+                            {project.topics.slice(3).map((topic) => (
+                              <Badge key={topic} className="mr-[10px] mb-1">
+                                {topic}
+                              </Badge>
+                            ))}
+                          </TooltipContent>
+                        </Tooltip>
+                      )}
+                    </div>
+                  </div>
+                </li>
+              )}
+            </ul>
           </CardContent>
+          <CardFooter>
+            <Button asChild className="w-full" variant="outline" size="sm">
+              <Link to={project.html_url} target="_blank">
+                查看專案
+              </Link>
+            </Button>
+          </CardFooter>
         </Card>
       ))}
     </div>
