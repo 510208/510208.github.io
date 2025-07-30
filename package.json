@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run generate-projects && tsc -b && vite build",
+    "generate-projects": "node -r dotenv/config scripts/generate-projects-data.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -47,6 +48,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-legacy": "4.1.1",
     "@vitejs/plugin-react": "^4.6.0",
+    "dotenv": "^17.2.1",
     "eslint": "^9.30.1",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
