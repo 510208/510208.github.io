@@ -1,7 +1,10 @@
 # 510208.github.io
 
 [![Deploy](https://github.com/510208/510208.github.io/actions/workflows/main.yml/badge.svg)](https://github.com/510208/510208.github.io/actions/workflows/main.yml)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-deployed-blue?logo=github)](https://510208.github.io)
+[![pages-build-deployment](https://github.com/510208/510208.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://510208.github.io)
+![GitHub License](https://img.shields.io/github/license/510208/510208.github.io)
+![GitHub repo size](https://img.shields.io/github/repo-size/510208/510208.github.io)
+
 [![React](https://img.shields.io/badge/React-19.1.0-61DAFB?logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Latest-3178C6?logo=typescript)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-7.0.5-646CFF?logo=vite)](https://vitejs.dev/)
