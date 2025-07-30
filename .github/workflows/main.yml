@@ -28,7 +28,7 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Build project
-        run: npm run build
+        run: yarn run build
 
       - name: Add .nojekyll file
         run: echo > dist/.nojekyll
