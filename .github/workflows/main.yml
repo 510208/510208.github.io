@@ -9,6 +9,8 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}  # 設定 job 層級的環境變數
 
     steps:
       - name: Checkout repo
@@ -16,8 +18,6 @@ jobs:
 
       - name: Use secret as env variable
         run: echo "Your API key is $GH_TOKEN"
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
