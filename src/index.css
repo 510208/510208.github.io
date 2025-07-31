@@ -74,6 +74,11 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* 預設字體 */
+  --font-sans: "Inter Variable", "Noto Sans TC Variable", sans-serif;
+  --font-serif: "Noto Serif TC Variable", serif;
+  --font-mono: "Fira Code Variable", monospace;
 }
 
 .dark {

@@ -27,9 +27,34 @@ function generateProjectsPlugin() {
   };
 }
 
+// 自訂義插件：在構建前生成部落格文章數據
+function generateBlogPostsPlugin() {
+  return {
+    name: "generate-blog-posts",
+    buildStart: async () => {
+      console.log("正在生成部落格文章數據...");
+      try {
+        await execAsync(
+          "node -r dotenv/config scripts/generate-blog-posts-data.js"
+        );
+        console.log("部落格文章數據生成完成");
+      } catch (error) {
+        console.error("生成部落格文章數據時發生錯誤:", error);
+        throw error;
+      }
+    },
+  };
+}
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [generateProjectsPlugin(), react(), tailwindcss(), legacy()],
+  plugins: [
+    generateProjectsPlugin(),
+    generateBlogPostsPlugin(),
+    react(),
+    tailwindcss(),
+    legacy(),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

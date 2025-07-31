@@ -5,6 +5,7 @@ import IntroSection from "../components/section/Home/IntroSection";
 import MottoSection from "@/components/section/Home/MottoSection";
 import ContactSection from "../components/section/Home/ContactSection";
 import Footer from "../components/Footer";
+import GoTopButton from "@/components/ui/go-top";
 
 export const Home = () => {
   return (
@@ -15,6 +16,7 @@ export const Home = () => {
       <IntroSection />
       <MottoSection />
       <ContactSection />
+      <GoTopButton />
       <Footer />
     </div>
   );
