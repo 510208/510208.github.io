@@ -2,6 +2,7 @@ import Footer from "@/components/Footer";
 import { GeneralHeroSection } from "@/components/GeneralHeroSection";
 import { Navbar } from "@/components/Navbar";
 import { BlogPostGrid } from "@/components/section/BlogPosts/BlogPostGrid";
+import GoTopButton from "@/components/ui/go-top";
 
 export const BlogPosts = () => {
   return (
@@ -17,6 +18,7 @@ export const BlogPosts = () => {
       <div className="container mx-auto px-4 py-8 max-w-[1200px] bg-transparent">
         <BlogPostGrid />
       </div>
+      <GoTopButton />
       <Footer />
     </div>
   );
