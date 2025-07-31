@@ -38,7 +38,7 @@ export const Navbar = () => {
     },
     {
       label: "BLOG",
-      to: "https://samhacker.xyz",
+      to: "/blog-posts",
       icon: <Newspaper size={18} />,
     },
   ];
