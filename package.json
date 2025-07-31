@@ -18,6 +18,7 @@
     "@octokit/rest": "^22.0.0",
     "@radix-ui/react-dropdown-menu": "^2.1.15",
     "@radix-ui/react-navigation-menu": "^1.2.13",
+    "@radix-ui/react-select": "^2.2.5",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-tooltip": "^1.2.7",
     "@sooro-io/react-gtm-module": "^3.0.1",
