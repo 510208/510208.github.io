@@ -1059,6 +1059,11 @@
   resolved "https://registry.npmjs.org/@floating-ui/utils/-/utils-0.2.10.tgz"
   integrity sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==
 
+"@fontsource-variable/edu-nsw-act-cursive@^5.2.1":
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/@fontsource-variable/edu-nsw-act-cursive/-/edu-nsw-act-cursive-5.2.1.tgz#d1c02b6ac830c140a9be4f414ab3c2fde7fbc513"
+  integrity sha512-L6zri1cSnH1bDJqC5U4FJfw1qEdHKX6vptOkSIOFMEY0gb2r9Qtp5BPjXDIjTN5brAyJFi8eaFuntd0EcjJ/ZQ==
+
 "@fontsource-variable/fira-code@^5.2.6":
   version "5.2.6"
   resolved "https://registry.npmjs.org/@fontsource-variable/fira-code/-/fira-code-5.2.6.tgz"
