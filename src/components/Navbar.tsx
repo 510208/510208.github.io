@@ -4,7 +4,7 @@ import { ModeToggle } from "./ui/mode-toggle";
 // @ts-expect-error: react-headroom does not have TypeScript types
 import Headroom from "react-headroom";
 import { useState, useEffect } from "react";
-import { UsersRound, FolderGit, Newspaper } from "lucide-react";
+import { UsersRound, FolderGit, Newspaper, ToolCase } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -35,6 +35,11 @@ export const Navbar = () => {
       label: "PROJECTS",
       to: "/projects",
       icon: <FolderGit size={18} />,
+    },
+    {
+      label: "EQUIPMENTS",
+      to: "/equipments",
+      icon: <ToolCase size={18} />,
     },
     {
       label: "BLOG",
