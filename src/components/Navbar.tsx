@@ -68,34 +68,41 @@ export const Navbar = () => {
             {/* 導航選單 - 右側，在手機版隱藏 */}
             <NavigationMenu className="hidden md:flex items-center">
               <NavigationMenuList className="flex items-center space-x-7">
-                {menuItems.map((item) => (
-                  <div key={item.label}>
-                    <NavigationMenuItem>
-                      <Link
-                        to={item.to}
-                        className={`text-sm font-medium font-noto uppercase transition-colors px-4 py-2 rounded-md mr-7.5 ${
-                          item.label === "BLOG"
-                            ? "hover:text-neutral-50 dark:hover:text-neutral-900 hover:bg-gray-800 dark:hover:bg-neutral-100"
-                            : "hover:text-neutral-600 dark:hover:text-neutral-500 text-black dark:text-white"
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
+                {menuItems.map((item) => {
+                  // 檢查item是否為目前頁面
+                  const isActive = window.location.pathname === item.to;
 
-                      {/* 分隔符號 */}
-                      {item.label !== "BLOG" && (
-                        <span className="text-neutral-400 text-sm font-noto">
-                          /
-                        </span>
-                      )}
-                      {item.label === "BLOG" && (
-                        <span className="text-neutral-400 text-sm font-noto mr-7.5">
-                          /
-                        </span>
-                      )}
-                    </NavigationMenuItem>
-                  </div>
-                ))}
+                  return (
+                    <div key={item.label} className="relative">
+                      <NavigationMenuItem>
+                        <Link
+                          to={item.to}
+                          className={`text-sm font-medium font-noto uppercase transition-colors px-4 py-2 rounded-md mr-7.5 h-[64px] ${
+                            item.label === "BLOG"
+                              ? "hover:text-neutral-50 dark:hover:text-neutral-900 hover:bg-gray-800 dark:hover:bg-neutral-100"
+                              : "hover:text-neutral-600 dark:hover:text-neutral-500 text-black dark:text-white"
+                          } ${
+                            isActive ? "bg-nav-link-indicator" : ""
+                          } transition-all duration-300`}
+                        >
+                          {item.label}
+                        </Link>
+
+                        {/* 分隔符號 */}
+                        {item.label !== "BLOG" && (
+                          <span className="text-neutral-400 text-sm font-noto">
+                            /
+                          </span>
+                        )}
+                        {item.label === "BLOG" && (
+                          <span className="text-neutral-400 text-sm font-noto mr-7.5">
+                            /
+                          </span>
+                        )}
+                      </NavigationMenuItem>
+                    </div>
+                  );
+                })}
               </NavigationMenuList>
               <ModeToggle />
             </NavigationMenu>
