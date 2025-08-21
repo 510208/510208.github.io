@@ -115,7 +115,11 @@ export const Navbar = () => {
             {/* 手機版漢堡選單按鈕 */}
             <div className="md:hidden flex">
               <NavigationMenu className="md:hidden items-center">
-                <NavigationMenuList className="flex items-center space-x-3">
+                <NavigationMenuList
+                  className={`flex items-center space-x-3 ${
+                    isSticky ? "hidden" : ""
+                  }`}
+                >
                   {menuItems.map((item) => (
                     <div key={item.label}>
                       <NavigationMenuItem>
@@ -133,7 +137,7 @@ export const Navbar = () => {
                     </div>
                   ))}
                 </NavigationMenuList>
-                <div className="ml-4">
+                <div className={`ml-4 ${isSticky ? "" : "hidden"}`}>
                   <ModeToggle />
                 </div>
               </NavigationMenu>
