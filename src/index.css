@@ -164,3 +164,11 @@
 .hyperlink {
   @apply inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline;
 }
+
+.bg-nav-link-indicator {
+  background-image: radial-gradient(
+    10% 20% at 50% 100%,
+    oklch(0.6355 0.2195 143.47 / 40%) 0%,
+    oklch(0.6739 0.2179 13.85 / 0%) 100%
+  );
+}
