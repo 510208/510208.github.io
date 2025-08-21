@@ -79,6 +79,7 @@
   --font-sans: "Inter Variable", "Noto Sans TC Variable", sans-serif;
   --font-serif: "Noto Serif TC Variable", serif;
   --font-mono: "Fira Code Variable", monospace;
+  --font-writing: "Edu NSW ACT Cursive Variable", cursive;
 }
 
 .dark {
@@ -134,6 +135,10 @@
   }
   .font-mono {
     font-family: "Fira Code Variable", monospace;
+  }
+
+  .font-writing {
+    font-family: "Edu NSW ACT Cursive Variable", cursive;
   }
 }
 

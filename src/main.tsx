@@ -8,6 +8,8 @@ import "@fontsource-variable/noto-sans-tc";
 import "@fontsource-variable/inter";
 // Supports weights 300-700
 import "@fontsource-variable/fira-code";
+// Supports weights 400-700
+import "@fontsource-variable/edu-nsw-act-cursive";
 
 import { ThemeProvider } from "@/components/theme-provider";
 
