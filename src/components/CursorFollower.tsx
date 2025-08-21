@@ -52,7 +52,7 @@ const CursorFollower = () => {
     <div
       ref={dotRef}
       className={
-        "fixed pointer-events-none z-[9999] w-[10px] h-[10px] rounded-full bg-black dark:bg-white transition-colors duration-300" +
+        "hidden lg:block fixed pointer-events-none z-[9999] w-[10px] h-[10px] rounded-full bg-black dark:bg-white transition-colors duration-300" +
         (hoverLink ? " scale-200" : "")
       }
       style={{ left: 0, top: 0 }}
