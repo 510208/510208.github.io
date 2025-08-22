@@ -109,17 +109,6 @@ export const Equipments = () => {
       <div className="container mx-auto px-4 pb-8 max-w-[1200px] bg-transparent">
         <h2 className="text-2xl font-bold mb-4">筆電</h2>
         <div className="w-[100%] justify-center flex">
-          {/* <EquipmentsCard
-            name="GIGABYTE G6 KF (2024)"
-            description="intel Core i7 13700H and nVIDIA GeForce RTX 4060"
-            thumbnail={
-              <img
-                src="/assets/equipments/gigabyte_g6_kf_2024.webp"
-                alt="GIGABYTE G6 KF (2024)"
-              />
-            }
-            className="max-w-[400px] w-full"
-          /> */}
           <div id="equipments-intro" className="text-center mb-8 w-full">
             <img
               src="/assets/equipments/gigabyte_g6_kf_2024.webp"
