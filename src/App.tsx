@@ -38,6 +38,13 @@ function AnimatedRoutes() {
   const location = useLocation();
   const [displayLocation, setDisplayLocation] = useState(location);
   const [transitionStage, setTransitionStage] = useState("fadeIn");
+  const [showLoading, setShowLoading] = useState(true);
+
+  useEffect(() => {
+    setShowLoading(true); // 每次切換都先顯示 loading
+    const timer = setTimeout(() => setShowLoading(false), 3000); // 至少 3 秒
+    return () => clearTimeout(timer);
+  }, [location]);
 
   useEffect(() => {
     if (location !== displayLocation) {
@@ -55,17 +62,22 @@ function AnimatedRoutes() {
         }
       }}
     >
-      <Suspense fallback={<Loading />}>
-        <Routes location={displayLocation}>
-          <Route path="/" element={<Home />} />
-          <Route path="/friends" element={<Friends />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/equipments" element={<Equipments />} />
-          <Route path="/blog-posts" element={<BlogPosts />} />
-
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
+      {showLoading ? (
+        <Suspense fallback={null}>
+          <Loading />
+        </Suspense>
+      ) : (
+        <Suspense fallback={<Loading />}>
+          <Routes location={displayLocation}>
+            <Route path="/" element={<Home />} />
+            <Route path="/friends" element={<Friends />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/equipments" element={<Equipments />} />
+            <Route path="/blog-posts" element={<BlogPosts />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      )}
     </div>
   );
 }
