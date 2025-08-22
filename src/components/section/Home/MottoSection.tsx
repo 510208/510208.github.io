@@ -24,11 +24,11 @@ export const MottoSection = () => {
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-2 sm:mb-4 font-noto"
               getBeforeInit={(instance) => {
                 instance
-                  .type("知識的力量來自於分享，")
+                  .type("正因為曾經淋過雨，")
                   .pause(750)
                   .type("<br />")
                   .pause(500)
-                  .type("而成就的喜悅來自於共同與成長。")
+                  .type("才會想為他人撐一把傘。")
                   .pause(1000)
                   .delete(40)
                   .type("寧願最後徒勞無功，")

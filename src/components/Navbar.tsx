@@ -4,7 +4,7 @@ import { ModeToggle } from "./ui/mode-toggle";
 // @ts-expect-error: react-headroom does not have TypeScript types
 import Headroom from "react-headroom";
 import { useState, useEffect } from "react";
-import { UsersRound, FolderGit, Newspaper } from "lucide-react";
+import { UsersRound, FolderGit, Newspaper, ToolCase } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -37,6 +37,11 @@ export const Navbar = () => {
       icon: <FolderGit size={18} />,
     },
     {
+      label: "EQUIPMENTS",
+      to: "/equipments",
+      icon: <ToolCase size={18} />,
+    },
+    {
       label: "BLOG",
       to: "/blog-posts",
       icon: <Newspaper size={18} />,
@@ -59,7 +64,7 @@ export const Navbar = () => {
             <div className="flex-shrink-0 flex items-center space-x-2">
               <Gravatar size="40" className="rounded-md" />
               <Link to="/">
-                <h1 className="text-black dark:text-white text-2xl font-normal font-noto capitalize cursor-pointer">
+                <h1 className="text-black dark:text-white text-2xl font-bold font-writing capitalize cursor-pointer">
                   SamHacker
                 </h1>
               </Link>
@@ -68,34 +73,41 @@ export const Navbar = () => {
             {/* 導航選單 - 右側，在手機版隱藏 */}
             <NavigationMenu className="hidden md:flex items-center">
               <NavigationMenuList className="flex items-center space-x-7">
-                {menuItems.map((item) => (
-                  <div key={item.label}>
-                    <NavigationMenuItem>
-                      <Link
-                        to={item.to}
-                        className={`text-sm font-medium font-noto uppercase transition-colors px-4 py-2 rounded-md mr-7.5 ${
-                          item.label === "BLOG"
-                            ? "hover:text-neutral-50 dark:hover:text-neutral-900 hover:bg-gray-800 dark:hover:bg-neutral-100"
-                            : "hover:text-neutral-600 dark:hover:text-neutral-500 text-black dark:text-white"
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
+                {menuItems.map((item) => {
+                  // 檢查item是否為目前頁面
+                  const isActive = window.location.pathname === item.to;
 
-                      {/* 分隔符號 */}
-                      {item.label !== "BLOG" && (
-                        <span className="text-neutral-400 text-sm font-noto">
-                          /
-                        </span>
-                      )}
-                      {item.label === "BLOG" && (
-                        <span className="text-neutral-400 text-sm font-noto mr-7.5">
-                          /
-                        </span>
-                      )}
-                    </NavigationMenuItem>
-                  </div>
-                ))}
+                  return (
+                    <div key={item.label} className="relative">
+                      <NavigationMenuItem>
+                        <Link
+                          to={item.to}
+                          className={`text-sm font-medium font-noto uppercase transition-colors px-4 py-2 rounded-md mr-7.5 h-[64px] ${
+                            item.label === "BLOG"
+                              ? "hover:text-neutral-50 dark:hover:text-neutral-900 hover:bg-gray-800 dark:hover:bg-neutral-100"
+                              : "hover:text-neutral-600 dark:hover:text-neutral-500 text-black dark:text-white"
+                          } ${
+                            isActive ? "bg-nav-link-indicator" : ""
+                          } transition-all duration-300`}
+                        >
+                          {item.label}
+                        </Link>
+
+                        {/* 分隔符號 */}
+                        {item.label !== "BLOG" && (
+                          <span className="text-neutral-400 text-sm font-noto">
+                            /
+                          </span>
+                        )}
+                        {item.label === "BLOG" && (
+                          <span className="text-neutral-400 text-sm font-noto mr-7.5">
+                            /
+                          </span>
+                        )}
+                      </NavigationMenuItem>
+                    </div>
+                  );
+                })}
               </NavigationMenuList>
               <ModeToggle />
             </NavigationMenu>
@@ -103,7 +115,11 @@ export const Navbar = () => {
             {/* 手機版漢堡選單按鈕 */}
             <div className="md:hidden flex">
               <NavigationMenu className="md:hidden items-center">
-                <NavigationMenuList className="flex items-center space-x-3">
+                <NavigationMenuList
+                  className={`flex items-center space-x-3 ${
+                    isSticky ? "hidden" : ""
+                  }`}
+                >
                   {menuItems.map((item) => (
                     <div key={item.label}>
                       <NavigationMenuItem>
@@ -121,7 +137,7 @@ export const Navbar = () => {
                     </div>
                   ))}
                 </NavigationMenuList>
-                <div className="ml-4">
+                <div className={`ml-4 ${isSticky ? "" : "hidden"}`}>
                   <ModeToggle />
                 </div>
               </NavigationMenu>

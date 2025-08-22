@@ -7,7 +7,7 @@ const GoTopButton = () => {
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
-    console.log("Scroll position:", scrollY); // 調試信息
+    // console.log("Scroll position:", scrollY); // 調試信息
     if (scrollY > 300) {
       setIsVisible(true);
     } else {
@@ -29,7 +29,7 @@ const GoTopButton = () => {
     });
   };
 
-  console.log("GoTopButton isVisible:", isVisible); // 調試信息
+  // console.log("GoTopButton isVisible:", isVisible); // 調試信息
 
   return (
     <div

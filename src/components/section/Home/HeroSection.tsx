@@ -109,8 +109,6 @@ export const HeroSection = () => {
           }}
         />
       )}
-      {/* <GlowCapture>
-        <Glow color="rgba(104, 159, 99, 0.6)"> */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen">
         <div className="flex flex-col lg:flex-row items-center justify-between h-full pt-8">
           {/* Div Left - 文字內容 */}

@@ -46,6 +46,24 @@ function generateBlogPostsPlugin() {
   };
 }
 
+// function autoBuildStaticPagesPlugin() {
+//   return {
+//     name: "auto-build-static-pages",
+//     buildStart: async () => {
+//       console.log("正在自動構建靜態頁面...");
+//       try {
+//         await execAsync(
+//           "node -r dotenv/config scripts/auto-build-static-pages.js"
+//         );
+//         console.log("靜態頁面構建完成");
+//       } catch (error) {
+//         console.error("構建靜態頁面時發生錯誤:", error);
+//         throw error;
+//       }
+//     },
+//   };
+// }
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -54,6 +72,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
     legacy(),
+    // autoBuildStaticPagesPlugin(),
   ],
   resolve: {
     alias: {
