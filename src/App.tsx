@@ -28,12 +28,10 @@ const BlogPosts = lazy(() =>
 const NotFound = lazy(() =>
   import("./pages/NotFound").then((module) => ({ default: module.NotFound }))
 );
-
-const Loading = () => (
-  <div className="flex items-center justify-center h-screen flex-col">
-    <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-neutral-500"></div>
-    <div className="ml-4 text-lg mt-2">燒等一下下~~</div>
-  </div>
+const Loading = lazy(() =>
+  import("./components/section/loading").then((module) => ({
+    default: module.default,
+  }))
 );
 
 function AnimatedRoutes() {
