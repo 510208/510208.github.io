@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import { Gravatar } from "./ui/Gravatar";
 import { ModeToggle } from "./ui/mode-toggle";
-// @ts-expect-error: react-headroom does not have TypeScript types
-import Headroom from "react-headroom";
+// import Headroom from "react-headroom";
 import { useState, useEffect } from "react";
 import { UsersRound, FolderGit, Newspaper, ToolCase } from "lucide-react";
 import {
@@ -49,22 +48,22 @@ export const Navbar = () => {
   ];
 
   return (
-    <Headroom className="sticky top-0 z-999999">
+    <div className="inset-x-0 top-4 mx-auto sticky z-999 w-full max-w-7xl justify-center border rounded-2xl overflow-hidden shadow">
       <nav
         id="navbar"
-        className={`border-none backdrop-blur-md ${
+        className={`border-none backdrop-blur-md max-w ${
           isSticky
             ? "bg-white/50 dark:bg-neutral-900/50"
             : "bg-gray-100 dark:bg-neutral-900"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-14">
             {/* 品牌名稱 - 左側 */}
             <div className="flex-shrink-0 flex items-center space-x-2">
-              <Gravatar size="40" className="rounded-md" />
+              <Gravatar size="36" className="rounded-md" />
               <Link to="/">
-                <h1 className="text-black dark:text-white text-2xl font-bold font-writing capitalize cursor-pointer">
+                <h1 className="text-black dark:text-white text-xl font-bold font-writing capitalize cursor-pointer">
                   SamHacker
                 </h1>
               </Link>
@@ -145,6 +144,6 @@ export const Navbar = () => {
           </div>
         </div>
       </nav>
-    </Headroom>
+    </div>
   );
 };
