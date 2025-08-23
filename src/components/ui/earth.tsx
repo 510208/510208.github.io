@@ -41,19 +41,22 @@ const Earth = ({
 
     if (!canvasRef.current) return;
 
+    const isDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
     const globe = createGlobe(canvasRef.current, {
       devicePixelRatio: 2,
       width: globeWidth * 2,
       height: globeWidth * 2,
       phi: 0,
       theta: 0,
-      dark: 1,
+      dark: isDarkMode ? 1 : 0,
       diffuse: 2,
       mapSamples: 12000,
-      mapBrightness: 2,
-      baseColor: [0.8, 0.8, 0.8],
-      markerColor: [1, 1, 1],
-      glowColor: [0.5, 0.5, 0.5],
+      mapBrightness: isDarkMode ? 1.5 : 2,
+      baseColor: isDarkMode ? [0.2, 0.2, 0.3] : [0.8, 0.8, 0.8],
+      markerColor: isDarkMode ? [0.8, 0.8, 1] : [1, 1, 1],
+      glowColor: isDarkMode ? [0.2, 0.4, 0.8] : [0.5, 0.5, 0.5],
       markers: [{ location: markerLocation, size: markerSize }],
       scale: 1.05,
       onRender: (state) => {
@@ -113,7 +116,7 @@ const Earth = ({
           height: "100%",
           contain: "layout paint size",
           cursor: "auto",
-          userSelect: "none",
+          // userSelect: "none",
         }}
       />
     </div>
