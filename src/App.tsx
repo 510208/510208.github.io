@@ -9,6 +9,7 @@ import { ReactLenis } from "lenis/react";
 import { useState, useEffect } from "react";
 import { lazy, Suspense } from "react";
 import { Equipments } from "./pages/Equipments";
+import { About } from "./pages/About";
 
 const Home = lazy(() =>
   import("./pages/Home").then((module) => ({ default: module.Home }))
@@ -67,6 +68,7 @@ function AnimatedRoutes() {
         <Suspense fallback={<Loading />}>
           <Routes location={displayLocation}>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
             <Route path="/friends" element={<Friends />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/equipments" element={<Equipments />} />

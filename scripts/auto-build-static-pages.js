@@ -4,7 +4,14 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const pages = ["/", "/friends", "/blog-posts", "/projects", "/equipments"];
+const pages = [
+  "/",
+  "/friends",
+  "/blog-posts",
+  "/projects",
+  "/equipments",
+  "/about",
+];
 
 async function closeBundle() {
   const distDir = path.resolve(__dirname, "../dist");
