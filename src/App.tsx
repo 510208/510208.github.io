@@ -5,9 +5,6 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-// import { Home } from "./pages/Home";
-// import { Friends } from "./pages/Friends";
-// import { Projects } from "./pages/Projects";
 import { ReactLenis } from "lenis/react";
 import { useState, useEffect } from "react";
 import { lazy, Suspense } from "react";
