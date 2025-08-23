@@ -5,6 +5,11 @@ import { isDarkMode } from "@/lib/check-darkmode";
 
 const Loading = () => (
   <div className="flex items-center justify-center h-screen flex-col">
+    <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4 opacity-10">
+      <p className="text-5xl lg:text-7xl font-bold font-writing animate-pulse">
+        SamHacker
+      </p>
+    </div>
     <div className="h-16">
       <Gravatar size="70" className="rounded-lg" />
     </div>
