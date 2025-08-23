@@ -51,13 +51,13 @@ export const Navbar = () => {
     <div className="inset-x-0 top-4 mx-auto sticky z-999 w-full max-w-7xl justify-center border rounded-2xl overflow-hidden shadow">
       <nav
         id="navbar"
-        className={`border-none backdrop-blur-md max-w ${
+        className={`border-none backdrop-blur-md ${
           isSticky
             ? "bg-white/50 dark:bg-neutral-900/50"
             : "bg-gray-100 dark:bg-neutral-900"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14">
             {/* 品牌名稱 - 左側 */}
             <div className="flex-shrink-0 flex items-center space-x-2">
