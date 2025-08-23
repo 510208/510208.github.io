@@ -172,3 +172,21 @@
     oklch(0.6739 0.2179 13.85 / 0%) 100%
   );
 }
+
+.hero-section {
+  /* 背景由bg-white過渡到bg-gray-100 */
+  background-image: linear-gradient(
+    to bottom,
+    oklch(1 0 0) 0%,
+    oklch(0.97 0 0) 100%
+  );
+}
+
+.dark .hero-section {
+  /* 背景由bg-black過渡到bg-gray-900 */
+  background-image: linear-gradient(
+    to bottom,
+    oklch(0.145 0 0) 0%,
+    oklch(0.205 0 0) 100%
+  );
+}
