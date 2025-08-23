@@ -1,6 +1,7 @@
 import { Zoomies } from "ldrs/react";
 import "ldrs/react/Zoomies.css";
 import { Gravatar } from "../ui/Gravatar";
+import { isDarkMode } from "@/lib/check-darkmode";
 
 const Loading = () => (
   <div className="flex items-center justify-center h-screen flex-col">
@@ -13,12 +14,7 @@ const Loading = () => (
         stroke="5"
         bgOpacity="0.1"
         speed="1.4"
-        color={
-          typeof window !== "undefined" &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "#fff"
-            : "#222"
-        }
+        color={typeof window !== "undefined" && isDarkMode() ? "#fff" : "#222"}
       />
     </div>
   </div>
