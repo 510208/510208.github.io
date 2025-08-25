@@ -1,8 +1,89 @@
 import { GeneralHeroSection } from "@/components/GeneralHeroSection";
 import { BasePages } from "./base-page";
-// import "@/components/section/About/index.css";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 
 export const About = () => {
+  const contests = [
+    {
+      image: (
+        <img
+          src="/assets/contests/game-tc.webp"
+          alt="Contest 1"
+          className="w-full h-auto object-fill rounded-t-lg mt-0"
+        />
+      ),
+      name: "臺中市中小學資訊網路應用競賽 國小專題簡報 甲組",
+      year: "民國111年度",
+      description: "很智障的忘記存檔...然後就沒了，下次肯定會記得ㄉ",
+      link: "https://game.tc.edu.tw/application/work-appreciation/promotion",
+    },
+    {
+      image: (
+        <img
+          src="/assets/contests/game-tc.webp"
+          alt="Contest 2"
+          className="w-full h-auto object-fill rounded-t-lg mt-0"
+        />
+      ),
+      name: "臺中市中小學資訊網路應用競賽 SCRATCH應用 國中程式設計 甲組",
+      year: "民國113年度",
+      reward: "甲等",
+      description:
+        "這次有乖乖記得存檔了，成功拿了甲等，還有很大的進步空間啊...",
+      link: "https://game.tc.edu.tw/application/work-appreciation/index",
+    },
+    {
+      image: (
+        <img
+          src="/assets/contests/game-tc.webp"
+          alt="Contest 3"
+          className="w-full h-auto object-fill rounded-t-lg mt-0"
+        />
+      ),
+      name: "臺中市中小學資訊網路應用競賽 SCRATCH應用 國中創意設計 甲組",
+      year: "民國114年度",
+      reward: "優等",
+      description: "三年抗戰結束了，總算是把忘記存檔的仇給報了，拿了優等，讚讚",
+      link: "https://game.tc.edu.tw/application/work-appreciation/index",
+    },
+    {
+      image: (
+        <img
+          src="/assets/contests/apcs.webp"
+          alt="Contest 3"
+          className="w-full h-auto object-fill rounded-t-lg mt-0"
+        />
+      ),
+      name: "APCS 大學程式設計先修檢定",
+      year: "民國114年度",
+      reward: "概念：三級分 實作：三級分",
+      description:
+        "第一次挑戰 APCS，結果果然沒有很好，繼續加油，拼個五級/三級吧！",
+      link: "https://apcs.csie.ntnu.edu.tw/",
+    },
+    {
+      image: (
+        <img
+          src="/assets/contests/msicao.webp"
+          alt="Contest 3"
+          className="w-full h-auto object-fill rounded-t-lg mt-0"
+        />
+      ),
+      name: "MSICAO 驗證的 MRZ 產生器",
+      year: "2025年",
+      reward: "MSICAO驗證通過",
+      description:
+        "加入微國圈後微國國際民航組織（MSICAO）認證了我做的 MRZ 產生器~~",
+      link: "https://apcs.csie.ntnu.edu.tw/",
+    },
+  ];
+
   return (
     <BasePages>
       <GeneralHeroSection
@@ -38,6 +119,20 @@ export const About = () => {
             AIGC 等領域有些興趣。
             <br />
             雖然技術仍然不足以稱為專家，但如果你也對這些領域有興趣，或許我們可以一起交流？
+          </p>
+          <p className="content-text">
+            至於如果你想知道為什麼我叫 SamHacker
+            嘛...主要就只是因為之前中二病時期感覺當駭客很帥（？），然後 Sam
+            一直是我的英文名字，兩個隨便組合一下就出現這個名字了。
+          </p>
+          <p className="content-text">
+            以前的名字是 510208，學校發的 ST
+            網域郵件用這個數字當帳號，但因為有些平台不收純數字的帳號，所以就改成現在這個名字了。
+          </p>
+          <p className="content-text">
+            另外如果你想知道的話，我還有一個虛擬身分御坂糸紗奈（Misaka
+            Misana，a.k.a.
+            林韻恩），純粹都只是隨便亂取的名字。依據著名的「網路上遇到自稱女生的大多都是小男娘居多」的定律，反正那說的不是我。
           </p>
         </div>
         <div className="mb-16">
@@ -174,6 +269,42 @@ export const About = () => {
               </li>
             </ol>
             等的網站設計風格，這些網站設計幫助我造出了這個網站。
+          </p>
+        </div>
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold mb-4">經歷</h2>
+          <p className="content-text">
+            敢出現在這裡，我還是至少有幾把刷子的啦('v')，只是就真的一點而已...不要期待太多w
+          </p>
+          <p className="content-text">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* 比賽卡片範例 */}
+              {contests.map((contest) => (
+                <Card
+                  className="bg-white dark:bg-gray-800 min-h-[400px] transition-transform transform duration-300 hover:scale-101"
+                  key={contest.name}
+                >
+                  {contest.image}
+                  <CardHeader>
+                    <CardTitle className="text-xl font-bold">
+                      {contest.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>{contest.description}</p>
+                  </CardContent>
+                  <CardFooter>
+                    <a
+                      href={contest.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      了解更多
+                    </a>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
           </p>
         </div>
       </div>
