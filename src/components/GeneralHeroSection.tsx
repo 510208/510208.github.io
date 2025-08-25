@@ -12,6 +12,7 @@ interface GeneralHeroSectionProps {
   backgroundAuthor?: string;
   backgroundAuthorUrl?: string;
   backgroundText?: string;
+  backgroundPosition?: [string, string];
 }
 
 export const GeneralHeroSection = ({
@@ -21,6 +22,7 @@ export const GeneralHeroSection = ({
   backgroundAuthor = "",
   backgroundAuthorUrl = "",
   backgroundText = "",
+  backgroundPosition = ["center", "center"],
 }: GeneralHeroSectionProps) => {
   const [init, setInit] = useState(false);
 
@@ -39,11 +41,11 @@ export const GeneralHeroSection = ({
 
   return (
     <section
-      className="w-100vw lg:my-16 lg:max-w-[1200px] mx-auto bg-transparent overflow-hidden relative lg:rounded-2xl"
+      className="border w-100vw lg:my-16 lg:max-w-[1200px] mx-auto bg-transparent overflow-hidden relative lg:rounded-2xl"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: backgroundPosition.join(" "),
         backgroundRepeat: "no-repeat",
         backgroundBlendMode: "multiply",
       }}

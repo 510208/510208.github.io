@@ -1,4 +1,5 @@
 import React from "react";
+import NationalityCard from "@/components/ui/NationalityCard";
 import { Youtube } from "lucide-react";
 
 // 改為從 src/assets 導入
@@ -7,7 +8,6 @@ import bentoLogo from "@/assets/contact-icons/bento_symbol.svg"; // v
 import micropediaLogo from "@/assets/contact-icons/micropedia_logo.svg";
 import wordpressLogo from "@/assets/contact-icons/wordpresscom_symbol.svg"; // v
 import githubSymbol from "@/assets/contact-icons/github_symbol.svg"; // v
-import roc_flag from "@/assets/contact-icons/roc_flag.svg"; // v
 
 // 聯絡資訊卡片介面
 interface ContactCardProps {
@@ -71,15 +71,7 @@ const ContactCard: React.FC<ContactCardProps> = ({
 export const ContactSection: React.FC = () => {
   // 聯絡卡片資料
   const contactCards: ContactCardProps[] = [
-    {
-      icon: (
-        <img src={roc_flag} alt="ROC Flag" className="w-6 h-6 rounded-md" />
-      ),
-      title: "國籍",
-      subtitle: "臺灣",
-      description: "（Taiwan, ROC）",
-      gradientColors: ["rgba(104, 159, 99, 0.6)", "rgba(180, 207, 177, 0.3)"],
-    },
+    // 其他聯絡卡片...
     {
       icon: <img src={discordSymbol} alt="Discord" className="w-6 h-6" />,
       title: "Discord",
@@ -166,6 +158,7 @@ export const ContactSection: React.FC = () => {
           <div className="max-w-5xl mx-auto lg:mx-0">
             {/* 手機版：2列布局 */}
             <div className="grid grid-cols-2 gap-4 sm:gap-5 md:hidden">
+              <NationalityCard />
               {contactCards.map((card, index) => (
                 <ContactCard key={index} {...card} />
               ))}
@@ -173,6 +166,7 @@ export const ContactSection: React.FC = () => {
 
             {/* 平板版：3列布局 */}
             <div className="hidden md:grid lg:hidden grid-cols-3 gap-5">
+              <NationalityCard />
               {contactCards.map((card, index) => (
                 <ContactCard key={index} {...card} />
               ))}
@@ -180,6 +174,7 @@ export const ContactSection: React.FC = () => {
 
             {/* 桌面版：4列2行布局 */}
             <div className="hidden lg:grid grid-cols-4 grid-rows-2 gap-5 h-auto">
+              <NationalityCard />
               {contactCards.map((card, index) => (
                 <ContactCard key={index} {...card} />
               ))}

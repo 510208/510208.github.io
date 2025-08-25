@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 const CursorFollower = () => {
   const dotRef = useRef<HTMLDivElement>(null);
@@ -6,17 +6,11 @@ const CursorFollower = () => {
   const mouse = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
   const scrollOffset = useRef(0);
   const lastScrollY = useRef(window.scrollY);
-  const [hoverLink, setHoverLink] = useState(false);
 
   useEffect(() => {
     const handleMove = (e: MouseEvent) => {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
-
-      // 檢查游標下方是否為超連結物件
-      const element = document.elementFromPoint(e.clientX, e.clientY);
-      setHoverLink(element?.tagName === "A");
-      // console.log("Hovering over link:", element?.tagName === "A");
     };
     window.addEventListener("mousemove", handleMove);
 
@@ -52,8 +46,7 @@ const CursorFollower = () => {
     <div
       ref={dotRef}
       className={
-        "hidden lg:block fixed pointer-events-none z-[9999] w-[10px] h-[10px] rounded-full bg-black dark:bg-white transition-colors duration-300" +
-        (hoverLink ? " scale-200" : "")
+        "hidden lg:block fixed pointer-events-none z-[9999] w-[10px] h-[10px] rounded-full bg-black dark:bg-white transition-colors duration-300"
       }
       style={{ left: 0, top: 0 }}
     />
