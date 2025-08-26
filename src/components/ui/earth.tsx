@@ -1,6 +1,6 @@
 import { isDarkMode } from "@/lib/check-darkmode";
 import createGlobe from "cobe";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSpring } from "react-spring";
 
 interface EarthProps {
@@ -30,6 +30,24 @@ const Earth = ({
     },
   }));
 
+  // 新增一個 state 來強制重新建立 globe
+  const [colorScheme, setColorScheme] = useState(
+    isDarkMode() ? "dark" : "light"
+  );
+
+  useEffect(() => {
+    const handler = () => setColorScheme(isDarkMode() ? "dark" : "light");
+    // 監聽 <html> class 變化
+    const observer = new MutationObserver(handler);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   useEffect(() => {
     let globeWidth = width;
     const onResize = () => {
@@ -42,7 +60,7 @@ const Earth = ({
 
     if (!canvasRef.current) return;
 
-    const darkMode = isDarkMode();
+    const darkMode = colorScheme === "dark";
     const globe = createGlobe(canvasRef.current, {
       devicePixelRatio: 2,
       width: globeWidth * 2,
@@ -69,7 +87,7 @@ const Earth = ({
       globe.destroy();
       window.removeEventListener("resize", onResize);
     };
-  }, [r, width, markerLocation, markerSize]);
+  }, [r, width, markerLocation, markerSize, colorScheme]); // colorScheme 變動時重建 globe
 
   return (
     <div
