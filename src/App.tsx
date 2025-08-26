@@ -5,13 +5,11 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-// import { Home } from "./pages/Home";
-// import { Friends } from "./pages/Friends";
-// import { Projects } from "./pages/Projects";
 import { ReactLenis } from "lenis/react";
 import { useState, useEffect } from "react";
 import { lazy, Suspense } from "react";
 import { Equipments } from "./pages/Equipments";
+import { About } from "./pages/About";
 
 const Home = lazy(() =>
   import("./pages/Home").then((module) => ({ default: module.Home }))
@@ -28,18 +26,23 @@ const BlogPosts = lazy(() =>
 const NotFound = lazy(() =>
   import("./pages/NotFound").then((module) => ({ default: module.NotFound }))
 );
-
-const Loading = () => (
-  <div className="flex items-center justify-center h-screen flex-col">
-    <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-neutral-500"></div>
-    <div className="ml-4 text-lg mt-2">燒等一下下~~</div>
-  </div>
+const Loading = lazy(() =>
+  import("./components/section/loading").then((module) => ({
+    default: module.default,
+  }))
 );
 
 function AnimatedRoutes() {
   const location = useLocation();
   const [displayLocation, setDisplayLocation] = useState(location);
   const [transitionStage, setTransitionStage] = useState("fadeIn");
+  const [showLoading, setShowLoading] = useState(true);
+
+  useEffect(() => {
+    setShowLoading(true); // 每次切換都先顯示 loading
+    const timer = setTimeout(() => setShowLoading(false), 3000); // 至少 3 秒
+    return () => clearTimeout(timer);
+  }, [location]);
 
   useEffect(() => {
     if (location !== displayLocation) {
@@ -57,17 +60,23 @@ function AnimatedRoutes() {
         }
       }}
     >
-      <Suspense fallback={<Loading />}>
-        <Routes location={displayLocation}>
-          <Route path="/" element={<Home />} />
-          <Route path="/friends" element={<Friends />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/equipments" element={<Equipments />} />
-          <Route path="/blog-posts" element={<BlogPosts />} />
-
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
+      {showLoading ? (
+        <Suspense fallback={null}>
+          <Loading />
+        </Suspense>
+      ) : (
+        <Suspense fallback={<Loading />}>
+          <Routes location={displayLocation}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/friends" element={<Friends />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/equipments" element={<Equipments />} />
+            <Route path="/blog-posts" element={<BlogPosts />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      )}
     </div>
   );
 }

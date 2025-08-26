@@ -1,8 +1,7 @@
-import Footer from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { BasePages } from "./base-page";
 
 export const NotFound = () => {
   const navbarRef = useRef<HTMLDivElement>(null);
@@ -26,10 +25,7 @@ export const NotFound = () => {
   }, []);
 
   return (
-    <div className="bg-white dark:bg-black text-black dark:text-white">
-      <div ref={navbarRef}>
-        <Navbar />
-      </div>
+    <BasePages>
       <div
         className="flex flex-col items-center justify-center p-4"
         style={{ height: `${contentHeight}px` }}
@@ -42,9 +38,6 @@ export const NotFound = () => {
           </Link>
         </Button>
       </div>
-      <div ref={footerRef}>
-        <Footer />
-      </div>
-    </div>
+    </BasePages>
   );
 };

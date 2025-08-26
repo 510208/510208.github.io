@@ -1,8 +1,6 @@
-import Footer from "@/components/Footer";
 import { GeneralHeroSection } from "@/components/GeneralHeroSection";
-import { Navbar } from "@/components/Navbar";
 import { EquipmentsGrid } from "@/components/section/Equipments/EquipmentsGrid";
-import GoTopButton from "@/components/ui/go-top";
+import { BasePages } from "./base-page";
 
 const PeripheralEquipments = [
   {
@@ -96,8 +94,7 @@ const DevelopmentTools = [
 
 export const Equipments = () => {
   return (
-    <div className="bg-white dark:bg-black text-black dark:text-white">
-      <Navbar />
+    <BasePages>
       <GeneralHeroSection
         title="Equipments"
         subtitle="所使用的裝置、工具與語言"
@@ -130,8 +127,6 @@ export const Equipments = () => {
         <h2 className="text-2xl font-bold mb-4">開發工具</h2>
         <EquipmentsGrid equipments={DevelopmentTools} />
       </div>
-      <GoTopButton />
-      <Footer />
-    </div>
+    </BasePages>
   );
 };

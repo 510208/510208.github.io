@@ -20,7 +20,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative bg-gray-100 dark:bg-neutral-900 min-h-screen overflow-hidden">
+    <section className="hero-section relative bg-gray-100 dark:bg-neutral-900 min-h-screen overflow-hidden">
       {init && (
         <Particles
           id="hero-particles"
