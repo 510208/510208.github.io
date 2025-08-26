@@ -1,0 +1,1 @@
+import{j as s}from"./react-Bwn--Km3.js";var t="container_c1e950",a="inner_7e9787";const b=({size:e=80,color:i="black",speed:o=1.4,stroke:r=5,bgOpacity:c=.1})=>s.jsx("div",{className:t,style:{"--uib-size":e+"px","--uib-color":i,"--uib-speed":o+"s","--uib-stroke":r+"px","--uib-bg-opacity":c+""},children:s.jsx("div",{className:a})});export{b as r};

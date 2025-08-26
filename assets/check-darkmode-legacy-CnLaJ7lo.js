@@ -1,0 +1,1 @@
+System.register([],function(e,t){"use strict";return{execute:function(){e("i",function(){return document.documentElement.classList.contains("dark")?(console.log("Dark mode: true (via <html> class)"),!0):(console.log("Dark mode: false (via <html> class)"),!1)})}}});
