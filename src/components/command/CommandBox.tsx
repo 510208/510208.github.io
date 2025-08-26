@@ -30,18 +30,26 @@ export function CommandBox() {
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="常用指令">
-          <Link to="https://github.com/510208">
+          <a
+            href="https://github.com/510208"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <CommandItem>
               <Github />
               <span>GitHub</span>
             </CommandItem>
-          </Link>
-          <Link to="https://samhacker.xyz/">
+          </a>
+          <a
+            href="https://samhacker.xyz/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <CommandItem>
               <Earth />
               <span>SamHacker Blog</span>
             </CommandItem>
-          </Link>
+          </a>
         </CommandGroup>
       </CommandList>
     </Command>
