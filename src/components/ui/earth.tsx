@@ -41,22 +41,20 @@ const Earth = ({
 
     if (!canvasRef.current) return;
 
-    const isDarkMode = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
+    const darkMode = isDarkMode();
     const globe = createGlobe(canvasRef.current, {
       devicePixelRatio: 2,
       width: globeWidth * 2,
       height: globeWidth * 2,
       phi: 0,
       theta: 0,
-      dark: isDarkMode ? 1 : 0,
+      dark: darkMode ? 1 : 0,
       diffuse: 2,
       mapSamples: 12000,
-      mapBrightness: isDarkMode ? 1.5 : 2,
-      baseColor: isDarkMode ? [0.2, 0.2, 0.3] : [0.8, 0.8, 0.8],
-      markerColor: isDarkMode ? [0.8, 0.8, 1] : [1, 1, 1],
-      glowColor: isDarkMode ? [0.2, 0.4, 0.8] : [0.5, 0.5, 0.5],
+      mapBrightness: darkMode ? 1.5 : 2,
+      baseColor: darkMode ? [0.2, 0.2, 0.3] : [0.8, 0.8, 0.8],
+      markerColor: darkMode ? [0.8, 0.8, 1] : [1, 1, 1],
+      glowColor: darkMode ? [0.2, 0.4, 0.8] : [0.5, 0.5, 0.5],
       markers: [{ location: markerLocation, size: markerSize }],
       scale: 1.05,
       onRender: (state) => {
