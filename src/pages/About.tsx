@@ -80,7 +80,7 @@ export const About = () => {
       reward: "MSICAO驗證通過",
       description:
         "加入微國圈後微國國際民航組織（MSICAO）認證了我做的 MRZ 產生器~~",
-      link: "https://apcs.csie.ntnu.edu.tw/",
+      link: "https://510208.github.io/msicao-mrz-gen/",
     },
   ];
 
