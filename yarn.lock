@@ -1816,11 +1816,6 @@
   resolved "https://registry.npmjs.org/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.45.1.tgz"
   integrity sha512-M/fKi4sasCdM8i0aWJjCSFm2qEnYRR8AMLG2kxp6wD13+tMGA4Z1tVAuHkNRjud5SW2EM3naLuK35w9twvf6aA==
 
-"@sooro-io/react-gtm-module@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@sooro-io/react-gtm-module/-/react-gtm-module-3.0.1.tgz#0089cc8f0d21dba7c1ecaa553027cd45789d9731"
-  integrity sha512-lksbK1vKvkRsritcKObh9DjqiKpGQB99O4R89vT2KdHWU9SbR9eX/EgjBn7m3VR6GC9wF25/YX/D4lADRfjZcw==
-
 "@tailwindcss/node@4.1.11":
   version "4.1.11"
   resolved "https://registry.npmjs.org/@tailwindcss/node/-/node-4.1.11.tgz"
