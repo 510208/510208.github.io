@@ -30,8 +30,14 @@ export const NotFound = () => {
         className="flex flex-col items-center justify-center p-4"
         style={{ height: `${contentHeight}px` }}
       >
-        <h1 className="text-8xl font-bold mb-4 font-inter">404</h1>
-        <p className="text-xl mb-8 font-noto">頁面未找到</p>
+        <img
+          src="/assets/404.png"
+          alt="404 找不到所請求的資源"
+          className="h-[20vh] lg:h-70 w-auto bg-contain"
+        />
+        <p className="text-xl mb-8 font-noto">
+          好吧，看起來你要找的東西目前還不在這裡...
+        </p>
         <Button asChild className="p-4 font-noto">
           <Link to="/" className="text-lg">
             返回首頁

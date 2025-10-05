@@ -1,5 +1,19 @@
 [
   {
+    "name": "browser-homepage",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/581725f4403ecd73ef073bacb9deb1c3b463a5e34cdc43084e7b284dfdfbe979/510208/browser-homepage",
+    "description": "My custom browser homepage",
+    "html_url": "https://github.com/510208/browser-homepage",
+    "language": "TypeScript",
+    "updated_at": "2025-10-01T00:59:42Z",
+    "stargazers_count": 2,
+    "forks_count": 0,
+    "topics": [],
+    "license": null,
+    "fork": false,
+    "slug": "browser-homepage"
+  },
+  {
     "name": "510208.github.io",
     "opengraphImageUrl": "https://opengraph.githubassets.com/f4598412cb9cb17d03ba2c180fb190a0addd65429ab789bb92b10fb6e88ab40f/510208/510208.github.io",
     "description": null,
@@ -20,22 +34,8 @@
     "slug": "510208-github-io"
   },
   {
-    "name": "browser-homepage",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/347d5a9f7b9da970c239aca184f06f47a559b7e511b80f2c547dc7d96c65fb2e/510208/browser-homepage",
-    "description": "My custom browser homepage",
-    "html_url": "https://github.com/510208/browser-homepage",
-    "language": "TypeScript",
-    "updated_at": "2025-08-25T02:40:16Z",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "topics": [],
-    "license": null,
-    "fork": false,
-    "slug": "browser-homepage"
-  },
-  {
     "name": "510208",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/e0c69c876aef429fdebbd775941fbe9f3dffd1e0178f9928c2490a39fceca86f/510208/510208",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/510208",
     "description": null,
     "html_url": "https://github.com/510208/510208",
     "language": null,
@@ -49,7 +49,7 @@
   },
   {
     "name": "cfbot",
-    "opengraphImageUrl": "https://repository-images.githubusercontent.com/821410004/21471c43-2afd-46f2-81cf-0f806047dfa0",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/cfbot",
     "description": "A Discord Bot for \"whiter.lnstw.xyz\", a Minecraft Server's bot. Developed By SamHacker",
     "html_url": "https://github.com/510208/cfbot",
     "language": "Python",
@@ -95,7 +95,7 @@
   },
   {
     "name": "projects-backup",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/202d3d64495c3fcb7ff3c5b1af7e1f74d204786fb6eb781d6d26ec4ffbb5875c/510208/projects-backup",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/projects-backup",
     "description": "My projects website",
     "html_url": "https://github.com/510208/projects-backup",
     "language": "HTML",
@@ -109,7 +109,7 @@
   },
   {
     "name": "friends-backup",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/7e40c3748de1167d0885dce0d445f6907deb9ea094e9e669ad6611aa4f558562/510208/friends-backup",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/friends-backup",
     "description": null,
     "html_url": "https://github.com/510208/friends-backup",
     "language": "HTML",
@@ -123,7 +123,7 @@
   },
   {
     "name": "ytmusic_dl",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/b4af85f91840273d14c579f261be16e2b7b83865a2a2f8e13b297aadb557a527/510208/ytmusic_dl",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/ytmusic_dl",
     "description": "A small script for practice, you can download music on YouTube into mp3 files, and add ID3 tags for easy storage",
     "html_url": "https://github.com/510208/ytmusic_dl",
     "language": "Python",
@@ -142,7 +142,7 @@
   },
   {
     "name": "SamHacker-s-Command-GUI",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/a3b2d79edd3cb5bfaadfbccdae16a5b8287c4535c31d2243c3e0299d92244a6f/510208/SamHacker-s-Command-GUI",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/SamHacker-s-Command-GUI",
     "description": "A command gui easier than Forge's World Handler and it runned on Fabric...",
     "html_url": "https://github.com/510208/SamHacker-s-Command-GUI",
     "language": "Java",
@@ -156,7 +156,7 @@
   },
   {
     "name": "msicao-mrz-gen",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/556dff4f088999f75d720522e2189f7035b5d7f75cbaec15071aa05d9182d148/510208/msicao-mrz-gen",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/msicao-mrz-gen",
     "description": "Generate MSICAO Doc 01 MRZ format (Not ICAO Doc 9303)",
     "html_url": "https://github.com/510208/msicao-mrz-gen",
     "language": "HTML",
@@ -175,7 +175,7 @@
   },
   {
     "name": "readme-templates",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/84d2fb567aabd0125e209fb7a60339d5c2257c84aa4677d64d0dec51e4a69912/510208/readme-templates",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/readme-templates",
     "description": "中文的讀我檔案範本",
     "html_url": "https://github.com/510208/readme-templates",
     "language": null,
@@ -189,7 +189,7 @@
   },
   {
     "name": "nether",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/11e1e62e396b2fa0b3cb5f006e1fda57584df261f7779515823eee1b088a2ceb/510208/nether",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/nether",
     "description": "An open-source Discord bot for seamless integration with Minecraft servers.",
     "html_url": "https://github.com/510208/nether",
     "language": "Python",
@@ -231,7 +231,7 @@
   },
   {
     "name": "bkp",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/754f7dd1401e0370d80edb4e2b6d68c9175ec359a3b61708c340822ddbf90827/510208/bkp",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/bkp",
     "description": "A backup static blog for samhacker.xyz",
     "html_url": "https://github.com/510208/bkp",
     "language": "Astro",
@@ -245,7 +245,7 @@
   },
   {
     "name": "giscus",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/bfcaeb12a40d537f4720500e5d0a6745b9108071e0829b25330bba36a3762a2c/510208/giscus",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/giscus",
     "description": "A repository for my Astro blog",
     "html_url": "https://github.com/510208/giscus",
     "language": null,
@@ -273,7 +273,7 @@
   },
   {
     "name": "youtubeDownload",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/520a4a9d1ac1b7ee261ccf2cb8df55a6746a5dfe464d067ae4f24634bb60b579/510208/youtubeDownload",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/youtubeDownload",
     "description": null,
     "html_url": "https://github.com/510208/youtubeDownload",
     "language": "Python",
@@ -308,7 +308,7 @@
   },
   {
     "name": "DiskHider",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/5cd7c1db2b03fe9e4e28e2de7f41fc8d243dc22d730e6788f512603e7e5eec75/510208/DiskHider",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/DiskHider",
     "description": null,
     "html_url": "https://github.com/510208/DiskHider",
     "language": "Visual Basic 6.0",
@@ -336,7 +336,7 @@
   },
   {
     "name": "mpTranslate",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/45f28e8fbe0ad3e6181a84f3313e0ba3c9402ed2980cdc30d48f948f0453af7e/510208/mpTranslate",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/mpTranslate",
     "description": null,
     "html_url": "https://github.com/510208/mpTranslate",
     "language": "Python",
@@ -364,7 +364,7 @@
   },
   {
     "name": "servdown",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/aeaea53c2a6d69ab00a68b33d915f13787dffc92fde8e909bcbf1833e76055aa/510208/servdown",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/servdown",
     "description": "A open-source minecraft server downloader",
     "html_url": "https://github.com/510208/servdown",
     "language": "Visual Basic .NET",
@@ -378,7 +378,7 @@
   },
   {
     "name": "scg-mod-forge",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/3e9fa8ba56a3d13cbe4822fc3bb68c5d0d267feb36111f22a95464477ab356c5/510208/scg-mod-forge",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/scg-mod-forge",
     "description": "A command gui easier than Forge's World Handler and it runned on Fabric...",
     "html_url": "https://github.com/510208/scg-mod-forge",
     "language": "Java",
@@ -397,7 +397,7 @@
   },
   {
     "name": "safecheck-wp",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/8484ddddb49d770b211f7ece879169eba7fb2658f48f826fe1dd8035d1f9b0ff/510208/safecheck-wp",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/safecheck-wp",
     "description": null,
     "html_url": "https://github.com/510208/safecheck-wp",
     "language": "PHP",
@@ -425,7 +425,7 @@
   },
   {
     "name": "wthbot",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/cfec2fd68b57d6e114444ab728e64fd70ec0e13029a795d7807cdea829702516/510208/wthbot",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/wthbot",
     "description": null,
     "html_url": "https://github.com/510208/wthbot",
     "language": "Python",
@@ -439,7 +439,7 @@
   },
   {
     "name": "guiPyPI",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/76caa6e8f8e64e3e573648ada3d6aac306d0234178d57b824a4e140b7f0199d8/510208/guiPyPI",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/guiPyPI",
     "description": null,
     "html_url": "https://github.com/510208/guiPyPI",
     "language": "Python",
@@ -453,7 +453,7 @@
   },
   {
     "name": "custom-new-tab",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/e9b603b0234bb2b388a70ab2f578d81b7829240e7fdfbf5c58ab509910bb1202/510208/custom-new-tab",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/custom-new-tab",
     "description": "A Custom Browser New Tab Used JS, CSS and HTML",
     "html_url": "https://github.com/510208/custom-new-tab",
     "language": "JavaScript",
@@ -467,7 +467,7 @@
   },
   {
     "name": "Penguin-launcher",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/d74d47a6dae1e9242f70da8e6e7186de99e2eed2f358378a16417a5e682419b3/510208/Penguin-launcher",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/Penguin-launcher",
     "description": null,
     "html_url": "https://github.com/510208/Penguin-launcher",
     "language": "Python",
@@ -481,7 +481,7 @@
   },
   {
     "name": "guiSpeedtest",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/41152343da1f7dc63d4fd28055bc451ded202afd6cd06d3e6338aa02474b9de4/510208/guiSpeedtest",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/guiSpeedtest",
     "description": null,
     "html_url": "https://github.com/510208/guiSpeedtest",
     "language": "Python",
@@ -495,7 +495,7 @@
   },
   {
     "name": "nothing_bot",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/00c4ce87306816f006958e8bfbdc8d13838e5fa5df2850ec75d7f2e99cf00326/510208/nothing_bot",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/nothing_bot",
     "description": null,
     "html_url": "https://github.com/510208/nothing_bot",
     "language": "Python",
@@ -509,7 +509,7 @@
   },
   {
     "name": "pyyt",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/38cf2ad0f39a19e9e0fcc36f9301d1ce67983b9bc0f9df0d7e725584bb84140f/510208/pyyt",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/pyyt",
     "description": null,
     "html_url": "https://github.com/510208/pyyt",
     "language": "Python",
@@ -523,7 +523,7 @@
   },
   {
     "name": "srickroll",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/0ce6ba36fece638144e793ed3085bf4fbb98437aca7a729c5c1cb4a3d947a018/510208/srickroll",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/srickroll",
     "description": "Your website will have one rickroll on p",
     "html_url": "https://github.com/510208/srickroll",
     "language": "HTML",
@@ -537,7 +537,7 @@
   },
   {
     "name": "ShadowSecurer",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/f11184c1962b1efbe1f9e6d1cc28cac4bfd7f5eb9fdf2207544a1e882fba3a0c/510208/ShadowSecurer",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/1/510208/ShadowSecurer",
     "description": null,
     "html_url": "https://github.com/510208/ShadowSecurer",
     "language": "Visual Basic .NET",
