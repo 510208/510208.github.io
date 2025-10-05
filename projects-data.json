@@ -1,11 +1,11 @@
 [
   {
     "name": "510208.github.io",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/f4598412cb9cb17d03ba2c180fb190a0addd65429ab789bb92b10fb6e88ab40f/510208/510208.github.io",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/119525113bd976cb9fc187e09ef48dcc1e3c3762a13c34a62c9b39684004c189/510208/510208.github.io",
     "description": null,
     "html_url": "https://github.com/510208/510208.github.io",
     "language": "TypeScript",
-    "updated_at": "2025-08-29T03:56:08Z",
+    "updated_at": "2025-10-05T14:20:29Z",
     "stargazers_count": 1,
     "forks_count": 0,
     "topics": [
@@ -21,12 +21,12 @@
   },
   {
     "name": "browser-homepage",
-    "opengraphImageUrl": "https://opengraph.githubassets.com/347d5a9f7b9da970c239aca184f06f47a559b7e511b80f2c547dc7d96c65fb2e/510208/browser-homepage",
+    "opengraphImageUrl": "https://opengraph.githubassets.com/581725f4403ecd73ef073bacb9deb1c3b463a5e34cdc43084e7b284dfdfbe979/510208/browser-homepage",
     "description": "My custom browser homepage",
     "html_url": "https://github.com/510208/browser-homepage",
     "language": "TypeScript",
-    "updated_at": "2025-08-25T02:40:16Z",
-    "stargazers_count": 0,
+    "updated_at": "2025-10-01T00:59:42Z",
+    "stargazers_count": 2,
     "forks_count": 0,
     "topics": [],
     "license": null,
