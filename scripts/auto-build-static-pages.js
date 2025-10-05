@@ -62,6 +62,27 @@ const pages = [
   },
 ];
 
+const extendSitemap = [
+  {
+    route: "/msicao-mrz-gen",
+  },
+  {
+    route: "/MD5Hashing-NEW",
+  },
+  {
+    route: "/MD5Hashing-NEW/translate.html",
+  },
+  {
+    route: "/license",
+  },
+  {
+    route: "/random-num",
+  },
+  {
+    route: "/yunyu-site",
+  },
+];
+
 async function closeBundle() {
   const distDir = path.resolve(__dirname, "../dist");
   const indexHtmlPath = path.join(distDir, "index.html");
@@ -79,9 +100,9 @@ async function closeBundle() {
     if (page.route === "/") {
       filePath = path.join(distDir, "index.html");
     } else {
-      const dir = path.join(distDir, page.route);
+      const dir = path.join(distDir);
       await fs.mkdir(dir, { recursive: true });
-      filePath = path.join(dir, "index.html");
+      filePath = path.join(dir, `${page.route}.html`);
     }
 
     // 插入 meta 標記
@@ -101,4 +122,26 @@ async function closeBundle() {
   );
 }
 
+async function generateSitemap(params) {
+  const baseUrl = "https://510208.github.io";
+  const allPages = [...pages, ...extendSitemap];
+  const sitemapEntries = allPages
+    .map((page) => {
+      const loc = page.route === "/" ? baseUrl : `${baseUrl}${page.route}`;
+      return `<url><loc>${loc}</loc><lastmod>${new Date().toISOString()}</lastmod></url>`;
+    })
+    .join("\n  ");
+
+  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${sitemapEntries}
+  </urlset>
+  `;
+
+  const sitemapPath = path.resolve(__dirname, "../dist/sitemap.xml");
+  await fs.writeFile(sitemapPath, sitemapXml, "utf-8");
+  console.log("Sitemap generated:", sitemapPath);
+}
+
 closeBundle();
+generateSitemap();
