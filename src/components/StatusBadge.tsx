@@ -16,7 +16,8 @@ const CircleBadge: React.FC<{ status: string; size: number }> = ({
 }) => {
   return (
     <span
-      className={`inline-block w-${size} h-${size} rounded-full ${statusColors[status]}`}
+      className={`inline-block rounded-full ${statusColors[status]}`}
+      style={{ width: `${size * 0.25}rem`, height: `${size * 0.25}rem` }}
     />
   );
 };
