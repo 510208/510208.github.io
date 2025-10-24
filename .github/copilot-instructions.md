@@ -34,7 +34,7 @@ yarn build  # Runs: generate-blog-posts → generate-projects → tsc → vite b
 
 ### Routing & Lazy Loading
 
-All routes use React lazy loading with custom page transition animations (`fadeIn`/`fadeOut` in `App.tsx`). Loading spinner shows for minimum 3 seconds on route changes.
+All routes use React lazy loading with custom page transition animations (`fadeIn`/`fadeOut` in `App.tsx`). Loading spinner shows during route changes and disappears as soon as the new route is ready.
 
 ### Import Aliases
 
