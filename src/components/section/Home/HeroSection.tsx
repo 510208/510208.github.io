@@ -2,6 +2,7 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import type { Container } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 import { useCallback, useEffect, useState } from "react";
+import { StatusBadge } from "@/components/StatusBadge";
 
 export const HeroSection = () => {
   const [init, setInit] = useState(false);
@@ -122,6 +123,7 @@ export const HeroSection = () => {
 
             {/* 前景內容 */}
             <div className="relative z-10 pt-8 lg:pt-0">
+              <StatusBadge />
               <h2 className="font-inter font-bold text-4xl sm:text-5xl lg:text-6xl text-neutral-950 dark:text-white mb-6">
                 SamHacker
               </h2>
