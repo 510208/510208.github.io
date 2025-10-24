@@ -40,7 +40,7 @@ function AnimatedRoutes() {
 
   useEffect(() => {
     setShowLoading(true); // 每次切換都先顯示 loading
-    const timer = setTimeout(() => setShowLoading(false), 3000); // 至少 3 秒
+    const timer = setTimeout(() => setShowLoading(false));
     return () => clearTimeout(timer);
   }, [location]);
 
