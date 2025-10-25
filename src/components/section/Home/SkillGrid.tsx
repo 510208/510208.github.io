@@ -136,7 +136,7 @@ const SkillIcon = ({ skill, isDesktop = false }: SkillIconProps) => {
       </TooltipContent>
       <TooltipTrigger>
         <div
-          className={`relative overflow-hidden rounded-lg md:rounded-xl aspect-square transition-all duration-300 hover:scale-110 w-full h-auto min-h-[60px] md:min-h-[80px]`}
+          className={`relative overflow-hidden rounded-lg md:rounded-xl aspect-square transition-all duration-300 hover:scale-110 hover:-rotate-10 w-full h-auto min-h-[60px] md:min-h-[80px]`}
           style={{
             background: `radial-gradient(50% 50% at 50% 50%, ${skill.gradientColors.join(
               ", "
