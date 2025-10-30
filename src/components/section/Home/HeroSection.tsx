@@ -124,7 +124,7 @@ export const HeroSection = () => {
             {/* 前景內容 */}
             <div className="relative z-10 pt-8 lg:pt-0">
               <StatusBadge />
-              <h2 className="font-inter font-bold text-4xl sm:text-5xl lg:text-6xl text-neutral-950 dark:text-white mb-6">
+              <h2 className="font-inter font-bold text-4xl sm:text-5xl lg:text-6xl text-neutral-950 dark:text-white mb-6 mt-2">
                 SamHacker
               </h2>
               <div className="font-noto text-lg text-gray-600 dark:text-gray-300 leading-7 max-w-md mx-auto lg:mx-0">

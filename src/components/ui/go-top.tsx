@@ -41,7 +41,8 @@ const GoTopButton = () => {
     >
       <Button
         onClick={scrollToTop}
-        variant={"outline"}
+        variant={"ghost"}
+        size={"icon"}
         className="cursor-pointer backdrop-blur-sm"
       >
         <ArrowUp size={20} />

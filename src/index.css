@@ -213,3 +213,17 @@
 .skill-list li {
   @apply mb-2;
 }
+
+.text-stroke-1 {
+  -webkit-text-stroke: 0.5px var(--color-foreground);
+  text-stroke: 0.5px var(--color-foreground);
+}
+
+/* Masonry / Waterfall utilities */
+@layer utilities {
+  .break-inside-avoid {
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
