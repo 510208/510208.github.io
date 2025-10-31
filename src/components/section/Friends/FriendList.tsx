@@ -73,16 +73,24 @@ function FriendCard({
           <p className="text-sm">{description}</p>
           <div className="text-xs gap-2 flex flex-wrap">
             {links.map((link, index) => (
-              <Tooltip key={index}>
-                <TooltipTrigger>
-                  <Button variant="ghost" size="icon" aria-label={link.label}>
-                    {link.icon}
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{link.label}</p>
-                </TooltipContent>
-              </Tooltip>
+              <a
+                key={index}
+                href={link.to}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+              >
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Button variant="ghost" size="icon" aria-label={link.label}>
+                      {link.icon}
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{link.label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </a>
             ))}
           </div>
         </div>
@@ -339,9 +347,9 @@ export function FriendList() {
       items={friends}
       itemClassName=""
       className="columns-1 sm:columns-2 lg:columns-3 [column-gap:1rem]"
-      renderItem={(friend, index) => (
+      renderItem={(friend) => (
         <FriendCard
-          key={index}
+          key={friend.slug}
           image={friend.image}
           name={friend.name}
           slug={friend.slug}
