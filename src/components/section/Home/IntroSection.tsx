@@ -69,7 +69,10 @@ const IntroSection: React.FC = () => {
   ];
 
   return (
-    <section className="relative w-full min-h-[598px] px-4 py-8 md:px-6 lg:px-8 bg-white dark:bg-black">
+    <section
+      id="intro"
+      className="relative w-full min-h-[598px] px-4 py-8 md:px-6 lg:px-8 bg-white dark:bg-black"
+    >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 lg:gap-16 items-center justify-center min-h-[598px]">
         {/* 左側區域 */}
         <div className="flex-1 relative w-full max-w-[466px]">

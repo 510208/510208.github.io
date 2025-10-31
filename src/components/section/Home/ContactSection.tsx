@@ -130,59 +130,60 @@ export const ContactSection: React.FC = () => {
   ];
 
   return (
-    <div>
-      <section className="relative w-full min-h-[598px] px-4 py-8 md:px-6 lg:px-8 bg-white dark:bg-black">
-        <div className="max-w-7xl mx-auto">
-          {/* 標題區塊 */}
-          <div className="relative text-center lg:text-left mb-8 md:mb-12">
-            {/* 背景文字 */}
-            <div className="absolute inset-0 flex items-center justify-center lg:justify-start overflow-hidden">
-              <div
-                className="bg-clip-text bg-gradient-to-r font-black font-inter text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[96px] text-center lg:text-left whitespace-nowrap
+    <section
+      id="contact"
+      className="relative w-full min-h-[598px] px-4 py-8 md:px-6 lg:px-8 bg-white dark:bg-black"
+    >
+      <div className="max-w-7xl mx-auto">
+        {/* 標題區塊 */}
+        <div className="relative text-center lg:text-left mb-8 md:mb-12">
+          {/* 背景文字 */}
+          <div className="absolute inset-0 flex items-center justify-center lg:justify-start overflow-hidden">
+            <div
+              className="bg-clip-text bg-gradient-to-r font-black font-inter text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[96px] text-center lg:text-left whitespace-nowrap
                           from-transparent via-black/10 to-transparent dark:via-white/10 leading-none select-none pointer-events-none lg:-translate-x-24"
-                style={{ WebkitTextFillColor: "transparent" }}
-              >
-                Contact Me
-              </div>
-            </div>
-
-            {/* 前景標題 */}
-            <div className="relative z-10 pt-8 lg:pt-16">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-black dark:text-white font-noto">
-                聯絡我
-              </h2>
+              style={{ WebkitTextFillColor: "transparent" }}
+            >
+              Contact Me
             </div>
           </div>
 
-          {/* 聯絡卡片網格 */}
-          <div className="max-w-5xl mx-auto lg:mx-0">
-            {/* 手機版：2列布局 */}
-            <div className="grid grid-cols-2 gap-4 sm:gap-5 md:hidden">
-              <NationalityCard />
-              {contactCards.map((card, index) => (
-                <ContactCard key={index} {...card} />
-              ))}
-            </div>
-
-            {/* 平板版：3列布局 */}
-            <div className="hidden md:grid lg:hidden grid-cols-3 gap-5">
-              <NationalityCard />
-              {contactCards.map((card, index) => (
-                <ContactCard key={index} {...card} />
-              ))}
-            </div>
-
-            {/* 桌面版：4列2行布局 */}
-            <div className="hidden lg:grid grid-cols-4 grid-rows-2 gap-5 h-auto">
-              <NationalityCard />
-              {contactCards.map((card, index) => (
-                <ContactCard key={index} {...card} />
-              ))}
-            </div>
+          {/* 前景標題 */}
+          <div className="relative z-10 pt-8 lg:pt-16">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-black dark:text-white font-noto">
+              聯絡我
+            </h2>
           </div>
         </div>
-      </section>
-    </div>
+
+        {/* 聯絡卡片網格 */}
+        <div className="max-w-5xl mx-auto lg:mx-0">
+          {/* 手機版：2列布局 */}
+          <div className="grid grid-cols-2 gap-4 sm:gap-5 md:hidden">
+            <NationalityCard />
+            {contactCards.map((card, index) => (
+              <ContactCard key={index} {...card} />
+            ))}
+          </div>
+
+          {/* 平板版：3列布局 */}
+          <div className="hidden md:grid lg:hidden grid-cols-3 gap-5">
+            <NationalityCard />
+            {contactCards.map((card, index) => (
+              <ContactCard key={index} {...card} />
+            ))}
+          </div>
+
+          {/* 桌面版：4列2行布局 */}
+          <div className="hidden lg:grid grid-cols-4 grid-rows-2 gap-5 h-auto">
+            <NationalityCard />
+            {contactCards.map((card, index) => (
+              <ContactCard key={index} {...card} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

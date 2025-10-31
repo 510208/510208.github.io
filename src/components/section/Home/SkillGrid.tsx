@@ -178,7 +178,7 @@ const SkillIcon = ({ skill, isDesktop = false }: SkillIconProps) => {
 
 export const SkillGrid = () => {
   return (
-    <section className="w-full py-8 md:py-16">
+    <section id="skill" className="w-full py-8 md:py-16">
       <div className="container mx-auto px-4">
         {/* 標題區塊 */}
         <div className="relative text-center mb-8 md:mb-12">
