@@ -13,7 +13,6 @@ import discordSymbol from "@/assets/contact-icons/discord_symbol.svg"; // v
 import penana from "@/assets/contact-icons/penana_symbol.svg"; // v
 import micropedia from "@/assets/contact-icons/micropedia_logo.svg"; // v
 import WaterFall from "@/components/ui/waterfall";
-// import { Background } from "@tsparticles/engine";
 
 interface FriendCardProps {
   image: string;
