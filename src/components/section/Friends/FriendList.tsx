@@ -1,16 +1,10 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import { Button } from "@/components/ui/button";
 import { Earth, Github, Instagram, Twitch, Youtube } from "lucide-react";
@@ -18,7 +12,92 @@ import { Earth, Github, Instagram, Twitch, Youtube } from "lucide-react";
 import discordSymbol from "@/assets/contact-icons/discord_symbol.svg"; // v
 import penana from "@/assets/contact-icons/penana_symbol.svg"; // v
 import micropedia from "@/assets/contact-icons/micropedia_logo.svg"; // v
+import WaterFall from "@/components/ui/waterfall";
 
+interface FriendCardProps {
+  image: string;
+  name: string;
+  slug: string;
+  description: React.ReactNode;
+  links: {
+    icon: React.ReactNode;
+    to: string;
+    label: string;
+  }[];
+}
+
+function FriendCard({
+  image,
+  name,
+  slug,
+  description,
+  links,
+}: FriendCardProps) {
+  return (
+    <Card className="relative p-4 bg-white dark:bg-gray-800 overflow-hidden">
+      {/* 裝飾性背景圖 - 右下角 */}
+      <div className="absolute -right-0 -bottom-0 w-[171px] h-[171px] opacity-40 pointer-events-none">
+        <img
+          src={image}
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover"
+        />
+        {/* 淺色模式漸層遮罩 */}
+        <div
+          className="absolute inset-0 dark:hidden"
+          style={{
+            background:
+              "radial-gradient(circle at bottom right, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 68.75%)",
+          }}
+        />
+        {/* 暗色模式漸層遮罩 */}
+        <div
+          className="absolute inset-0 hidden dark:block"
+          style={{
+            background:
+              "radial-gradient(circle at bottom right, rgba(31,41,55,0) 0%, rgba(31,41,55,1) 68.75%)",
+          }}
+        />
+      </div>
+
+      {/* 卡片內容 */}
+      <div className="flex justify-start gap-4 relative z-10">
+        <Avatar className="w-12 h-12">
+          <AvatarImage src={image} />
+          <AvatarFallback>{name.charAt(0)}</AvatarFallback>
+        </Avatar>
+        <div className="space-y-1 w-full">
+          <h3 className="text-lg font-bold">{name}</h3>
+          <h4 className="text-sm font-semibold opacity-30">@{slug}</h4>
+          <p className="text-sm">{description}</p>
+          <div className="text-xs gap-2 flex flex-wrap">
+            {links.map((link, index) => (
+              <a
+                key={index}
+                href={link.to}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+              >
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Button variant="ghost" size="icon" aria-label={link.label}>
+                      {link.icon}
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{link.label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Card>
+  );
+}
 export function FriendList() {
   const friends = [
     {
@@ -264,56 +343,73 @@ export function FriendList() {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {friends.map((friend, index) => (
-        <Card
-          className="bg-white dark:bg-gray-800 min-h-[400px] transition-transform transform duration-300 hover:scale-101"
-          key={index}
-        >
-          <img
-            src={friend.image}
-            alt={`${friend.name} 的圖片`}
-            className="w-full h-60 object-cover rounded-t-lg mt-0"
-          />
-          <CardHeader>
-            <CardTitle className="text-xl font-bold">{friend.name}</CardTitle>
-            <CardDescription className="text-gray-500">
-              {`@${friend.slug}`}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>{friend.description}</p>
-          </CardContent>
-          <CardFooter>
-            <div className="flex flex-wrap gap-2">
-              {friend.links.map((link, linkIndex) =>
-                linkIndex === 0 ? (
-                  <Button key={linkIndex} variant="outline" size="sm" asChild>
-                    <a href={link.to} target="_blank" rel="noopener noreferrer">
-                      {link.icon} {link.label}
-                    </a>
-                  </Button>
-                ) : (
-                  <Tooltip key={linkIndex}>
-                    <TooltipTrigger asChild>
-                      <Button variant="outline" size="sm" asChild>
-                        <a
-                          href={link.to}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {link.icon}
-                        </a>
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>{link.label}</TooltipContent>
-                  </Tooltip>
-                )
-              )}
-            </div>
-          </CardFooter>
-        </Card>
-      ))}
-    </div>
+    <WaterFall
+      items={friends}
+      className="columns-1 sm:columns-2 lg:columns-3 [column-gap:1rem]"
+      renderItem={(friend) => (
+        <FriendCard
+          key={friend.slug}
+          image={friend.image}
+          name={friend.name}
+          slug={friend.slug}
+          description={friend.description}
+          links={friend.links}
+        />
+      )}
+    />
   );
+
+  // return (
+  //   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  //     {friends.map((friend, index) => (
+  //       <Card
+  //         className="bg-white dark:bg-gray-800 min-h-[400px] transition-transform transform duration-300 hover:scale-101"
+  //         key={index}
+  //       >
+  //         <img
+  //           src={friend.image}
+  //           alt={`${friend.name} 的圖片`}
+  //           className="w-full h-60 object-cover rounded-t-lg mt-0"
+  //         />
+  //         <CardHeader>
+  //           <CardTitle className="text-xl font-bold">{friend.name}</CardTitle>
+  //           <CardDescription className="text-gray-500">
+  //             {`@${friend.slug}`}
+  //           </CardDescription>
+  //         </CardHeader>
+  //         <CardContent>
+  //           <p>{friend.description}</p>
+  //         </CardContent>
+  //         <CardFooter>
+  //           <div className="flex flex-wrap gap-2">
+  //             {friend.links.map((link, linkIndex) =>
+  //               linkIndex === 0 ? (
+  //                 <Button key={linkIndex} variant="outline" size="sm" asChild>
+  //                   <a href={link.to} target="_blank" rel="noopener noreferrer">
+  //                     {link.icon} {link.label}
+  //                   </a>
+  //                 </Button>
+  //               ) : (
+  //                 <Tooltip key={linkIndex}>
+  //                   <TooltipTrigger asChild>
+  //                     <Button variant="outline" size="sm" asChild>
+  //                       <a
+  //                         href={link.to}
+  //                         target="_blank"
+  //                         rel="noopener noreferrer"
+  //                       >
+  //                         {link.icon}
+  //                       </a>
+  //                     </Button>
+  //                   </TooltipTrigger>
+  //                   <TooltipContent>{link.label}</TooltipContent>
+  //                 </Tooltip>
+  //               )
+  //             )}
+  //           </div>
+  //         </CardFooter>
+  //       </Card>
+  //     ))}
+  //   </div>
+  // );
 }

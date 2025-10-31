@@ -41,6 +41,7 @@ export const GeneralHeroSection = ({
 
   return (
     <section
+      id="hero-section"
       className="border w-100vw lg:my-16 lg:max-w-[1200px] mx-auto bg-transparent overflow-hidden relative lg:rounded-2xl"
       style={{
         backgroundImage: `url(${backgroundImage})`,

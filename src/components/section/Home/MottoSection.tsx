@@ -2,7 +2,10 @@ import TypeIt from "typeit-react";
 
 export const MottoSection = () => {
   return (
-    <section className="relative w-full min-h-[377px] flex items-center justify-center py-16 px-4">
+    <section
+      id="motto"
+      className="relative w-full min-h-[377px] flex items-center justify-center py-16 px-4"
+    >
       <div className="relative max-w-6xl w-full flex items-center justify-center">
         {/* 背景文字 - 淡化效果 */}
         <div className="absolute inset-0 flex items-center justify-center">

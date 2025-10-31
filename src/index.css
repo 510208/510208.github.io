@@ -200,7 +200,15 @@
   @apply mb-0;
 }
 
-.content-text a {
+a:not(
+    nav a,
+    footer a,
+    #contact a,
+    a:has(button),
+    div[data-slot="card-footer"] a,
+    #hero-section a,
+    sup a
+  ) {
   @apply text-green-700 hover:text-green-500 dark:text-green-300 dark:hover:text-green-400 transition-all duration-300;
   @apply underline decoration-green-700/10 dark:decoration-green-300/50;
   @apply mr-1 ml-1;
@@ -212,4 +220,18 @@
 
 .skill-list li {
   @apply mb-2;
+}
+
+.text-stroke-1 {
+  -webkit-text-stroke: 0.5px var(--color-foreground);
+  text-stroke: 0.5px var(--color-foreground);
+}
+
+/* Masonry / Waterfall utilities */
+@layer utilities {
+  .break-inside-avoid {
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+  }
 }
