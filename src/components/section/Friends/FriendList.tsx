@@ -76,7 +76,7 @@ function FriendCard({
             {links.map((link, index) => (
               <Tooltip key={index}>
                 <TooltipTrigger>
-                  <Button variant="ghost" size="icon">
+                  <Button variant="ghost" size="icon" aria-label={link.label}>
                     {link.icon}
                   </Button>
                 </TooltipTrigger>
