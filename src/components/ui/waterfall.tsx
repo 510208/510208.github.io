@@ -15,7 +15,7 @@ export type WaterFallProps<T = unknown> = {
    */
   children?: React.ReactNode;
   /**
-   * 外層容器的 className。可自定 columns-* 響應式欄數與 column-gap。
+   * 外層容器的 className。可自定 columns-* 韺應式欄數與 column-gap。
    */
   className?: string;
   /**
@@ -26,6 +26,11 @@ export type WaterFallProps<T = unknown> = {
    * 自定義 column-gap。若提供，會以 style 設定（優先於 className 內的 [column-gap:*]）。
    */
   columnGap?: number | string;
+  /**
+   * 產生每個項目 key 的函式（建議）。若未提供，component 會嘗試使用 item.id / item.key,
+   * 若仍取得不到，會在開發環境下 warn 並以 index 作為 fallback（不建議用於會動態增刪的列表）。
+   */
+  keyExtractor?: (item: T, index: number) => React.Key;
 };
 
 /**
@@ -41,6 +46,7 @@ export function WaterFall<T = unknown>({
   className,
   itemClassName,
   columnGap,
+  keyExtractor,
 }: WaterFallProps<T>) {
   const style =
     columnGap !== undefined
@@ -49,6 +55,32 @@ export function WaterFall<T = unknown>({
             typeof columnGap === "number" ? `${columnGap}px` : columnGap,
         } as React.CSSProperties)
       : undefined;
+
+  // helper: 嘗試從 item 取得自然 key（id/key），否則使用 keyExtractor，最後 fallback 為 index
+  const resolveKey = (item: T, idx: number): React.Key => {
+    if (keyExtractor) return keyExtractor(item, idx);
+
+    if (item && typeof item === "object") {
+      const obj = item as Record<string, unknown>;
+      const maybe = obj.id ?? obj.key;
+      if (
+        maybe !== undefined &&
+        maybe !== null &&
+        (typeof maybe === "string" ||
+          typeof maybe === "number" ||
+          typeof maybe === "bigint")
+      )
+        return maybe;
+    }
+
+    if (process.env.NODE_ENV !== "production") {
+      // 在開發環境提醒使用者提供穩定的 keyExtractor 或讓 item 提供 id/key
+      console.warn(
+        "[WaterFall] 使用 index 作為 key 的 fallback。建議提供 keyExtractor 或在資料項目上使用唯一 id/key，以避免重排副作用。"
+      );
+    }
+    return idx;
+  };
 
   return (
     <div
@@ -62,20 +94,27 @@ export function WaterFall<T = unknown>({
       {items && renderItem
         ? items.map((it, idx) => (
             <div
-              key={idx}
+              key={resolveKey(it, idx)}
               className={cn("mb-4 break-inside-avoid", itemClassName)}
             >
               {renderItem(it, idx)}
             </div>
           ))
-        : React.Children.map(children, (child, idx) => (
-            <div
-              key={idx}
-              className={cn("mb-4 break-inside-avoid", itemClassName)}
-            >
-              {child}
-            </div>
-          ))}
+        : React.Children.map(children, (child, idx) => {
+            // 若 child 本身帶有 key (例如 React element)，則保留；否則以 index 作為 key（children 常為靜態）
+            const childKey =
+              React.isValidElement(child) && child.key != null
+                ? child.key
+                : idx;
+            return (
+              <div
+                key={childKey}
+                className={cn("mb-4 break-inside-avoid", itemClassName)}
+              >
+                {child}
+              </div>
+            );
+          })}
     </div>
   );
 }
