@@ -345,7 +345,6 @@ export function FriendList() {
   return (
     <WaterFall
       items={friends}
-      itemClassName=""
       className="columns-1 sm:columns-2 lg:columns-3 [column-gap:1rem]"
       renderItem={(friend) => (
         <FriendCard
