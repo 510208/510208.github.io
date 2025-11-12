@@ -53,7 +53,7 @@ function buildWakaTimeCard(data: WakaTimeData | null): DashboardFeature {
     title: "累計開發時間",
     description: data?.text || "載入中...",
     link: "https://wakatime.com/@SamHacker",
-    image: React.createElement(SiWakatime, { size: 16, color: "#FFFFFF" }),
+    image: React.createElement(SiWakatime, { size: 24, color: "#FFFFFF" }),
   };
 }
 
