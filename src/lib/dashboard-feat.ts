@@ -1,6 +1,15 @@
 import { SiWakatime } from "@icons-pack/react-simple-icons";
 import React from "react";
 
+type DashboardFeature = {
+  title: string;
+  description: string;
+  link: string;
+  image: React.ReactNode;
+  source: string;
+  color: Record<string, string>;
+};
+
 type WakaTimeData = {
   total_seconds: number;
   text: string;
@@ -54,15 +63,10 @@ function buildWakaTimeCard(data: WakaTimeData | null): DashboardFeature {
     description: data?.text || "載入中...",
     link: "https://wakatime.com/@SamHacker",
     image: React.createElement(SiWakatime, { size: 24, color: "#FFFFFF" }),
+    source: "WakaTime API",
+    color: { primary: "#FFFFFF" },
   };
 }
-
-type DashboardFeature = {
-  title: string;
-  description: string;
-  link: string;
-  image: React.ReactNode;
-};
 
 async function getDashboardFeatures(): Promise<DashboardFeature[]> {
   const wakaTimeData = await fetchWakaTimeData();

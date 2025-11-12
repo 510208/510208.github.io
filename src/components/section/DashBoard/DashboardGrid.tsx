@@ -6,9 +6,18 @@ import {
   type DashboardFeature,
 } from "@/lib/dashboard-feat";
 
-function DashboardCard({ children }: { children: React.ReactNode }) {
+function DashboardCard({
+  children,
+  ...props
+}: {
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+}) {
   return (
-    <div className="mb-4 rounded-lg border bg-white/10 p-4 shadow-lg backdrop-blur-md transition hover:bg-white/20 py-10 px-2">
+    <div
+      className={`mb-4 rounded-lg border bg-white/10 p-4 shadow-lg backdrop-blur-md transition py-10 px-2 hover:bg-white/20     }]`}
+      {...props}
+    >
       {children}
     </div>
   );
@@ -73,7 +82,10 @@ export function DashboardGrid() {
             {item.image}
             <h2 className="text-xl font">{item.title}</h2>
           </div>
-          <p className="text-3xl text-center font-mono font-bold">
+          <p
+            className="text-3xl text-center font-mono font-bold"
+            style={{ color: item.color.primary }}
+          >
             {item.description}
           </p>
         </DashboardCard>
