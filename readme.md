@@ -14,6 +14,7 @@
   <a href="https://510208.github.io">
     <img src="https://img.shields.io/badge/View-This_Website-blue?style=flat" alt="View This Website" />
   </a>
+  <a href="https://deepwiki.com/510208/510208.github.io"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
 </div>
 
 <div align="center">
