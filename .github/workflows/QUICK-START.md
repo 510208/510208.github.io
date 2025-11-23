@@ -38,7 +38,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 9.15.0
 
       - name: Get pnpm store directory
         shell: bash
@@ -60,7 +60,7 @@ jobs:
         run: pnpm run build
 
       - name: Add .nojekyll file
-        run: echo > build/client/.nojekyll
+        run: touch build/client/.nojekyll
 
       - name: Copy 404.html
         run: cp build/client/index.html build/client/404.html
