@@ -54,7 +54,7 @@ git push origin main
 
 1. **Checkout repo** - 檢出程式碼
 2. **Setup Node** - 安裝 Node.js 24.3.0
-3. **Install pnpm** - 安裝 pnpm 版本 9
+3. **Install pnpm** - 安裝 pnpm 9.15.0
 4. **Setup pnpm cache** - 設定 pnpm 快取以加速建置
 5. **Install dependencies** - 安裝專案依賴（使用 `--frozen-lockfile`）
 6. **Build project** - 執行 `pnpm run build`

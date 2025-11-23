@@ -136,6 +136,6 @@ git push origin main
 
 **專案需求：**
 - Node.js 24.3.0 或相容版本
-- pnpm 9.x
+- pnpm 9.15.0
 - 建置輸出目錄：`build/client/`
 - 建置指令：`pnpm run build`
