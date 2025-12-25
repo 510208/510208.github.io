@@ -121,8 +121,19 @@ async function generateProjectsData() {
     console.log(`專案數據已成功寫入: ${outputPath}`);
     console.log(`包含 ${filteredData.length} 個專案`);
   } catch (error) {
-    console.error("生成專案數據時發生錯誤:", error);
-    process.exit(1);
+    // 判斷是否是Token過期
+    if (
+      error.message.includes("401") ||
+      error.message.includes("Bad credentials")
+    ) {
+      console.error(
+        "❌ GitHub Token 可能已過期或無效，請檢查您的 GH_TOKEN 環境變量。"
+      );
+      process.exit(1);
+    } else {
+      console.error("生成專案數據時發生錯誤:", error);
+      process.exit(1);
+    }
   }
 }
 
