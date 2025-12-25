@@ -1,4 +1,11 @@
-import { Info, UsersRound, FolderGit, ToolCase, Newspaper } from "lucide-react";
+import {
+  Info,
+  UsersRound,
+  FolderGit,
+  ToolCase,
+  Newspaper,
+  Gauge,
+} from "lucide-react";
 
 const menuItems = [
   {
@@ -24,6 +31,12 @@ const menuItems = [
     labelZh: "我的裝備",
     to: "/equipments",
     icon: <ToolCase size={18} />,
+  },
+  {
+    label: "DASHBOARD",
+    labelZh: "資訊儀表",
+    to: "/dashboard",
+    icon: <Gauge size={18} />,
   },
   {
     label: "BLOG",

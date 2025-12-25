@@ -26,6 +26,9 @@ const BlogPosts = lazy(() =>
 const NotFound = lazy(() =>
   import("./pages/NotFound").then((module) => ({ default: module.NotFound }))
 );
+const DashBoard = lazy(() =>
+  import("./pages/DashBoard").then((module) => ({ default: module.DashBoard }))
+);
 const Loading = lazy(() =>
   import("./components/section/loading").then((module) => ({
     default: module.default,
@@ -73,6 +76,7 @@ function AnimatedRoutes() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/equipments" element={<Equipments />} />
             <Route path="/blog-posts" element={<BlogPosts />} />
+            <Route path="/dashboard" element={<DashBoard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

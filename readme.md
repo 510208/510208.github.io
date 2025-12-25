@@ -14,6 +14,7 @@
   <a href="https://510208.github.io">
     <img src="https://img.shields.io/badge/View-This_Website-blue?style=flat" alt="View This Website" />
   </a>
+  <a href="https://deepwiki.com/510208/510208.github.io"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
 </div>
 
 <div align="center">
@@ -41,6 +42,7 @@
 - **流暢動畫效果** - 使用 Lenis 和 TypeIt 提供優雅的使用者體驗
 - **粒子背景特效** - 使用 @tsparticles 創造視覺吸引力
 - **SEO 優化** - 完整的 meta 標籤和 sitemap
+-
 
 ## 🚀 快速開始
 

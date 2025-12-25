@@ -340,6 +340,23 @@ export function FriendList() {
         },
       ],
     },
+    {
+      image: "/assets/friend_photo/ruixue.webp",
+      name: "Ruixue",
+      slug: "ruixue",
+      description: (
+        <>
+          我是Ruixue,喜歡AI、寫程式、還有可愛的小蘿莉,也愛分享生活趣事,正在經營自己的Discord機器人Minging-ru與社群,一步步打造專屬的數位天地。
+        </>
+      ),
+      links: [
+        {
+          icon: <Earth />,
+          to: "https://ruixue.onrender.com/",
+          label: "個人網站",
+        },
+      ],
+    },
   ];
 
   return (

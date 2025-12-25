@@ -207,7 +207,8 @@ a:not(
     a:has(button),
     div[data-slot="card-footer"] a,
     #hero-section a,
-    sup a
+    sup a,
+    div[data-slot="dialog-content"] a
   ) {
   @apply text-green-700 hover:text-green-500 dark:text-green-300 dark:hover:text-green-400 transition-all duration-300;
   @apply underline decoration-green-700/10 dark:decoration-green-300/50;

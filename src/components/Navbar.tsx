@@ -43,9 +43,11 @@ export const Navbar = () => {
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14">
             {/* 品牌名稱 - 左側 */}
-            <div className="ml-4 lg:ml-0 flex-shrink-0 flex items-center space-x-2">
-              <Gravatar size="36" className="rounded-md" />
+            <div className="ml-2 lg:ml-0 flex-shrink-0 flex items-center space-x-2">
               <Link to="/">
+                <Gravatar size="36" className="rounded-md" />
+              </Link>
+              <Link to="/" className="hidden md:block">
                 <h1 className="text-black dark:text-white text-xl font-bold font-writing capitalize cursor-pointer">
                   SamHacker
                 </h1>
