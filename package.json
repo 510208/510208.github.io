@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "yarn generate-blog-posts && yarn generate-projects && tsc -b && vite build && yarn build-static",
+    "build": "yarn generate-projects && tsc -b && vite build && yarn build-static",
     "generate-projects": "node -r dotenv/config scripts/generate-projects-data.js",
     "generate-blog-posts": "node -r dotenv/config scripts/generate-blog-posts-data.js",
     "build-static": "node -r dotenv/config scripts/auto-build-static-pages.js",
