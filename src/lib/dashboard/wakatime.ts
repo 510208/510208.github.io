@@ -1,14 +1,6 @@
 import { SiWakatime } from "@icons-pack/react-simple-icons";
+import { type DashboardFeature } from "./types";
 import React from "react";
-
-type DashboardFeature = {
-  title: string;
-  description: string;
-  link: string;
-  image: React.ReactNode;
-  source: string;
-  color: Record<string, string>;
-};
 
 type WakaTimeData = {
   total_seconds: number;
@@ -68,11 +60,10 @@ function buildWakaTimeCard(data: WakaTimeData | null): DashboardFeature {
   };
 }
 
-async function getDashboardFeatures(): Promise<DashboardFeature[]> {
+async function getWakatimeFeatures(): Promise<DashboardFeature[]> {
   const wakaTimeData = await fetchWakaTimeData();
-  const wakaTimeCard = buildWakaTimeCard(wakaTimeData);
-  return [wakaTimeCard];
+  return [buildWakaTimeCard(wakaTimeData)];
 }
 
-export { getDashboardFeatures };
+export { getWakatimeFeatures };
 export type { DashboardFeature };

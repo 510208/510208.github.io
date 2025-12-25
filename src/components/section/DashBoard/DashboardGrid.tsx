@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import WaterFall from "@/components/ui/waterfall";
 import { Skeleton } from "@/components/ui/skeleton";
-import {
-  getDashboardFeatures,
-  type DashboardFeature,
-} from "@/lib/dashboard-feat";
+import { type DashboardFeature } from "@/lib/dashboard/wakatime";
+import getDashboardFeatures from "@/lib/dashboard/dashboard-card";
 
 function DashboardCard({
   children,
