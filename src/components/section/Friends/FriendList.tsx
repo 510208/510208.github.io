@@ -357,6 +357,19 @@ export function FriendList() {
         },
       ],
     },
+    {
+      image: "https://gravatar.com/avatar/f6d0a62624d1d82d90ea3232e3663561",
+      name: "三哥",
+      slug: "sangege",
+      description: <>　</>,
+      links: [
+        {
+          icon: <Earth />,
+          to: "https://sange.ge/",
+          label: "個人網站",
+        },
+      ],
+    },
   ];
 
   return (
