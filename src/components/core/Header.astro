@@ -1,0 +1,103 @@
+---
+import config from "@shConfig";
+import { Button } from "@ui/button.tsx";
+import { Mail, Info } from "lucide-react";
+
+const links = config.navBar.links;
+---
+
+<header
+  class="fixed top-4.5 left-1/2 -translate-x-1/2 z-50 w-full max-w-[1278px] px-4"
+  transition:persist
+>
+  <nav
+    class="backdrop-blur-[6px] bg-neutral-900/50 border border-white/10 px-4 lg:px-8 h-14 flex items-center justify-between rounded-lg"
+  >
+    <!-- Logo and Site Title -->
+    <div class="flex items-center gap-2">
+      <div class="w-9 h-9 rounded-lg overflow-hidden">
+        <img
+          src="/favicon.png"
+          alt="SamHacker"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <a class="hidden lg:block" href="/">
+        <h1 class="text-3xl text-white capitalize leading-none font-funny">
+          SamHacker
+        </h1>
+      </a>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="flex items-center gap-2 lg:gap-4">
+      <!-- Main Nav -->
+      <div class="hidden lg:flex items-center gap-1 pr-4">
+        {
+          links.map((link, index) => (
+            <div class="flex items-center">
+              <a
+                href={link.href}
+                class="px-2 lg:px-4 h-6 flex items-center text-sm font-medium text-white uppercase hover:text-white/80 transition-colors"
+              >
+                {link.title}
+              </a>
+              {index < links.length - 1 && (
+                <span class="text-neutral-400 text-sm">/</span>
+              )}
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="lg:hidden flex items-center gap-1">
+        {
+          links.map((link, index) => (
+            <div class="flex items-center">
+              <a
+                href={link.href}
+                class="px-2 h-6 flex items-center text-sm font-medium text-white uppercase hover:text-white/80 transition-colors"
+              >
+                <link.icon size={16} />
+              </a>
+              {index < links.length - 1 && (
+                <span class="hidden sm:block text-neutral-400 text-sm">/</span>
+              )}
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="hidden md:flex items-center gap-2">
+        <a
+          href="mailto:xux510208@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button
+            client:load
+            variant="ghost"
+            size="icon"
+            className="hidden sm:flex items-center justify-center rounded-lg hover:bg-white/5"
+            aria-label="Contact"
+          >
+            <Mail size={18} />
+          </Button>
+        </a>
+
+        <a href="/about" target="_blank" rel="noopener noreferrer">
+          <Button
+            client:load
+            variant="ghost"
+            size="icon"
+            className="hidden sm:flex items-center justify-center rounded-lg hover:bg-white/5"
+            aria-label="Info"
+          >
+            <Info size={18} />
+          </Button>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
