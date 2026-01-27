@@ -1,0 +1,43 @@
+<section>
+  {/* 前景內容 */}
+  <div class="relative z-10 pt-8 lg:pt-0">
+    <h2
+      id="sh-hero-title"
+      class="font-bold text-4xl sm:text-5xl lg:text-6xl text-white mb-6 mt-2"
+    >
+      SamHacker
+    </h2>
+    <div
+      id="sh-hero-description"
+      class="text-lg text-gray-300 leading-7 max-w-md mx-auto lg:mx-0"
+    >
+      <p class="mb-0">
+        嗨！我是 SamHacker，一個熱愛 Coding 的高中生。現年
+        <span id="sh-intro-age" class="mx-1">:D</span>
+        歲，善於運用 TypeScript、Python 等語言。最近在學習 Next.js、Vite、React、GSAP
+        等前端框架，也計畫要涉獵 Svelte、Vue 等框架。前端可能還算可以，但做後端就真的完全不行。
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // 計算年齡
+  document.addEventListener("DOMContentLoaded", () => {
+    const birthDate = new Date("2008-05-15");
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+    // 更新年齡元素
+    const ageElement = document.getElementById("sh-intro-age");
+    if (ageElement) {
+      ageElement.textContent = age.toString();
+    }
+  });
+</script>
