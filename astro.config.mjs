@@ -4,9 +4,11 @@ import tailwindcss from "@tailwindcss/vite";
 
 import react from "@astrojs/react";
 
+import devtoolBreakpoints from "astro-devtool-breakpoints";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()],
+  integrations: [react(), devtoolBreakpoints()],
   vite: {
     plugins: [tailwindcss()],
   },
