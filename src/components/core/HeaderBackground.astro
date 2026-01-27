@@ -1,0 +1,16 @@
+---
+import headerBg from "@/assets/core/header_bg.png";
+import { Image } from "astro:assets";
+---
+
+<div class="absolute w-screen h-72 top-0 left-0">
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 h-full w-full select-none overflow-hidden"
+  >
+    <Image
+      src={headerBg}
+      alt="Header Background"
+      class="h-full w-full object-cover"
+    />
+  </div>
+</div>
