@@ -1,0 +1,156 @@
+---
+import StatusBadge from "@components/page/Home/StatusBadge.astro";
+
+import misana from "@/assets/pages/home/misana-character.png";
+import bgGrid from "@/assets/pages/home/dark_bg-grid.svg";
+import { Image } from "astro:assets";
+---
+
+<section id="hero-section" class="hero-section relative overflow-hidden">
+  <div class="mx-auto px-4 sm:px-6 lg:px-8 lg:h-[97vh]">
+    <div
+      class="flex flex-col lg:flex-row items-center justify-between h-full pt-8"
+    >
+      {/* Div Left - 文字內容 */}
+      <div
+        class="relative w-auto lg:w-1/2 z-10 text-center pt-40 lg:text-left md:pt-8 lg:pt-0 md:h-auto lg:pl-40"
+      >
+        {/* 背景文字 - absolute positioning */}
+        <div
+          class="absolute flex items-center justify-center lg:justify-start lg:ml-20"
+        >
+          <h1
+            class="hidden lg:block -inset-y-200 font-inter font-black text-5xl sm:text-7xl lg:text-8xl xl:text-9xl bg-gradient-to-b from-white/20 to-transparent bg-clip-text text-transparent select-none whitespace-nowrap"
+          >
+            Sam<br />Hacker
+          </h1>
+        </div>
+
+        {/* 前景內容 */}
+        <div class="relative z-10 pt-8 lg:pt-0">
+          <div class="flex justify-center lg:justify-start">
+            <StatusBadge />
+          </div>
+          <h2
+            id="sh-hero-title"
+            class="font-inter font-bold text-4xl sm:text-5xl lg:text-6xl text-white mb-6 mt-2"
+          >
+            SamHacker
+          </h2>
+          <div
+            id="sh-hero-description"
+            class="font-noto text-lg text-gray-300 leading-7 max-w-md mx-auto lg:mx-0"
+          >
+            <p class="mb-0">
+              我是一個熱愛分享技術的部落客，
+              <br />
+              專注於 Minecraft 開服、網站建設、開源軟體等領域。
+              <br />
+              我的目標是讓更多人能夠輕鬆學習和應用技術。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Div Right - 角色圖片與背景方格 */}
+      <div class="relative w-full lg:w-1/2 h-96 lg:h-full mt-8 lg:mt-0">
+        {/* 背景方格 - 深色模式 */}
+        <div
+          id="sh-hero-bg-grid"
+          class="absolute inset-0 opacity-20 transition-opacity duration-300 -z-10"
+          style={{
+            backgroundImage: `url(${bgGrid.src})`,
+            backgroundSize: "80% 80%",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "right center",
+          }}
+        >
+        </div>
+
+        {/* 角色圖片 */}
+        <Image
+          id="sh-hero-character"
+          src={misana}
+          alt="Misana Character"
+          class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-full max-h-96 lg:max-h-full w-auto object-contain object-bottom"
+          style={{ maxWidth: "550px" }}
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Hero Section GSAP Animation
+  import gsap from "gsap";
+  import SplitText from "gsap/SplitText";
+
+  gsap.registerPlugin(SplitText);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const tl = gsap.timeline({ repeat: 0, delay: 0.5 });
+
+    // Split text into individual words
+    const splitText = new SplitText("#sh-hero-title", { type: "chars" });
+
+    // 設定DiscordBadge的初始
+    gsap.set("#sh-discord-status-badge", { opacity: 0, y: 20 });
+
+    // Set initial state - chars invisible and positioned to the right
+    gsap.set(splitText.chars, {
+      opacity: 0,
+      x: 50,
+    });
+
+    // Animate chars from right to left with stagger
+    tl.to(splitText.chars, {
+      duration: 0.8,
+      opacity: 1,
+      x: 0,
+      ease: "power2.out",
+      stagger: 0.1,
+    });
+
+    // Animate description fade in and move up
+    tl.fromTo(
+      "#sh-hero-description",
+      {
+        opacity: 0,
+        y: 20,
+      },
+      {
+        duration: 0.8,
+        opacity: 1,
+        y: 0,
+        ease: "power2.out",
+      },
+      "-=0.3",
+    );
+
+    // Animate background grid fade in, at the same time as the characters
+    tl.fromTo(
+      "#sh-hero-character",
+      { opacity: 0, y: 100 },
+      {
+        duration: 0.8,
+        opacity: 1,
+        y: 0,
+        ease: "power2.out",
+      },
+      "-=0.1",
+    );
+    tl.to("#sh-hero-bg-grid", {
+      duration: 0.8,
+      opacity: 1,
+      ease: "power2.out",
+    });
+
+    // Animate Discord Badge fade in and move up
+    tl.to("#sh-discord-status-badge", {
+      duration: 0.8,
+      opacity: 1,
+      y: 0,
+      ease: "power2.out",
+    });
+  });
+</script>
