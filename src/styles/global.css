@@ -141,6 +141,13 @@
   --sidebar-ring: oklch(0.553 0.013 58.071);
 }
 
+body {
+  @apply bg-background text-foreground;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -148,4 +155,9 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.text-stroke {
+  -webkit-text-stroke-width: 0.005em;
+  -webkit-text-stroke-color: oklch(0.985 0 0 / 0.1);
 }
