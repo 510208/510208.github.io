@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "Maple Font";
+  src: url("../assets/fonts/SamhackerMapleFontMono-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ChenYuluoyan 2.0";
+  src: url("../assets/fonts/ChenYuluoyan-2.0-Thin.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
