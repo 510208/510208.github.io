@@ -1,0 +1,64 @@
+---
+// src/components/StatusBadge.astro
+import { Badge } from "@ui/badge";
+
+const { class: className } = Astro.props;
+---
+
+<Badge
+  variant="secondary"
+  className={"min-h-8 px-4 flex items-center gap-2" +
+    (className ? ` ${className}` : "")}
+  id="sh-discord-status-badge"
+>
+  <span
+    id="status-dot"
+    class="inline-block rounded-full bg-gray-500"
+    style="width: 0.75rem; height: 0.75rem;"></span>
+  <span id="status-text" class="capitalize leading-none">正在確認狀態...</span>
+</Badge>
+
+<script>
+  // 從您的 lib 導入邏輯 (Vite 會處理這部分的打包)
+  import { formatDiscordStats } from "@lib/get-discord-stats";
+
+  const statusColors = {
+    online: "bg-green-500",
+    idle: "bg-yellow-500",
+    dnd: "bg-red-500",
+    offline: "bg-gray-500",
+  };
+
+  const statusLabels = {
+    online: "上線了，不過不知道在網路上幹什麼",
+    idle: "在掛機，八成在追番或偷懶之類的",
+    dnd: "不要來打擾我，在專心啦！",
+    offline: "應該是下線了，可能在睡覺或忙別的事吧",
+  };
+
+  async function updateStatus() {
+    const dot = document.getElementById("status-dot");
+    const text = document.getElementById("status-text");
+
+    try {
+      // 這裡會在客戶端瀏覽器執行 fetch
+      const stats = await formatDiscordStats("959977374471028779");
+      const key = stats?.discord_status ?? "offline";
+
+      if (dot && text) {
+        // 移除舊顏色並加上新顏色
+        dot.className = `inline-block rounded-full ${statusColors[key]}`;
+        text.textContent =
+          statusLabels[key] || "怪了，這傢伙在幹嘛連我都不知道...";
+      }
+    } catch (e) {
+      if (text) text.textContent = "暫時無法取得狀態...";
+    }
+  }
+
+  // 立即執行
+  updateStatus();
+
+  // 如果您想要每分鐘自動更新一次，可以加上：
+  // setInterval(updateStatus, 60000);
+</script>
