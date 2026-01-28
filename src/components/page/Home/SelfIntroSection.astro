@@ -75,13 +75,15 @@ import { UserPlus } from "lucide-react";
         <CardContent className="relative z-10 flex gap-4">
           <SelfAvatar client:load />
           <div class="flex-1">
-            <div class="flex gap-2 items-center">
+            <div class="flex items-center justify-between">
               <h2 class="font-bold text-lg">SamHacker</h2>
               <a
                 href="https://github.com/510208"
                 target="_blank"
-                rel="noopener noreferrer"><Button><UserPlus />Follow</Button></a
+                rel="noopener noreferrer"
               >
+                <Button><UserPlus />Follow</Button>
+              </a>
             </div>
           </div>
         </CardContent>
