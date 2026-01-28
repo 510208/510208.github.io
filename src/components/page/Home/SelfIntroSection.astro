@@ -2,8 +2,10 @@
 import { Card, CardContent, CardHeader } from "@components/ui/card";
 import { Github, Info, MapPin, ThumbsUp } from "@lucide/astro";
 
+import { Image } from "astro:assets";
+import tcfshImage from "@/assets/pages/home/tcfsh-stroke.svg";
+
 import { SkillCloud } from "./SkillCloud";
-import { SelfAvatar } from "./SelfAvatar";
 import { GitHubInfo } from "./GitHubInfo";
 import { School } from "lucide-react";
 ---
@@ -61,12 +63,25 @@ import { School } from "lucide-react";
       <Card
         className="col-span-1 lg:row-start-3 min-h-50 relative overflow-hidden group hover:bg-stone-800 transition-all duration-300"
       >
+        <!-- 背景裝飾 -->
+        <div
+          class="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-tr from-green-400 via-blue-500 to-purple-600 rounded-full opacity-20 blur-3xl group-hover:opacity-0 transition-opacity duration-300"
+        >
+        </div>
+        <div class="absolute -bottom-4 left-0 w-full flex justify-center">
+          <Image
+            src={tcfshImage}
+            alt="台中一中大門線條圖"
+            class="w-4/5 mx-auto select-none pointer-events-none opacity-10 group-hover:opacity-20 transition-opacity duration-300"
+          />
+        </div>
+
         <CardHeader className="flex gap-2 items-center font-bold relative z-10">
           <School size={20} stroke-width={3} />
           學校
         </CardHeader>
         <CardContent className="relative z-10 flex justify-center items-center">
-          <SelfAvatar />
+          <p>臺中市立臺中第一高級中學</p>
         </CardContent>
       </Card>
       <Card className="col-span-2 lg:row-start-4">
