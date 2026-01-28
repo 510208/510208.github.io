@@ -8,6 +8,7 @@ import devtoolBreakpoints from "astro-devtool-breakpoints";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://510208.github.io",
   integrations: [react(), devtoolBreakpoints()],
   vite: {
     plugins: [tailwindcss()],
