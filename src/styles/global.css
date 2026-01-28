@@ -161,3 +161,7 @@ body {
   -webkit-text-stroke-width: 0.005em;
   -webkit-text-stroke-color: oklch(0.985 0 0 / 0.1);
 }
+
+.sh-background-text-decoration {
+  @apply bg-gradient-to-b from-white to-transparent bg-clip-text text-transparent;
+}
