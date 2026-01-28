@@ -1,0 +1,91 @@
+---
+// src/components/Marquee.astro
+import { cn } from "@lib/utils";
+
+interface Props {
+  gap?: string;
+  direction?: "left" | "up";
+  pauseOnHover?: boolean;
+  reverse?: boolean;
+  fade?: boolean;
+  className?: string;
+}
+
+const {
+  gap = "1rem",
+  direction = "left",
+  pauseOnHover = false,
+  reverse = false,
+  fade = false,
+  className,
+} = Astro.props;
+
+// 處理漸變遮罩 (Fade Effect)
+const maskDirection = direction === "left" ? "to right" : "to bottom";
+const mask = fade
+  ? `linear-gradient(${maskDirection}, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
+  : undefined;
+
+// 動畫與排版邏輯
+const containerClasses = cn(
+  "group flex overflow-hidden",
+  direction === "left" ? "flex-row" : "flex-col",
+  className,
+);
+
+const marqueeClasses = cn(
+  "flex shrink-0 justify-around gap-[var(--gap)]",
+  direction === "left"
+    ? "animate-marquee-left flex-row"
+    : "animate-marquee-up flex-col",
+  pauseOnHover && "group-hover:[animation-play-state:paused]",
+  reverse && "[animation-direction:reverse]",
+);
+---
+
+<div
+  class={containerClasses}
+  style={{
+    maskImage: mask,
+    WebkitMaskImage: mask,
+    gap: gap,
+  }}
+>
+  {
+    /* 使用 Array.from 複製兩份內容以達成無縫滾動 */
+    [0, 1].map(() => (
+      <div class={marqueeClasses} style={{ "--gap": gap }}>
+        <slot />
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  /* 確保動畫在 CSS 中正確定義 */
+  @keyframes marquee-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+
+  @keyframes marquee-up {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+
+  .animate-marquee-left {
+    animation: marquee-left 20s linear infinite;
+  }
+
+  .animate-marquee-up {
+    animation: marquee-up 20s linear infinite;
+  }
+</style>
