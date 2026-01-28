@@ -19,7 +19,7 @@ type CachedGitHubData = {
 const CACHE_KEY = "github_data_510208";
 const CACHE_DURATION = 5 * 60 * 1000; // 5 分鐘
 
-async function fetchGitHubData(): Promise<GitHubData | null> {
+export async function fetchGitHubData(): Promise<GitHubData | null> {
   try {
     // 檢查 localStorage 中的快取資料
     const cachedData = localStorage.getItem(CACHE_KEY);
