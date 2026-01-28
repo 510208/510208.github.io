@@ -1,9 +1,20 @@
 ---
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Info, MapPin, ThumbsUp } from "@lucide/astro";
+import { Card, CardContent, CardHeader } from "@components/ui/card";
+import { Github, Info, MapPin, ThumbsUp } from "@lucide/astro";
 
-import { Github } from "simple-icons-astro";
+import {
+  Avatar,
+  AvatarBadge,
+  AvatarFallback,
+  AvatarGroup,
+  AvatarGroupCount,
+  AvatarImage,
+} from "@components/ui/avatar";
+
 import { SkillCloud } from "./SkillCloud";
+import { SelfAvatar } from "./SelfAvatar";
+import { Button } from "@components/ui/button";
+import { UserPlus } from "lucide-react";
 ---
 
 <section id="sh-intro-section" class="relative overflow-hidden w-full">
@@ -59,8 +70,21 @@ import { SkillCloud } from "./SkillCloud";
       <Card className="col-span-2 lg:row-start-5">
         <CardHeader className="flex gap-2 items-center font-bold relative z-10">
           <Github size={20} stroke-width={3} />
-          GitHub</CardHeader
-        >
+          GitHub
+        </CardHeader>
+        <CardContent className="relative z-10 flex gap-4">
+          <SelfAvatar client:load />
+          <div class="flex-1">
+            <div class="flex gap-2 items-center">
+              <h2 class="font-bold text-lg">SamHacker</h2>
+              <a
+                href="https://github.com/510208"
+                target="_blank"
+                rel="noopener noreferrer"><Button><UserPlus />Follow</Button></a
+              >
+            </div>
+          </div>
+        </CardContent>
       </Card>
       <Card
         id="sh-about-location-card"
