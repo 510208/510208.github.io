@@ -4,6 +4,8 @@ import { Image } from "astro:assets";
 ---
 
 <div
+  id="sh-global-header-background"
+  aria-hidden="true"
   class="absolute w-screen h-72 top-0 left-0 overflow-x-hidden pointer-events-none select-none max-w-screen"
   style="width: calc(100 * var(--vw));"
 >
@@ -21,5 +23,23 @@ import { Image } from "astro:assets";
   document.documentElement.style.setProperty(
     "--vw",
     `${document.documentElement.clientWidth / 100}px`,
+  );
+</script>
+
+<!-- GSAP -->
+<script>
+  import { gsap } from "gsap";
+
+  gsap.fromTo(
+    "#sh-global-header-background",
+    {
+      opacity: 0,
+    },
+    {
+      opacity: 1,
+      duration: 1,
+      delay: 4.5,
+      ease: "power2.out",
+    },
   );
 </script>
