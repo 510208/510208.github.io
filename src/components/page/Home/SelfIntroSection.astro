@@ -1,6 +1,16 @@
 ---
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import Marquee from "@components/ui/marquee.astro";
 import { Info, MapPin, ThumbsUp } from "lucide-react";
+
+import {
+  React,
+  Figma,
+  Css,
+  Javascript,
+  Typescript,
+  Html5,
+} from "simple-icons-astro";
 ---
 
 <section id="sh-intro-section" class="relative overflow-hidden w-full">
@@ -77,7 +87,16 @@ import { Info, MapPin, ThumbsUp } from "lucide-react";
         <CardContent
           id="sh-about-skills-card-content"
           className="[&>p]:not-last-child:mb-4 relative z-10 min-h-40"
-        />
+        >
+          <Marquee speed={5} fade pauseOnHover gap="20px">
+            <React size={80} />
+            <Figma size={80} />
+            <Css size={80} />
+            <Html5 size={80} />
+            <Javascript size={80} />
+            <Typescript size={80} />
+          </Marquee>
+        </CardContent>
       </Card>
     </div>
   </div>
