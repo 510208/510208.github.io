@@ -3,12 +3,13 @@ import { type DashboardFeature } from "./types";
 
 import { Octokit } from "octokit";
 
-type GitHubData = {
+export type GitHubData = {
   login: string;
   followers: number;
   public_repos: number;
   avatar_url: string;
   html_url: string;
+  bio: string;
 };
 
 type CachedGitHubData = {
