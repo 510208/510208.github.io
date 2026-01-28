@@ -1,13 +1,12 @@
 ---
 import { Card, CardContent, CardHeader } from "@components/ui/card";
-import { Github, Info, MapPin, ThumbsUp } from "@lucide/astro";
+import { Github, Info, MapPin, ThumbsUp, Phone, School } from "@lucide/astro";
 
 import { Image } from "astro:assets";
 import tcfshImage from "@/assets/pages/home/tcfsh-stroke.svg";
 
 import { SkillCloud } from "./SkillCloud";
 import { GitHubInfo } from "./GitHubInfo";
-import { School } from "lucide-react";
 ---
 
 <section id="sh-intro-section" class="relative overflow-hidden w-full">
@@ -20,9 +19,10 @@ import { School } from "lucide-react";
     <div
       class="grid grid-cols-1 lg:grid-cols-4 lg:grid-rows-4 gap-5 max-w-110 w-full lg:max-w-300"
     >
+      <!-- 自我介紹 -->
       <Card
         id="sh-about-description-card"
-        className="col-span-2 row-span-2 col-start-1 row-start-1 shadow relative overflow-hidden min-h-100 group hover:bg-stone-800 transition-all duration-300"
+        className="col-span-2 row-span-2 col-start-1 row-start-1 shadow relative overflow-hidden min-h-100 group hover:bg-stone-800 will-change-transform transition-all duration-200"
       >
         <!-- 背景裝飾 -->
         <div
@@ -60,8 +60,10 @@ import { School } from "lucide-react";
           <p>前端可能還算可以，但做後端就真的完全不行。</p>
         </CardContent>
       </Card>
+      <!-- 學校資訊 -->
       <Card
-        className="col-span-1 lg:row-start-3 min-h-50 relative overflow-hidden group hover:bg-stone-800 transition-all duration-300"
+        id="sh-about-school-card"
+        className="col-span-1 lg:row-start-3 min-h-50 relative overflow-hidden group hover:bg-stone-800 will-change-transform transition-all duration-200"
       >
         <!-- 背景裝飾 -->
         <div
@@ -72,6 +74,7 @@ import { School } from "lucide-react";
           <Image
             src={tcfshImage}
             alt="台中一中大門線條圖"
+            id="sh-about-school-bg-decoration"
             class="w-4/5 mx-auto select-none pointer-events-none opacity-10 group-hover:opacity-20 transition-opacity duration-300"
           />
         </div>
@@ -84,7 +87,11 @@ import { School } from "lucide-react";
           <p>臺中市立臺中第一高級中學</p>
         </CardContent>
       </Card>
-      <Card className="col-span-2 lg:row-start-4">
+      <!-- GitHub資訊 -->
+      <Card
+        id="sh-about-github-card"
+        className="col-span-2 lg:row-start-4 will-change-transform relative transition-all duration-200 overflow-hidden min-h-50 hover:bg-stone-800 "
+      >
         <CardHeader className="flex gap-2 items-center font-bold relative z-10">
           <Github size={20} stroke-width={3} />
           GitHub
@@ -93,22 +100,55 @@ import { School } from "lucide-react";
           <GitHubInfo client:load />
         </CardContent>
       </Card>
+      <!-- 聯絡資訊 -->
+      <Card
+        id="sh-about-contact-card"
+        className="col-span-1 row-span-1 lg:col-start-2 lg:row-start-3 relative overflow-hidden min-h-50 hover:bg-stone-800 will-change-transform transition-all duration-200"
+      >
+        <CardHeader className="flex gap-2 items-center font-bold relative z-10">
+          <Phone size={20} stroke-width={3} />聯絡我
+        </CardHeader>
+        <CardContent className="relative z-10">
+          <p>
+            電子郵件：<a
+              href="mailto:xux510208@gmail.com"
+              class="text-stone-400 hover:underline"
+            >
+              <br />
+              xux510208@gmail.com
+            </a>
+          </p>
+          <p>
+            Discord：<br />
+            <span class="text-stone-600 mr-0">
+              @
+              <a
+                href="https://discordapp.com/users/959977374471028779"
+                class="text-stone-400 hover:underline"
+                >samhacker
+              </a>
+            </span>
+          </p>
+        </CardContent>
+      </Card>
+      <!-- 位置資訊 -->
       <Card
         id="sh-about-location-card"
-        className="col-span-2 row-span-2 lg:col-start-3 lg:row-start-3 relative overflow-hidden min-h-50 hover:bg-stone-800 transition-all duration-300"
+        className="col-span-1 row-span-2 lg:col-start-3 lg:row-start-3 relative overflow-hidden min-h-50 hover:bg-stone-800 will-change-transform transition-all duration-200"
       >
         <canvas
           id="sh-about-location-cobe-canvas"
-          class="absolute -bottom-2/3 left-1/3"
+          class="absolute -bottom-1/3 left-10"
           width="400"
           height="400"></canvas>
         <CardHeader className="flex gap-2 items-center font-bold relative z-10">
           <MapPin size={20} stroke-width={3} />臺中市，臺灣
         </CardHeader>
       </Card>
+      <!-- 技能雲 -->
       <Card
         id="sh-about-skills-card"
-        className="col-span-2 row-span-2 lg:col-start-3 lg:row-start-1 shadow min-h-50 pb-0 relative overflow-hidden group hover:bg-neutral-800 transition-all duration-300"
+        className="col-span-2 row-span-2 lg:col-start-3 lg:row-start-1 shadow min-h-50 pb-0 relative overflow-hidden group hover:bg-neutral-800 will-change-transform transition-all duration-200"
       >
         <div
           class="absolute top-0 -right-25 h-full flex items-center -rotate-90 origin-center"
@@ -127,26 +167,6 @@ import { School } from "lucide-react";
           id="sh-about-skills-card-content"
           className="relative min-h-40 flex-1 justify-center items-center z-10"
         >
-          <!-- <Marquee speed={5} fade pauseOnHover>
-            <React class="rounded-lg" size={60} />
-            <Figma class="rounded-lg" size={60} />
-            <Css class="rounded-lg" size={60} />
-            <Html5 class="rounded-lg" size={60} />
-            <Javascript class="rounded-lg" size={60} />
-            <Typescript class="rounded-lg" size={60} />
-            <Nextdotjs class="rounded-lg" size={60} />
-            <Nodedotjs class="rounded-lg" size={60} />
-            <Python class="rounded-lg" size={60} />
-            <Discord class="rounded-lg" size={60} />
-            <Discorddotjs class="rounded-lg" size={60} />
-            <Tailwindcss class="rounded-lg" size={60} />
-            <Astro class="rounded-lg" size={60} />
-            <Vite class="rounded-lg" size={60} />
-            <Github class="rounded-lg" size={60} />
-            <Archlinux class="rounded-lg" size={60} />
-            <Linux class="rounded-lg" size={60} />
-            <Ubuntu class="rounded-lg" size={60} />
-          </Marquee> -->
           <SkillCloud client:only="react" />
         </CardContent>
       </Card>
@@ -219,5 +239,125 @@ import { School } from "lucide-react";
     if (ageElement) {
       ageElement.textContent = age.toString();
     }
+  });
+</script>
+
+<!-- 動畫 -->
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import DrawSVG from "gsap/DrawSVGPlugin";
+
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(DrawSVG);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // 設定初始狀態
+    const cards = [
+      "#sh-about-description-card",
+      "#sh-about-location-card",
+      "#sh-about-skills-card",
+      "#sh-about-github-card",
+      "#sh-about-school-card",
+      "#sh-about-contact-card",
+    ];
+
+    cards.forEach((card) => {
+      gsap.set(card, {
+        opacity: 0,
+        y: 30,
+        scale: 0.98,
+        transformOrigin: "center",
+      });
+    });
+
+    gsap.set("#sh-about-school-bg-decoration", {
+      drawSVG: "0%",
+      fillOpacity: 0,
+    });
+
+    // 創建動畫時間線
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#sh-intro-section",
+        start: "top 75%",
+        end: "bottom 25%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    // 優化的動畫序列
+    tl.to("#sh-about-description-card", {
+      duration: 0.6,
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      ease: "power2.out",
+    })
+      .to(
+        "#sh-about-skills-card",
+        {
+          duration: 0.6,
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          ease: "power2.out",
+        },
+        "-=0.2",
+      )
+      .to(
+        "#sh-about-school-card",
+        {
+          duration: 0.6,
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          ease: "power2.out",
+        },
+        "-=0.2",
+      )
+      .to(
+        "#sh-about-contact-card",
+        {
+          duration: 0.6,
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          ease: "power2.out",
+        },
+        "-=0.2",
+      )
+      .to(
+        "#sh-about-github-card",
+        {
+          duration: 0.6,
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          ease: "power2.out",
+        },
+        "-=0.2",
+      )
+      .to(
+        "#sh-about-location-card",
+        {
+          duration: 0.6,
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          ease: "power2.out",
+        },
+        "-=0.2",
+      );
+
+    // 動畫完成後清理 will-change
+    tl.call(() => {
+      cards.forEach((card) => {
+        const element = document.querySelector(card) as HTMLElement;
+        if (element) {
+          element.style.willChange = "auto";
+        }
+      });
+    });
   });
 </script>
