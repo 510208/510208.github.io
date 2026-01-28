@@ -8,6 +8,7 @@ interface Props {
   pauseOnHover?: boolean;
   reverse?: boolean;
   fade?: boolean;
+  speed?: number;
   className?: string;
 }
 
@@ -17,6 +18,7 @@ const {
   pauseOnHover = false,
   reverse = false,
   fade = false,
+  speed = 20,
   className,
 } = Astro.props;
 
@@ -54,7 +56,10 @@ const marqueeClasses = cn(
   {
     /* 使用 Array.from 複製兩份內容以達成無縫滾動 */
     [0, 1].map(() => (
-      <div class={marqueeClasses} style={{ "--gap": gap }}>
+      <div
+        class={marqueeClasses}
+        style={{ "--gap": gap, "--speed": `${speed}s` }}
+      >
         <slot />
       </div>
     ))
@@ -82,10 +87,10 @@ const marqueeClasses = cn(
   }
 
   .animate-marquee-left {
-    animation: marquee-left 20s linear infinite;
+    animation: marquee-left var(--speed, 20s) linear infinite;
   }
 
   .animate-marquee-up {
-    animation: marquee-up 20s linear infinite;
+    animation: marquee-up var(--speed, 20s) linear infinite;
   }
 </style>
