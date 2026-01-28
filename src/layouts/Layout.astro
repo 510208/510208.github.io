@@ -20,7 +20,7 @@ const { pageName } = Astro.props;
     </title>
   </head>
 
-  <body>
+  <body class="dark">
     <noscript> You need to enable JavaScript to run this app. </noscript>
 
     <HeaderBackground />
@@ -38,3 +38,12 @@ const { pageName } = Astro.props;
     height: 100%;
   }
 </style>
+
+<script is:inline>
+  // 強制設定為深色主題
+  document.documentElement.classList.add("dark");
+
+  if (typeof localStorage !== "undefined") {
+    localStorage.setItem("theme", "dark");
+  }
+</script>
