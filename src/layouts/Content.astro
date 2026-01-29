@@ -1,5 +1,17 @@
+---
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  bgImage?: string | ImageMetadata | undefined;
+}
+const { bgImage }: Props = Astro.props;
+---
+
 <div
   class="w-full flex flex-col justify-center items-center px-4 py-8 lg:py-16"
+  style={bgImage
+    ? `background-image: url(${typeof bgImage === "string" ? bgImage : bgImage?.src}); background-size: cover; background-position: bottom center;`
+    : undefined}
 >
   <div class="w-full max-w-7xl">
     <slot />
