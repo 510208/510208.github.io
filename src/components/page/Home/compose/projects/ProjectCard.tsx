@@ -11,7 +11,7 @@ import {
 } from "@components/ui/tooltip";
 import { Badge } from "@components/ui/badge";
 import { Languages, Scale, SquareArrowOutUpRight, Tag } from "lucide-react";
-import type { Project } from "./ProjectsList";
+import type { Project } from "@/types/shsite.projects";
 
 export function DevelopmentStatusBadge({
   status,
