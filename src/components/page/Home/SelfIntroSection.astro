@@ -14,19 +14,25 @@ import config from "@shConfig";
 ---
 
 <section id="sh-intro-section" class="relative overflow-hidden w-full">
+  <div class="flex flex-col gap-0 items-center mb-10">
+    <span
+      class="opacity-30 select-none uppercase tracking-[1em] font-extralight"
+      >About Me</span
+    >
+    <h2 class="text-4xl font-bold" id="sh-intro-title">關於我</h2>
+  </div>
+
   <div
     id="sh-intro-description"
     class="flex flex-col gap-4 text-lg text-gray-300 leading-7 mx-auto lg:mx-0 justify-center items-center"
   >
-    <h2 class="text-4xl font-bold">關於我</h2>
-
     <div
       class="grid grid-cols-1 lg:grid-cols-4 lg:grid-rows-4 gap-5 max-w-110 w-full lg:max-w-300"
     >
       <!-- 自我介紹 -->
       <Card
         id="sh-about-description-card"
-        className="col-span-2 row-span-2 col-start-1 row-start-1 shadow relative overflow-hidden min-h-100 group hover:bg-stone-800 will-change-transform"
+        className="lg:col-span-2 lg:row-span-2 col-start-1 row-start-1 shadow relative overflow-hidden min-h-100 group hover:bg-stone-800 will-change-transform"
       >
         <!-- 背景裝飾 -->
         <div
@@ -61,7 +67,14 @@ import config from "@shConfig";
             最近在學習 Next.js、Vite、React、GSAP 等框架，也計畫要涉獵 Svelte、Vue
             等框架。
           </p>
-          <p>前端可能還算可以，但做後端就真的完全不行。</p>
+          <p class="lead-8 mb-2">
+            前端可能還算可以，但做後端就真的完全不行。
+            說是這樣說啦，不過這也不代表我只會做網頁。不過C++看起來真的是天書......
+          </p>
+          <p class="lead-8">
+            除了寫程式之外，我也喜歡玩遊戲、聽音樂和閱讀科技相關的文章。
+            另外有些時候會去Penana之類的網站上寫一些文章，如果大家有興趣的話也可以去逛逛看。
+          </p>
         </CardContent>
       </Card>
       <!-- 學校資訊 -->
@@ -94,7 +107,7 @@ import config from "@shConfig";
       <!-- GitHub資訊 -->
       <Card
         id="sh-about-github-card"
-        className="col-span-2 lg:row-start-4 will-change-transform relative overflow-hidden min-h-50 hover:bg-stone-800 "
+        className="col-span-1 lg:col-span-2 lg:row-start-4 will-change-transform relative overflow-hidden min-h-50 hover:bg-stone-800 "
       >
         <CardHeader className="flex gap-2 items-center font-bold relative z-10">
           <Github size={20} stroke-width={3} />
@@ -138,7 +151,7 @@ import config from "@shConfig";
       <!-- 位置資訊 -->
       <Card
         id="sh-about-location-card"
-        className="col-span-1 row-span-2 lg:col-start-3 lg:row-start-3 relative overflow-hidden min-h-50 hover:bg-stone-800 will-change-transform"
+        className="col-span-1 row-span-1 lg:row-span-2 lg:col-start-3 lg:row-start-3 relative overflow-hidden min-h-50 hover:bg-stone-800 will-change-transform"
       >
         <canvas
           id="sh-about-location-cobe-canvas"
@@ -152,7 +165,7 @@ import config from "@shConfig";
       <!-- 技能雲 -->
       <Card
         id="sh-about-skills-card"
-        className="col-span-2 row-span-2 lg:col-start-3 lg:row-start-1 shadow min-h-50 pb-0 relative overflow-hidden group hover:bg-neutral-800 will-change-transform"
+        className="col-span-1 row-span-1 lg:col-span-2 lg:row-span-2 lg:col-start-3 lg:row-start-1 shadow min-h-50 pb-0 relative overflow-hidden group hover:bg-neutral-800 will-change-transform"
       >
         <div
           class="absolute top-0 -right-25 h-full flex items-center -rotate-90 origin-center"
@@ -182,7 +195,9 @@ import config from "@shConfig";
         <CardHeader className="flex gap-2 items-center font-bold relative z-10">
           <Share2 size={20} stroke-width={3} />社群媒體
         </CardHeader>
-        <CardContent className="relative z-10 grid grid-cols-3 gap-4 py-2">
+        <CardContent
+          className="relative z-10 grid grid-cols-4 lg:grid-cols-3 gap-4 py-2"
+        >
           {
             config.socialLinks.map((link, index) => (
               <SelfIntroLinkGridIcon href={link.href} key={index}>
@@ -301,8 +316,8 @@ import config from "@shConfig";
       // 創建動畫時間線
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: "#sh-intro-section",
-          start: "top 75%",
+          trigger: "#sh-intro-description",
+          start: "top top+=50%",
           end: "bottom 25%",
           toggleActions: "play none none reverse",
         },
