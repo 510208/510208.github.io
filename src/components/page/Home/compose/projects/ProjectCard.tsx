@@ -22,31 +22,31 @@ export function DevelopmentStatusBadge({
   switch (STATUS_PROCESSED) {
     case "on-going":
       return (
-        <Badge className="bg-green-200/20 border-green-800 text-green-600 dark:border-green-300 dark:text-green-100">
+        <Badge className="bg-green-200/20 border-green-300 text-green-100">
           維護中
         </Badge>
       );
     case "paused":
       return (
-        <Badge className="bg-orange-200/20 border-orange-800 text-orange-600 dark:border-orange-300 dark:text-orange-100">
+        <Badge className="bg-orange-200/20 border-orange-300 text-orange-100">
           暫停開發
         </Badge>
       );
     case "eol":
       return (
-        <Badge className="bg-gray-200/20 border-gray-800 text-gray-600 dark:border-gray-300 dark:text-gray-100">
+        <Badge className="bg-gray-200/20 border-gray-300 text-gray-100">
           已終止維護 (EOL)
         </Badge>
       );
     case "archived":
       return (
-        <Badge className="bg-yellow-200/20 border-yellow-800 text-yellow-800 dark:border-yellow-300 dark:text-yellow-100">
+        <Badge className="bg-yellow-200/20 border-yellow-300 text-yellow-100">
           已封存
         </Badge>
       );
     case "completed":
       return (
-        <Badge className="bg-green-200/20 dark:border-green-800 dark:text-green-600 border-green-300 text-green-100">
+        <Badge className="bg-green-200/20 border-green-800 text-green-600">
           已完成
         </Badge>
       );
@@ -64,18 +64,18 @@ export function ProjectCard({ project }: { project: Project }) {
       <Card
         key={project.name}
         id={`projects-${project.name}`}
-        className="relative group bg-white dark:bg-neutral-800 min-h-[400px] transition-all duration-300 hover:bg-neutral-100 dark:hover:bg-neutral-900 px-0 py-0 overflow-hidden pb-6"
+        className="relative group bg-neutral-800 min-h-[400px] transition-all duration-300 hover:bg-neutral-900 px-0 py-0 overflow-hidden pb-6"
         style={{
           opacity:
             project.status === "eol" || project.status === "archived" ? 0.6 : 1,
         }}
       >
         {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white dark:to-neutral-800 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-neutral-800 pointer-events-none">
           <img
             src={project.opengraphImageUrl}
             alt={project.name}
-            className="h-full w-full object-cover blur-lg group-hover:blur-xs transition-all duration-300 opacity-20 dark:opacity-10 scale-125"
+            className="h-full w-full object-cover blur-lg group-hover:blur-xs transition-all duration-300 opacity-10 scale-125"
           />
         </div>
         {/* 裝飾用圖片 */}
@@ -83,7 +83,7 @@ export function ProjectCard({ project }: { project: Project }) {
           <img
             src={project.opengraphImageUrl}
             alt={`${project.name} 的縮圖`}
-            className="block h-40 max-w-none aspect-2/1 object-cover dark:brightness-70 scale-110"
+            className="block h-40 max-w-none aspect-2/1 object-cover brightness-70 scale-110"
           />
         </div>
         <div className="p-2">
@@ -98,7 +98,7 @@ export function ProjectCard({ project }: { project: Project }) {
                 size={14}
               />
             </CardTitle>
-            <CardDescription className="text-sm text-gray-600 dark:text-gray-400">
+            <CardDescription className="text-sm text-gray-400">
               <div className="my-2 flex flex-col gap-2 min-h-20">
                 {/* 所使用的程式語言 */}
                 <div className="flex gap-1 items-center align-middle">
@@ -137,7 +137,7 @@ export function ProjectCard({ project }: { project: Project }) {
                         {project.topics.slice(0, 2).map((topic) => (
                           <Badge
                             key={topic}
-                            className="bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100"
+                            className="bg-blue-800 text-blue-100"
                           >
                             {topic}
                           </Badge>
@@ -153,7 +153,7 @@ export function ProjectCard({ project }: { project: Project }) {
                             >
                               {project.topics.slice(2).map((topic) => (
                                 <Badge
-                                  className="dark:bg-blue-100 dark:text-blue-800 bg-blue-800 text-blue-100"
+                                  className="bg-blue-100 text-blue-800"
                                   key={topic}
                                 >
                                   {topic}
