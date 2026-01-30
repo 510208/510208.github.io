@@ -13,7 +13,13 @@ import { Languages, Search, Filter, ChartPie } from "lucide-react";
 import { DevelopmentStatusBadge, ProjectCard } from "./ProjectCard";
 import type { Project } from "@/types/shsite.projects";
 
-export const ProjectsList = () => {
+export const ProjectsList = ({
+  showFilter,
+  maxCards,
+}: {
+  showFilter?: boolean;
+  maxCards?: number;
+}) => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
@@ -95,95 +101,100 @@ export const ProjectsList = () => {
   return (
     <div className="space-y-6">
       {/* 搜尋和過濾區域 */}
-      <div className="space-y-4">
-        <div className="flex gap-2">
-          {/* 搜尋輸入框 */}
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-            <Input
-              placeholder="搜尋專案名稱或描述..."
-              value={searchTerm}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setSearchTerm(e.target.value)
-              }
-              className="pl-10"
-            />
+      {showFilter && (
+        <div className="space-y-4">
+          <div className="flex gap-2">
+            {/* 搜尋輸入框 */}
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+              <Input
+                placeholder="搜尋專案名稱或描述..."
+                value={searchTerm}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setSearchTerm(e.target.value)
+                }
+                className="pl-10"
+              />
+            </div>
+
+            {/* 語言過濾器 */}
+            <div className="flex-none w-12 sm:w-34">
+              <Select
+                value={selectedLanguage}
+                onValueChange={setSelectedLanguage}
+              >
+                <SelectTrigger className="w-full">
+                  <Languages className="h-4 w-4" />
+                  <span className="hidden sm:inline sm:ml-2">
+                    <SelectValue placeholder="選擇語言" />
+                  </span>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">所有語言</SelectItem>
+                  {uniqueLanguages.map((language) => (
+                    <SelectItem key={language} value={language}>
+                      {language}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* 主題過濾器 */}
+            <div className="flex-none w-12 sm:w-34">
+              <Select value={selectedTopic} onValueChange={setSelectedTopic}>
+                <SelectTrigger className="w-full">
+                  <Filter className="h-4 w-4" />
+                  <span className="hidden sm:inline sm:ml-2">
+                    <SelectValue placeholder="選擇主題" />
+                  </span>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">所有主題</SelectItem>
+                  {uniqueTopics.map((topic) => (
+                    <SelectItem key={topic} value={topic}>
+                      {topic}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* 狀態過濾器 */}
+            <div className="flex-none w-12 sm:w-34">
+              <Select value={selectedStatus} onValueChange={setSelectedStatus}>
+                <SelectTrigger className="w-full">
+                  <ChartPie className="h-4 w-4" />
+                  <span className="hidden sm:inline sm:ml-2">
+                    <SelectValue placeholder="選擇狀態" />
+                  </span>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">所有狀態</SelectItem>
+                  {uniqueStatuses.map((status) => (
+                    <SelectItem key={status} value={status}>
+                      <DevelopmentStatusBadge
+                        status={status as Project["status"]}
+                      />
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
 
-          {/* 語言過濾器 */}
-          <div className="flex-none w-12 sm:w-34">
-            <Select
-              value={selectedLanguage}
-              onValueChange={setSelectedLanguage}
-            >
-              <SelectTrigger className="w-full">
-                <Languages className="h-4 w-4" />
-                <span className="hidden sm:inline sm:ml-2">
-                  <SelectValue placeholder="選擇語言" />
-                </span>
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">所有語言</SelectItem>
-                {uniqueLanguages.map((language) => (
-                  <SelectItem key={language} value={language}>
-                    {language}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          {/* 主題過濾器 */}
-          <div className="flex-none w-12 sm:w-34">
-            <Select value={selectedTopic} onValueChange={setSelectedTopic}>
-              <SelectTrigger className="w-full">
-                <Filter className="h-4 w-4" />
-                <span className="hidden sm:inline sm:ml-2">
-                  <SelectValue placeholder="選擇主題" />
-                </span>
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">所有主題</SelectItem>
-                {uniqueTopics.map((topic) => (
-                  <SelectItem key={topic} value={topic}>
-                    {topic}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          {/* 狀態過濾器 */}
-          <div className="flex-none w-12 sm:w-34">
-            <Select value={selectedStatus} onValueChange={setSelectedStatus}>
-              <SelectTrigger className="w-full">
-                <ChartPie className="h-4 w-4" />
-                <span className="hidden sm:inline sm:ml-2">
-                  <SelectValue placeholder="選擇狀態" />
-                </span>
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">所有狀態</SelectItem>
-                {uniqueStatuses.map((status) => (
-                  <SelectItem key={status} value={status}>
-                    <DevelopmentStatusBadge
-                      status={status as Project["status"]}
-                    />
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+          {/* 結果統計 */}
+          <div className="text-sm text-gray-600 dark:text-gray-400">
+            顯示 {filteredProjects.length} 個專案，共 {projects.length} 個
           </div>
         </div>
-
-        {/* 結果統計 */}
-        <div className="text-sm text-gray-600 dark:text-gray-400">
-          顯示 {filteredProjects.length} 個專案，共 {projects.length} 個
-        </div>
-      </div>
+      )}
       {/* 專案網格 */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredProjects.map((project) => (
+        {(maxCards
+          ? filteredProjects.slice(0, maxCards)
+          : filteredProjects
+        ).map((project) => (
           <ProjectCard key={project.html_url} project={project} />
         ))}
       </div>
