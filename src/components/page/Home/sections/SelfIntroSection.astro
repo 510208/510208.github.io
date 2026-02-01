@@ -14,7 +14,7 @@ import config from "@shConfig";
 ---
 
 <div
-  class="grid grid-cols-1 lg:grid-cols-4 lg:grid-rows-4 gap-5 max-w-110 w-full lg:max-w-300"
+  class="grid grid-cols-1 lg:grid-cols-4 lg:grid-rows-4 gap-5 w-full lg:max-w-none"
 >
   <!-- 自我介紹 -->
   <Card
@@ -206,11 +206,30 @@ import config from "@shConfig";
 
   // hook卡片，確定是否有被hover
   const card = document.getElementById("sh-about-location-card");
+  let isHovered = false;
+  let targetSpeed = globeRotateSpeed;
+
+  // 平滑過渡函數
+  function smoothTransition() {
+    const diff = targetSpeed - globeRotateSpeed;
+    if (Math.abs(diff) > 0.001) {
+      globeRotateSpeed += (diff * 2) / 400;
+      window.requestAnimationFrame(smoothTransition);
+    } else {
+      globeRotateSpeed = targetSpeed;
+    }
+  }
+
   card?.addEventListener("mouseenter", () => {
-    globeRotateSpeed = 0;
+    isHovered = true;
+    targetSpeed = 0;
+    smoothTransition();
   });
+
   card?.addEventListener("mouseleave", () => {
-    globeRotateSpeed = 1 / 400;
+    isHovered = false;
+    targetSpeed = 1 / 400;
+    smoothTransition();
   });
 
   const globe = createGlobe(canvas, {
