@@ -3,8 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import Content from "@/layouts/Content.astro";
 
 import HeroSection from "@components/page/Home/sections/HeroSection.astro";
-import SelfIntroSection from "@/components/page/Home/compose/self-intro/SelfIntroSection.astro";
-import Projects from "@components/page/Home/sections/Projects.astro";
+import SelfIntroSection from "@components/page/Home/compose/self-intro/SelfIntroSection.astro";
+import ProjectsSummary from "@/components/page/Home/compose/projects/ProjectsSummary.astro";
 
 import bgImage from "@/assets/pages/home/dark_bg-intro.png";
 
@@ -14,6 +14,28 @@ import bgImage from "@/assets/pages/home/dark_bg-intro.png";
 
 <Layout>
   <HeroSection />
-  <Content bgImage={bgImage}><SelfIntroSection /></Content>
-  <Content><Projects /></Content>
+
+  <Content sectionName="intro" bgImage={bgImage}>
+    <div class="flex flex-col gap-0 items-center mb-10" slot="title">
+      <span
+        class="opacity-30 select-none uppercase tracking-[1em] font-extralight"
+      >
+        About Me
+      </span>
+      <h2 class="text-4xl font-bold" id="sh-intro-title">關於我</h2>
+    </div>
+    <SelfIntroSection />
+  </Content>
+
+  <Content sectionName="projects">
+    <div class="flex flex-col gap-0 items-center mb-10" slot="title">
+      <span
+        class="opacity-30 select-none uppercase tracking-[1em] font-extralight"
+      >
+        Projects
+      </span>
+      <h2 class="text-4xl font-bold" id="sh-projects-title">專案</h2>
+    </div>
+    <ProjectsSummary />
+  </Content>
 </Layout>
