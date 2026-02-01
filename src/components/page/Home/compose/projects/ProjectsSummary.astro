@@ -1,0 +1,8 @@
+---
+import Projects from "@components/page/Home/sections/Projects.astro";
+import { ProjectsList } from "@components/page/Home/compose/projects/ProjectsList";
+---
+
+<div>
+  <ProjectsList showFilter={false} maxCards={3} client:load />
+</div>
