@@ -2,40 +2,40 @@
 const { href } = Astro.props;
 ---
 
-<div
-  class="relative aspect-square w-full flex justify-center items-center group"
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="flex justify-center items-center relative z-10"
 >
-  <!-- 四角圓點裝飾 -->
   <div
-    class="sh-corner-dot absolute top-1/2 left-1/2 w-1.5 h-1.5 bg-stone-600 rounded-full opacity-50 -translate-x-1/2 -translate-y-1/2"
-    data-corner="top-left"
+    class="relative aspect-square w-full flex justify-center items-center group"
   >
-  </div>
-  <div
-    class="sh-corner-dot absolute top-1/2 left-1/2 w-1.5 h-1.5 bg-stone-600 rounded-full opacity-50 -translate-x-1/2 -translate-y-1/2"
-    data-corner="top-right"
-  >
-  </div>
-  <div
-    class="sh-corner-dot absolute top-1/2 left-1/2 w-1.5 h-1.5 bg-stone-600 rounded-full opacity-50 -translate-x-1/2 -translate-y-1/2"
-    data-corner="bottom-left"
-  >
-  </div>
-  <div
-    class="sh-corner-dot absolute top-1/2 left-1/2 w-1.5 h-1.5 bg-stone-600 rounded-full opacity-50 -translate-x-1/2 -translate-y-1/2"
-    data-corner="bottom-right"
-  >
-  </div>
+    <!-- 四角圓點裝飾 -->
+    <div
+      class="sh-corner-dot absolute top-1/2 left-1/2 w-1.5 h-1.5 bg-stone-600 rounded-full opacity-50 -translate-x-1/2 -translate-y-1/2"
+      data-corner="top-left"
+    >
+    </div>
+    <div
+      class="sh-corner-dot absolute top-1/2 left-1/2 w-1.5 h-1.5 bg-stone-600 rounded-full opacity-50 -translate-x-1/2 -translate-y-1/2"
+      data-corner="top-right"
+    >
+    </div>
+    <div
+      class="sh-corner-dot absolute top-1/2 left-1/2 w-1.5 h-1.5 bg-stone-600 rounded-full opacity-50 -translate-x-1/2 -translate-y-1/2"
+      data-corner="bottom-left"
+    >
+    </div>
+    <div
+      class="sh-corner-dot absolute top-1/2 left-1/2 w-1.5 h-1.5 bg-stone-600 rounded-full opacity-50 -translate-x-1/2 -translate-y-1/2"
+      data-corner="bottom-right"
+    >
+    </div>
 
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    class="flex justify-center items-center relative z-10"
-  >
     <slot />
-  </a>
-</div>
+  </div></a
+>
 
 <script>
   import { gsap } from "gsap";
