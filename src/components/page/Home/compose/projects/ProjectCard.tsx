@@ -73,7 +73,6 @@ export function ProjectCard({
     >
       <Card
         key={project.name}
-        id={`projects-${project.name}`}
         className="relative group bg-neutral-800 min-h-[400px] transition-all duration-300 hover:bg-neutral-900 px-0 py-0 overflow-hidden pb-6"
         style={{
           opacity:
