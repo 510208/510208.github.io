@@ -4,9 +4,19 @@ import StatusBadge from "@components/page/Home/compose/hero/StatusBadge.astro";
 import misana from "@/assets/pages/home/misana-character.png";
 import bgGrid from "@/assets/pages/home/dark_bg-grid.svg";
 import { Image } from "astro:assets";
+import { ChevronDown, Mouse } from "lucide-react";
 ---
 
-<section id="hero-section" class="hero-section relative overflow-hidden">
+<section id="sh-hero-section" class="hero-section relative overflow-hidden">
+  <!-- 往下捲動提示 -->
+  <div
+    id="sh-hero-mouse-indicator"
+    class="absolute flex flex-col justify-center items-center bottom-4 left-1/2 transform -translate-x-1/2 z-20"
+  >
+    <Mouse />
+    <ChevronDown size={16} />
+  </div>
+
   <div class="mx-auto px-4 sm:px-6 lg:px-8 lg:h-[97vh]">
     <div
       class="flex flex-col lg:flex-row items-center justify-between h-full pt-8"
@@ -153,5 +163,19 @@ import { Image } from "astro:assets";
       y: 0,
       ease: "power2.out",
     });
+  });
+</script>
+
+<script>
+  // Scroll Down Indicator Animation
+  import { gsap } from "gsap";
+
+  // 上下浮動動畫
+  gsap.to("#sh-hero-mouse-indicator", {
+    y: -15,
+    duration: 1,
+    ease: "power1.inOut",
+    yoyo: true,
+    repeat: -1,
   });
 </script>
