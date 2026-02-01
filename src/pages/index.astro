@@ -23,7 +23,7 @@ import { Button } from "@ui/button";
       >
         About Me
       </span>
-      <h2 class="text-4xl font-bold" id="sh-intro-title">關於我</h2>
+      <h2 class="text-4xl font-bold lg:w-full" id="sh-intro-title">關於我</h2>
     </div>
     <SelfIntroSection />
   </Content>
@@ -35,7 +35,7 @@ import { Button } from "@ui/button";
       >
         Projects
       </span>
-      <h2 class="text-4xl font-bold" id="sh-projects-title">專案</h2>
+      <h2 class="text-4xl font-bold lg:w-full" id="sh-projects-title">專案</h2>
     </div>
     <ProjectsSummary />
     <div class="mt-4 w-full flex justify-center">
@@ -73,6 +73,7 @@ import { Button } from "@ui/button";
         scrollTrigger: {
           trigger: title,
           start: "top 80%",
+          toggleActions: "play none none reverse",
         },
         duration: 1.5,
         x: (i, target) => {
