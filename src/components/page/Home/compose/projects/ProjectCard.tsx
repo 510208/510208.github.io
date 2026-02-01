@@ -12,6 +12,7 @@ import {
 import { Badge } from "@components/ui/badge";
 import { Languages, Scale, SquareArrowOutUpRight, Tag } from "lucide-react";
 import type { Project } from "@/types/shsite.projects";
+import { twMerge } from "tailwind-merge";
 
 export function DevelopmentStatusBadge({
   status,
@@ -53,13 +54,22 @@ export function DevelopmentStatusBadge({
   }
 }
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({
+  project,
+  className,
+}: {
+  project: Project;
+  className?: string;
+}) {
   return (
     <a
       href={project.html_url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block text-inherit no-underline w-full group"
+      className={twMerge(
+        "block text-inherit no-underline w-full group",
+        className,
+      )}
     >
       <Card
         key={project.name}

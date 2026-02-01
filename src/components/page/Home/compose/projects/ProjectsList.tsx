@@ -195,7 +195,11 @@ export const ProjectsList = ({
           ? filteredProjects.slice(0, maxCards)
           : filteredProjects
         ).map((project) => (
-          <ProjectCard key={project.html_url} project={project} />
+          <ProjectCard
+            key={project.html_url}
+            project={project}
+            className={`sh-project-card sh-project-card-${project.name}`}
+          />
         ))}
       </div>
 
