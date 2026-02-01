@@ -4,7 +4,7 @@ import StatusBadge from "@components/page/Home/compose/hero/StatusBadge.astro";
 import misana from "@/assets/pages/home/misana-character.png";
 import bgGrid from "@/assets/pages/home/dark_bg-grid.svg";
 import { Image } from "astro:assets";
-import { ChevronDown, Mouse } from "lucide-react";
+import { ChevronDown, Mouse } from "@lucide/astro";
 ---
 
 <section id="sh-hero-section" class="hero-section relative overflow-hidden">
@@ -13,8 +13,8 @@ import { ChevronDown, Mouse } from "lucide-react";
     id="sh-hero-mouse-indicator"
     class="absolute flex flex-col justify-center items-center bottom-4 left-1/2 transform -translate-x-1/2 z-20"
   >
-    <Mouse />
-    <ChevronDown size={16} />
+    <Mouse class="mb-1 opacity-60" />
+    <ChevronDown class="opacity-40" size={16} />
   </div>
 
   <div class="mx-auto px-4 sm:px-6 lg:px-8 lg:h-[97vh]">
@@ -102,7 +102,7 @@ import { ChevronDown, Mouse } from "lucide-react";
     const tl = gsap.timeline({ repeat: 0, delay: 0.5 });
 
     // Split text into individual words
-    const splitText = new SplitText("#sh-hero-title", { type: "chars" });
+    let splitText = new SplitText("#sh-hero-title", { type: "chars" });
 
     // 設定DiscordBadge的初始
     gsap.set("#sh-discord-status-badge", { opacity: 0, y: 20 });
