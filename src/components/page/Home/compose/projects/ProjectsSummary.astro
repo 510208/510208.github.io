@@ -3,6 +3,13 @@ import Projects from "@components/page/Home/sections/Projects.astro";
 import { ProjectsList } from "@components/page/Home/compose/projects/ProjectsList";
 ---
 
+<head>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+  />
+</head>
 <div>
   <ProjectsList showFilter={false} maxCards={3} client:load />
 </div>
