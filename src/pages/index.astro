@@ -1,12 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
 import Content from "@/layouts/Content.astro";
 
 import HeroSection from "@components/page/Home/sections/HeroSection.astro";
-import SelfIntroSection from "@/components/page/Home/sections/SelfIntroSection.astro";
-import ProjectsSummary from "@/components/page/Home/compose/projects/ProjectsSummary.astro";
+import SelfIntroSection from "@components/page/Home/sections/SelfIntroSection.astro";
+import ProjectsSummary from "@components/page/Home/compose/projects/ProjectsSummary.astro";
 
 import bgImage from "@/assets/pages/home/dark_bg-intro.png";
+import { Button } from "@ui/button";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -16,9 +17,9 @@ import bgImage from "@/assets/pages/home/dark_bg-intro.png";
   <HeroSection />
 
   <Content sectionName="intro" bgImage={bgImage}>
-    <div class="flex flex-col gap-0 items-center mb-10" slot="title">
+    <div class="flex flex-col gap-0 items-center" slot="title">
       <span
-        class="opacity-30 select-none uppercase tracking-[1em] font-extralight"
+        class="sh-title-background-animation absolute opacity-30 select-none uppercase font-extrabold text-4xl"
       >
         About Me
       </span>
@@ -28,14 +29,65 @@ import bgImage from "@/assets/pages/home/dark_bg-intro.png";
   </Content>
 
   <Content sectionName="projects">
-    <div class="flex flex-col gap-0 items-center mb-10" slot="title">
+    <div class="flex flex-col gap-0 items-center" slot="title">
       <span
-        class="opacity-30 select-none uppercase tracking-[1em] font-extralight"
+        class="sh-title-background-animation absolute opacity-30 select-none uppercase font-extrabold text-4xl"
       >
         Projects
       </span>
       <h2 class="text-4xl font-bold" id="sh-projects-title">專案</h2>
     </div>
     <ProjectsSummary />
+    <div class="mt-4 w-full flex justify-center">
+      <a href="/projects">
+        <Button variant="outline">我的所有專案</Button>
+      </a>
+    </div>
   </Content>
 </Layout>
+
+<script>
+  import { gsap } from "gsap";
+  import { SplitText } from "gsap/SplitText";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(SplitText);
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // 進入視圖前.sh-title-background-animation內部的文字全部重疊在正中間、blur(20px)，進入視圖時各個字元會由中間向外緩慢展開，且漸漸降低模糊的量
+    const titleAnimations = document.querySelectorAll(
+      ".sh-title-background-animation",
+    );
+    titleAnimations.forEach((title) => {
+      const split = new SplitText(title, { type: "chars" });
+
+      // 設置初始狀態：所有字元重疊在中間位置並模糊
+      gsap.set(split.chars, {
+        x: 0,
+        filter: "blur(5px)",
+        opacity: 0.3,
+      });
+
+      gsap.to(split.chars, {
+        scrollTrigger: {
+          trigger: title,
+          start: "top 80%",
+        },
+        duration: 1.5,
+        x: (i, target) => {
+          // 以字元間距1em計算每個字元應該移動到的位置
+          const totalChars = split.chars.length;
+          const centerIndex = (totalChars - 1) / 2;
+          const charOffset = i - centerIndex;
+          const fontSize = parseFloat(getComputedStyle(target).fontSize);
+          return charOffset * fontSize; // 1em = fontSize
+        },
+        filter: "blur(0px)",
+        opacity: 0.3,
+        ease: "power2.out",
+        stagger: 0.08,
+      });
+    });
+  });
+</script>
