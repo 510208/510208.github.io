@@ -13,7 +13,7 @@ export const PROJECTS: Project[] = [
     opengraphImageUrl:
       "https://repository-images.githubusercontent.com/1107038747/b86c96ae-1a58-4df1-ac7a-3466150f338b",
     description:
-      "A simple, lightweight, Chinese-based personal blog template, highly customizable, suitable for personal blogs.",
+      "一款簡潔輕巧、專為亞洲語系內容打造的Astro個人部落格模板，高度可客製化，適合個人部落格使用。",
     html_url: "https://github.com/510208/sh-blog-next",
     language: ["Astro", "React", "NodeJS", "TypeScript"],
     topics: [
@@ -27,6 +27,29 @@ export const PROJECTS: Project[] = [
       "theme",
     ],
     license: "MIT License",
+  },
+  // CFBot
+  {
+    name: "CFBot",
+    opengraphImageUrl:
+      "https://repository-images.githubusercontent.com/821410004/21471c43-2afd-46f2-81cf-0f806047dfa0",
+    description:
+      "這是一個高度可客製化、功能強大且完整的Discord機器人，專為Minecraft社群設計，提供多種實用功能和指令。",
+    html_url: "https://github.com/510208/cfbot",
+    language: "Python",
+    topics: ["discord-bot", "discord.py", "minecraft", "python", "open-source"],
+    license: "GNU General Public License v3.0",
+  },
+  // Browser Homepage
+  {
+    name: "SamHacker 的瀏覽器首頁",
+    opengraphImageUrl:
+      "https://github.com/510208/browser-homepage/raw/main/docs/image/image.png",
+    description:
+      "一個簡單且高度可自訂的瀏覽器首頁，提供快速存取常用網站和搜尋引擎的功能。",
+    html_url: "https://github.com/510208/browser-homepage",
+    language: ["JavaScript", "HTML5", "CSS3", "ViteJS"],
+    topics: ["homepage", "customizable", "javascript", "vite", "vitejs"],
   },
   // MD5Hashing
   {
@@ -51,18 +74,6 @@ export const PROJECTS: Project[] = [
     ],
     license: "GNU General Public License v3.0",
     status: "completed",
-  },
-  // CFBot
-  {
-    name: "CFBot",
-    opengraphImageUrl:
-      "https://repository-images.githubusercontent.com/821410004/21471c43-2afd-46f2-81cf-0f806047dfa0",
-    description:
-      "這是一個提供給 🪶Minecraft 雲羽伺服器 的 Discord Bot，由服主 SamHacker 編寫。為了幫助更多人而不限於我們伺服器內部，我將此專案開源出來給大家使用",
-    html_url: "https://github.com/510208/cfbot",
-    language: "Python",
-    topics: ["discord-bot", "discord.py", "minecraft", "python", "open-source"],
-    license: "GNU General Public License v3.0",
   },
   // Personal Website Route
   {
@@ -92,17 +103,6 @@ export const PROJECTS: Project[] = [
     language: "React",
     topics: ["personal-website", "react", "samhacker", "vite", "vitejs"],
     license: "GNU General Public License v3.0",
-  },
-  // Browser Homepage
-  {
-    name: "SamHacker 的瀏覽器首頁",
-    opengraphImageUrl:
-      "https://github.com/510208/browser-homepage/raw/main/docs/image/image.png",
-    description:
-      "一個簡單且高度可自訂的瀏覽器首頁，提供快速存取常用網站和搜尋引擎的功能。",
-    html_url: "https://github.com/510208/browser-homepage",
-    language: ["JavaScript", "HTML5", "CSS3", "ViteJS"],
-    topics: ["homepage", "customizable", "javascript", "vite", "vitejs"],
   },
   // 諾瓦雷克斯帝國 身分證產生器
   {
