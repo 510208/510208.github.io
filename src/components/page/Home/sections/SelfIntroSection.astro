@@ -93,10 +93,10 @@ import config from "@shConfig";
     id="sh-about-github-card"
     className="col-span-1 lg:col-span-2 lg:row-start-4 will-change-transform relative overflow-hidden min-h-50 hover:bg-stone-800 "
   >
-    <CardHeader className="flex gap-2 items-center font-bold relative z-10">
+    <!-- <CardHeader className="flex gap-2 items-center font-bold relative z-10">
       <Github size={20} stroke-width={3} />
       GitHub
-    </CardHeader>
+    </CardHeader> -->
     <CardContent className="relative z-10 flex gap-4">
       <GitHubInfo client:load />
     </CardContent>
@@ -199,7 +199,7 @@ import config from "@shConfig";
   import createGlobe from "cobe";
 
   let phi = 0;
-  let globeRotateSpeed = 1 / 400;
+  let globeRotateSpeed = 1 / 200;
   let canvas = document.getElementById(
     "sh-about-location-cobe-canvas",
   ) as HTMLCanvasElement;
@@ -216,7 +216,7 @@ import config from "@shConfig";
       globeRotateSpeed += (diff * 2) / 400;
       window.requestAnimationFrame(smoothTransition);
     } else {
-      globeRotateSpeed = targetSpeed;
+      globeRotateSpeed = 0.001;
     }
   }
 
@@ -228,7 +228,7 @@ import config from "@shConfig";
 
   card?.addEventListener("mouseleave", () => {
     isHovered = false;
-    targetSpeed = 1 / 400;
+    targetSpeed = 1 / 200;
     smoothTransition();
   });
 
