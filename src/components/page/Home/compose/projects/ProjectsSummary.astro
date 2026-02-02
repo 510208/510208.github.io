@@ -11,7 +11,12 @@ import { ProjectsList } from "@components/page/Home/compose/projects/ProjectsLis
   />
 </head>
 <div>
-  <ProjectsList showFilter={false} maxCards={3} client:load />
+  <div class="hidden lg:block">
+    <ProjectsList showFilter={false} maxCards={3} client:load />
+  </div>
+  <div class="lg:hidden">
+    <ProjectsList showFilter={false} maxCards={1} client:load />
+  </div>
 </div>
 
 <script>
