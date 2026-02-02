@@ -24,6 +24,14 @@ import { Image } from "astro:assets";
     "--vw",
     `${document.documentElement.clientWidth / 100}px`,
   );
+
+  // 在視窗大小改變時更新 --vw 變數
+  window.addEventListener("resize", () => {
+    document.documentElement.style.setProperty(
+      "--vw",
+      `${document.documentElement.clientWidth / 100}px`,
+    );
+  });
 </script>
 
 <!-- GSAP -->
