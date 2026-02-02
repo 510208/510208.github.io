@@ -1,22 +1,27 @@
 ---
 import type { ImageMetadata } from "astro";
+import { cn } from "@lib/utils";
 
 interface Props {
   sectionName: string;
   bgImage?: string | ImageMetadata | undefined;
+  class?: string;
 }
-const { sectionName, bgImage }: Props = Astro.props;
+const { sectionName, bgImage, class: className }: Props = Astro.props;
 ---
 
 <section
   id={`sh-${sectionName.toLowerCase()}-section`}
-  class="w-full flex flex-col justify-center items-center px-4 py-8 lg:py-16"
+  class={cn(
+    "w-full flex flex-col justify-center items-center px-4 py-8 lg:py-16",
+    className,
+  )}
   style={bgImage
     ? `background-image: url(${typeof bgImage === "string" ? bgImage : bgImage?.src}); background-size: cover; background-position: bottom center;`
     : undefined}
 >
   <div
-    class="flex flex-col gap-0 items-center mb-10"
+    class="w-full max-w-sm lg:max-w-6xl mb-10"
     id={`sh-${sectionName.toLowerCase()}-title`}
   >
     <slot name="title" />
