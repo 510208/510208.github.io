@@ -18,10 +18,12 @@ export const ProjectsList = ({
   showFilter,
   maxCards,
   className,
+  displaySection,
 }: {
   showFilter?: boolean;
   maxCards?: number;
   className?: string;
+  displaySection?: React.ComponentProps<typeof ProjectCard>["displaySection"];
 }) => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
@@ -206,6 +208,7 @@ export const ProjectsList = ({
           <ProjectCard
             key={project.html_url}
             project={project}
+            displaySection={displaySection}
             className={`sh-project-card sh-project-card-${index}`}
           />
         ))}

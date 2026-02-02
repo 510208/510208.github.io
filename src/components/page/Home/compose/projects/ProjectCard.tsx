@@ -14,6 +14,16 @@ import { Languages, Scale, SquareArrowOutUpRight, Tag } from "lucide-react";
 import type { Project } from "@/types/shsite.projects";
 import { twMerge } from "tailwind-merge";
 
+interface DisplaySectionProps {
+  showStatus?: boolean;
+  showLanguage?: boolean;
+  showTopics?: boolean;
+  showLicense?: boolean;
+  showImage?: boolean;
+  showName?: boolean;
+  showDescription?: boolean;
+}
+
 export function DevelopmentStatusBadge({
   status,
 }: {
@@ -57,9 +67,11 @@ export function DevelopmentStatusBadge({
 export function ProjectCard({
   project,
   className,
+  displaySection,
 }: {
   project: Project;
   className?: string;
+  displaySection?: DisplaySectionProps;
 }) {
   return (
     <a
@@ -88,7 +100,12 @@ export function ProjectCard({
           />
         </div>
         {/* 裝飾用圖片 */}
-        <div className="pointer-events-none absolute -right-5 -bottom-0 transition-all duration-300 z-0 shadow-lg bg-gray-300 rounded-xl ease-in-out -rotate-6 group-hover:-rotate-2 origin-top-right overflow-hidden">
+        <div
+          className="pointer-events-none absolute -right-5 -bottom-0 transition-all duration-300 z-0 shadow-lg bg-gray-300 rounded-xl ease-in-out -rotate-6 group-hover:-rotate-2 origin-top-right overflow-hidden"
+          style={{
+            display: displaySection?.showImage === false ? "none" : "block",
+          }}
+        >
           <img
             src={project.opengraphImageUrl}
             alt={`${project.name} 的縮圖`}
@@ -98,9 +115,21 @@ export function ProjectCard({
         <div className="p-2">
           <CardHeader className="pt-4 pb-2 px-4 bg-transparent relative z-10">
             {/* 開發狀態標籤 */}
-            <DevelopmentStatusBadge status={project.status} />
+            <div
+              style={{
+                display:
+                  displaySection?.showStatus === false ? "none" : "block",
+              }}
+            >
+              <DevelopmentStatusBadge status={project.status} />
+            </div>
             {/* 標題 */}
-            <CardTitle className="text-xl font-bold flex items-center space-x-2">
+            <CardTitle
+              className="text-xl font-bold items-center space-x-2"
+              style={{
+                display: displaySection?.showName === false ? "none" : "flex",
+              }}
+            >
               <span>{project.name}</span>
               <SquareArrowOutUpRight
                 className="opacity-0 group-hover:opacity-100 transition-all duration-200"
@@ -110,7 +139,13 @@ export function ProjectCard({
             <CardDescription className="text-sm text-gray-400">
               <div className="my-2 flex flex-col gap-2 min-h-20">
                 {/* 所使用的程式語言 */}
-                <div className="flex gap-1 items-center align-middle">
+                <div
+                  className="flex gap-1 items-center align-middle"
+                  style={{
+                    display:
+                      displaySection?.showLanguage === false ? "none" : "flex",
+                  }}
+                >
                   <Languages size={18} />
                   <span>
                     {project.language ? (
@@ -138,7 +173,13 @@ export function ProjectCard({
                 </div>
 
                 {/* 標籤 */}
-                <div className="flex gap-1 items-center">
+                <div
+                  className="flex gap-1 items-center"
+                  style={{
+                    display:
+                      displaySection?.showTopics === false ? "none" : "flex",
+                  }}
+                >
                   {project.topics && project.topics.length > 0 && (
                     <>
                       <Tag size={18} />
@@ -178,18 +219,41 @@ export function ProjectCard({
 
                 {/* 授權 */}
                 {(project.license && (
-                  <div className="flex gap-1 items-center">
+                  <div
+                    className="flex gap-1 items-center"
+                    style={{
+                      display:
+                        displaySection?.showLicense === false ? "none" : "flex",
+                    }}
+                  >
                     <Scale size={18} />
                     <Badge variant="secondary">{project.license}</Badge>
                   </div>
                 )) || (
-                  <div className="flex gap-1 items-center">
+                  <div
+                    className="flex gap-1 items-center"
+                    style={{
+                      display:
+                        displaySection?.showLicense === false ? "none" : "flex",
+                    }}
+                  >
                     <Scale size={18} />
                     <Badge variant="outline">無授權資訊</Badge>
                   </div>
                 )}
               </div>
-              <span>{project.description}</span>
+
+              {/* 描述 */}
+              <span
+                style={{
+                  display:
+                    displaySection?.showDescription === false
+                      ? "none"
+                      : "block",
+                }}
+              >
+                {project.description}
+              </span>
             </CardDescription>
           </CardHeader>
         </div>
