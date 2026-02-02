@@ -144,9 +144,9 @@ body {
 }
 
 /*
-Source - https://stackoverflow.com/q/10578073
-Posted by Bhaxy, modified by community. See post 'Timeline' for change history
-Retrieved 2026-02-02, License - CC BY-SA 4.0
+ * Source - https://stackoverflow.com/q/10578073
+ * Posted by Bhaxy, modified by community. See post 'Timeline' for change history
+ * Retrieved 2026-02-02, License - CC BY-SA 4.0
 */
 
 ::selection {
@@ -157,6 +157,18 @@ Retrieved 2026-02-02, License - CC BY-SA 4.0
 
 ::-moz-selection {
   background: oklch(84.5% 0.143 164.978 / 0.05);
+  color: oklch(76.5% 0.177 163.223);
+  text-shadow: none;
+}
+
+a::selection {
+  background: oklch(84.5% 0.143 164.978 / 0.2);
+  color: oklch(76.5% 0.177 163.223);
+  text-shadow: none;
+}
+
+a::-moz-selection {
+  background: oklch(84.5% 0.143 164.978 / 0.2);
   color: oklch(76.5% 0.177 163.223);
   text-shadow: none;
 }
