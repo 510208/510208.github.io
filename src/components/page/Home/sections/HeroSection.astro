@@ -4,7 +4,7 @@ import StatusBadge from "@components/page/Home/compose/hero/StatusBadge.astro";
 import misana from "@/assets/pages/home/misana-character.png";
 import bgGrid from "@/assets/pages/home/dark_bg-grid.svg";
 import { Image } from "astro:assets";
-import { ChevronDown, Mouse } from "@lucide/astro";
+import { ChevronDown, Mouse, Hand } from "@lucide/astro";
 ---
 
 <section id="sh-hero-section" class="hero-section relative overflow-hidden">
@@ -13,7 +13,8 @@ import { ChevronDown, Mouse } from "@lucide/astro";
     id="sh-hero-mouse-indicator"
     class="absolute flex flex-col justify-center items-center bottom-4 left-1/2 transform -translate-x-1/2 z-20"
   >
-    <Mouse class="mb-1 opacity-60" />
+    <Mouse class="hidden lg:block mb-1 opacity-60" />
+    <Hand class="block lg:hidden mb-1 opacity-60" />
     <ChevronDown class="opacity-40" size={16} />
   </div>
 
