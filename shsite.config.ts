@@ -15,6 +15,10 @@ import {
   Youtube,
 } from "simple-icons-astro";
 
+import apcsLogo from "@/assets/pages/home/rewards/apcs.webp";
+import gameTcLogo from "@/assets/pages/home/rewards/game-tc.webp";
+import gceLogo from "@/assets/pages/home/rewards/gemini-certified-educator.webp";
+
 const config: ShsiteConfig = {
   navBar: {
     links: [
@@ -23,6 +27,57 @@ const config: ShsiteConfig = {
       { title: "Blog", href: "https://samhacker.xyz/", icon: Newspaper },
     ],
   },
+
+  rewards: [
+    {
+      logo: gameTcLogo,
+      title: "SCRATCH應用 國中程式設計 甲組",
+      aka: "臺中市中小學資訊網路應用競賽",
+      result: "甲等",
+      year: {
+        acquirement: new Date(2023, 4, 12),
+      },
+      organization: "臺中市政府教育局",
+      link: "https://game.tc.edu.tw/application/work-appreciation/index",
+      type: "competition",
+    },
+    {
+      logo: gameTcLogo,
+      title: "Scratch應用 國中創意設計 甲組",
+      aka: "臺中市中小學資訊網路應用競賽",
+      result: "優等",
+      year: {
+        acquirement: new Date(2024, 4, 12),
+      },
+      organization: "臺中市政府教育局",
+      link: "https://game.tc.edu.tw/application/work-appreciation/index",
+      type: "competition",
+    },
+    {
+      logo: apcsLogo,
+      title: "APCS",
+      aka: "大學程式設計先修檢測",
+      result: "概念3級分 / 實作3級分",
+      year: {
+        acquirement: new Date(2025, 5, 15),
+      },
+      organization: "國立臺灣師範大學資訊工程學系",
+      link: "https://apcs.csie.ntnu.edu.tw/",
+      type: "certification",
+    },
+    {
+      logo: gceLogo,
+      title: "Gemini Certified Educator",
+      result: "通過",
+      year: {
+        acquirement: new Date(2025, 11, 7),
+        expiration: new Date(2028, 11, 7),
+      },
+      organization: "Google for Education",
+      link: "https://edu.google.accredible.com/0fe723bf-539d-42c1-b545-2150a0b7c6b9#acc.YJuCmEKe",
+      type: "certification",
+    },
+  ],
 
   socialLinks: [
     {
