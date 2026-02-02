@@ -54,12 +54,13 @@ const links = config.navBar.links;
         {
           links.map((link, index) => (
             <div class="flex items-center">
-              <a
+                <a
                 href={link.href}
                 class="px-2 h-6 flex items-center text-sm font-medium text-white uppercase hover:text-white/80 transition-colors"
-              >
+                aria-label={link.title}
+                >
                 <link.icon size={16} />
-              </a>
+                </a>
               {index < links.length - 1 && (
                 <span class="hidden sm:block text-neutral-400 text-sm">/</span>
               )}
