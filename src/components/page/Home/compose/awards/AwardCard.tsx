@@ -4,16 +4,24 @@ import {
   HoverCardTrigger,
 } from "@components/ui/hover-card";
 import type { ShsiteConfig } from "@/types/shsite.config";
+import { cn } from "@lib/utils";
 
 export const AwardCard = ({
   awardItem,
+  className,
 }: {
   awardItem: ShsiteConfig["rewards"][number];
+  className?: string;
 }) => {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <div className="mb-6">
+        <div
+          // 加上 suppressHydrationWarning 避免因 client-side 動畫插入 inline style 導致的 hydration mismatch
+          suppressHydrationWarning
+          data-animate-target="award"
+          className={cn("mb-6 sh-awards-animation", className)}
+        >
           <h3 className="text-lg font-semibold">{awardItem.title}</h3>
           <p className="text-sm text-gray-600 dark:text-gray-400">
             {awardItem.organization} &middot;{" "}
