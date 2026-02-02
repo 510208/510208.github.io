@@ -1,0 +1,8 @@
+---
+import config from "@shConfig";
+import AwardCard from "@components/page/Home/compose/awards/AwardCard.tsx";
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:px-10 lg:py-6 lg:min-h-50">
+  {config.rewards.map((award) => <AwardCard awardItem={award} client:load />)}
+</div>
