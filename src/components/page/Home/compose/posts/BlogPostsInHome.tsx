@@ -28,7 +28,7 @@ export const BlogPosts = () => {
 
         // 使用 CORS 代理抓取 RSS
         const response = await fetch(
-          `https://api.allorigins.win/raw?url=https://api.allorigins.win/raw?url=https%3a%2f%2fsamhacker.xyz%2frss.xml")}`,
+          "https://api.allorigins.win/raw?url=https%3a%2f%2fsamhacker.xyz%2frss.xml",
         );
 
         if (!response.ok) {
