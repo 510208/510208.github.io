@@ -12,13 +12,16 @@ import {
 import { Languages, Search, Filter, ChartPie } from "lucide-react";
 import { DevelopmentStatusBadge, ProjectCard } from "./ProjectCard";
 import type { Project } from "@/types/shsite.projects";
+import { cn } from "@/lib/utils";
 
 export const ProjectsList = ({
   showFilter,
   maxCards,
+  className,
 }: {
   showFilter?: boolean;
   maxCards?: number;
+  className?: string;
 }) => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
@@ -190,7 +193,12 @@ export const ProjectsList = ({
         </div>
       )}
       {/* 專案網格 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div
+        className={cn(
+          "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
+          className,
+        )}
+      >
         {(maxCards
           ? filteredProjects.slice(0, maxCards)
           : filteredProjects
