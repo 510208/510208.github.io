@@ -1,6 +1,10 @@
 ---
 import Projects from "@components/page/Home/sections/Projects.astro";
 import { ProjectsList } from "@components/page/Home/compose/projects/ProjectsList";
+import { Image } from "astro:assets";
+
+import cfbotLogo from "@/assets/pages/projects/cfbot_logo.svg";
+import shblogLogo from "@/assets/pages/projects/shblog-next_logo.svg";
 ---
 
 <head>
@@ -11,9 +15,28 @@ import { ProjectsList } from "@components/page/Home/compose/projects/ProjectsLis
   />
 </head>
 <div>
-  <div class="hidden lg:block">
-    <ProjectsList showFilter={false} maxCards={3} client:load />
+  <!-- 顯示專案的Logo -->
+  <div class="flex justify-center align-middle gap-4">
+    <a href="https://github.com/510208/cfbot" class="sh-project-card">
+      <Image
+        src={cfbotLogo}
+        alt="CFBot Logo"
+        height={100}
+        class="invert-100 opacity-20 hover:opacity-100 transition-opacity duration-300"
+        loading="lazy"
+      />
+    </a>
+    <a href="https://github.com/510208/sh-blog-next" class="sh-project-card">
+      <Image
+        src={shblogLogo}
+        alt="SHBlog Next Logo"
+        height={70}
+        class="opacity-20 hover:opacity-100 transition-opacity duration-300"
+        loading="lazy"
+      />
+    </a>
   </div>
+  <!-- 手機板顯示專案列表 -->
   <div class="lg:hidden">
     <ProjectsList showFilter={false} maxCards={1} client:load />
   </div>
