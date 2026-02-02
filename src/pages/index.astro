@@ -12,9 +12,6 @@ import SectionTitle from "@components/common/SectionTitle.astro";
 
 import bgImage from "@/assets/pages/home/dark_bg-intro.png";
 import { Button } from "@ui/button";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
@@ -71,4 +68,47 @@ import { Button } from "@ui/button";
     />
     <AwardsSection />
   </Content>
+
+  <!-- 結尾 -->
+  <Content sectionName="outro" class="py-30">
+    <div slot="title" id="sh-outro-title-animation">
+      <h2 class="text-5xl font-extrabold">好了，大概就寫到這裡吧！</h2>
+      <h2 class="text-5xl font-extrabold">畢竟我也不知道後面要寫些什麼？</h2>
+      <h2 class="text-5xl font-extrabold">
+        你有想法嗎？或許可以聯絡我聊聊喔！
+      </h2>
+    </div>
+  </Content>
 </Layout>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+
+  gsap.registerPlugin(ScrambleTextPlugin);
+  document.addEventListener("DOMContentLoaded", () => {
+    const outroTitle = document.querySelector("#sh-outro-title-animation");
+
+    const tl = gsap.timeline();
+
+    if (outroTitle) {
+      const lines = outroTitle.querySelectorAll("h2");
+      lines.forEach((line, index) => {
+        tl.fromTo(
+          line,
+          { scrambleText: { text: "", chars: "0123456789!@#$%^&*" } },
+          {
+            scrambleText: {
+              text: line.textContent,
+              chars:
+                "好大概就寫到這裡吧畢竟我也不知道後面要寫些什麼你有想法嗎或許可以聯絡我聊聊喔",
+            },
+            duration: 5,
+            ease: "power2.out",
+          },
+          "-=0.3",
+        );
+      });
+    }
+  });
+</script>
