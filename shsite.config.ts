@@ -20,7 +20,7 @@ const config: ShsiteConfig = {
     links: [
       { title: "Home", href: "/", icon: Home },
       { title: "About", href: "/about", icon: Info },
-      { title: "Blog", href: "/blog", icon: Newspaper },
+      { title: "Blog", href: "https://samhacker.xyz/", icon: Newspaper },
     ],
   },
 
