@@ -169,3 +169,7 @@ body {
 .sh-background-text-decoration {
   @apply bg-gradient-to-b from-white to-transparent bg-clip-text text-transparent;
 }
+
+@view-transition {
+  navigation: auto;
+}
