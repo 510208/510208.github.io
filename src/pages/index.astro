@@ -3,8 +3,9 @@ import Layout from "@/layouts/Layout.astro";
 import Content from "@/layouts/Content.astro";
 
 import HeroSection from "@components/page/Home/sections/HeroSection.astro";
+import PostsSection from "@components/page/Home/sections/PostsSection.astro";
+import ProjectsSection from "@/components/page/Home/sections/ProjectsSection.astro";
 import SelfIntroSection from "@components/page/Home/sections/SelfIntroSection.astro";
-import ProjectsSummary from "@components/page/Home/compose/projects/ProjectsSummary.astro";
 
 import bgImage from "@/assets/pages/home/dark_bg-intro.png";
 import { Button } from "@ui/button";
@@ -37,7 +38,7 @@ import { Button } from "@ui/button";
       </span>
       <h2 class="text-4xl font-bold lg:w-full" id="sh-projects-title">專案</h2>
     </div>
-    <ProjectsSummary />
+    <ProjectsSection />
     <div class="mt-4 w-full flex justify-center">
       <a href="/projects">
         <Button variant="outline">我的所有專案</Button>
@@ -54,7 +55,7 @@ import { Button } from "@ui/button";
       </span>
       <h2 class="text-4xl font-bold lg:w-full" id="sh-posts-title">文章</h2>
     </div>
-    <p class="text-center text-lg">文章內容建置中，敬請期待！</p>
+    <PostsSection />
   </Content>
 </Layout>
 
