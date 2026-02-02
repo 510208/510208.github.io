@@ -31,7 +31,7 @@ const config: ShsiteConfig = {
   rewards: [
     {
       logo: gameTcLogo,
-      title: "SCRATCH應用 國中程式設計 甲組",
+      title: "Scratch應用 國中程式設計 甲組",
       aka: "臺中市中小學資訊網路應用競賽",
       result: "甲等",
       year: {
