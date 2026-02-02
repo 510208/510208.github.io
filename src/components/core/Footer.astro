@@ -1,39 +1,99 @@
 ---
 import config from "@shConfig";
+import { Separator } from "@ui/separator";
 ---
 
-<footer class="w-full min-h-100">
-  <div
-    class="max-w-7xl mx-auto px-6 lg:px-8 py-12 flex flex-col md:flex-row justify-between items-center gap-6"
-  >
-    <p class="text-sm text-gray-400">
-      &copy; <span id="sh-footer-year">2025</span> SamHacker. All rights reserved.
-    </p>
-    <div class="flex items-center gap-4">
-      {
-        config.socialLinks.slice(0, 6).map((link, index) => (
-          <a
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-gray-400 hover:text-white transition-colors"
-            aria-label={link.title}
-          >
-            <link.icon class="w-6 h-6" />
-          </a>
-        ))
-      }
+<footer class="w-full min-h-100 pt-4 px-6 lg:px-8 font-mono">
+  <div class="max-w-7xl mx-auto py-12">
+    <div>
+      <div class="flex justify-between gap-10">
+        <div class="mb-10">
+          <h2 class="text-6xl font-bold mb-10 uppercase">SamHacker Dev.</h2>
+          <p>
+            Hi there!
+            <br />
+            I'm SamHacker, a passionate developer dedicated to crafting innovative
+            solutions and sharing knowledge with the community.
+            <br />
+            Feel free to explore my projects and get in touch!
+          </p>
+        </div>
+
+        <div class="hidden md:flex gap-8 mb-10">
+          <!-- 導航 -->
+          <div class="w-50">
+            <h3 class="text-xl font-semibold">本站連結</h3>
+            <Separator className="mb-4" />
+            <div class="flex flex-col gap-2">
+              {
+                config.navBar.links.map((link) => (
+                  <a
+                    href={link.href}
+                    class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
+                  >
+                    <link.icon size={16} class="mr-2" />
+                    {link.title}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- 聯絡方式 -->
+          <div class="w-50">
+            <h3 class="text-xl font-semibold">聯絡我</h3>
+            <Separator className="mb-4" />
+            <div
+              class="w-fit grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4"
+            >
+              {
+                config.socialLinks.map((link) => (
+                  <a
+                    href={link.href}
+                    class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
+                  >
+                    <link.icon size={22} />
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Separator className="mb-10" />
+
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="text-sm text-gray-400">
+          &copy; <span id="sh-footer-year">2025</span> SamHacker. All rights reserved.
+        </p>
+        <div class="flex items-center gap-4">
+          {
+            config.socialLinks.slice(0, 6).map((link, index) => (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-gray-400 hover:text-white transition-colors"
+                aria-label={link.title}
+              >
+                <link.icon class="w-6 h-6" />
+              </a>
+            ))
+          }
+        </div>
+      </div>
     </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const yearSpan = document.getElementById("sh-footer-year");
+        if (yearSpan) {
+          const currentYear = new Date().getFullYear();
+          yearSpan.textContent = currentYear.toString();
+          console.log("Footer year updated to:", currentYear);
+        }
+      });
+    </script>
   </div>
 </footer>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const yearSpan = document.getElementById("sh-footer-year");
-    if (yearSpan) {
-      const currentYear = new Date().getFullYear();
-      yearSpan.textContent = currentYear.toString();
-      console.log("Footer year updated to:", currentYear);
-    }
-  });
-</script>
