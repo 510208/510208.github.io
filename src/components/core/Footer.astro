@@ -1,0 +1,39 @@
+---
+import config from "@shConfig";
+---
+
+<footer class="w-full min-h-100">
+  <div
+    class="max-w-7xl mx-auto px-6 lg:px-8 py-12 flex flex-col md:flex-row justify-between items-center gap-6"
+  >
+    <p class="text-sm text-gray-400">
+      &copy; <span id="sh-footer-year">2025</span> SamHacker. All rights reserved.
+    </p>
+    <div class="flex items-center gap-4">
+      {
+        config.socialLinks.slice(0, 6).map((link, index) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-400 hover:text-white transition-colors"
+            aria-label={link.title}
+          >
+            <link.icon class="w-6 h-6" />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const yearSpan = document.getElementById("sh-footer-year");
+    if (yearSpan) {
+      const currentYear = new Date().getFullYear();
+      yearSpan.textContent = currentYear.toString();
+      console.log("Footer year updated to:", currentYear);
+    }
+  });
+</script>
