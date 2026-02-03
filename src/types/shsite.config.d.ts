@@ -18,4 +18,13 @@ interface ShsiteConfig {
   }[];
 
   socialLinks: { title: string; href: string; icon: SimpleIcon }[];
+
+  game: {
+    name: string;
+    platform: string[];
+    description?: string;
+    link?: string;
+    image: ImageMetadata;
+    username?: string;
+  }[];
 }

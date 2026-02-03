@@ -19,6 +19,13 @@ import apcsLogo from "@/assets/pages/home/rewards/apcs.webp";
 import gameTcLogo from "@/assets/pages/home/rewards/game-tc.webp";
 import gceLogo from "@/assets/pages/home/rewards/gemini-certified-educator.webp";
 
+import minecraftCover from "@/assets/pages/about/games/minecraft_cover.png";
+import endfieldCover from "@/assets/pages/about/games/endfield_cover.png";
+import phigrosCover from "@/assets/pages/about/games/phigros_cover.png";
+import pjskCover from "@/assets/pages/about/games/pjsk_cover.png";
+import maimaiCover from "@/assets/pages/about/games/maimaidx_cover.png";
+import vscodeCover from "@/assets/pages/about/games/vscode_cover.png";
+
 const config: ShsiteConfig = {
   navBar: {
     links: [
@@ -139,6 +146,62 @@ const config: ShsiteConfig = {
       icon: Gravatar,
       title: "Gravatar",
       href: "https://gravatar.com/samhacker0616",
+    },
+  ],
+
+  game: [
+    {
+      name: "Minecraft",
+      platform: ["電腦", "手機"],
+      description:
+        "麥塊，一個潛力被嚴重低估的遊戲。雖然說建築是真的很難，不過至少我還會玩紅石電路（應該玩得不差吧？）\n另外，我也很喜歡玩各種模組，像是工業模組、魔法模組之類的，學Java也有很大部分是因為想要自己寫模組來玩玩看。",
+      link: "https://www.minecraft.net/",
+      image: minecraftCover,
+      username: "Sam510208",
+    },
+    {
+      name: "明日方舟：終末地",
+      platform: ["電腦"],
+      description:
+        "終末地，a.k.a.電工模擬器（X\n明日方舟我是沒玩過啦，會入坑主要只是因為小陳很可愛（被揍），放心好了我不會移情別戀的ww，害我現在養成寒假每天都要上線拉電線的習慣www",
+      image: endfieldCover,
+      link: "https://endfield.gryphline.com/zh-tw",
+      username: "御坂糸紗奈",
+    },
+    {
+      name: "Phigros",
+      platform: ["手機"],
+      description:
+        "Phigros，俗稱屁股肉，是一款判定線患有嚴重過動症的音遊。重點是，完全免費啊你各位，每張譜都能享受到譜師的用（惡）心（意）。雖然我不是鴿遊，但這聽起來很不錯對吧（是在M幾點）",
+      link: "https://play.google.com/store/apps/details?id=com.PigeonGames.Phigros",
+      username: "SamHacker",
+      image: phigrosCover,
+    },
+    {
+      name: "世界計畫",
+      platform: ["手機"],
+      description:
+        "世界計畫，或稱斷觸計畫（對真的會斷觸），一款咪哭只是附加的音遊。不過我其實不是很喜歡就是了，世畫的判定真的有夠機歪www，會去玩主要只是去聽歌的。順便說一下我打台服的",
+      link: "https://www.tw-pjsekai.com/",
+      username: "7487103114991033141（UID）",
+      image: pjskCover,
+    },
+    {
+      name: "maimai DX",
+      platform: ["街機"],
+      description:
+        "maimai DX，簡稱麥麥，除了一道三十貴到靠北以外真的很讚。還是要在自己的網站上抱怨一下，雙押我恨你...淦╰（‵□′）╯\n喔對，不要問我為甚麼明明已經更新到CiRCLE了我圖還是放Prism Plus的，找不到咩你要幫我做嗎？",
+      link: "https://maimai.sega.jp/",
+      username: "101995462599988（好友代碼）",
+      image: maimaiCover,
+    },
+    {
+      name: "微軟大戰代碼",
+      platform: ["電腦"],
+      description:
+        "好啦這也算遊戲對不對www，那我還是好好介紹一下：這是由微軟工作室推出的模擬類遊戲，擁有近乎無限的開放性、支援各國語言（我說程式），並且有不亞於Minecraft的龐大社群。重點是，它是免費的！（我到底在公三小）",
+      link: "http://code.visualstudio.com/",
+      image: vscodeCover,
     },
   ],
 };
