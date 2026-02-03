@@ -38,16 +38,18 @@ import { Image } from "astro:assets";
 <script>
   import { gsap } from "gsap";
 
-  gsap.fromTo(
-    "#sh-global-header-background",
-    {
-      opacity: 0,
-    },
-    {
-      opacity: 1,
-      duration: 1,
-      delay: 4.5,
-      ease: "power2.out",
-    },
-  );
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.fromTo(
+      "#sh-global-header-background",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 1,
+        delay: 4.5,
+        ease: "power2.out",
+      },
+    );
+  });
 </script>
