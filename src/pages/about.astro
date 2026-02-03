@@ -2,6 +2,10 @@
 import PageLayout from "@/layouts/PageLayout.astro";
 
 import SectionTitle from "@components/common/SectionTitle.astro";
+
+import GameList from "@components/page/About/compose/GameList.astro";
+
+import "@styles/content.css";
 ---
 
 <PageLayout
@@ -150,44 +154,58 @@ import SectionTitle from "@components/common/SectionTitle.astro";
         </ul>
       </p>
       <p class="content-text">
-        此外，這個網站的設計靈感來自於許多優秀的網站和設計師。例如以下幾個網站：
-        <ol class="skill-list list-disc ml-8 mt-4 mb-4">
-          <li>
-            <a href="https://nelsonlai.me/zh-TW">Nelson Lai</a>
-            ：頁首設計、網站整體布局
-          </li>
-          <li>
-            <a href="https://s24egao.com/">木白</a>
-            ：字體搭配、網站整體布局、色彩運用
-          </li>
-          <li>
-            <a href="https://zhenyuan.dev">Zhenyuan</a>
-            ：色彩布局、網站內容、自我介紹架構
-          </li>
-          <li>
-            <a href="https://samhacker.xyz">SamHacker Blog</a>：主設計語言
-          </li>
-          <li>
-            <a href="https://www.figma.com/community/">
-              以及許多 Figma 上的設計
-            </a>
-          </li>
-        </ol>
+        此外，這個網站的設計靈感來自於許多優秀的網站和設計師。
+      </p>
+      <ol class="skill-list list-disc ml-8 mt-4 mb-4">
+        <li>
+          <a href="https://nelsonlai.me/zh-TW">Nelson Lai</a>
+          ：頁首設計、網站整體布局
+        </li>
+        <li>
+          <a href="https://s24egao.com/">木白</a>
+          ：字體搭配、網站整體布局、色彩運用
+        </li>
+        <li>
+          <a href="https://zhenyuan.dev">Zhenyuan</a>
+          ：色彩布局、網站內容、自我介紹架構
+        </li>
+        <li>
+          <a href="https://samhacker.xyz">SamHacker Blog</a>：主設計語言
+        </li>
+        <li>
+          <a href="https://www.figma.com/community/">
+            以及許多 Figma 上的設計
+          </a>
+        </li>
+      </ol>
+      <p class="content-text">
         等的網站設計風格，這些網站設計幫助我造出了這個網站。
       </p>
+    </div>
+    <div class="mb-16">
+      <SectionTitle chinese="遊戲" english="Gaming" />
+      <p class="content-text">
+        除了寫程式之外，我也很喜歡玩遊戲。以下是我常玩的幾款遊戲：
+      </p>
+      <GameList />
     </div>
   </div>
 </PageLayout>
 
 <style>
-  p {
+  .content-text {
     margin-bottom: 1rem;
     color: oklch(70.9% 0.01 56.259);
   }
 
-  p ol li,
-  p ul li {
+  ol li,
+  ul li {
     margin-bottom: 0.5rem;
+    color: oklch(70.9% 0.01 56.259);
+  }
+
+  ul li a,
+  ol li a {
     color: oklch(70.9% 0.01 56.259);
   }
 </style>

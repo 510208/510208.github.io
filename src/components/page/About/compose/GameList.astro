@@ -1,0 +1,21 @@
+---
+import config from "@shConfig";
+
+import { Card, CardContent, CardHeader } from "@components/ui/card";
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+  {
+    config.game.map((game) => (
+      <Card>
+        <CardHeader>
+          <h3 class="text-lg font-semibold">{game.name}</h3>
+          <p>{game.platform.join(", ")}</p>
+        </CardHeader>
+        <CardContent>
+          <p>{game.description}</p>
+        </CardContent>
+      </Card>
+    ))
+  }
+</div>

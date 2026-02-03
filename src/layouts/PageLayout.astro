@@ -1,16 +1,17 @@
 ---
 import PageHero from "@components/common/PageHero.astro";
 import Layout from "@/layouts/Layout.astro";
-import { Separator } from "@ui/separator";
 
 const { title, subtitle } = Astro.props;
 ---
 
 <Layout pageName={title}>
-  <div class="w-full mt-20 lg:mt-30 mb-10 max-w-7xl mx-auto">
+  <main
+    class="w-auto lg:w-full mx-6 mt-20 lg:mt-30 mb-10 lg:max-w-7xl lg:mx-auto"
+  >
     <PageHero title={title} subtitle={subtitle} />
-    <div class="h-8" aria-hidden="true"></div>
+    <div class="h-16" aria-hidden="true"></div>
     <!-- 留白 -->
     <slot />
-  </div>
+  </main>
 </Layout>
