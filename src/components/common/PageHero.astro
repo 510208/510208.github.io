@@ -1,0 +1,12 @@
+---
+const { title, subtitle, backgroundImage } = Astro.props;
+---
+
+<section
+  class="page-hero mt-10"
+  style={`background-image: url(${backgroundImage});`}
+  id="sh-hero-section"
+>
+  <h1 class="font-bold text-3xl">{title}</h1>
+  <p class="text-lg text-stone-500 mt-2">{subtitle}</p>
+</section>
