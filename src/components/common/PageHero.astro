@@ -1,12 +1,53 @@
 ---
-const { title, subtitle, backgroundImage } = Astro.props;
+const { title, subtitle } = Astro.props;
 ---
 
-<section
-  class="page-hero mt-10"
-  style={`background-image: url(${backgroundImage});`}
-  id="sh-hero-section"
->
-  <h1 class="font-bold text-3xl">{title}</h1>
-  <p class="text-lg text-stone-500 mt-2">{subtitle}</p>
+<section class="page-hero mt-16" id="sh-hero-section">
+  <h1 class="font-bold text-4xl" id="sh-hero-title-content">{title}</h1>
+  <p class="text-lg text-stone-500 mt-2" id="sh-hero-description-content">
+    {subtitle}
+  </p>
 </section>
+
+<script>
+  import { gsap } from "gsap";
+  import SplitText from "gsap/SplitText";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.registerPlugin(SplitText);
+
+    // 等下一幀確保元素已渲染/可視
+    requestAnimationFrame(() => {
+      const titleEl = document.getElementById("sh-hero-title-content");
+      console.log("PageHero animation script loaded", {
+        titleElExists: !!titleEl,
+      });
+
+      // 偵錯：檢查拆字後的字元數
+      const splitText = new SplitText(titleEl, { type: "chars" });
+      console.log("split chars count:", (splitText.chars || []).length);
+
+      gsap.set(splitText.chars, { opacity: 0, x: 50 });
+
+      // 確保副標題有明確的起始狀態
+      gsap.set("#sh-hero-description-content", { opacity: 0, x: 20 });
+
+      const tl = gsap.timeline({ repeat: 0 });
+
+      tl.to(splitText.chars, {
+        duration: 0.8,
+        opacity: 1,
+        x: 0,
+        ease: "power2.out",
+        stagger: 0.1,
+      });
+
+      tl.fromTo(
+        "#sh-hero-description-content",
+        { opacity: 0, x: 20 },
+        { duration: 0.8, opacity: 1, x: 0, ease: "power2.out" },
+        "-=0.3",
+      );
+    });
+  });
+</script>
