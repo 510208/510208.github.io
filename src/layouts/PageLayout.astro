@@ -1,19 +1,16 @@
 ---
 import PageHero from "@components/common/PageHero.astro";
 import Layout from "@/layouts/Layout.astro";
-import Content from "@/layouts/Content.astro";
+import { Separator } from "@ui/separator";
 
-const { title, subtitle, backgroundImage } = Astro.props;
+const { title, subtitle } = Astro.props;
 ---
 
 <Layout pageName={title}>
-  <Content sectionName="hero">
-    <PageHero
-      slot="title"
-      title={title}
-      subtitle={subtitle}
-      backgroundImage={backgroundImage}
-    />
+  <div class="w-full mt-20 lg:mt-30 mb-10 max-w-7xl mx-auto">
+    <PageHero title={title} subtitle={subtitle} />
+    <div class="h-8" aria-hidden="true"></div>
+    <!-- 留白 -->
     <slot />
-  </Content>
+  </div>
 </Layout>
