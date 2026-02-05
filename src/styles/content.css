@@ -1,5 +1,4 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import "./global.css";
 
 .content-text {
   @apply text-black/80 dark:text-white/80;
@@ -19,7 +18,8 @@ a:not(
   #hero-section a,
   sup a,
   div[data-slot="dialog-content"] a,
-  div.grid a
+  div.grid a,
+  [data-slot^="card"] a
 ) {
   @apply text-emerald-300 hover:text-emerald-400 transition-all duration-300;
   @apply underline decoration-emerald-300/50;
