@@ -3,6 +3,8 @@ import Footer from "@/components/core/Footer.astro";
 import HeaderBackground from "@/components/core/HeaderBackground.astro";
 import Header from "@components/core/Header.astro";
 import "@styles/global.css";
+import ToTop from "@components/common/ToTop.astro";
+
 const { pageName } = Astro.props;
 ---
 
@@ -30,6 +32,8 @@ const { pageName } = Astro.props;
     <Header />
     <slot />
     <Footer />
+
+    <ToTop />
   </body>
 </html>
 
