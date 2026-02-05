@@ -48,6 +48,8 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "@tsparticles/engine",
+      "esbuild",
+      "sharp",
       "tsparticles-engine"
     ],
     "ignoredBuiltDependencies": [
