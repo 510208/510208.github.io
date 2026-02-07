@@ -1,5 +1,5 @@
 import type { ShsiteConfig } from "@/types/shsite.config";
-import { Home, Info, Newspaper, Handshake } from "lucide-react";
+import { Home, Info, Newspaper, Handshake, FolderDot } from "lucide-react";
 import {
   Astro,
   Bento,
@@ -33,6 +33,7 @@ const config: ShsiteConfig = {
       { title: "About", href: "/about", icon: Info },
       { title: "Friends", href: "/friends", icon: Handshake },
       { title: "Blog", href: "https://samhacker.xyz/", icon: Newspaper },
+      { title: "Projects", href: "/projects", icon: FolderDot },
     ],
   },
 
