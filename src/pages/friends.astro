@@ -1,6 +1,6 @@
 ---
+import FriendList from "@components/page/Friends/compose/FriendList.tsx";
 import PageLayout from "@/layouts/PageLayout.astro";
-import SectionTitle from "@components/common/SectionTitle.astro";
 
 import "@styles/content.css";
 ---
@@ -9,5 +9,5 @@ import "@styles/content.css";
   title="朋友"
   subtitle="友情是生命中的一盞明燈，沒了它，生命就失去了光彩"
 >
-  <div class="mx-auto my-8"></div>
+  <FriendList client:load />
 </PageLayout>
