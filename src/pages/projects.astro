@@ -1,0 +1,10 @@
+---
+import { ProjectsList } from "@components/page/Home/compose/projects/ProjectsList";
+import PageLayout from "@/layouts/PageLayout.astro";
+
+import "@styles/content.css";
+---
+
+<PageLayout title="專案" subtitle="我不是沒有失敗，只是沒有被失敗打敗而已">
+  <ProjectsList showFilter client:load />
+</PageLayout>
