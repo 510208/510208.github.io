@@ -9,17 +9,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import WaterFall from "@/components/ui/waterfall";
 import friends from "@shFriends";
+import type { FriendCardProps } from "@/types/shsite.friends";
 
-interface FriendCardProps {
-  image: string;
-  name: string;
-  slug: string;
-  description: React.ReactNode;
-  links: {
-    icon: React.ReactNode;
-    to: string;
-    label: string;
-  }[];
+function getFriendImageUrl(image: ImageMetadata | string): string {
+  return typeof image === "string" ? image : image.src;
 }
 
 function FriendCard({
@@ -30,11 +23,11 @@ function FriendCard({
   links,
 }: FriendCardProps) {
   return (
-    <Card className="relative p-4 bg-gray-800 overflow-hidden">
+    <Card className="relative p-4 bg-stone-900 overflow-hidden">
       {/* 裝飾性背景圖 - 右下角 */}
       <div className="absolute -right-0 -bottom-0 w-[171px] h-[171px] opacity-40 pointer-events-none">
         <img
-          src={image}
+          src={getFriendImageUrl(image)}
           alt=""
           aria-hidden="true"
           className="w-full h-full object-cover"
@@ -43,7 +36,7 @@ function FriendCard({
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(circle at bottom right, rgba(31,41,55,0) 0%, rgba(31,41,55,1) 68.75%)",
+              "radial-gradient(circle at bottom right, rgba(28,25,23,0) 0%, rgba(28,25,23,1) 68.75%)",
           }}
         />
       </div>
@@ -51,7 +44,7 @@ function FriendCard({
       {/* 卡片內容 */}
       <div className="flex justify-start gap-4 relative z-10">
         <Avatar className="w-12 h-12">
-          <AvatarImage src={image} />
+          <AvatarImage src={getFriendImageUrl(image)} />
           <AvatarFallback>{name.charAt(0)}</AvatarFallback>
         </Avatar>
         <div className="space-y-1 w-full">
