@@ -1,11 +1,11 @@
 import { Earth } from "lucide-react";
 import {
-  Discord,
-  Github,
-  Instagram,
-  Twitch,
-  Youtube,
-} from "simple-icons-astro";
+  SiDiscord,
+  SiGithub,
+  SiInstagram,
+  SiTwitch,
+  SiYoutube,
+} from "@icons-pack/react-simple-icons";
 import penana from "@/assets/pages/friends/penana_symbol.svg";
 import type { FriendCardProps } from "@/types/shsite.friends";
 
@@ -28,17 +28,17 @@ const friends: FriendCardProps[] = [
         label: "個人網站",
       },
       {
-        icon: <Github />,
+        icon: <SiGithub />,
         to: "https://github.com/awdrgyj8",
         label: "GitHub",
       },
       {
-        icon: <Discord />,
+        icon: <SiDiscord />,
         to: "https://discord.gg/FMKsu7dDx8",
         label: "Discord",
       },
       {
-        icon: <Youtube />,
+        icon: <SiYoutube />,
         to: "https://www.youtube.com/@zhenyuan0427",
         label: "YouTube",
       },
@@ -57,7 +57,7 @@ const friends: FriendCardProps[] = [
     ),
     links: [
       {
-        icon: <Github />,
+        icon: <SiGithub />,
         to: "https://github.com/T3chHAX0R",
         label: "GitHub",
       },
@@ -85,17 +85,17 @@ const friends: FriendCardProps[] = [
     ),
     links: [
       {
-        icon: <Github />,
+        icon: <SiGithub />,
         to: "https://github.com/woodypegasus382",
         label: "GitHub",
       },
       {
-        icon: <Twitch />,
+        icon: <SiTwitch />,
         to: "https://www.twitch.tv/lnstw",
         label: "Twitch",
       },
       {
-        icon: <Discord />,
+        icon: <SiDiscord />,
         to: "https://discord.gg/CKGwRtFcFw",
         label: "Discord",
       },
@@ -121,7 +121,7 @@ const friends: FriendCardProps[] = [
         label: "個人網站",
       },
       {
-        icon: <Github />,
+        icon: <SiGithub />,
         to: "https://github.com/kunweb04",
         label: "GitHub",
       },
@@ -151,12 +151,12 @@ const friends: FriendCardProps[] = [
         label: "蕉站",
       },
       {
-        icon: <Youtube />,
+        icon: <SiYoutube />,
         to: "https://www.youtube.com/@sorbet1686",
         label: "YouTube",
       },
       {
-        icon: <Instagram />,
+        icon: <SiInstagram />,
         to: "https://www.instagram.com/sorbet1686/",
         label: "Instagram",
       },
@@ -198,12 +198,12 @@ const friends: FriendCardProps[] = [
         label: "蕉站",
       },
       {
-        icon: <Youtube />,
+        icon: <SiYoutube />,
         to: "https://www.youtube.com/channel/UCDGmv1oiOAvu9d0V6qKTGjA?si=Ugeg7pOVdvkEoF7N",
         label: "YouTube",
       },
       {
-        icon: <Instagram />,
+        icon: <SiInstagram />,
         to: "https://www.instagram.com/miaomiaomiao4035/",
         label: "Instagram",
       },
