@@ -1,5 +1,7 @@
+import type { ImageMetadata } from "astro";
+
 interface FriendCardProps {
-  image: string;
+  image: ImageMetadata | string;
   name: string;
   slug: string;
   description: React.ReactNode;

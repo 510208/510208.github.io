@@ -9,9 +9,16 @@ import {
 import penana from "@/assets/pages/friends/penana_symbol.svg";
 import type { FriendCardProps } from "@/types/shsite.friends";
 
+import dennis911Photo from "@/assets/pages/friends/friend_photo/dennis911.webp";
+import lnstwPhoto from "@/assets/pages/friends/friend_photo/lnstw.webp";
+import kunweb04Photo from "@/assets/pages/friends/friend_photo/kunweb04.webp";
+import sorbet1686Photo from "@/assets/pages/friends/friend_photo/sorbet1686.webp";
+import lumuPhoto from "@/assets/pages/friends/friend_photo/lumu.webp";
+import ruixuePhoto from "@/assets/pages/friends/friend_photo/ruixue.webp";
+
 const friends: FriendCardProps[] = [
   {
-    image: "https://zhenyuan.dev/avatar.jpg",
+    image: "https://www.gravatar.com/avatar/07f375105a68074c6b90379762cd1443",
     name: "Zhenyuan",
     slug: "awdrgyj8",
     description: (
@@ -45,7 +52,7 @@ const friends: FriendCardProps[] = [
     ],
   },
   {
-    image: "/assets/friend_photo/dennis911.webp",
+    image: dennis911Photo,
     name: "Dennis911",
     slug: "T3chHAX0R",
     description: (
@@ -64,7 +71,7 @@ const friends: FriendCardProps[] = [
     ],
   },
   {
-    image: "/assets/friend_photo/woodypegasus382.webp",
+    image: lnstwPhoto,
     name: "夜間部",
     slug: "woodypegasus382",
     description: (
@@ -102,7 +109,7 @@ const friends: FriendCardProps[] = [
     ],
   },
   {
-    image: "/assets/friend_photo/kunweb04.webp",
+    image: kunweb04Photo,
     name: "麟澤 (OHO)",
     slug: "kunweb04",
     description: (
@@ -128,7 +135,7 @@ const friends: FriendCardProps[] = [
     ],
   },
   {
-    image: "/assets/friend_photo/sorbet1686.webp",
+    image: sorbet1686Photo,
     name: "雪樂",
     slug: "sorbet1686",
     description: (
@@ -163,7 +170,7 @@ const friends: FriendCardProps[] = [
     ],
   },
   {
-    image: "/assets/friend_photo/lumu.webp",
+    image: lumuPhoto,
     name: "璐沐",
     slug: "lumu",
     description: (
@@ -210,7 +217,7 @@ const friends: FriendCardProps[] = [
     ],
   },
   {
-    image: "/assets/friend_photo/ruixue.webp",
+    image: ruixuePhoto,
     name: "Ruixue",
     slug: "ruixue",
     description: (
