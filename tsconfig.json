@@ -10,6 +10,7 @@
       "@/*": ["./src/*"],
       "@shConfig": ["./shsite.config.ts"],
       "@shProjects": ["./shsite.projects.ts"],
+      "@shFriends": ["./shsite.friends.tsx"],
       "@lib/*": ["./src/lib/*"],
       "@ui/*": ["./src/components/ui/*"],
       "@components/*": ["./src/components/*"],
