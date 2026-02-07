@@ -29,11 +29,10 @@ import vscodeCover from "@/assets/pages/about/games/vscode_cover.png";
 const config: ShsiteConfig = {
   navBar: {
     links: [
-      { title: "Home", href: "/", icon: Home },
       { title: "About", href: "/about", icon: Info },
       { title: "Friends", href: "/friends", icon: Handshake },
-      { title: "Blog", href: "https://samhacker.xyz/", icon: Newspaper },
       { title: "Projects", href: "/projects", icon: FolderDot },
+      { title: "Blog", href: "https://samhacker.xyz/", icon: Newspaper },
     ],
   },
 
@@ -192,7 +191,7 @@ const config: ShsiteConfig = {
       name: "maimai DX",
       platform: ["街機"],
       description:
-        "maimai DX，簡稱麥麥，除了一道三十貴到靠北以外真的很讚。還是要在自己的網站上抱怨一下，雙押我恨你...淦╰（‵□′）╯\n喔對，不要問我為甚麼明明已經更新到CiRCLE了我圖還是放Prism Plus的，找不到咩你要幫我做嗎？",
+        "maimai DX，通稱ARGB投幣式電競滾筒洗衣機，除了一道三十貴到靠北以外真的很讚。還是要在自己的網站上抱怨一下，雙押我恨你...淦╰（‵□′）╯\n喔對，不要問我為甚麼明明已經更新到CiRCLE了我圖還是放Prism Plus的，找不到咩你要幫我做嗎？",
       link: "https://maimai.sega.jp/",
       username: "101995462599988（好友代碼）",
       image: maimaiCover,
