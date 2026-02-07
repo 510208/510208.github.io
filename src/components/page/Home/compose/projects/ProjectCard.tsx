@@ -85,14 +85,14 @@ export function ProjectCard({
     >
       <Card
         key={project.name}
-        className="relative group bg-neutral-800 min-h-[400px] transition-all duration-300 hover:bg-neutral-900 px-0 py-0 overflow-hidden pb-6"
+        className="relative group bg-stone-800 min-h-[400px] transition-all duration-300 hover:bg-stone-900 px-0 py-0 overflow-hidden pb-6"
         style={{
           opacity:
             project.status === "eol" || project.status === "archived" ? 0.6 : 1,
         }}
       >
         {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-neutral-800 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-stone-800 pointer-events-none">
           <img
             src={project.opengraphImageUrl}
             alt={project.name}
