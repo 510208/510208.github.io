@@ -225,7 +225,7 @@ export const PROJECTS: Project[] = [
   // SafeCheck
   {
     name: "SafeCheck",
-    opengraphImageUrl: "/assets/projects_og/safecheck.png",
+    opengraphImageUrl: "/assets/projects_og/safecheck.webp",
     description:
       "這是一款外連網址通知工具，它會自動將網站中的外部連結標記並在使用者點擊時發出通知，以提高網站的安全性和用戶體驗。",
     html_url: "https://github.com/510208/SafeCheck",
@@ -263,7 +263,7 @@ export const PROJECTS: Project[] = [
   // sRickroll
   {
     name: "sRickroll",
-    opengraphImageUrl: "/assets/projects_og/srickroll.png",
+    opengraphImageUrl: "/assets/projects_og/srickroll.webp",
     description: "訪客只要到了你的網站，就會直接被瑞克搖！",
     html_url: "https://github.com/510208/sRickroll",
     language: ["JavaScript", "jQuery"],
@@ -286,7 +286,7 @@ export const PROJECTS: Project[] = [
   // Random Num Selector
   {
     name: "隨機選號器",
-    opengraphImageUrl: "/assets/projects_og/pgbnumselector.png",
+    opengraphImageUrl: "/assets/projects_og/pgbnumselector.webp",
     description:
       "這是一個簡單的工具，可以幫助使用者從指定範圍內隨機選取數字，適用於各種場合，如抽獎、遊戲等。",
     html_url: "https://github.com/510208/random-num",
@@ -298,7 +298,7 @@ export const PROJECTS: Project[] = [
   // Random Password Generator
   {
     name: "隨機密碼產生器",
-    opengraphImageUrl: "/assets/projects_og/pgbpasswordgen.png",
+    opengraphImageUrl: "/assets/projects_og/pgbpasswordgen.webp",
     description:
       "這是一個簡單的工具，可以幫助使用者生成隨機密碼，支援多種選項和自訂設定，以提高密碼的安全性。",
     html_url: "https://github.com/510208/pwd-generator",
