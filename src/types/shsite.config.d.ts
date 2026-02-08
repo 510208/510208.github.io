@@ -27,4 +27,13 @@ interface ShsiteConfig {
     image: ImageMetadata;
     username?: string;
   }[];
+
+  equipments: {
+    name: string;
+    description: string;
+    thumbnail: string | ImageMetadata;
+    type?: "peripheral" | "software" | "other" | null;
+  }[];
 }
+
+export type { ShsiteConfig };

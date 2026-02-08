@@ -32,6 +32,22 @@ import pjskCover from "@/assets/pages/about/games/pjsk_cover.png";
 import maimaiCover from "@/assets/pages/about/games/maimaidx_cover.png";
 import vscodeCover from "@/assets/pages/about/games/vscode_cover.png";
 
+import mouseThumbnail from "@/assets/pages/equipments/peripheral/logitech_g_pro_wireless.webp";
+import keyboardThumbnail from "@/assets/pages/equipments/peripheral/logitech_k380.webp";
+import headsetThumbnail from "@/assets/pages/equipments/peripheral/redmi_buds_6_lite.webp";
+
+import neovimThumbnail from "@/assets/pages/equipments/software/neovim.webp";
+import vscodeThumbnail from "@/assets/pages/equipments/software/vscode.webp";
+import copilotThumbnail from "@/assets/pages/equipments/software/copilot.webp";
+import discordThumbnail from "@/assets/pages/equipments/software/discord.webp";
+import figmaThumbnail from "@/assets/pages/equipments/software/figma.webp";
+import githubThumbnail from "@/assets/pages/equipments/software/github.webp";
+import minecraftThumbnail from "@/assets/pages/equipments/software/minecraft.webp";
+import pycharmThumbnail from "@/assets/pages/equipments/software/pycharm.webp";
+import webstormThumbnail from "@/assets/pages/equipments/software/webstorm.webp";
+import thunderClientThumbnail from "@/assets/pages/equipments/software/thunder_client.webp";
+import wordThumbnail from "@/assets/pages/equipments/software/word.webp";
+
 const config: ShsiteConfig = {
   navBar: {
     links: [
@@ -210,6 +226,101 @@ const config: ShsiteConfig = {
         "好啦這也算遊戲對不對www，那我還是好好介紹一下：這是由微軟工作室推出的模擬類遊戲，擁有近乎無限的開放性、支援各國語言（我說程式），並且有不亞於Minecraft的龐大社群。重點是，它是免費的！（我到底在公三小）",
       link: "http://code.visualstudio.com/",
       image: vscodeCover,
+    },
+  ],
+
+  equipments: [
+    {
+      name: "Logitech G Pro Wireless",
+      description: "雖然沒在打電競，反正人家送了就用嘛awa",
+      thumbnail: mouseThumbnail,
+      type: "peripheral",
+    },
+    {
+      name: "Logitech K380",
+      description: "藍牙鍵盤，跟筆電內建的鍵盤換著用，筆電鍵盤才能用久一點",
+      thumbnail: keyboardThumbnail,
+      type: "peripheral",
+    },
+    {
+      name: "RedMi Buds 6 Lite",
+      description: "有ANC主動降噪，又便宜，邊打Code邊聽音樂真的很爽",
+      thumbnail: headsetThumbnail,
+      type: "peripheral",
+    },
+    {
+      name: "Visual Studio Code",
+      description: "微軟推出的開源程式碼編輯器，擴充性與可自訂性都是數一數二的",
+      thumbnail: vscodeThumbnail,
+      type: "software",
+    },
+    {
+      name: "NeoVim",
+      description:
+        "終端打Code的工具，雖然還在學習中，但高效與輕量是它獨一無二的優勢",
+      thumbnail: neovimThumbnail,
+      type: "software",
+    },
+    {
+      name: "JetBrains PyCharm",
+      description:
+        "專業的Python IDE，提供強大的代碼輔助功能，但我不是很熟就是了ww",
+      thumbnail: pycharmThumbnail,
+      type: "software",
+    },
+    {
+      name: "JetBrains WebStorm",
+      description:
+        "專業的JavaScript IDE，提供強大的代碼輔助功能，因為GitHub學生開發包有免費授權，所以用一下",
+      thumbnail: webstormThumbnail,
+      type: "software",
+    },
+    {
+      name: "GitHub Copilot",
+      description:
+        "這個網站有一部份是它幫我的，教育版真的好棒（我有自己寫啦 (>///<) 放心）",
+      thumbnail: copilotThumbnail,
+      type: "software",
+    },
+    {
+      name: "Discord",
+      description: "它是開發工具...是吧...邊聊天邊打Code很正常啊（？才怪勒）",
+      thumbnail: discordThumbnail,
+      type: "software",
+    },
+    {
+      name: "Figma",
+      description: "做介面用的軟體，技術太爛寫不出個什麼我畫個圖做夢還不行嗎？",
+      thumbnail: figmaThumbnail,
+      type: "software",
+    },
+    {
+      name: "Minecraft",
+      description:
+        "Minecraft不只是剪片軟體、遊戲引擎，還是建模工具。你說它是遊戲？才怪，我看你完全是不懂喔。",
+      thumbnail: minecraftThumbnail,
+      type: "software",
+    },
+    {
+      name: "GitHub",
+      description:
+        "全球最大交友社...不對，是全球最大開源社區（不過說是交友平台也不是不行就是了）",
+      thumbnail: githubThumbnail,
+      type: "software",
+    },
+    {
+      name: "ThunderClient",
+      description:
+        "集成在VSCode中的API測試工具，雖然Postman更好用，但我懶得開Postman了有夠麻煩",
+      thumbnail: thunderClientThumbnail,
+      type: "software",
+    },
+    {
+      name: "Word",
+      description:
+        "據老外說是比VSCode還好的編輯器，還搭載人肉ESLint（？）有人試過嗎？",
+      thumbnail: wordThumbnail,
+      type: "software",
     },
   ],
 };
