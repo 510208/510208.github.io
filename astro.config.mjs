@@ -10,32 +10,29 @@ import lenis from "astro-lenis";
 
 import partytown from "@astrojs/partytown";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://510208.github.io",
-  integrations: [
-    react(),
-    devtoolBreakpoints(),
-    lenis(),
-    partytown({
-      config: {
-        forward: ["dataLayer.push"],
-        resolveUrl: function (url, location, type) {
-          if (type === "script") {
-            const proxyUrl = new URL(url.href);
-            // 如果請求是 Google 相關，確保正確解析
-            if (
-              proxyUrl.hostname.includes("google-analytics.com") ||
-              proxyUrl.hostname.includes("googletagmanager.com")
-            ) {
-              return proxyUrl;
-            }
+  integrations: [react(), devtoolBreakpoints(), lenis(), partytown({
+    config: {
+      forward: ["dataLayer.push"],
+      resolveUrl: function (url, location, type) {
+        if (type === "script") {
+          const proxyUrl = new URL(url.href);
+          // 如果請求是 Google 相關，確保正確解析
+          if (
+            proxyUrl.hostname.includes("google-analytics.com") ||
+            proxyUrl.hostname.includes("googletagmanager.com")
+          ) {
+            return proxyUrl;
           }
-          return url;
-        },
+        }
+        return url;
       },
-    }),
-  ],
+    },
+  }), sitemap()],
   vite: {
     plugins: [tailwindcss()],
   },
