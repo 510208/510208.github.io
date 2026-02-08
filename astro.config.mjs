@@ -20,6 +20,19 @@ export default defineConfig({
     partytown({
       config: {
         forward: ["dataLayer.push"],
+        resolveUrl: function (url, location, type) {
+          if (type === "script") {
+            const proxyUrl = new URL(url.href);
+            // 如果請求是 Google 相關，確保正確解析
+            if (
+              proxyUrl.hostname.includes("google-analytics.com") ||
+              proxyUrl.hostname.includes("googletagmanager.com")
+            ) {
+              return proxyUrl;
+            }
+          }
+          return url;
+        },
       },
     }),
   ],
