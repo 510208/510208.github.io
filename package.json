@@ -10,6 +10,7 @@
     "cn": "pnpm dlx shadcn@latest"
   },
   "dependencies": {
+    "@astrojs/partytown": "^2.1.4",
     "@astrojs/react": "^4.4.2",
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource-variable/noto-sans-tc": "^5.2.10",
