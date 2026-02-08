@@ -152,7 +152,7 @@ export const PROJECTS: Project[] = [
   {
     name: "MinePlayer",
     opengraphImageUrl:
-      "https://private-user-images.githubusercontent.com/107909497/381825407-505aa5a8-f301-4a03-8dd3-1f086dd769fe.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njk0MTQwOTAsIm5iZiI6MTc2OTQxMzc5MCwicGF0aCI6Ii8xMDc5MDk0OTcvMzgxODI1NDA3LTUwNWFhNWE4LWYzMDEtNGEwMy04ZGQzLTFmMDg2ZGQ3NjlmZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMTI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDEyNlQwNzQ5NTBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01MTM4YTQwYzJhYjE4OWI0ZTk3ODY1OGUzZTY4YjRjMTE3Y2ViMDkzYTMwYTdjYjBmYzUzODM0NWVkODFiZTE0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.aq0TmAzLQwIofYE6uWP51rzKOQWAlVx7w_byeIryAmw",
+      "https://github.com/user-attachments/assets/505aa5a8-f301-4a03-8dd3-1f086dd769fe",
     description:
       "MinePlayer 是一款簡單的模組，可以提供使用者解析Minecraft玩家的資訊，例如UUID、名稱歷史等。",
     html_url: "https://github.com/510208/minePlayer",
