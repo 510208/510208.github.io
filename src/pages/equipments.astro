@@ -1,11 +1,61 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
 import SectionTitle from "@components/common/SectionTitle.astro";
+import { Image } from "astro:assets";
+
+import EquipmentsGrid from "@components/page/Equipments/EquipmentsGrid.astro";
+
+import config from "@shConfig";
+
+import laptopThumbnail from "@/assets/pages/equipments/peripheral/gigabyte_g6_kf_2024.webp";
+import phoneThumbnail from "@/assets/pages/equipments/peripheral/redmi_note_14_5g.webp";
 
 import "@styles/content.css";
+
+const PeripheralEquipments = config.equipments.filter(
+  (item) => item.type === "peripheral",
+);
+const DevelopmentEquipments = config.equipments.filter(
+  (item) => item.type === "software",
+);
 ---
 
 <PageLayout title="裝備" subtitle="物品就像一面明鏡，反映出使用者的狀態">
-  <SectionTitle chinese="電腦" english="Laptop" />
-  <p class="content"></p>
+  <div class="container mx-auto px-4 pb-8 bg-transparent">
+    <SectionTitle chinese="裝置" english="Device" />
+    <div class="w-[100%] justify-center flex gap-4">
+      <div class="text-center mb-8 w-full">
+        <Image
+          src={laptopThumbnail}
+          alt="GIGABYTE G6 KF (2024)"
+          class="mx-auto mb-4 rounded-lg shadow-lg"
+        />
+        <small class="dark:text-gray-100/80">
+          <strong class="font-inter mr-2">GIGABYTE G6 KF (2024)</strong>
+          <span>Intel Core i7 13700H and NVIDIA GeForce RTX 4060</span>
+        </small>
+      </div>
+      <div class="text-center mb-8 w-full">
+        <Image
+          src={phoneThumbnail}
+          alt="RedMi Note 14 5G"
+          class="mx-auto mb-4 rounded-lg shadow-lg"
+        />
+        <small class="dark:text-gray-100/80">
+          <strong class="font-inter mr-2">RedMi Note 14 5G</strong>
+          <span>MediaTek Dimensity 7025 and IMG BXM-8-256</span>
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 pb-8 bg-transparent">
+    <SectionTitle chinese="周邊設備" english="Peripheral" />
+    <EquipmentsGrid equipments={PeripheralEquipments} />
+  </div>
+
+  <div class="container mx-auto px-4 pb-8 bg-transparent">
+    <SectionTitle chinese="開發工具" english="Development" />
+    <EquipmentsGrid equipments={DevelopmentEquipments} />
+  </div>
 </PageLayout>
