@@ -41,7 +41,13 @@ const { pageName } = Astro.props;
   </head>
 
   <body class="dark">
-    <noscript> You need to enable JavaScript to run this app. </noscript>
+    <noscript>
+      <h2 class="text-9xl text-red-600">
+        你必須啟用 JavaScript 才能使用此網站。
+      </h2>
+      <br />
+      <p>請啟用 JavaScript 後重新載入頁面。</p>
+    </noscript>
 
     <HeaderBackground />
     <Header />
