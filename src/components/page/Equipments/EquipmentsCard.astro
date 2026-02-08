@@ -1,0 +1,43 @@
+---
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import type { ImageMetadata } from "astro";
+
+import type { ShsiteConfig } from "@/types/shsite.config";
+
+type EquipmentItem = ShsiteConfig["equipments"][number];
+
+interface Props extends EquipmentItem {
+  className?: string;
+}
+
+const { name, description, thumbnail, className = "" } = Astro.props;
+
+const getImageUrl = (source: any): string | null => {
+  if (typeof source === "string") return source;
+  if (source && typeof source === "object" && "src" in source)
+    return source.src;
+  return null;
+};
+
+const imageUrl = getImageUrl(thumbnail);
+---
+
+<Card className={cn("sh-equipments-card", className)}>
+  <div class="flex justify-center p-5 h-50 w-auto align-center">
+    <img
+      src={imageUrl}
+      alt={name}
+      class="max-w-50 max-h-50 w-auto h-[100%] object-contain"
+    />
+  </div>
+  <CardHeader>
+    <CardTitle className="text-lg text-inter">{name}</CardTitle>
+    <CardDescription>{description}</CardDescription>
+  </CardHeader>
+</Card>

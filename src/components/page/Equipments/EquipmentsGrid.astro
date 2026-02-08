@@ -1,0 +1,55 @@
+---
+import type { ShsiteConfig } from "@/types/shsite.config";
+import EquipmentsCard from "./EquipmentsCard.astro";
+import type { ImageMetadata } from "astro";
+
+type EquipmentItem = ShsiteConfig["equipments"][number];
+
+interface Props {
+  equipments: EquipmentItem[];
+}
+
+const { equipments } = Astro.props;
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+  {
+    equipments.map((item) => (
+      <EquipmentsCard
+        name={item.name}
+        description={item.description}
+        thumbnail={item.thumbnail}
+      />
+    ))
+  }
+</div>
+
+<script>
+  // sh-equipments-card 的淡入動畫
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const cards = document.querySelectorAll(".sh-equipments-card");
+  document.addEventListener("DOMContentLoaded", () => {
+    cards.forEach((card) => {
+      gsap.set(card, { opacity: 0, y: 20 });
+    });
+
+    cards.forEach((card, index) => {
+      gsap.to(card, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        delay: index * 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    });
+  });
+</script>
