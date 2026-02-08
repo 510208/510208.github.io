@@ -8,10 +8,21 @@ import devtoolBreakpoints from "astro-devtool-breakpoints";
 
 import lenis from "astro-lenis";
 
+import partytown from "@astrojs/partytown";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://510208.github.io",
-  integrations: [react(), devtoolBreakpoints(), lenis()],
+  integrations: [
+    react(),
+    devtoolBreakpoints(),
+    lenis(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
