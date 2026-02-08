@@ -23,14 +23,12 @@ export const AwardCard = ({
           className={cn("mb-6 sh-awards-animation", className)}
         >
           <h3 className="text-lg font-semibold">{awardItem.title}</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-sm text-gray-400">
             {awardItem.organization} &middot;{" "}
             {awardItem.year.acquirement.getFullYear()}
           </p>
           {awardItem.aka && (
-            <p className="mt-1 text-gray-600 dark:text-gray-400">
-              {awardItem.aka}
-            </p>
+            <p className="mt-1 text-gray-400">{awardItem.aka}</p>
           )}
         </div>
       </HoverCardTrigger>
@@ -46,7 +44,7 @@ export const AwardCard = ({
         />
         <div className="p-4">
           <h2 className="text-xl font-bold">{awardItem.title}</h2>
-          <span className="text-sm text-gray-600 dark:text-gray-400">
+          <span className="text-sm text-gray-400">
             {awardItem.aka ? (
               <>
                 {awardItem.aka}
