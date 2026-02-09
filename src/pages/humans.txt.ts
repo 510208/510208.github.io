@@ -23,6 +23,18 @@ const baseHumansTxt = `
 	Threads: @samhacker.xyz
 	From: Taichung, Taiwan
 
+/* THANKS */
+	Thanks to all the open source contributors and the communities that make the web a better place!
+	
+	Name: Nelson Lai
+	Website: https://nelsonlai.dev
+	Name: 木白
+	Website: https://s24egao.com/
+	Name: Zhenyuan 工作室
+	Website: https://zhenyuan.dev/
+	Name: SamHacker Dev
+	Website: https://samhacker.xyz/
+
 /* SITE */
 	Last update: ${new Date().toISOString().split("T")[0].replaceAll("-", "/")}
 	Language: Chinese (Traditional)
