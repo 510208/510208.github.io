@@ -93,7 +93,7 @@ function DashboardCard({
   return (
     <a href={item.link} target="_blank" rel="noopener noreferrer">
       <div
-        className="rounded-lg border border-stone-700 bg-stone-800/50 p-4 shadow-lg backdrop-blur-md transition-all duration-300 py-10 px-2 hover:bg-stone-700/50"
+        className="rounded-lg border border-stone-700 bg-stone-800/50 shadow-lg backdrop-blur-md transition-all duration-300 py-8 px-2 hover:bg-stone-700"
         style={{
           background: `radial-gradient(at bottom center, ${hexToRgba(item.color.primary, 0.3)} 0%, rgba(255,255,255,0.1) 30%)`,
         }}
