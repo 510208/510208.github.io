@@ -1,0 +1,13 @@
+---
+import { DashboardGrid } from "@components/page/Dashboard/DashboardGrid";
+import PageLayout from "@/layouts/PageLayout.astro";
+
+import "@styles/content.css";
+---
+
+<PageLayout
+  title="儀表板"
+  subtitle="數字可以解釋很多事情，有些數字甚至可以解釋一切"
+>
+  <DashboardGrid client:load />
+</PageLayout>
