@@ -11,6 +11,38 @@ if (typeof window !== "undefined") {
   });
 }
 
+// 提取數字部分用於動畫
+const extractNumber = (val: string | number): number => {
+  if (typeof val === "number") return val;
+  const match = val.toString().match(/[\d,]+/);
+  return match ? parseInt(match[0].replace(/,/g, ""), 10) : 0;
+};
+
+// 保留原始格式，只替換數字部分
+const preserveOriginalFormat = (
+  animatedNum: number,
+  originalValue: string | number,
+): string => {
+  if (typeof originalValue === "number") return animatedNum.toString();
+
+  const originalStr = originalValue.toString();
+  const numberMatch = originalStr.match(/([\d,]+)/);
+
+  if (!numberMatch) return originalStr;
+
+  const originalNumber = numberMatch[0];
+  const hasComma = originalNumber.includes(",");
+
+  // 格式化動畫數字（保持千分位逗號格式）
+  const formattedAnimatedNum =
+    hasComma && animatedNum >= 1000
+      ? animatedNum.toLocaleString()
+      : animatedNum.toString();
+
+  // 替換原始字串中的數字部分
+  return originalStr.replace(/([\d,]+)/, formattedAnimatedNum);
+};
+
 function DashboardCard({
   item,
   index,
@@ -23,28 +55,6 @@ function DashboardCard({
   const numberRef = useRef<HTMLParagraphElement>(null);
   const [animatedValue, setAnimatedValue] = useState(0);
   const [isClient, setIsClient] = useState(false);
-
-  // 提取數字部分用於動畫
-  const extractNumber = (val: string | number): number => {
-    if (typeof val === "number") return val;
-    const match = val.toString().match(/[\d,]+/);
-    return match ? parseInt(match[0].replace(/,/g, ""), 10) : 0;
-  };
-
-  // 格式化數字（保持原有格式，如千分位逗號）
-  const formatNumber = (
-    num: number,
-    originalValue: string | number,
-  ): string => {
-    if (typeof originalValue === "number") return num.toString();
-    const originalStr = originalValue.toString();
-    const hasComma = originalStr.includes(",");
-
-    if (hasComma && num >= 1000) {
-      return num.toLocaleString();
-    }
-    return num.toString();
-  };
 
   useEffect(() => {
     setIsClient(true);
@@ -77,7 +87,7 @@ function DashboardCard({
 
   const displayValue =
     isClient && item.description !== undefined
-      ? formatNumber(animatedValue, item.description)
+      ? preserveOriginalFormat(animatedValue, item.description)
       : item.description;
 
   return (
