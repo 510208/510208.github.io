@@ -5,6 +5,7 @@ import Header from "@components/core/Header.astro";
 import "@styles/global.css";
 import ToTop from "@components/common/ToTop.astro";
 
+const baseUrl = Astro.site;
 const { pageName } = Astro.props;
 ---
 
@@ -32,6 +33,8 @@ const { pageName } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+
+    <link type="text/plain" rel="author" href={new URL("/humans.txt", baseUrl)} />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 
