@@ -7,22 +7,26 @@ import { cn } from "@/lib/utils";
 function DashboardCard({
   children,
   className,
+  link,
   ...props
 }: {
   children: React.ReactNode;
   className?: string;
+  link: string;
   style?: React.CSSProperties;
 }) {
   return (
-    <div
-      className={cn(
-        "rounded-lg border border-stone-700 bg-stone-800/50 p-4 shadow-lg backdrop-blur-md transition py-10 px-2 hover:bg-stone-700/50",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </div>
+    <a href={link} target="_blank" rel="noopener noreferrer">
+      <div
+        className={cn(
+          "rounded-lg border border-stone-700 bg-stone-800/50 p-4 shadow-lg backdrop-blur-md transition-all duration-300 py-10 px-2 hover:bg-stone-700/50",
+          className,
+        )}
+        {...props}
+      >
+        {children}
+      </div>
+    </a>
   );
 }
 
@@ -90,12 +94,20 @@ export function DashboardGrid() {
           style={{
             background: `radial-gradient(at bottom center, ${hexToRgba(item.color.primary, 0.3)} 0%, rgba(255,255,255,0.1) 30%)`,
           }}
+          link={item.link}
         >
           <div className="flex gap-1 items-center justify-center tracking-widest mb-4">
             <div className="flex items-center justify-center p-2 bg-transparent border-none rounded-lg mr-2">
               <item.image className="h-6 w-6" color={item.color.primary} />
             </div>
-            <h2 className="text-xl font text-white">{item.title}</h2>
+            <h2
+              className="text-xl font text-white"
+              style={{
+                color: item.color.primary,
+              }}
+            >
+              {item.title}
+            </h2>
           </div>
           <p className="text-3xl text-center font-mono font-bold text-white">
             {item.description}
