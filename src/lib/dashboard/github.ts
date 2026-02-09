@@ -76,7 +76,7 @@ function buildGitHubFollowerCard(data: GitHubData | null): DashboardFeature {
       link: "https://github.com/510208",
       image: SiGithub,
       source: "GitHub API",
-      color: { primary: "#ffffff" },
+      color: { primary: "#94a3b8" },
     };
   }
 
@@ -86,7 +86,7 @@ function buildGitHubFollowerCard(data: GitHubData | null): DashboardFeature {
     link: `https://github.com/${data.login}`,
     image: SiGithub,
     source: "GitHub API",
-    color: { primary: "#ffffff" },
+    color: { primary: "#94a3b8" },
   };
 }
 
@@ -98,7 +98,7 @@ function buildGitHubRepoCard(data: GitHubData | null): DashboardFeature {
       link: "https://github.com/510208",
       image: SiGithub,
       source: "GitHub API",
-      color: { primary: "#ffffff" },
+      color: { primary: "#a8a29e" },
     };
   }
 
@@ -108,7 +108,7 @@ function buildGitHubRepoCard(data: GitHubData | null): DashboardFeature {
     link: `https://github.com/${data.login}`,
     image: SiGithub,
     source: "GitHub API",
-    color: { primary: "#ffffff" },
+    color: { primary: "#a8a29e" },
   };
 }
 

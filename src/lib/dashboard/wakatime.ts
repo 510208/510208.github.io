@@ -74,7 +74,7 @@ function buildWakaTimeCard(data: WakaTimeData | null): DashboardFeature {
     link: "https://wakatime.com/@SamHacker",
     image: SiWakatime,
     source: "WakaTime API",
-    color: { primary: "#FFFFFF" },
+    color: { primary: "#38bdf8" },
   };
 }
 
