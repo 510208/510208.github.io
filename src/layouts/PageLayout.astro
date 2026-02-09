@@ -6,12 +6,12 @@ const { title, subtitle } = Astro.props;
 ---
 
 <Layout pageName={title}>
-  <main
+  <div
     class="w-auto lg:w-full mx-6 mt-20 lg:mt-30 mb-10 lg:max-w-7xl lg:mx-auto"
   >
     <PageHero title={title} subtitle={subtitle} />
     <div class="h-16" aria-hidden="true"></div>
     <!-- 留白 -->
     <slot />
-  </main>
+  </div>
 </Layout>
