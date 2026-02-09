@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Skeleton } from "@ui/skeleton";
 import { type DashboardFeature } from "@/lib/dashboard/types";
 import getDashboardFeatures from "@/lib/dashboard/dashboard-card";
+import { cn } from "@/lib/utils";
 
 function DashboardCard({
   children,
@@ -14,11 +15,10 @@ function DashboardCard({
 }) {
   return (
     <div
-      className={
-        `rounded-lg border border-gray-700 bg-gray-800/50 p-4 shadow-lg backdrop-blur-md transition py-10 px-2 hover:bg-gray-700/50` +
-        (className === "" ? "" : " ") +
-        (className || "")
-      }
+      className={cn(
+        "rounded-lg border border-stone-700 bg-stone-800/50 p-4 shadow-lg backdrop-blur-md transition py-10 px-2 hover:bg-stone-700/50",
+        className,
+      )}
       {...props}
     >
       {children}
