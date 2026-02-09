@@ -5,6 +5,7 @@ import {
   Handshake,
   FolderDot,
   LaptopMinimal,
+  Gauge,
 } from "lucide-react";
 import {
   Astro,
@@ -55,6 +56,7 @@ const config: ShsiteConfig = {
       { title: "Friends", href: "/friends", icon: Handshake },
       { title: "Projects", href: "/projects", icon: FolderDot },
       { title: "Equipments", href: "/equipments", icon: LaptopMinimal },
+      { title: "Dashboard", href: "/dashboard", icon: Gauge },
       { title: "Blog", href: "https://samhacker.xyz/", icon: Newspaper },
     ],
   },
