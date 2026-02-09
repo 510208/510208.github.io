@@ -4,15 +4,6 @@ import getDashboardFeatures from "@/lib/dashboard/dashboard-card";
 
 import { DashboardCard, DashboardCardSkeleton } from "./DashboardCard";
 
-// 動態導入 GSAP 以避免服務端渲染問題
-let gsap: any = null;
-
-if (typeof window !== "undefined") {
-  import("gsap").then((module) => {
-    gsap = module.gsap;
-  });
-}
-
 export function DashboardGrid() {
   const [dashboardItems, setDashboardItems] = useState<DashboardFeature[]>([]);
   const [loading, setLoading] = useState(true);
