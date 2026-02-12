@@ -7,7 +7,12 @@ import GameList from "@/components/page/About/GameList.astro";
 import "@styles/content.css";
 ---
 
-<PageLayout title="關於我" subtitle="正因為曾經淋過雨，才會想為他人撐一把傘">
+<PageLayout
+  title="關於我"
+  subtitle="正因為曾經淋過雨，才會想為他人撐一把傘"
+  description="這裡是關於我的一些介紹，包含了我的背景、興趣、以及這個網站的故事。如果你想更了解我的話，可以參考看看。"
+  ogImage="/assets/website_og/about_og.png"
+>
   <div class="mx-auto my-8">
     <div class="mb-16">
       <SectionTitle chinese="我是誰" english="Who am I" />
