@@ -21,7 +21,6 @@ src/components/ui/*
 **/.vscode/**
 
 # 忽略根目錄下的配置文件
-**/.prettier*
 **/.editorconfig
 **/.gitignore
 **/.nojekyll
