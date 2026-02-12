@@ -1,6 +1,8 @@
 ---
 import { Button } from "@ui/button";
+
 import Layout from "@/layouts/Layout.astro";
+import { Newspaper } from "@lucide/astro";
 ---
 
 <Layout
@@ -8,46 +10,80 @@ import Layout from "@/layouts/Layout.astro";
   pageOgImage="/assets/website_og/home_og.png"
 >
   <div class="flex h-[80vh] flex-col items-center justify-center">
-    <div class="mb-10 grid grid-cols-17 grid-rows-8" id="sh-404-grid"></div>
-    <p class="mb-8 text-lg">抱歉，您訪問的頁面不存在或已被移除。</p>
+    <div class="relative">
+      <!-- 404 Grid -->
+      <div class="mb-10 grid grid-cols-17 grid-rows-8" id="sh-404-grid"></div>
+      <!-- 404 遮罩 -->
+      <div
+        class="gradient-to-t absolute top-0 left-0 block h-full w-full bg-gradient-to-r from-black via-transparent to-black md:hidden"
+      >
+      </div>
+    </div>
+    <p class="mb-8 text-lg">好吧，看起來你要找的東西目前還不在這裡...</p>
     <a href="/">
-      <Button>返回首頁</Button>
+      <Button variant={"outline"}>返回首頁</Button>
     </a>
-  </div>
-</Layout>
+    <a href="https://samhacker.xyz">
+      <Button variant={"outline"}>
+        <Newspaper />
+      </Button>
+    </a>
 
-<script>
-  // 將sh-404-grid的每個格子中加入一個25px的div
-  const coloredDiv = [
-    // 要上色的格子
-    [3, 7, 8, 9, 15], // v
-    [2, 3, 6, 10, 14, 15], // v
-    [1, 3, 6, 9, 10, 13, 15], // v
-    [1, 3, 6, 8, 10, 13, 15], // v
-    [0, 3, 6, 8, 10, 12, 15], // v
-    [0, 1, 2, 3, 4, 6, 7, 10, 12, 13, 14, 15, 16], // v
-    [3, 6, 10, 15], // v
-    [3, 7, 8, 9, 15], // v
-  ];
-  const grid = document.getElementById("sh-404-grid");
+    <script>
+      import { gsap } from "gsap";
+      import { Draggable } from "gsap/Draggable";
+      gsap.registerPlugin(Draggable);
 
-  if (grid) {
-    document.addEventListener("DOMContentLoaded", () => {
-      for (let i = 0; i < coloredDiv.length; i++) {
-        // i是行數
-        for (let j = 0; j < 17; j++) {
-          const div = document.createElement("div");
-          div.style.width = "25px";
-          div.style.height = "25px";
-          if (coloredDiv[i].includes(j)) {
-            div.style.backgroundColor = "oklch(55.3% 0.013 58.071)"; // stone-500
-            console.log(`上色格子: (${i}, ${j})`);
-          } else {
-            console.log(`非上色格子: (${i}, ${j})`);
+      // 將sh-404-grid的每個格子中加入一個25px的div
+      const coloredDiv = [
+        // 要上色的格子
+        [3, 7, 8, 9, 15], // v
+        [2, 3, 6, 10, 14, 15], // v
+        [1, 3, 6, 9, 10, 13, 15], // v
+        [1, 3, 6, 8, 10, 13, 15], // v
+        [0, 3, 6, 8, 10, 12, 15], // v
+        [0, 1, 2, 3, 4, 6, 7, 10, 12, 13, 14, 15, 16], // v
+        [3, 6, 10, 15], // v
+        [3, 7, 8, 9, 15], // v
+      ];
+      const grid = document.getElementById("sh-404-grid");
+
+      if (grid) {
+        document.addEventListener("DOMContentLoaded", () => {
+          for (let i = 0; i < coloredDiv.length; i++) {
+            // i是行數
+            for (let j = 0; j < 17; j++) {
+              const div = document.createElement("div");
+              if (coloredDiv[i].includes(j)) {
+                div.style.backgroundColor = "oklch(55.3% 0.013 58.071)"; // stone-500
+                console.log(`上色格子: (${i}, ${j})`);
+              } else {
+                console.log(`非上色格子: (${i}, ${j})`);
+              }
+              div.classList.add("sh-404-grid-item");
+              div.style.width = "25px";
+              div.style.height = "25px";
+              grid.appendChild(div);
+            }
           }
-          grid.appendChild(div);
-        }
+
+          gsap.to("#sh-404-grid div", {
+            duration: 1,
+            scale: 0.1,
+            y: 20,
+            yoyo: true,
+            repeat: -1,
+            repeatDelay: 1,
+            ease: "power1.inOut",
+            stagger: {
+              grid: [7, 15],
+              from: "random",
+              amount: 1.5,
+              repeatDelay: 2,
+            },
+          });
+        });
       }
-    });
-  }
-</script>
+    </script>
+  </div></Layout
+>
