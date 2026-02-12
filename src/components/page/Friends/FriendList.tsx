@@ -23,14 +23,14 @@ function FriendCard({
   links,
 }: FriendCardProps) {
   return (
-    <Card className="relative p-4 bg-stone-900 overflow-hidden">
+    <Card className="relative overflow-hidden bg-stone-900 p-4">
       {/* 裝飾性背景圖 - 右下角 */}
-      <div className="absolute -right-0 -bottom-0 w-[171px] h-[171px] opacity-40 pointer-events-none">
+      <div className="pointer-events-none absolute -right-0 -bottom-0 h-[171px] w-[171px] opacity-40">
         <img
           src={getFriendImageUrl(image)}
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-cover"
+          className="h-full w-full object-cover"
         />
         <div
           className="absolute inset-0"
@@ -42,16 +42,16 @@ function FriendCard({
       </div>
 
       {/* 卡片內容 */}
-      <div className="flex justify-start gap-4 relative z-10">
-        <Avatar className="w-12 h-12">
+      <div className="relative z-10 flex justify-start gap-4">
+        <Avatar className="h-12 w-12">
           <AvatarImage src={getFriendImageUrl(image)} />
           <AvatarFallback>{name.charAt(0)}</AvatarFallback>
         </Avatar>
-        <div className="space-y-1 w-full">
+        <div className="w-full space-y-1">
           <h3 className="text-lg font-bold">{name}</h3>
           <h4 className="text-sm font-semibold opacity-30">@{slug}</h4>
           <p className="text-sm">{description}</p>
-          <div className="text-xs gap-2 flex flex-wrap">
+          <div className="flex flex-wrap gap-2 text-xs">
             {links.map((link, index) => (
               <a
                 key={index}
@@ -82,7 +82,7 @@ export default function FriendList() {
   return (
     <WaterFall
       items={friends}
-      className="columns-1 sm:columns-2 lg:columns-3 [column-gap:1rem]"
+      className="columns-1 [column-gap:1rem] sm:columns-2 lg:columns-3"
       renderItem={(friend) => (
         <FriendCard
           key={friend.slug}

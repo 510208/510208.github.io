@@ -20,7 +20,7 @@ export const AwardCard = ({
           // 加上 suppressHydrationWarning 避免因 client-side 動畫插入 inline style 導致的 hydration mismatch
           suppressHydrationWarning
           data-animate-target="award"
-          className={cn("mb-6 sh-awards-animation", className)}
+          className={cn("sh-awards-animation mb-6", className)}
         >
           <h3 className="text-lg font-semibold">{awardItem.title}</h3>
           <p className="text-sm text-gray-400">
@@ -35,12 +35,12 @@ export const AwardCard = ({
       <HoverCardContent
         side="right"
         align="center"
-        className="w-80 p-0 overflow-hidden"
+        className="w-80 overflow-hidden p-0"
       >
         <img
           src={awardItem.logo.src}
           alt={awardItem.title}
-          className="aspect-3/1 object-cover w-full"
+          className="aspect-3/1 w-full object-cover"
         />
         <div className="p-4">
           <h2 className="text-xl font-bold">{awardItem.title}</h2>

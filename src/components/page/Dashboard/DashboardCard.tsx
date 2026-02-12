@@ -93,17 +93,17 @@ function DashboardCard({
   return (
     <a href={item.link} target="_blank" rel="noopener noreferrer">
       <div
-        className="rounded-lg border border-stone-700 bg-stone-800/50 shadow-lg backdrop-blur-md transition-all duration-300 py-8 px-2 hover:bg-stone-700"
+        className="rounded-lg border border-stone-700 bg-stone-800/50 px-2 py-8 shadow-lg backdrop-blur-md transition-all duration-300 hover:bg-stone-700"
         style={{
           background: `radial-gradient(at bottom center, ${hexToRgba(item.color.primary, 0.3)} 0%, rgba(255,255,255,0.1) 30%)`,
         }}
       >
-        <div className="flex gap-1 items-center justify-center tracking-widest mb-4">
-          <div className="flex items-center justify-center p-2 bg-transparent border-none rounded-lg mr-2">
+        <div className="mb-4 flex items-center justify-center gap-1 tracking-widest">
+          <div className="mr-2 flex items-center justify-center rounded-lg border-none bg-transparent p-2">
             <item.image className="h-6 w-6" color={item.color.primary} />
           </div>
           <h2
-            className="text-xl font text-white"
+            className="font text-xl text-white"
             style={{
               color: item.color.primary,
             }}
@@ -113,7 +113,7 @@ function DashboardCard({
         </div>
         <p
           ref={numberRef}
-          className="text-3xl text-center font-mono font-bold text-white"
+          className="text-center font-mono text-3xl font-bold text-white"
         >
           {displayValue}
         </p>
@@ -124,12 +124,12 @@ function DashboardCard({
 
 function DashboardCardSkeleton() {
   return (
-    <div className="rounded-lg border border-stone-700 bg-stone-800/50 p-4 shadow-lg backdrop-blur-md py-10 px-2">
-      <div className="flex gap-1 justify-center tracking-widest mb-4">
+    <div className="rounded-lg border border-stone-700 bg-stone-800/50 p-4 px-2 py-10 shadow-lg backdrop-blur-md">
+      <div className="mb-4 flex justify-center gap-1 tracking-widest">
         <Skeleton className="h-6 w-6 rounded-full" />
         <Skeleton className="h-6 w-32" />
       </div>
-      <Skeleton className="h-10 w-48 mx-auto" />
+      <Skeleton className="mx-auto h-10 w-48" />
     </div>
   );
 }

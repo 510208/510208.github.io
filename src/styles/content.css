@@ -21,13 +21,13 @@ a:not(
   div.grid a,
   [data-slot^="card"] a
 ) {
-  @apply text-emerald-300 hover:text-emerald-400 transition-all duration-300;
+  @apply text-emerald-300 transition-all duration-300 hover:text-emerald-400;
   @apply underline decoration-emerald-300/50;
   @apply mr-1 ml-1;
 }
 
 .content-text code {
-  @apply bg-gray-800/60 p-1 rounded-md overflow-auto -z-1 font-mono;
+  @apply -z-1 overflow-auto rounded-md bg-gray-800/60 p-1 font-mono;
 }
 
 .skill-list li {

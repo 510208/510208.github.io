@@ -23,7 +23,7 @@ export const GitHubInfo = () => {
       <SelfAvatar />
       <div className="flex-1">
         <div className="flex items-center justify-between">
-          <h2 className="font-bold text-lg">SamHacker</h2>
+          <h2 className="text-lg font-bold">SamHacker</h2>
           <a
             href="https://github.com/510208"
             target="_blank"
@@ -38,7 +38,7 @@ export const GitHubInfo = () => {
             </Button>
           </a>
         </div>
-        <p className="text-sm mt-4">
+        <p className="mt-4 text-sm">
           {githubData ? githubData.bio : "熱愛程式設計與開源的開發者。"}
         </p>
       </div>

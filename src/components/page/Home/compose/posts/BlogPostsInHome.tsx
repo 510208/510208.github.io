@@ -122,12 +122,12 @@ export const BlogPosts = () => {
   }, [isLoading, posts]);
 
   if (error) {
-    return <div className="text-center text-red-400 p-4">{error}</div>;
+    return <div className="p-4 text-center text-red-400">{error}</div>;
   }
 
   return (
     <div
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
       ref={cardsRef}
     >
       {isLoading

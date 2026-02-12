@@ -13,7 +13,7 @@ const GameListClient = ({ game }: { game: ShsiteConfig["game"][0] }) => {
     <HoverCard>
       <HoverCardTrigger className="flex justify-center">
         <Card
-          className="aspect-2/3 max-w-60 w-full h-auto hover:brightness-90 transition-all duration-300"
+          className="aspect-2/3 h-auto w-full max-w-60 transition-all duration-300 hover:brightness-90"
           style={{
             backgroundImage: `url(${game.image.src})`,
             backgroundSize: "cover",
@@ -28,7 +28,7 @@ const GameListClient = ({ game }: { game: ShsiteConfig["game"][0] }) => {
           <img
             src={game.image.src}
             alt={game.name}
-            className="max-h-48 aspect-2/3 rounded-md"
+            className="aspect-2/3 max-h-48 rounded-md"
           />
         </div>
         <div className="ml-4">

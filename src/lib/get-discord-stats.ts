@@ -46,7 +46,7 @@ async function getDiscordStats(userId: string) {
 }
 
 export default async function formatDiscordStats(
-  userId: string = "959977374471028779"
+  userId: string = "959977374471028779",
 ): Promise<DiscordStats> {
   const data = await getDiscordStats(userId);
   // 將API傳回的資料中data/activities的type欄位進行格式化

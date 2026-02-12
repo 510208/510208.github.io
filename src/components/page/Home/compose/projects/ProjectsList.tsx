@@ -97,7 +97,7 @@ export const ProjectsList = ({
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-[200px]">
+      <div className="flex min-h-[200px] items-center justify-center">
         <div className="text-lg">載入專案中...</div>
       </div>
     );
@@ -111,7 +111,7 @@ export const ProjectsList = ({
           <div className="flex gap-2">
             {/* 搜尋輸入框 */}
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+              <Search className="absolute top-3 left-3 h-4 w-4 text-gray-400" />
               <Input
                 placeholder="搜尋專案名稱或描述..."
                 value={searchTerm}
@@ -123,14 +123,14 @@ export const ProjectsList = ({
             </div>
 
             {/* 語言過濾器 */}
-            <div className="flex-none w-12 sm:w-34">
+            <div className="w-12 flex-none sm:w-34">
               <Select
                 value={selectedLanguage}
                 onValueChange={setSelectedLanguage}
               >
                 <SelectTrigger className="w-full">
                   <Languages className="h-4 w-4" />
-                  <span className="hidden sm:inline sm:ml-2">
+                  <span className="hidden sm:ml-2 sm:inline">
                     <SelectValue placeholder="選擇語言" />
                   </span>
                 </SelectTrigger>
@@ -146,11 +146,11 @@ export const ProjectsList = ({
             </div>
 
             {/* 主題過濾器 */}
-            <div className="flex-none w-12 sm:w-34">
+            <div className="w-12 flex-none sm:w-34">
               <Select value={selectedTopic} onValueChange={setSelectedTopic}>
                 <SelectTrigger className="w-full">
                   <Filter className="h-4 w-4" />
-                  <span className="hidden sm:inline sm:ml-2">
+                  <span className="hidden sm:ml-2 sm:inline">
                     <SelectValue placeholder="選擇主題" />
                   </span>
                 </SelectTrigger>
@@ -166,11 +166,11 @@ export const ProjectsList = ({
             </div>
 
             {/* 狀態過濾器 */}
-            <div className="flex-none w-12 sm:w-34">
+            <div className="w-12 flex-none sm:w-34">
               <Select value={selectedStatus} onValueChange={setSelectedStatus}>
                 <SelectTrigger className="w-full">
                   <ChartPie className="h-4 w-4" />
-                  <span className="hidden sm:inline sm:ml-2">
+                  <span className="hidden sm:ml-2 sm:inline">
                     <SelectValue placeholder="選擇狀態" />
                   </span>
                 </SelectTrigger>
@@ -197,7 +197,7 @@ export const ProjectsList = ({
       {/* 專案網格 */}
       <div
         className={cn(
-          "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
+          "grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3",
           className,
         )}
       >
@@ -216,7 +216,7 @@ export const ProjectsList = ({
 
       {/* 無結果時的提示 */}
       {filteredProjects.length === 0 && !loading && (
-        <div className="text-center py-12">
+        <div className="py-12 text-center">
           <div className="text-gray-500 dark:text-gray-400">
             沒有找到符合條件的專案
           </div>
