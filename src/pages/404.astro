@@ -19,7 +19,9 @@ import { Newspaper, Undo2 } from "@lucide/astro";
       >
       </div>
     </div>
-    <p class="mb-8 text-lg">好吧，看起來你要找的東西目前還不在這裡...</p>
+    <p id="sh-404-text" class="mb-8 text-lg">
+      好吧，看起來你要找的東西目前還不在這裡...
+    </p>
     <div class="flex gap-4">
       <a href="/">
         <Button size={"lg"}><Undo2 />返回首頁</Button>
@@ -32,6 +34,7 @@ import { Newspaper, Undo2 } from "@lucide/astro";
     </div>
 
     <script>
+      import { CardDescription } from "@/components/ui/card";
       import { gsap } from "gsap";
       import { Draggable } from "gsap/Draggable";
       gsap.registerPlugin(Draggable);
@@ -39,6 +42,7 @@ import { Newspaper, Undo2 } from "@lucide/astro";
       const url = window.location.href;
 
       let coloredDiv;
+      let sh404Description = undefined;
 
       // 將sh-404-grid的每個格子中加入一個25px的div
       if (url.includes("homo") || url.includes("114514")) {
@@ -53,6 +57,7 @@ import { Newspaper, Undo2 } from "@lucide/astro";
           [0, 2, 4, 7, 9, 11, 13, 16],
           [0, 2, 5, 6, 9, 11, 14, 15],
         ];
+        sh404Description = "這麼臭的404有存在的必要嗎（悲";
       } else if (
         url.includes("rick") ||
         url.includes("roll") ||
@@ -68,6 +73,7 @@ import { Newspaper, Undo2 } from "@lucide/astro";
           [0, 2, 5, 8, 12, 15],
           [0, 2, 4, 5, 6, 9, 10, 12, 16],
         ];
+        sh404Description = "Never gonna give you up~";
       } else if (
         url.includes("sus") ||
         url.includes("among") ||
@@ -84,6 +90,7 @@ import { Newspaper, Undo2 } from "@lucide/astro";
           [6, 8, 9, 11],
           [7, 10],
         ];
+        sh404Description = "ඞඞඞඞඞඞඞඞඞඞඞඞඞඞඞ";
       } else {
         coloredDiv = [
           // 要上色的格子
@@ -115,6 +122,13 @@ import { Newspaper, Undo2 } from "@lucide/astro";
               div.style.width = "25px";
               div.style.height = "25px";
               grid.appendChild(div);
+            }
+          }
+
+          if (sh404Description) {
+            const sh404Text = document.getElementById("sh-404-text");
+            if (sh404Text) {
+              sh404Text.textContent = sh404Description;
             }
           }
 
