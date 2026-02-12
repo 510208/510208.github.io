@@ -124,7 +124,9 @@ import { Newspaper, Undo2 } from "@lucide/astro";
       [3, 7, 8, 9, 15], // v
     ];
   }
+
   const grid = document.getElementById("sh-404-grid");
+  const fragment = document.createDocumentFragment();
 
   if (grid) {
     document.addEventListener("DOMContentLoaded", () => {
@@ -134,16 +136,15 @@ import { Newspaper, Undo2 } from "@lucide/astro";
           const div = document.createElement("div");
           if (coloredDiv[i].includes(j)) {
             div.style.backgroundColor = "oklch(55.3% 0.013 58.071)"; // stone-500
-            console.log(`上色格子: (${i}, ${j})`);
           } else {
-            console.log(`非上色格子: (${i}, ${j})`);
           }
           div.classList.add("sh-404-grid-item");
           div.style.width = "25px";
           div.style.height = "25px";
-          grid.appendChild(div);
+          fragment.appendChild(div);
         }
       }
+      grid.appendChild(fragment);
 
       if (sh404Description) {
         const sh404Text = document.getElementById("sh-404-text");
@@ -160,6 +161,7 @@ import { Newspaper, Undo2 } from "@lucide/astro";
         repeat: -1,
         repeatDelay: 1,
         ease: "power1.inOut",
+        force3D: true,
         stagger: {
           grid: [7, 15],
           from: "random",
