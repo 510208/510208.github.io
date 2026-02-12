@@ -1,0 +1,33 @@
+# 略過shadcn的元件
+src/components/ui/*
+
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+
+# 忽略Node.js的系統文件
+**/package.json
+**/pnpm-lock.yaml
+**/node_modules/**
+
+# 忽略編譯後的文件
+**/dist
+
+# 忽略public資料夾中的文件
+**/public/*
+
+# 忽略VSCode的設定文件
+**/.vscode/**
+
+# 忽略根目錄下的配置文件
+**/.prettier*
+**/.editorconfig
+**/.gitignore
+**/.nojekyll
+**/README.md
+**/LICENSE
+**/CONTRIBUTING.md
+/*.mjs
+/shsite.*
+/*.json
