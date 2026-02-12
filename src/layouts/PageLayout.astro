@@ -2,10 +2,10 @@
 import PageHero from "@components/common/PageHero.astro";
 import Layout from "@/layouts/Layout.astro";
 
-const { title, subtitle } = Astro.props;
+const { title, subtitle, description, ogImage } = Astro.props;
 ---
 
-<Layout pageName={title}>
+<Layout pageName={title} pageDescription={description} pageOgImage={ogImage}>
   <div
     class="w-auto lg:w-full mx-6 mt-20 lg:mt-30 mb-10 lg:max-w-7xl lg:mx-auto lg:px-6"
   >

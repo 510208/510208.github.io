@@ -6,11 +6,11 @@ import "@styles/global.css";
 import ToTop from "@components/common/ToTop.astro";
 
 const baseUrl = Astro.site;
-const { pageName } = Astro.props;
+const { pageName, pageDescription, pageOgImage } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hant">
   <!----------------------------------------------------------------------------------------------------------->
   <!--         ██                                                                                            -->
   <!--       ████                                        █                         ██                        -->
@@ -34,7 +34,26 @@ const { pageName } = Astro.props;
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
 
-    <link type="text/plain" rel="author" href={new URL("/humans.txt", baseUrl)} />
+    <!-- Facebook Opengraph -->
+    <meta property="og:url" content={baseUrl} />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content={pageName ? `${pageName} - SamHacker` : "SamHacker"}
+    />
+    <meta property="og:description" content={pageDescription || "網頁描述"} />
+    <meta property="og:image" content={pageOgImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <!-- End Facebook Opengraph -->
+
+    <link
+      type="text/plain"
+      rel="author"
+      href={new URL("/humans.txt", baseUrl)}
+    />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 
