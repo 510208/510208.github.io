@@ -2,7 +2,7 @@
 import { Button } from "@ui/button";
 
 import Layout from "@/layouts/Layout.astro";
-import { Newspaper } from "@lucide/astro";
+import { Newspaper, Undo2 } from "@lucide/astro";
 ---
 
 <Layout
@@ -20,14 +20,16 @@ import { Newspaper } from "@lucide/astro";
       </div>
     </div>
     <p class="mb-8 text-lg">好吧，看起來你要找的東西目前還不在這裡...</p>
-    <a href="/">
-      <Button variant={"outline"}>返回首頁</Button>
-    </a>
-    <a href="https://samhacker.xyz">
-      <Button variant={"outline"}>
-        <Newspaper />
-      </Button>
-    </a>
+    <div class="flex gap-4">
+      <a href="/">
+        <Button size={"lg"}><Undo2 />返回首頁</Button>
+      </a>
+      <a href="https://samhacker.xyz">
+        <Button variant={"outline"} size={"icon-lg"}>
+          <Newspaper />
+        </Button>
+      </a>
+    </div>
 
     <script>
       import { gsap } from "gsap";
