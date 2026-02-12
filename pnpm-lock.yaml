@@ -65,6 +65,9 @@ importers:
       astro-lenis:
         specifier: ^1.0.5
         version: 1.0.5(astro@5.16.15(@types/node@25.2.1)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.0)(typescript@5.9.3))(lenis@1.3.17(react@19.2.4))
+      astro-pages-hmr:
+        specifier: ^0.1.2
+        version: 0.1.2
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -1809,6 +1812,9 @@ packages:
     peerDependencies:
       astro: ^5.13.8
       lenis: ^1.3.11
+
+  astro-pages-hmr@0.1.2:
+    resolution: {integrity: sha512-6d823iDxdwiks64O8GyYvQgZ/LkQeZzmqa0CsM8UKbQXAinA0GGSegsbA3qDqCvePtiJMbBKFuYcJHTlhrzUHw==}
 
   astro@5.16.15:
     resolution: {integrity: sha512-+X1Z0NTi2pa5a0Te6h77Dgc44fYj63j1yx6+39Nvg05lExajxSq7b1Uj/gtY45zoum8fD0+h0nak+DnHighs3A==}
@@ -4793,6 +4799,8 @@ snapshots:
       astro-integration-kit: 0.19.1(astro@5.16.15(@types/node@25.2.1)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.0)(typescript@5.9.3))
       lenis: 1.3.17(react@19.2.4)
       typescript: 5.9.3
+
+  astro-pages-hmr@0.1.2: {}
 
   astro@5.16.15(@types/node@25.2.1)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.0)(typescript@5.9.3):
     dependencies:

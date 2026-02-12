@@ -29,6 +29,7 @@
     "astro": "^5.16.15",
     "astro-devtool-breakpoints": "^0.3.0",
     "astro-lenis": "^1.0.5",
+    "astro-pages-hmr": "^0.1.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cobe": "^0.6.5",

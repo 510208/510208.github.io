@@ -12,6 +12,8 @@ import partytown from "@astrojs/partytown";
 
 import sitemap from "@astrojs/sitemap";
 
+import pagesHmr from "astro-pages-hmr";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://510208.github.io",
@@ -32,7 +34,7 @@ export default defineConfig({
         return url;
       },
     },
-  }), sitemap()],
+  }), sitemap(), pagesHmr()],
   vite: {
     plugins: [tailwindcss()],
   },
