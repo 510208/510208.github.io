@@ -248,7 +248,7 @@ const friends: FriendCardProps[] = [
   },
   {
     image: "https://www.gravatar.com/avatar/6b4acff32864e0e522937ec26e016709db956e97f199b46968e0ddc7ce6b79e8",
-    name: "資工小廢物 - JN",
+    name: "JN",
     slug: "giveanornot",
     description: <>
       <p>
