@@ -57,10 +57,10 @@
 /* Astro Font Config */
 @theme inline {
   /* Font families */
-  --font-sans: "Inter", "Noto Sans TC", sans-serif;
-  --font-mono: "Maple Font", "Fira Code", monospace;
-  --font-display: "Inter", "Noto Sans TC", sans-serif;
-  --font-funny: "ChenYuluoyan 2.0", "Noto Sans TC", sans-serif;
+  --font-sans: var(--font-inter), var(--font-noto), sans-serif;
+  --font-mono: var(--font-maple), "Fira Code", monospace;
+  --font-display: var(--font-inter), var(--font-noto), sans-serif;
+  --font-funny: var(--font-chenyuluoyan), var(--font-noto), sans-serif;
 }
 
 :root {
