@@ -8,6 +8,8 @@ import OgLayout from "./OgLayout.astro";
 
 const baseUrl = Astro.site;
 const { pageName, pageDescription, pageOgImage } = Astro.props;
+
+import { Font } from "astro:assets";
 ---
 
 <!doctype html>
@@ -67,6 +69,11 @@ const { pageName, pageDescription, pageOgImage } = Astro.props;
       })(window, document, "script", "dataLayer", "GTM-MTT9N2D9");
     </script>
     <!-- End Google Tag Manager -->
+
+    <!-- Astro Font -->
+    <Font cssVariable="--font-noto" />
+    <Font cssVariable="--font-inter" />
+    <Font cssVariable="--font-chenyuluoyan" />
   </head>
 
   <body class="dark">
