@@ -21,11 +21,17 @@ export default defineConfig({
       name: 'Noto Sans TC',
       cssVariable: '--font-noto',
       provider: fontProviders.fontsource(),
+      weights: ['100', '200', '400', '500', '700'],
+      subsets: ['chinese-traditional', 'latin'], 
+      fallbacks: [],
     },
     {
       name: 'Inter',
       cssVariable: '--font-inter',
       provider: fontProviders.fontsource(),
+      weights: ['100', '200', '400', '500', '700'],
+      subsets: ['latin'],
+      fallbacks: [],
     },
     {
       provider: fontProviders.local(),
@@ -37,7 +43,7 @@ export default defineConfig({
           weight: 'normal',
           style: 'normal'
         }]
-      }
+      },
     },
     {
       provider: fontProviders.local(),
