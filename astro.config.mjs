@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
 import react from "@astrojs/react";
@@ -12,11 +12,47 @@ import partytown from "@astrojs/partytown";
 
 import sitemap from "@astrojs/sitemap";
 
-import pagesHmr from "astro-pages-hmr";
-
 // https://astro.build/config
 export default defineConfig({
   site: "https://510208.github.io",
+
+  fonts: [
+    {
+      name: 'Noto Sans TC',
+      cssVariable: '--font-noto',
+      provider: fontProviders.fontsource(),
+    },
+    {
+      name: 'Inter',
+      cssVariable: '--font-inter',
+      provider: fontProviders.fontsource(),
+    },
+    {
+      provider: fontProviders.local(),
+      name: "ChenYuluoyan 2.0",
+      cssVariable: "--font-chenyuluoyan",
+      options: {
+        variants: [{
+          src: ['./src/assets/fonts/ChenYuluoyan-2.0-Thin.woff2'],
+          weight: 'normal',
+          style: 'normal'
+        }]
+      }
+    },
+    {
+      provider: fontProviders.local(),
+      name: "Maple Font",
+      cssVariable: "--font-maple",
+      options: {
+        variants: [{
+          src: ['./src/assets/fonts/SamhackerMapleFontMono-Regular.woff2'],
+          weight: 'normal',
+          style: 'normal'
+        }]
+      }
+    }
+  ],
+
   integrations: [react(), devtoolBreakpoints(), lenis(), partytown({
     config: {
       forward: ["dataLayer.push"],
@@ -34,7 +70,7 @@ export default defineConfig({
         return url;
       },
     },
-  }), sitemap(), pagesHmr()],
+  }), sitemap()],
   vite: {
     plugins: [tailwindcss()],
   },
