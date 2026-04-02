@@ -11,27 +11,27 @@ import { ChevronDown, Mouse, Hand } from "@lucide/astro";
   <!-- 往下捲動提示 -->
   <div
     id="sh-hero-mouse-indicator"
-    class="absolute flex flex-col justify-center items-center bottom-4 left-1/2 transform -translate-x-1/2 z-20"
+    class="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 transform flex-col items-center justify-center"
   >
-    <Mouse class="hidden lg:block mb-1 opacity-60" />
-    <Hand class="block lg:hidden mb-1 opacity-60" />
+    <Mouse class="mb-1 hidden opacity-60 lg:block" />
+    <Hand class="mb-1 block opacity-60 lg:hidden" />
     <ChevronDown class="opacity-40" size={16} />
   </div>
 
-  <div class="mx-auto px-4 sm:px-6 lg:px-8 lg:h-[97vh]">
+  <div class="mx-auto px-4 sm:px-6 lg:h-[97vh] lg:px-8">
     <div
-      class="flex flex-col lg:flex-row items-center justify-between h-full pt-8"
+      class="flex h-full flex-col items-center justify-between pt-8 lg:flex-row"
     >
       {/* Div Left - 文字內容 */}
       <div
-        class="relative w-auto lg:w-1/2 z-10 text-center pt-40 lg:text-left md:pt-8 lg:pt-0 md:h-auto lg:pl-40"
+        class="relative z-10 w-auto pt-40 text-center md:h-auto md:pt-8 lg:w-1/2 lg:pt-0 lg:pl-40 lg:text-left"
       >
         {/* 背景文字 - absolute positioning */}
         <div
-          class="absolute flex items-center justify-center lg:justify-start lg:ml-20"
+          class="absolute flex items-center justify-center lg:ml-20 lg:justify-start"
         >
           <h1
-            class="hidden lg:block -inset-y-200 font-inter font-black text-5xl sm:text-7xl lg:text-8xl xl:text-9xl sh-background-text-decoration select-none whitespace-nowrap opacity-20"
+            class="font-inter sh-background-text-decoration -inset-y-200 hidden text-5xl font-black whitespace-nowrap opacity-20 select-none sm:text-7xl lg:block lg:text-8xl xl:text-9xl"
           >
             Sam<br />Hacker
           </h1>
@@ -44,13 +44,13 @@ import { ChevronDown, Mouse, Hand } from "@lucide/astro";
           </div>
           <h2
             id="sh-hero-title"
-            class="font-inter font-bold text-4xl sm:text-5xl lg:text-6xl text-white mb-6 mt-2"
+            class="font-inter mt-2 mb-6 text-4xl font-bold text-white sm:text-5xl lg:text-6xl"
           >
             SamHacker
           </h2>
           <div
             id="sh-hero-description"
-            class="font-noto text-lg text-gray-300 leading-7 max-w-md mx-auto lg:mx-0"
+            class="mx-auto max-w-md font-sans text-lg leading-7 text-gray-300 lg:mx-0"
           >
             <p class="mb-0">
               我是一個熱愛分享技術的部落客，
@@ -64,11 +64,11 @@ import { ChevronDown, Mouse, Hand } from "@lucide/astro";
       </div>
 
       {/* Div Right - 角色圖片與背景方格 */}
-      <div class="relative w-full lg:w-1/2 h-96 lg:h-full mt-8 lg:mt-0">
+      <div class="relative mt-8 h-96 w-full lg:mt-0 lg:h-full lg:w-1/2">
         {/* 背景方格 - 深色模式 */}
         <div
           id="sh-hero-bg-grid"
-          class="absolute inset-0 opacity-20 transition-opacity duration-300 -z-10"
+          class="absolute inset-0 -z-10 opacity-20 transition-opacity duration-300"
           style={{
             backgroundImage: `url(${bgGrid.src})`,
             backgroundSize: "80% 80%",
@@ -84,7 +84,7 @@ import { ChevronDown, Mouse, Hand } from "@lucide/astro";
           src={misana}
           alt="Misana Character"
           loading="eager"
-          class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-full max-h-96 lg:max-h-full w-auto object-contain object-bottom"
+          class="absolute bottom-0 left-1/2 h-full max-h-96 w-auto -translate-x-1/2 transform object-contain object-bottom lg:max-h-full"
           style={{ maxWidth: "550px" }}
         />
       </div>
