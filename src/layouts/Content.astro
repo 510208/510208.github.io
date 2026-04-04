@@ -19,9 +19,10 @@ const { sectionName, bgImage, class: className }: Props = Astro.props;
   style={bgImage
     ? `background-image: url(${typeof bgImage === "string" ? bgImage : bgImage?.src}); background-size: cover; background-position: bottom center;`
     : undefined}
+  transition:name="main-content"
 >
   <div
-    class="w-full max-w-sm lg:max-w-6xl mb-10"
+    class="mb-10 w-full max-w-sm lg:max-w-6xl"
     id={`sh-${sectionName.toLowerCase()}-title`}
   >
     <slot name="title" />
