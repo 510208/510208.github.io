@@ -7,23 +7,23 @@ const links = config.navBar.links;
 ---
 
 <header
-  class="fixed top-4.5 left-1/2 -translate-x-1/2 z-50 w-full max-w-[1278px] px-4"
-  transition:persist
+  class="fixed top-4.5 left-1/2 z-50 w-full max-w-[1278px] -translate-x-1/2 px-4"
+  transition:name="header"
 >
   <nav
-    class="backdrop-blur-[6px] bg-neutral-900/50 border border-white/10 px-4 lg:px-8 h-14 flex items-center justify-between rounded-lg"
+    class="flex h-14 items-center justify-between rounded-lg border border-white/10 bg-neutral-900/50 px-2.5 backdrop-blur-[6px]"
   >
     <!-- Logo and Site Title -->
     <div class="flex items-center gap-2">
-      <div class="w-9 h-9 rounded-lg overflow-hidden">
+      <div class="h-9 w-9 overflow-hidden rounded-lg">
         <img
           src="/favicon.png"
           alt="SamHacker"
-          class="w-full h-full object-cover"
+          class="h-full w-full object-cover"
         />
       </div>
       <a class="hidden lg:block" href="/">
-        <h1 class="text-3xl text-white capitalize leading-none font-funny">
+        <h1 class="font-funny text-3xl leading-none text-white capitalize">
           SamHacker
         </h1>
       </a>
@@ -32,37 +32,37 @@ const links = config.navBar.links;
     <!-- Navigation Links -->
     <div class="flex items-center gap-2 lg:gap-4">
       <!-- Main Nav -->
-      <div class="hidden lg:flex items-center gap-1 pr-4">
+      <div class="hidden items-center gap-1 pr-4 lg:flex">
         {
           links.map((link, index) => (
             <div class="flex items-center">
               <a
                 href={link.href}
-                class="px-2 lg:px-4 h-6 flex items-center text-sm font-medium text-white uppercase hover:text-white/80 transition-colors"
+                class="flex h-6 items-center px-2 text-sm font-medium text-white uppercase transition-colors hover:text-white/80 lg:px-4"
               >
                 {link.title}
               </a>
               {index < links.length - 1 && (
-                <span class="text-neutral-400 text-sm">/</span>
+                <span class="text-sm text-neutral-400">/</span>
               )}
             </div>
           ))
         }
       </div>
 
-      <div class="lg:hidden flex items-center gap-1">
+      <div class="flex items-center gap-1 lg:hidden">
         {
           links.map((link, index) => (
             <div class="flex items-center">
-                <a
+              <a
                 href={link.href}
-                class="px-2 h-6 flex items-center text-sm font-medium text-white uppercase hover:text-white/80 transition-colors"
+                class="flex h-6 items-center px-2 text-sm font-medium text-white uppercase transition-colors hover:text-white/80"
                 aria-label={link.title}
-                >
+              >
                 <link.icon size={16} />
-                </a>
+              </a>
               {index < links.length - 1 && (
-                <span class="hidden sm:block text-neutral-400 text-sm">/</span>
+                <span class="hidden text-sm text-neutral-400 sm:block">/</span>
               )}
             </div>
           ))
@@ -70,7 +70,7 @@ const links = config.navBar.links;
       </div>
 
       <!-- Action Buttons -->
-      <div class="hidden md:flex items-center gap-2">
+      <div class="hidden items-center gap-2 md:flex">
         <a
           href="mailto:xux510208@gmail.com"
           target="_blank"
@@ -80,7 +80,7 @@ const links = config.navBar.links;
             client:load
             variant="ghost"
             size="icon"
-            className="hidden sm:flex items-center justify-center rounded-lg hover:bg-white/5"
+            className="hidden items-center justify-center rounded-lg hover:bg-white/5 sm:flex"
             aria-label="Contact"
           >
             <Mail size={18} />
@@ -92,7 +92,7 @@ const links = config.navBar.links;
             client:load
             variant="ghost"
             size="icon"
-            className="hidden sm:flex items-center justify-center rounded-lg hover:bg-white/5"
+            className="hidden items-center justify-center rounded-lg hover:bg-white/5 sm:flex"
             aria-label="Info"
           >
             <Info size={18} />
