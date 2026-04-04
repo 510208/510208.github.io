@@ -1,0 +1,85 @@
+/* View Transitions */
+/* 貢獻者: Zhenyuan (https://github.com/awdrgyj8) */
+
+/* Hero：放大縮小 + 向上滑動（進場從略為放大開始，縮回正常尺寸同時上滑） */
+@keyframes vt-hero-in {
+  from {
+    opacity: 0;
+    transform: scale(1.06) translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes vt-hero-out {
+  to {
+    opacity: 0;
+    transform: scale(0.97) translateY(-2rem);
+  }
+}
+
+/* 內容區塊：fade + 向上滑動 */
+@keyframes vt-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(2.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes vt-fade-out-up {
+  to {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+}
+
+/* Root: 快速淡出 (Header/Footer 有 transition:persist，root 基本上是空的) */
+::view-transition-old(root) {
+  animation: 200ms ease vt-fade-out-up both;
+}
+::view-transition-new(root) {
+  animation: 200ms ease vt-fade-in-up both;
+}
+
+/* Header&Footer: 保持靜止，不執行過渡動畫 */
+::view-transition-old(header),
+::view-transition-old(footer) {
+  animation: none;
+}
+::view-transition-new(header),
+::view-transition-new(footer) {
+  animation: none;
+}
+
+/* Hero 區塊：放大縮小 + 向上滑動，使用 easeOut 曲線讓結尾更自然 */
+::view-transition-old(hero) {
+  animation: 300ms cubic-bezier(0.4, 0, 1, 1) vt-hero-out both;
+}
+::view-transition-new(hero) {
+  animation: 700ms cubic-bezier(0.16, 1, 0.3, 1) vt-hero-in both;
+}
+
+/* 主要內容：80ms 後進場 */
+::view-transition-old(main-content) {
+  animation: 250ms cubic-bezier(0.4, 0, 1, 1) vt-fade-out-up both;
+}
+::view-transition-new(main-content) {
+  animation: 600ms cubic-bezier(0.16, 1, 0.3, 1) vt-fade-in-up both;
+  animation-delay: 80ms;
+}
+
+/* article 區段使用 main-content 轉場 */
+article {
+  view-transition-name: main-content;
+}
+
+/* 指定轉場名稱 */
+#sh-hero-section {
+  view-transition-name: hero;
+}
