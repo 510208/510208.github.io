@@ -1,10 +1,15 @@
 ---
-import Footer from "@/components/core/Footer.astro";
-import HeaderBackground from "@/components/core/HeaderBackground.astro";
+import Footer from "@components/core/Footer.astro";
+import HeaderBackground from "@components/core/HeaderBackground.astro";
 import Header from "@components/core/Header.astro";
+import { Spinner } from "@components/ui/spinner";
+
 import "@styles/global.css";
+
 import ToTop from "@components/common/ToTop.astro";
 import OgLayout from "./OgLayout.astro";
+
+import { ClientRouter } from "astro:transitions";
 
 const baseUrl = Astro.site;
 const { pageName, pageDescription, pageOgImage } = Astro.props;
@@ -70,6 +75,9 @@ import { Font } from "astro:assets";
     </script>
     <!-- End Google Tag Manager -->
 
+    <!-- Astro View Transitions -->
+    <!-- <ClientRouter /> -->
+
     <!-- Astro Font -->
     <Font cssVariable="--font-noto" />
     <Font cssVariable="--font-inter" />
@@ -103,6 +111,63 @@ import { Font } from "astro:assets";
         style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+    <div
+      id="loading-indicator"
+      class="fixed right-6 bottom-6 z-50 hidden items-center justify-center opacity-0"
+    >
+      <div
+        class="flex items-center justify-center gap-2 rounded-lg border bg-neutral-900/50 px-4 py-2 backdrop-blur-[6px]"
+      >
+        <Spinner className="size-6" />
+        <span>Loading...</span>
+      </div>
+    </div>
+
+    <script>
+      import gsap from "gsap";
+
+      // 取得 Loading 元素
+      const getIndicator = () => document.getElementById("loading-indicator");
+
+      // 1. 點擊連結，開始 SSR 抓取 (由下往上浮現)
+      document.addEventListener("astro:before-preparation", () => {
+        console.log("開始載入新頁面...");
+
+        const el = getIndicator();
+        console.log("取得指示器元素：", el);
+        if (el) {
+          el.classList.remove("hidden"); // 先顯示元素，讓它參與動畫
+
+          gsap.to(el, {
+            y: 0,
+            opacity: 1,
+            duration: 0.4,
+            ease: "power2.out",
+            overwrite: true, // 避免重複點擊時動畫衝突
+          });
+        }
+      });
+
+      // 2. 頁面內容載入並切換完成 (縮小或向下淡出)
+      document.addEventListener("astro:page-load", () => {
+        console.log("新頁面載入完成！");
+        const el = getIndicator();
+        console.log("取得指示器元素：", el);
+        console.log(gsap);
+        if (el) {
+          gsap.to(el, {
+            y: 10,
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.in",
+            delay: 0.2, // 稍微停留一下，避免快閃
+          });
+
+          el.classList.add("hidden"); // 動畫結束後隱藏元素，讓它不佔空間
+        }
+      });
+    </script>
   </body>
 </html>
 
