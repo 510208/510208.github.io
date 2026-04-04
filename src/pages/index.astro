@@ -40,7 +40,7 @@ import { Button } from "@ui/button";
       id="sh-projects-title"
     />
     <ProjectsSection />
-    <div class="mt-4 w-full flex justify-center">
+    <div class="mt-4 flex w-full justify-center">
       <a href="/projects">
         <Button variant="outline">我的所有專案</Button>
       </a>
@@ -73,11 +73,11 @@ import { Button } from "@ui/button";
   </Content>
 
   <!-- 結尾 -->
-  <Content sectionName="outro" class="lg:py-30 bg-emerald-500/60">
+  <Content sectionName="outro" class="bg-emerald-500/60 lg:py-30">
     <div
       slot="title"
       id="sh-outro-title-animation"
-      class="min-h-[70vh] lg:min-h-[190px] flex flex-col justify-center gap-6"
+      class="flex min-h-[70vh] flex-col justify-center gap-6 lg:min-h-[190px]"
     >
       <h2 class="text-5xl font-extrabold">好了，大概就寫到這裡吧！</h2>
       <h2 class="text-5xl font-extrabold">畢竟我也不知道後面要寫些什麼？</h2>
