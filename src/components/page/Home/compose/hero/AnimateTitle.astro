@@ -1,0 +1,172 @@
+---
+interface Props {
+  textOutside?: string;
+  textInside?: string;
+  radius?: number;
+  bgColor?: string; // 新增：允許外部決定背景色，用於精準遮罩
+}
+
+const {
+  textOutside = "SamHacker",
+  textInside = "御坂糸紗奈",
+  radius = 150,
+  bgColor = "#111111", // 預設為原本的深色背景
+} = Astro.props;
+---
+
+<div
+  class="sh-text-mask-block relative h-full w-full cursor-none touch-none overflow-hidden"
+  id="textContainer"
+  data-radius={radius}
+>
+  <div
+    class="sh-text-layer sh-layer-outside absolute top-0 left-0 z-[1] flex h-full w-full items-center justify-start overflow-hidden select-none"
+  >
+    <h1
+      class="sh-split-target sh-text-stroke m-0 text-[5rem] font-bold tracking-[2px] text-transparent"
+    >
+      {textOutside}
+    </h1>
+  </div>
+
+  <div
+    class="sh-text-layer sh-layer-inside pointer-events-none absolute top-0 left-0 z-[2] flex h-full w-full items-center justify-start overflow-hidden select-none"
+    style={`background-color: ${bgColor};`}
+  >
+    <h1
+      class="sh-split-target m-0 text-[5rem] font-bold tracking-[2px] text-stone-200"
+    >
+      {textInside}
+    </h1>
+  </div>
+
+  <div
+    class="sh-pointer-dot pointer-events-none absolute top-0 left-0 z-[3] h-2 w-2 rounded-full bg-black"
+    id="pointerDot"
+  >
+  </div>
+</div>
+
+<style>
+  .sh-layer-inside {
+    clip-path: circle(0px at 0px 0px);
+  }
+
+  .sh-pointer-dot {
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  .sh-text-stroke {
+    -webkit-text-stroke: 1px #efefef;
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import SplitText from "gsap/SplitText";
+
+  gsap.registerPlugin(SplitText);
+
+  const container = document.getElementById("textContainer");
+  const insideLayer = document.querySelector(".sh-layer-inside");
+  const pointerDot = document.getElementById("pointerDot");
+
+  if (container && insideLayer && pointerDot) {
+    const circleRadius = parseInt(
+      container.getAttribute("data-radius") || "150",
+      10,
+    );
+
+    const splitOutside = new SplitText(".sh-layer-outside .sh-split-target", {
+      type: "chars",
+    });
+    const splitInside = new SplitText(".sh-layer-inside .sh-split-target", {
+      type: "chars",
+    });
+
+    const introTimeline = gsap.timeline({
+      onComplete: initializePointerTracking,
+    });
+
+    gsap.set([splitOutside.chars, splitInside.chars], { x: 100, opacity: 0 });
+
+    introTimeline.to([splitOutside.chars, splitInside.chars], {
+      x: 0,
+      opacity: 1,
+      duration: 0.8,
+      ease: "power3.out",
+      stagger: 0.05,
+    });
+
+    function initializePointerTracking() {
+      const maskSettings = { x: 0, y: 0, radius: 0 };
+
+      function updateClipPath() {
+        gsap.set(insideLayer, {
+          clipPath: `circle(${maskSettings.radius}px at ${maskSettings.x}px ${maskSettings.y}px)`,
+        });
+        gsap.set(pointerDot, {
+          x: maskSettings.x,
+          y: maskSettings.y,
+        });
+      }
+
+      const xTo = gsap.quickTo(maskSettings, "x", {
+        duration: 0.4,
+        ease: "power3.out",
+        onUpdate: updateClipPath,
+      });
+      const yTo = gsap.quickTo(maskSettings, "y", {
+        duration: 0.4,
+        ease: "power3.out",
+        onUpdate: updateClipPath,
+      });
+      const radiusTo = gsap.quickTo(maskSettings, "radius", {
+        duration: 0.3,
+        ease: "power2.out",
+        onUpdate: updateClipPath,
+      });
+
+      function handlePointerMove(e: PointerEvent) {
+        const rect = container!.getBoundingClientRect();
+        const relX = e.clientX - rect.left;
+        const relY = e.clientY - rect.top;
+        xTo(relX);
+        yTo(relY);
+      }
+
+      container!.addEventListener("pointerdown", (e) => {
+        const rect = container!.getBoundingClientRect();
+        const relX = e.clientX - rect.left;
+        const relY = e.clientY - rect.top;
+        gsap.set(maskSettings, { x: relX, y: relY });
+        radiusTo(circleRadius);
+        gsap.to(pointerDot, { scale: 1, duration: 0.2, ease: "power2.out" });
+        handlePointerMove(e);
+      });
+
+      container!.addEventListener("pointerenter", (e) => {
+        if (e.pointerType === "mouse") {
+          const rect = container!.getBoundingClientRect();
+          const relX = e.clientX - rect.left;
+          const relY = e.clientY - rect.top;
+          gsap.set(maskSettings, { x: relX, y: relY });
+          radiusTo(circleRadius);
+          gsap.to(pointerDot, { scale: 1, duration: 0.2, ease: "power2.out" });
+        }
+      });
+
+      container!.addEventListener("pointermove", handlePointerMove);
+
+      container!.addEventListener("pointerleave", () => {
+        radiusTo(0);
+        gsap.to(pointerDot, { scale: 0, duration: 0.2, ease: "power2.in" });
+      });
+
+      container!.addEventListener("pointerup", () => {
+        radiusTo(0);
+        gsap.to(pointerDot, { scale: 0, duration: 0.2, ease: "power2.in" });
+      });
+    }
+  }
+</script>

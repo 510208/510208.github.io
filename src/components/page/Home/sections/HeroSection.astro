@@ -5,6 +5,7 @@ import misana from "@/assets/pages/home/misana-character.png";
 import bgGrid from "@/assets/pages/home/dark_bg-grid.svg";
 import { Image } from "astro:assets";
 import { ChevronDown, Mouse, Hand } from "@lucide/astro";
+import AnimateTitle from "@components/page/Home/compose/hero/AnimateTitle.astro";
 ---
 
 <section id="sh-hero-section" class="hero-section relative overflow-hidden">
@@ -27,27 +28,22 @@ import { ChevronDown, Mouse, Hand } from "@lucide/astro";
         class="relative z-10 w-auto pt-40 text-center md:h-auto md:pt-8 lg:w-1/2 lg:pt-0 lg:pl-40 lg:text-left"
       >
         {/* 背景文字 - absolute positioning */}
-        <div
-          class="absolute flex items-center justify-center lg:ml-20 lg:justify-start"
-        >
-          <h1
-            class="font-inter sh-background-text-decoration -inset-y-200 hidden text-5xl font-black whitespace-nowrap opacity-20 select-none sm:text-7xl lg:block lg:text-8xl xl:text-9xl"
-          >
-            Sam<br />Hacker
-          </h1>
-        </div>
+        <!--<div-->
+        <!--  class="absolute flex items-center justify-center lg:ml-20 lg:justify-start"-->
+        <!--&gt;-->
+        <!--  <h1-->
+        <!--    class="font-inter sh-background-text-decoration -inset-y-200 hidden text-5xl font-black whitespace-nowrap opacity-20 select-none sm:text-7xl lg:block lg:text-8xl xl:text-9xl"-->
+        <!--  >-->
+        <!--    Sam<br />Hacker-->
+        <!--  </h1>-->
+        <!--</div>-->
 
         {/* 前景內容 */}
         <div class="relative z-10 pt-8 lg:pt-0">
           <div class="flex justify-center lg:justify-start">
             <StatusBadge />
           </div>
-          <h2
-            id="sh-hero-title"
-            class="font-inter mt-2 mb-6 text-4xl font-bold text-white sm:text-5xl lg:text-6xl"
-          >
-            SamHacker
-          </h2>
+          <div class="h-40"><AnimateTitle /></div>
           <div
             id="sh-hero-description"
             class="mx-auto max-w-md font-sans text-lg leading-7 text-gray-300 lg:mx-0"
