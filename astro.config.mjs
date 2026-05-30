@@ -77,6 +77,11 @@ export default defineConfig({
       },
     },
   }), sitemap()],
+
+  experimental: {
+    rustCompiler: true
+  },
+
   vite: {
     plugins: [tailwindcss()],
   },
