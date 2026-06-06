@@ -2,6 +2,12 @@
 import AnimateTitle from "@/components/page/Home/compose/hero/AnimateTitle.astro";
 import { Button } from "@/components/ui/button.tsx";
 import { ArrowRight, FolderBookmark, UsersRound, Gauge } from "lucide-react";
+import { Image } from "astro:assets";
+
+import CharacterImage from "@/assets/pages/home/misana-character.png";
+import BGGrid from "@/assets/pages/home/dark_bg-grid.svg";
+import RTBracket from "@/assets/pages/home/quote-right_top-brackets.svg";
+import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
 ---
 
 <section
@@ -12,6 +18,7 @@ import { ArrowRight, FolderBookmark, UsersRound, Gauge } from "lucide-react";
   <div
     class="relative hidden h-full w-full items-center justify-center md:flex"
   >
+    <!-- 背景互動元件 -->
     <div
       class="absolute top-45 -z-10 h-[200px] w-full bg-cover bg-center"
       aria-hidden="true"
@@ -19,9 +26,26 @@ import { ArrowRight, FolderBookmark, UsersRound, Gauge } from "lucide-react";
       <AnimateTitle />
     </div>
 
+    <!-- 背景網格 -->
+    <div
+      class="absolute bottom-0 left-1/2 -z-20 -translate-x-1/2 opacity-60"
+      aria-hidden="true"
+    >
+      <Image src={BGGrid} alt="背景網格" />
+    </div>
+
+    <!-- 立繪 -->
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
+      <img
+        src={CharacterImage.src}
+        alt="Hero Character"
+        class="h-[80vh] w-auto max-w-none"
+      />
+    </div>
+
     <!-- 主框架 -->
     <div
-      class="absolute bottom-30 left-1/2 flex w-full max-w-[1246px] -translate-x-1/2 overflow-hidden"
+      class="absolute bottom-30 left-1/2 mx-12 flex w-full max-w-[1246px] -translate-x-1/2 items-end justify-between overflow-hidden lg:mx-0 xl:items-start"
     >
       <!-- 左區段 -->
       <div class="flex max-w-110 flex-col gap-15">
@@ -65,21 +89,40 @@ import { ArrowRight, FolderBookmark, UsersRound, Gauge } from "lucide-react";
             </Button>
           </a>
         </div>
+      </div>
 
-        <!-- 右區段 -->
+      <!-- 右區段 -->
+      <div
+        class="relative mt-10 hidden max-h-[150px] min-h-[150px] w-full max-w-100 items-center justify-center lg:flex"
+      >
+        <Image
+          src={RTBracket}
+          alt="右上括號"
+          class="absolute top-0 right-0 opacity-50"
+        />
+        <Image
+          src={LBBracket}
+          alt="左下括號"
+          class="absolute bottom-0 left-0 opacity-50"
+        />
+
+        <p class="text-center font-funny text-3xl text-stone-300">
+          正因為曾經淋過雨，<br />
+          才會想為他人撐一把傘。
+        </p>
       </div>
     </div>
+  </div>
 
-    <!-- 手機 -->
+  <!-- 手機 -->
+  <div
+    class="relative -z-10 flex h-full w-full items-center justify-center md:hidden"
+  >
     <div
-      class="relative -z-10 flex h-full w-full items-center justify-center md:hidden"
+      class="absolute top-1/2 left-1/2 h-[120px] w-full -translate-x-1/2 -translate-y-1/2 overflow-hidden"
+      aria-hidden="true"
     >
-      <div
-        class="absolute top-1/2 left-1/2 h-[120px] w-full -translate-x-1/2 -translate-y-1/2 overflow-hidden"
-        aria-hidden="true"
-      >
-        <AnimateTitle />
-      </div>
+      <AnimateTitle />
     </div>
   </div>
 
