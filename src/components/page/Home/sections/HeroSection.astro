@@ -1,178 +1,87 @@
 ---
-import StatusBadge from "@components/page/Home/compose/hero/StatusBadge.astro";
-
-import misana from "@/assets/pages/home/misana-character.png";
-import bgGrid from "@/assets/pages/home/dark_bg-grid.svg";
-import { Image } from "astro:assets";
-import { ChevronDown, Mouse, Hand } from "@lucide/astro";
-import AnimateTitle from "@components/page/Home/compose/hero/AnimateTitle.astro";
+import AnimateTitle from "@/components/page/Home/compose/hero/AnimateTitle.astro";
+import { Button } from "@/components/ui/button.tsx";
+import { ArrowRight } from "lucide-react";
 ---
 
-<section id="sh-hero-section" class="hero-section relative overflow-hidden">
-  <!-- 往下捲動提示 -->
+<section
+  id="sh-hero-section"
+  class="hero-section relative h-svh overflow-hidden"
+>
+  <!-- 電腦 -->
   <div
-    id="sh-hero-mouse-indicator"
-    class="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 transform flex-col items-center justify-center"
+    class="relative hidden h-full w-full items-center justify-center md:flex"
   >
-    <Mouse class="mb-1 hidden opacity-60 lg:block" />
-    <Hand class="mb-1 block opacity-60 lg:hidden" />
-    <ChevronDown class="opacity-40" size={16} />
-  </div>
-
-  <div class="mx-auto px-4 sm:px-6 lg:h-[97vh] lg:px-8">
     <div
-      class="flex h-full flex-col items-center justify-between pt-8 lg:flex-row"
+      class="absolute top-45 -z-10 h-[200px] w-full bg-cover bg-center"
+      aria-hidden="true"
     >
-      {/* Div Left - 文字內容 */}
-      <div
-        class="relative z-10 w-auto pt-40 text-center md:h-auto md:pt-8 lg:w-1/2 lg:pt-0 lg:pl-40 lg:text-left"
-      >
-        {/* 背景文字 - absolute positioning */}
-        <!--<div-->
-        <!--  class="absolute flex items-center justify-center lg:ml-20 lg:justify-start"-->
-        <!--&gt;-->
-        <!--  <h1-->
-        <!--    class="font-inter sh-background-text-decoration -inset-y-200 hidden text-5xl font-black whitespace-nowrap opacity-20 select-none sm:text-7xl lg:block lg:text-8xl xl:text-9xl"-->
-        <!--  >-->
-        <!--    Sam<br />Hacker-->
-        <!--  </h1>-->
-        <!--</div>-->
+      <AnimateTitle />
+    </div>
 
-        {/* 前景內容 */}
-        <div class="relative z-10 pt-8 lg:pt-0">
-          <div class="flex justify-center lg:justify-start">
-            <StatusBadge />
-          </div>
-          <div class="h-40"><AnimateTitle /></div>
-          <div
-            id="sh-hero-description"
-            class="mx-auto max-w-md font-sans text-lg leading-7 text-gray-300 lg:mx-0"
-          >
-            <p class="mb-0">
-              我是一個熱愛分享技術的部落客，
-              <br />
-              專注於 Minecraft 開服、網站建設、開源軟體等領域。
-              <br />
-              我的目標是讓更多人能夠輕鬆學習和應用技術。
-            </p>
-          </div>
+    <!-- 主框架 -->
+    <div
+      class="absolute bottom-30 left-1/2 flex w-full max-w-[1246px] -translate-x-1/2 overflow-hidden"
+    >
+      <!-- 左區段 -->
+      <div class="flex max-w-110 flex-col gap-15">
+        <h1 class="text-[96px]/[120%] font-black text-stone-200">
+          Sam<br />Hacker
+        </h1>
+
+        <p class="text-lg text-stone-300">
+          我是一個熱愛分享技術的高中生，<br />
+          專注於 Minecraft 開服、網站建設、開源軟體等領域。<br />
+          我的目標是讓更多人能夠輕鬆學習和應用技術。
+        </p>
+
+        <div class="flex gap-5">
+          <a href="/about">
+            <Button
+              size="lg"
+              variant="secondary"
+              className="font-regular h-auto px-[30px]! py-2.5 text-lg"
+            >
+              關於我
+              <ArrowRight className="ml-2.5" />
+            </Button>
+          </a>
+
+          <a href="/projects">
+            <Button
+              size="lg"
+              variant="outline"
+              className="font-regular h-auto px-[30px]! py-2.5 text-lg"
+            >
+              <Folder />
+            </Button>
+          </a>
         </div>
+
+        <!-- 右區段 -->
       </div>
+    </div>
 
-      {/* Div Right - 角色圖片與背景方格 */}
-      <div class="relative mt-8 h-96 w-full lg:mt-0 lg:h-full lg:w-1/2">
-        {/* 背景方格 - 深色模式 */}
-        <div
-          id="sh-hero-bg-grid"
-          class="absolute inset-0 -z-10 opacity-20 transition-opacity duration-300"
-          style={{
-            backgroundImage: `url(${bgGrid.src})`,
-            backgroundSize: "80% 80%",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "right center",
-          }}
-        >
-        </div>
-
-        {/* 角色圖片 */}
-        <Image
-          id="sh-hero-character"
-          src={misana}
-          alt="Misana Character"
-          loading="eager"
-          class="absolute bottom-0 left-1/2 h-full max-h-96 w-auto -translate-x-1/2 transform object-contain object-bottom lg:max-h-full"
-          style={{ maxWidth: "550px" }}
-        />
+    <!-- 手機 -->
+    <div
+      class="relative -z-10 flex h-full w-full items-center justify-center md:hidden"
+    >
+      <div
+        class="absolute top-1/2 left-1/2 h-[120px] w-full -translate-x-1/2 -translate-y-1/2 overflow-hidden"
+        aria-hidden="true"
+      >
+        <AnimateTitle />
       </div>
     </div>
   </div>
+
+  <script>
+    // Hero Section GSAP Animation
+    import gsap from "gsap";
+    import SplitText from "gsap/SplitText";
+
+    gsap.registerPlugin(SplitText);
+
+    document.addEventListener("DOMContentLoaded", () => {});
+  </script>
 </section>
-
-<script>
-  // Hero Section GSAP Animation
-  import gsap from "gsap";
-  import SplitText from "gsap/SplitText";
-
-  gsap.registerPlugin(SplitText);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const tl = gsap.timeline({ repeat: 0, delay: 0.5 });
-
-    // Split text into individual words
-    let splitText = new SplitText("#sh-hero-title", { type: "chars" });
-
-    // 設定DiscordBadge的初始
-    gsap.set("#sh-discord-status-badge", { opacity: 0, y: 20 });
-
-    // Set initial state - chars invisible and positioned to the right
-    gsap.set(splitText.chars, {
-      opacity: 0,
-      x: 50,
-    });
-
-    // Animate chars from right to left with stagger
-    tl.to(splitText.chars, {
-      duration: 0.8,
-      opacity: 1,
-      x: 0,
-      ease: "power2.out",
-      stagger: 0.1,
-    });
-
-    // Animate description fade in and move up
-    tl.fromTo(
-      "#sh-hero-description",
-      {
-        opacity: 0,
-        y: 20,
-      },
-      {
-        duration: 0.8,
-        opacity: 1,
-        y: 0,
-        ease: "power2.out",
-      },
-      "-=0.3",
-    );
-
-    // Animate background grid fade in, at the same time as the characters
-    tl.fromTo(
-      "#sh-hero-character",
-      { opacity: 0, y: 100 },
-      {
-        duration: 0.8,
-        opacity: 1,
-        y: 0,
-        ease: "power2.out",
-      },
-      "-=0.1",
-    );
-    tl.to("#sh-hero-bg-grid", {
-      duration: 0.8,
-      opacity: 1,
-      ease: "power2.out",
-    });
-
-    // Animate Discord Badge fade in and move up
-    tl.to("#sh-discord-status-badge", {
-      duration: 0.8,
-      opacity: 1,
-      y: 0,
-      ease: "power2.out",
-    });
-  });
-</script>
-
-<script>
-  // Scroll Down Indicator Animation
-  import { gsap } from "gsap";
-
-  // 上下浮動動畫
-  gsap.to("#sh-hero-mouse-indicator", {
-    y: -15,
-    duration: 1,
-    ease: "power1.inOut",
-    yoyo: true,
-    repeat: -1,
-  });
-</script>
