@@ -15,26 +15,26 @@ const {
 ---
 
 <div
-  class="sh-text-mask-block relative h-full w-full cursor-none touch-none overflow-hidden"
+  class="sh-text-mask-block relative h-fit w-full cursor-none touch-none overflow-hidden"
   id="textContainer"
   data-radius={radius}
 >
   <div
-    class="sh-text-layer sh-layer-outside absolute top-0 left-0 z-[1] flex h-full w-full items-center justify-start overflow-hidden select-none"
+    class="sh-text-layer sh-layer-outside relative top-0 left-0 z-[1] flex w-full items-center justify-center overflow-hidden py-10 select-none"
   >
     <h1
-      class="sh-split-target sh-text-stroke m-0 text-[5rem] font-bold tracking-[2px] text-transparent"
+      class="sh-split-target sh-text-stroke font-inter m-0 text-[128px] leading-none font-black tracking-[2px] text-nowrap text-transparent uppercase md:text-[300px]"
     >
       {textOutside}
     </h1>
   </div>
 
   <div
-    class="sh-text-layer sh-layer-inside pointer-events-none absolute top-0 left-0 z-[2] flex h-full w-full items-center justify-start overflow-hidden select-none"
+    class="sh-text-layer sh-layer-inside pointer-events-none absolute inset-0 z-[2] flex w-full items-center justify-center overflow-hidden select-none"
     style={`background-color: ${bgColor};`}
   >
     <h1
-      class="sh-split-target m-0 text-[5rem] font-bold tracking-[2px] text-stone-200"
+      class="sh-split-target m-0 text-[128px] leading-none font-black tracking-[2px] text-nowrap text-stone-200/60 uppercase md:text-[250px]"
     >
       {textInside}
     </h1>
@@ -57,7 +57,7 @@ const {
   }
 
   .sh-text-stroke {
-    -webkit-text-stroke: 1px #efefef;
+    -webkit-text-stroke: 4px #99999966;
   }
 </style>
 
@@ -70,6 +70,7 @@ const {
   const container = document.getElementById("textContainer");
   const insideLayer = document.querySelector(".sh-layer-inside");
   const pointerDot = document.getElementById("pointerDot");
+  console.log("AnimateTitle mounted:", { container, insideLayer, pointerDot });
 
   if (container && insideLayer && pointerDot) {
     const circleRadius = parseInt(
@@ -136,6 +137,7 @@ const {
       }
 
       container!.addEventListener("pointerdown", (e) => {
+        console.log("Pointer down:", e);
         const rect = container!.getBoundingClientRect();
         const relX = e.clientX - rect.left;
         const relY = e.clientY - rect.top;
