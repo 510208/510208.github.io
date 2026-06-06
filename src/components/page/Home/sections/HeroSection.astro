@@ -1,7 +1,7 @@
 ---
 import AnimateTitle from "@/components/page/Home/compose/hero/AnimateTitle.astro";
 import { Button } from "@/components/ui/button.tsx";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, FolderBookmark, UsersRound, Gauge } from "lucide-react";
 ---
 
 <section
@@ -35,7 +35,7 @@ import { ArrowRight } from "lucide-react";
           我的目標是讓更多人能夠輕鬆學習和應用技術。
         </p>
 
-        <div class="flex gap-5">
+        <div class="flex gap-2.5">
           <a href="/about">
             <Button
               size="lg"
@@ -48,12 +48,20 @@ import { ArrowRight } from "lucide-react";
           </a>
 
           <a href="/projects">
-            <Button
-              size="lg"
-              variant="outline"
-              className="font-regular h-auto px-[30px]! py-2.5 text-lg"
-            >
-              <Folder />
+            <Button size="icon-hero" variant="ghost" className="h-full p-0">
+              <FolderBookmark size={24} className="size-5" />
+            </Button>
+          </a>
+
+          <a href="/friends">
+            <Button size="icon-hero" variant="ghost" className="h-full p-0">
+              <UsersRound size={24} className="size-5" />
+            </Button>
+          </a>
+
+          <a href="/dashboard">
+            <Button size="icon-hero" variant="ghost" className="h-full p-0">
+              <Gauge size={24} className="size-5" />
             </Button>
           </a>
         </div>
