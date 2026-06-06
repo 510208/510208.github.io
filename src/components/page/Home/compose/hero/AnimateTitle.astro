@@ -15,7 +15,7 @@ const {
 ---
 
 <div
-  class="sh-text-mask-block relative h-fit w-full cursor-none touch-none overflow-hidden"
+  class="sh-text-mask-block pointer-events-none relative h-fit w-full cursor-none touch-none overflow-hidden"
   id="textContainer"
   data-radius={radius}
 >
@@ -101,6 +101,7 @@ const {
 
     function initializePointerTracking() {
       const maskSettings = { x: 0, y: 0, radius: 0 };
+      let isInsideContainer = false; // 追蹤滑鼠是否進入了文字容器的垂直範圍內
 
       function updateClipPath() {
         gsap.set(insideLayer, {
@@ -128,47 +129,75 @@ const {
         onUpdate: updateClipPath,
       });
 
-      function handlePointerMove(e: PointerEvent) {
+      // 核心修改：從 window 層級捕捉全局滑鼠座標，並轉換為容器相對座標
+      function handleGlobalPointerMove(e: PointerEvent) {
         const rect = container!.getBoundingClientRect();
+
+        // 計算滑鼠相對於文字容器內部的 X 與 Y 座標
         const relX = e.clientX - rect.left;
         const relY = e.clientY - rect.top;
-        xTo(relX);
-        yTo(relY);
+
+        // 檢查滑鼠當前是否位於文字容器的矩形範圍內
+        const isHovering =
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom;
+
+        if (isHovering) {
+          // 如果剛進入範圍，觸發類似 pointerenter 的放大效果
+          if (!isInsideContainer) {
+            isInsideContainer = true;
+            radiusTo(circleRadius);
+            gsap.to(pointerDot, {
+              scale: 1,
+              duration: 0.2,
+              ease: "power2.out",
+            });
+          }
+
+          // 持續更新遮罩與點點位置
+          xTo(relX);
+          yTo(relY);
+        } else {
+          // 如果滑鼠離開了文字容器的範圍，觸發類似 pointerleave 的縮小
+          if (isInsideContainer) {
+            isInsideContainer = false;
+            radiusTo(0);
+            gsap.to(pointerDot, { scale: 0, duration: 0.2, ease: "power2.in" });
+          }
+        }
       }
 
-      container!.addEventListener("pointerdown", (e) => {
-        console.log("Pointer down:", e);
+      // 當點擊畫面的任何地方（包括上方覆蓋的容器），只要在範圍內就放大遮罩
+      function handleGlobalPointerDown(e: PointerEvent) {
         const rect = container!.getBoundingClientRect();
-        const relX = e.clientX - rect.left;
-        const relY = e.clientY - rect.top;
-        gsap.set(maskSettings, { x: relX, y: relY });
-        radiusTo(circleRadius);
-        gsap.to(pointerDot, { scale: 1, duration: 0.2, ease: "power2.out" });
-        handlePointerMove(e);
-      });
+        const isHovering =
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom;
 
-      container!.addEventListener("pointerenter", (e) => {
-        if (e.pointerType === "mouse") {
-          const rect = container!.getBoundingClientRect();
+        if (isHovering) {
           const relX = e.clientX - rect.left;
           const relY = e.clientY - rect.top;
           gsap.set(maskSettings, { x: relX, y: relY });
           radiusTo(circleRadius);
           gsap.to(pointerDot, { scale: 1, duration: 0.2, ease: "power2.out" });
         }
-      });
+      }
 
-      container!.addEventListener("pointermove", handlePointerMove);
+      function handleGlobalPointerUp() {
+        if (isInsideContainer) {
+          radiusTo(0);
+          gsap.to(pointerDot, { scale: 0, duration: 0.2, ease: "power2.in" });
+        }
+      }
 
-      container!.addEventListener("pointerleave", () => {
-        radiusTo(0);
-        gsap.to(pointerDot, { scale: 0, duration: 0.2, ease: "power2.in" });
-      });
-
-      container!.addEventListener("pointerup", () => {
-        radiusTo(0);
-        gsap.to(pointerDot, { scale: 0, duration: 0.2, ease: "power2.in" });
-      });
+      // 將事件改綁在全局 window，徹底無視上方圖層的遮擋
+      window.addEventListener("pointermove", handleGlobalPointerMove);
+      window.addEventListener("pointerdown", handleGlobalPointerDown);
+      window.addEventListener("pointerup", handleGlobalPointerUp);
     }
   }
 </script>
