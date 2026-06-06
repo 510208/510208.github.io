@@ -7,7 +7,7 @@ const { class: className } = Astro.props;
 
 <Badge
   variant="secondary"
-  className={"min-h-8 px-4 flex items-center gap-2" +
+  className={"flex min-h-8 items-center gap-2 px-4" +
     (className ? ` ${className}` : "")}
   id="sh-discord-status-badge"
 >
@@ -15,7 +15,11 @@ const { class: className } = Astro.props;
     id="status-dot"
     class="inline-block rounded-full bg-gray-500"
     style="width: 0.75rem; height: 0.75rem;"></span>
-  <span id="status-text" class="capitalize leading-none">正在確認狀態...</span>
+  <span
+    id="status-text"
+    class="text-base leading-none capitalize lg:text-sm lg:font-light"
+    >正在確認狀態...</span
+  >
 </Badge>
 
 <script>
