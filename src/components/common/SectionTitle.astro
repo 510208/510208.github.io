@@ -8,18 +8,18 @@ interface Props {
 const { chinese, english, id } = Astro.props;
 ---
 
-<div class="flex items-center w-full relative mb-4">
+<div class="relative mb-4 flex w-full items-center">
   <h2
-    class="sh-title-animation text-3xl font-bold flex items-center gap-4"
+    class="sh-title-animation flex items-center gap-4 text-3xl font-bold"
     id={id}
   >
     {chinese}
     <span
-      class="sh-title-decoration-animation w-[100px] h-[2px] bg-white/30"
+      class="sh-title-decoration-animation h-[2px] w-[100px] bg-white/30"
       aria-hidden="true"></span>
   </h2>
   <span
-    class="sh-title-background-animation absolute left-1/2 -translate-x-1/2 opacity-30 select-none uppercase font-extrabold text-4xl whitespace-nowrap"
+    class="sh-title-background-animation absolute left-1/2 -translate-x-1/2 overflow-hidden text-4xl font-extrabold whitespace-nowrap uppercase opacity-30 select-none"
     aria-hidden="true"
   >
     {english}
