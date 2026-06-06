@@ -35,6 +35,7 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
     <!-- 立繪 -->
     <div
       class="absolute bottom-0 left-0 flex h-full flex-col items-end justify-end lg:left-1/2 lg:-translate-x-1/2"
+      id="sh-hero-tachie"
     >
       <div class="relative -mb-4 flex w-full items-center justify-center">
         <div class="w-10"></div>
@@ -55,7 +56,7 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
       id="sh-hero-mainframe"
     >
       <!-- 左區段 -->
-      <div class="flex max-w-110 flex-col gap-15">
+      <div class="flex max-w-110 flex-col gap-15" id="sh-hero-mf-left">
         <div class="relative -mb-10 flex">
           <StatusBadge class="flex lg:hidden" />
         </div>
@@ -105,19 +106,25 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
       <!-- 右區段 -->
       <div
         class="relative mt-10 hidden max-h-[150px] min-h-[150px] w-full max-w-100 items-center justify-center lg:flex"
+        id="sh-hero-mf-right"
       >
         <Image
           src={RTBracket}
           alt="右上括號"
           class="absolute top-0 right-0 opacity-50"
+          id="sh-hero-mf-right-bracket"
         />
         <Image
           src={LBBracket}
           alt="左下括號"
           class="absolute bottom-0 left-0 opacity-50"
+          id="sh-hero-mf-left-bracket"
         />
 
-        <p class="text-center font-funny text-3xl text-stone-300">
+        <p
+          class="text-center font-funny text-3xl text-stone-300"
+          id="sh-hero-mf-quote"
+        >
           正因為曾經淋過雨，<br />
           才會想為他人撐一把傘。
         </p>
@@ -141,8 +148,143 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
   // Hero Section GSAP Animation
   import gsap from "gsap";
   import SplitText from "gsap/SplitText";
+  import ScrollTrigger from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(SplitText);
+  gsap.registerPlugin(ScrollTrigger);
 
-  document.addEventListener("DOMContentLoaded", () => {});
+  document.addEventListener("DOMContentLoaded", () => {
+    // 初始化
+    gsap.set("#sh-hero-tachie img", { y: 100, opacity: 0 });
+    gsap.set("#sh-hero-mf-left > *", { y: 30, opacity: 0 });
+    gsap.set("#sh-hero-mf-right", { y: 50, opacity: 0 });
+
+    // 右容器中的括號設到容器中間左右各50px的位置，製作展開至容器邊緣的動畫
+    gsap.set("#sh-hero-mf-right-bracket", { x: -70, y: 30, opacity: 0 });
+    gsap.set("#sh-hero-mf-left-bracket", { x: 70, y: -30, opacity: 0 });
+
+    // 將右容器中的文字切分成單字，製作逐字由兩側聚合的動畫
+    const quoteSplit = new SplitText("#sh-hero-mf-quote", { type: "chars" });
+    // gsap.set(quoteSplit.chars, { y: 20, opacity: 0 });
+
+    // 動畫
+    const tl = gsap.timeline({
+      onComplete: beginParallaxScroll, // 動畫完成後啟用滾動事件監聽
+    });
+
+    tl.to(
+      "#sh-hero-tachie img",
+      { y: 0, opacity: 1, duration: 0.7, ease: "power2.out" },
+      0.5,
+    );
+
+    tl.to(
+      "#sh-hero-mf-left > *",
+      { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.1 },
+      0.8,
+    );
+
+    tl.to(
+      "#sh-hero-mf-right",
+      { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+      1.2,
+    )
+      .from(quoteSplit.chars, {
+        duration: 1.2,
+        opacity: 0, // 從透明度 0 開始
+        x: (index, target, targets) => {
+          // 初始位置：前半段在左邊（-200），後半段在右邊（200）
+          // 動畫開始後，它們會往中間（原本的位置 0）匯合
+          return index < targets.length / 2 ? -200 : 200;
+        },
+        rotation: (index, target, targets) => {
+          // 初始角度：搭配微小旋轉，飛入時會帶有轉正的效果
+          return index < targets.length / 2 ? -15 : 15;
+        },
+        ease: "power3.out",
+        stagger: {
+          amount: 0.6,
+          // 因為是「往中間匯合」，from 設為 "edges" 會讓最兩側的字先飛，最後中間的字才出現，視覺上最流暢
+          from: "edges",
+        },
+      })
+      .to(
+        "#sh-hero-mf-right-bracket",
+        {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          ease: "power2.out",
+          delay: 0.2,
+        },
+        1.7,
+      )
+      .to(
+        "#sh-hero-mf-left-bracket",
+        {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          ease: "power2.out",
+          delay: 0.2,
+        },
+        1.7,
+      );
+
+    // 動畫播放完成後允許使用者往下捲動，並啟用 ScrollTrigger 監聽滾動事件製作視差捲動效果
+    function beginParallaxScroll() {
+      console.log("Parallax scroll enabled");
+
+      // 1. 強制讓 ScrollTrigger 重新整理
+      ScrollTrigger.refresh();
+
+      // 2. 建立與滾動綁定的時間軸
+      const parallaxTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#sh-hero-section",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      // 3. 統一控制在滾動進度 20% (0.2) 開始，到 100% (1.0) 結束
+
+      // 左區段：從 0.2 開始，持續 0.8（於 1.0 結束）
+      parallaxTl.to(
+        "#sh-hero-mf-left > *",
+        {
+          y: -150, // 建議加大數值，速度感會更明顯
+          duration: 0.8,
+          ease: "none",
+          stagger: 0.05, // 微調交錯時間，讓整體結構在 1.0 前完全就位
+        },
+        0.1,
+      );
+
+      // 右區段：從 0.2 開始，持續 0.8（於 1.0 結束）
+      parallaxTl.to(
+        "#sh-hero-mf-right",
+        {
+          y: -200,
+          duration: 0.8,
+          ease: "none",
+        },
+        0.2,
+      );
+
+      // 立繪：從 0.2 開始，持續 0.8（於 1.0 結束）
+      parallaxTl.to(
+        "#sh-hero-tachie img",
+        {
+          y: -300,
+          duration: 0.8,
+          ease: "none",
+        },
+        0.05,
+      );
+    }
+  });
 </script>
