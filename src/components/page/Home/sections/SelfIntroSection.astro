@@ -14,28 +14,28 @@ import config from "@shConfig";
 ---
 
 <div
-  class="grid grid-cols-1 lg:grid-cols-4 lg:grid-rows-4 gap-5 w-full lg:max-w-none"
+  class="grid w-full grid-cols-1 gap-5 lg:max-w-none lg:grid-cols-4 lg:grid-rows-4"
 >
   <!-- 自我介紹 -->
   <Card
     id="sh-about-description-card"
-    className="lg:col-span-2 lg:row-span-2 col-start-1 row-start-1 shadow relative overflow-hidden min-h-100 group hover:bg-stone-800 will-change-transform"
+    className="group relative col-start-1 row-start-1 min-h-100 overflow-hidden shadow will-change-transform hover:bg-stone-800 lg:col-span-2 lg:row-span-2"
   >
     <!-- 背景裝飾 -->
     <div
-      class="absolute -top-10 -left-10 w-60 h-60 bg-gradient-to-tr from-purple-500 via-pink-500 to-red-500 rounded-full opacity-20 blur-3xl group-hover:opacity-0 transition-opacity duration-300"
+      class="absolute -top-10 -left-10 h-60 w-60 rounded-full bg-gradient-to-tr from-purple-500 via-pink-500 to-red-500 opacity-20 blur-3xl transition-opacity duration-300 group-hover:opacity-0"
     >
     </div>
-    <div class="absolute -bottom-4 left-0 w-full flex">
+    <div class="absolute -bottom-4 left-0 flex w-full">
       <span
-        class="w-full text-8xl text-center font-bold sh-background-text-decoration select-none opacity-10 group-hover:opacity-20 transition-opacity duration-300"
+        class="sh-background-text-decoration w-full text-center text-8xl font-bold opacity-10 transition-opacity duration-300 select-none group-hover:opacity-20"
         >ABOUT</span
       >
     </div>
 
     <CardHeader
       id="sh-about-description-card-header"
-      className="flex gap-2 items-center font-bold relative z-10"
+      className="relative z-10 flex items-center gap-2 font-bold"
     >
       <Info size={20} stroke-width={3} />
       自我介紹
@@ -61,48 +61,51 @@ import config from "@shConfig";
       </p>
     </CardContent>
   </Card>
+
   <!-- 學校資訊 -->
   <Card
     id="sh-about-school-card"
-    className="col-span-1 lg:row-start-3 min-h-50 relative overflow-hidden group hover:bg-stone-800 will-change-transform"
+    className="group relative col-span-1 min-h-50 overflow-hidden will-change-transform hover:bg-stone-800 lg:row-start-3"
   >
     <!-- 背景裝飾 -->
     <div
-      class="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-tr from-green-400 via-blue-500 to-purple-600 rounded-full opacity-20 blur-3xl group-hover:opacity-0 transition-opacity duration-300"
+      class="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-gradient-to-tr from-green-400 via-blue-500 to-purple-600 opacity-20 blur-3xl transition-opacity duration-300 group-hover:opacity-0"
     >
     </div>
-    <div class="absolute -bottom-4 left-0 w-full flex justify-center">
+    <div class="absolute -bottom-4 left-0 flex w-full justify-center">
       <Image
         src={tcfshImage}
         alt="台中一中大門線條圖"
         id="sh-about-school-bg-decoration"
-        class="w-4/5 mx-auto select-none pointer-events-none opacity-10 group-hover:opacity-20 transition-opacity duration-300"
+        class="pointer-events-none mx-auto w-4/5 opacity-10 transition-opacity duration-300 select-none group-hover:opacity-20"
       />
     </div>
 
-    <CardHeader className="flex gap-2 items-center font-bold relative z-10">
+    <CardHeader className="relative z-10 flex items-center gap-2 font-bold">
       <School size={20} stroke-width={3} />
       學校
     </CardHeader>
-    <CardContent className="relative z-10 flex justify-center items-center">
+    <CardContent className="relative z-10 flex items-center justify-center">
       <p>臺中市立臺中第一高級中學</p>
     </CardContent>
   </Card>
+
   <!-- GitHub資訊 -->
   <Card
     id="sh-about-github-card"
-    className="col-span-1 lg:col-span-2 lg:row-start-4 will-change-transform relative overflow-hidden min-h-50 hover:bg-stone-800 "
+    className="relative col-span-1 min-h-50 overflow-hidden will-change-transform hover:bg-stone-800 lg:col-span-2 lg:row-start-4"
   >
     <CardContent className="relative z-10 flex gap-4">
       <GitHubInfo client:load />
     </CardContent>
   </Card>
+
   <!-- 聯絡資訊 -->
   <Card
     id="sh-about-contact-card"
-    className="col-span-1 row-span-1 lg:col-start-2 lg:row-start-3 relative overflow-hidden min-h-50 hover:bg-stone-800 will-change-transform"
+    className="relative col-span-1 row-span-1 min-h-50 overflow-hidden will-change-transform hover:bg-stone-800 lg:col-start-2 lg:row-start-3"
   >
-    <CardHeader className="flex gap-2 items-center font-bold relative z-10">
+    <CardHeader className="relative z-10 flex items-center gap-2 font-bold">
       <Phone size={20} stroke-width={3} />聯絡我
     </CardHeader>
     <CardContent className="relative z-10">
@@ -117,7 +120,7 @@ import config from "@shConfig";
       </p>
       <p>
         Discord：<br />
-        <span class="text-stone-600 mr-0">
+        <span class="mr-0 text-stone-600">
           @
           <a
             href="https://discordapp.com/users/959977374471028779"
@@ -128,60 +131,63 @@ import config from "@shConfig";
       </p>
     </CardContent>
   </Card>
+
   <!-- 位置資訊 -->
   <Card
     id="sh-about-location-card"
-    className="col-span-1 row-span-1 lg:row-span-2 lg:col-start-3 lg:row-start-3 relative overflow-hidden min-h-50 hover:bg-stone-800 will-change-transform"
+    className="relative col-span-1 row-span-1 min-h-50 overflow-hidden will-change-transform hover:bg-stone-800 lg:col-start-3 lg:row-span-2 lg:row-start-3"
   >
     <canvas
       id="sh-about-location-cobe-canvas"
-      class="absolute -top-75 lg:top-auto lg:-bottom-1/3 lg:left-10"
-      width="400"
-      height="400"></canvas>
-    <CardHeader className="flex gap-2 items-center font-bold relative z-10">
+      class="pointer-events-none absolute -top-10 left-[85%] h-[300px] w-[300px] -translate-x-1/2 lg:top-1/2 lg:left-3/4 lg:h-[550px] lg:w-[550px] lg:-translate-x-1/4 lg:-translate-y-1/2"
+    ></canvas>
+
+    <CardHeader className="relative z-10 flex items-center gap-2 font-bold">
       <MapPin size={20} stroke-width={3} />臺中市，臺灣
     </CardHeader>
   </Card>
+
   <!-- 技能雲 -->
   <Card
     id="sh-about-skills-card"
-    className="col-span-1 row-span-1 lg:col-span-2 lg:row-span-2 lg:col-start-3 lg:row-start-1 shadow min-h-50 pb-0 relative overflow-hidden group hover:bg-neutral-800 will-change-transform"
+    className="group relative col-span-1 row-span-1 min-h-50 overflow-hidden pb-0 shadow will-change-transform hover:bg-neutral-800 lg:col-span-2 lg:col-start-3 lg:row-span-2 lg:row-start-1"
   >
     <div
-      class="absolute top-0 -right-25 h-full flex items-center -rotate-90 origin-center"
+      class="absolute top-0 -right-25 flex h-full origin-center -rotate-90 items-center"
     >
       <span
-        class="text-8xl font-bold sh-background-text-decoration select-none opacity-10 group-hover:opacity-20 transition-opacity duration-300"
+        class="sh-background-text-decoration text-8xl font-bold opacity-10 transition-opacity duration-300 select-none group-hover:opacity-20"
       >
         SKILL
       </span>
     </div>
 
-    <CardHeader className="flex gap-2 items-center font-bold relative z-10">
+    <CardHeader className="relative z-10 flex items-center gap-2 font-bold">
       <ThumbsUp size={20} stroke-width={3} />我的能力
     </CardHeader>
     <CardContent
       id="sh-about-skills-card-content"
-      className="relative min-h-40 flex-1 justify-center items-center z-10"
+      className="relative z-10 min-h-40 flex-1 items-center justify-center"
     >
       <SkillCloud client:only="react" />
     </CardContent>
   </Card>
+
   <!-- 社群媒體 -->
   <Card
     id="sh-about-socials-card"
-    className="col-span-1 lg:col-start-4 lg:row-start-3 lg:row-span-2 relative overflow-hidden min-h-50 hover:bg-stone-800 will-change-transform"
+    className="relative col-span-1 min-h-50 overflow-hidden will-change-transform hover:bg-stone-800 lg:col-start-4 lg:row-span-2 lg:row-start-3"
   >
-    <CardHeader className="flex gap-2 items-center font-bold relative z-10">
+    <CardHeader className="relative z-10 flex items-center gap-2 font-bold">
       <Share2 size={20} stroke-width={3} />社群媒體
     </CardHeader>
     <CardContent
-      className="relative z-10 grid grid-cols-4 lg:grid-cols-3 gap-4 py-2"
+      className="relative z-10 grid grid-cols-4 gap-4 py-2 lg:grid-cols-3"
     >
       {
         config.socialLinks.map((link, index) => (
           <SelfIntroLinkGridIcon href={link.href} key={index}>
-            <link.icon class="w-8 h-8" />
+            <link.icon class="h-8 w-8" />
           </SelfIntroLinkGridIcon>
         ))
       }
@@ -191,66 +197,86 @@ import config from "@shConfig";
 
 <!-- 地球儀 -->
 <script>
-  // import createGlobe from "cobe";
   import createGlobe from "cobe";
 
   let phi = 0;
-  let globeRotateSpeed = 1 / 200;
-  let canvas = document.getElementById(
-    "sh-about-location-cobe-canvas",
-  ) as HTMLCanvasElement;
+  const DEFAULT_SPEED = 1 / 200;
+  const HOVER_SPEED = 1 / 1000;
 
-  // hook卡片，確定是否有被hover
-  const card = document.getElementById("sh-about-location-card");
-  let isHovered = false;
+  let globeRotateSpeed = DEFAULT_SPEED;
+  let canvas: HTMLCanvasElement;
+  let animationFrameId: number | null = null;
   let targetSpeed = globeRotateSpeed;
 
-  // 平滑過渡函數
   function smoothTransition() {
     const diff = targetSpeed - globeRotateSpeed;
-    if (Math.abs(diff) > 0.001) {
-      globeRotateSpeed += (diff * 2) / 400;
-      window.requestAnimationFrame(smoothTransition);
+    if (Math.abs(diff) > 0.0001) {
+      globeRotateSpeed += diff * 0.05;
+      animationFrameId = window.requestAnimationFrame(smoothTransition);
     } else {
-      globeRotateSpeed = 0.001;
+      globeRotateSpeed = targetSpeed;
+      animationFrameId = null;
     }
   }
 
-  card?.addEventListener("mouseenter", () => {
-    isHovered = true;
-    targetSpeed = 0;
-    smoothTransition();
-  });
+  // 封裝初始化邏輯
+  document.addEventListener("DOMContentLoaded", () => {
+    canvas = document.getElementById(
+      "sh-about-location-cobe-canvas",
+    ) as HTMLCanvasElement;
+    const card = document.getElementById("sh-about-location-card");
 
-  card?.addEventListener("mouseleave", () => {
-    isHovered = false;
-    targetSpeed = 1 / 200;
-    smoothTransition();
-  });
+    if (!canvas || !card) return;
 
-  const globe = createGlobe(canvas, {
-    devicePixelRatio: 2,
-    width: 600,
-    height: 600,
-    phi: 0,
-    theta: 0,
-    dark: 1,
-    diffuse: 2,
-    mapSamples: 16_000,
-    mapBrightness: 2,
-    baseColor: [0.8, 0.8, 0.8],
-    markerColor: [1, 1, 1],
-    glowColor: [0.5, 0.5, 0.5],
-    markers: [
-      { location: [24.110780463476758, 120.68685405275627], size: 0.1 },
-    ],
-    scale: 1.05,
-    opacity: 0.9,
-    onRender: (state) => {
-      state.phi = phi;
-      // 沒有被hover時自動旋轉
-      phi += globeRotateSpeed;
-    },
+    // 動態獲取當前設備的像素比，若在手機上太消耗效能，可固定設為 2
+    const dpr = window.devicePixelRatio || 2;
+
+    // 獲取容器寬度（或設定固定的顯示寬度，例如 300px）
+    // 這裡以 300 為基準，乘上 dpr 後繪製，再透過 CSS 縮小
+    // const size = 300;
+
+    const rect = canvas.getBoundingClientRect();
+    const displaySize = rect.width || 300; // 電腦端會自動取得 550，手機端取得 300
+
+    const globe = createGlobe(canvas, {
+      devicePixelRatio: dpr,
+      width: displaySize * dpr,
+      height: displaySize * dpr,
+      phi: 0,
+      theta: 0,
+      dark: 1,
+      diffuse: 2,
+      mapSamples: 16_000,
+      mapBrightness: 2,
+      baseColor: [0.8, 0.8, 0.8],
+      markerColor: [1, 1, 1],
+      glowColor: [0.5, 0.5, 0.5],
+      markers: [
+        { location: [24.110780463476758, 120.68685405275627], size: 0.1 },
+      ],
+      scale: 1.05,
+      opacity: 0.9,
+      onRender: (state) => {
+        state.phi = phi;
+        phi += globeRotateSpeed;
+      },
+    });
+
+    card.addEventListener("mouseenter", () => {
+      targetSpeed = HOVER_SPEED;
+      if (animationFrameId) window.cancelAnimationFrame(animationFrameId);
+      smoothTransition();
+    });
+
+    card.addEventListener("mouseleave", () => {
+      targetSpeed = DEFAULT_SPEED;
+      if (animationFrameId) window.cancelAnimationFrame(animationFrameId);
+      smoothTransition();
+    });
+
+    return () => {
+      globe.destroy(); // 卸載時銷毀實例，防止記憶體洩漏
+    };
   });
 </script>
 
