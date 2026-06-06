@@ -37,6 +37,8 @@ export default defineConfig({
       provider: fontProviders.local(),
       name: "ChenYuluoyan 2.0",
       cssVariable: "--font-chenyuluoyan",
+      subsets: ['chinese-traditional', 'latin'], 
+      fallbacks: ["sans-serif"],
       options: {
         variants: [{
           src: ['./src/assets/fonts/ChenYuluoyan-2.0-Thin.woff2'],
