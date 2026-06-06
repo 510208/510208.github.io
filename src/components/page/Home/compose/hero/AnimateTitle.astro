@@ -47,8 +47,7 @@ const {
   </div>
 
   <div
-    class="sh-gradient-overlay pointer-events-none absolute inset-0 z-0 h-full w-full"
-    style={`background-image: linear-gradient(to bottom, ${bgColor}00 0%, ${bgColor} 100%);`}
+    class="sh-gradient-overlay pointer-events-none absolute inset-0 z-4 h-full w-full"
   >
   </div>
 </div>
@@ -63,7 +62,23 @@ const {
   }
 
   .sh-text-stroke {
-    -webkit-text-stroke: 4px #99999966;
+    -webkit-text-stroke: 4px #99999920;
+  }
+
+  .sh-gradient-overlay {
+    -webkit-backdrop-filter: opacity(var(--sh-mask-opacity, 1));
+    backdrop-filter: opacity(var(--sh-mask-opacity, 1));
+
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
   }
 </style>
 
