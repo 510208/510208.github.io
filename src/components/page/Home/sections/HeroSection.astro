@@ -1,5 +1,6 @@
 ---
 import AnimateTitle from "@/components/page/Home/compose/hero/AnimateTitle.astro";
+import StatusBadge from "@/components/page/Home/compose/hero/StatusBadge.astro";
 import { Button } from "@/components/ui/button.tsx";
 import { ArrowRight, FolderBookmark, UsersRound, Gauge } from "lucide-react";
 import { Image } from "astro:assets";
@@ -17,7 +18,7 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
   <div class="relative flex h-full w-full items-center justify-center">
     <!-- 背景互動元件 -->
     <div
-      class="absolute top-45 -z-10 h-[200px] w-full bg-cover bg-center"
+      class="absolute top-45 -z-10 h-[200px] w-[120%] rotate-20 bg-cover bg-center lg:rotate-0"
       aria-hidden="true"
     >
       <AnimateTitle />
@@ -33,22 +34,32 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
 
     <!-- 立繪 -->
     <div
-      class="absolute right-1/2 bottom-0 flex h-full translate-x-1/2 items-end justify-center"
+      class="absolute bottom-0 left-0 flex h-full flex-col items-end justify-end lg:left-1/2 lg:-translate-x-1/2"
     >
+      <div class="relative -mb-4 flex w-full items-center justify-center">
+        <div class="w-10"></div>
+
+        <StatusBadge class="hidden lg:flex" />
+      </div>
+
       <img
         src={CharacterImage.src}
         alt="Hero Character"
-        class="h-[80vh] w-auto max-w-none"
+        class="h-[90vh] w-auto max-w-none lg:h-[80vh]"
       />
     </div>
 
     <!-- 主框架 -->
     <div
-      class="absolute bottom-0 left-1/2 flex w-full max-w-[1246px] -translate-x-1/2 items-end justify-between overflow-hidden px-12 pb-30 lg:bottom-30 lg:bg-none lg:px-0 lg:pb-0 xl:items-start"
+      class="absolute bottom-0 left-1/2 flex w-full max-w-[1246px] -translate-x-1/2 items-end justify-between overflow-hidden px-12 pb-30 lg:bottom-30 lg:bg-none! lg:px-0 lg:pb-0 xl:items-start"
       id="sh-hero-mainframe"
     >
       <!-- 左區段 -->
       <div class="flex max-w-110 flex-col gap-15">
+        <div class="relative -mb-10 flex">
+          <StatusBadge class="flex lg:hidden" />
+        </div>
+
         <h1 class="text-[96px]/[120%] font-black text-stone-200">
           Sam<br />Hacker
         </h1>
