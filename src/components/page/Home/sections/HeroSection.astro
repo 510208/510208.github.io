@@ -14,10 +14,7 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
   id="sh-hero-section"
   class="hero-section relative h-svh overflow-hidden"
 >
-  <!-- 電腦 -->
-  <div
-    class="relative hidden h-full w-full items-center justify-center md:flex"
-  >
+  <div class="relative flex h-full w-full items-center justify-center">
     <!-- 背景互動元件 -->
     <div
       class="absolute top-45 -z-10 h-[200px] w-full bg-cover bg-center"
@@ -35,7 +32,9 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
     </div>
 
     <!-- 立繪 -->
-    <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
+    <div
+      class="absolute right-1/2 bottom-0 flex h-full translate-x-1/2 items-end justify-center"
+    >
       <img
         src={CharacterImage.src}
         alt="Hero Character"
@@ -45,7 +44,8 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
 
     <!-- 主框架 -->
     <div
-      class="absolute bottom-30 left-1/2 mx-12 flex w-full max-w-[1246px] -translate-x-1/2 items-end justify-between overflow-hidden lg:mx-0 xl:items-start"
+      class="absolute bottom-0 left-1/2 flex w-full max-w-[1246px] -translate-x-1/2 items-end justify-between overflow-hidden px-12 pb-30 lg:bottom-30 lg:bg-none lg:px-0 lg:pb-0 xl:items-start"
+      id="sh-hero-mainframe"
     >
       <!-- 左區段 -->
       <div class="flex max-w-110 flex-col gap-15">
@@ -113,26 +113,25 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
       </div>
     </div>
   </div>
-
-  <!-- 手機 -->
-  <div
-    class="relative -z-10 flex h-full w-full items-center justify-center md:hidden"
-  >
-    <div
-      class="absolute top-1/2 left-1/2 h-[120px] w-full -translate-x-1/2 -translate-y-1/2 overflow-hidden"
-      aria-hidden="true"
-    >
-      <AnimateTitle />
-    </div>
-  </div>
-
-  <script>
-    // Hero Section GSAP Animation
-    import gsap from "gsap";
-    import SplitText from "gsap/SplitText";
-
-    gsap.registerPlugin(SplitText);
-
-    document.addEventListener("DOMContentLoaded", () => {});
-  </script>
 </section>
+
+<style>
+  #sh-hero-mainframe {
+    background: #000;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+</style>
+
+<script>
+  // Hero Section GSAP Animation
+  import gsap from "gsap";
+  import SplitText from "gsap/SplitText";
+
+  gsap.registerPlugin(SplitText);
+
+  document.addEventListener("DOMContentLoaded", () => {});
+</script>
