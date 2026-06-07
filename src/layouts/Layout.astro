@@ -9,8 +9,6 @@ import "@styles/global.css";
 import ToTop from "@components/common/ToTop.astro";
 import OgLayout from "./OgLayout.astro";
 
-import { ClientRouter } from "astro:transitions";
-
 const baseUrl = Astro.site;
 const { pageName, pageDescription, pageOgImage } = Astro.props;
 
@@ -41,6 +39,10 @@ import { Font } from "astro:assets";
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+    <meta
+      http-equiv="Cache-Control"
+      content="public, max-age=31536000, immutable"
+    />
 
     <link
       type="text/plain"
