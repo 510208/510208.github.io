@@ -1,4 +1,6 @@
 ---
+import { getImage } from "astro:assets";
+
 import Layout from "@/layouts/Layout.astro";
 import Content from "@/layouts/Content.astro";
 
@@ -11,6 +13,8 @@ import AwardsSection from "@/components/page/Home/sections/AwardsSection.astro";
 import SectionTitle from "@components/common/SectionTitle.astro";
 
 import bgImage from "@/assets/pages/home/dark_bg-intro.png";
+const optimizedBgImage = await getImage({ src: bgImage, width: 1200 });
+
 import { Button } from "@ui/button";
 ---
 
@@ -21,7 +25,7 @@ import { Button } from "@ui/button";
   <HeroSection />
 
   <!-- 關於 -->
-  <Content sectionName="intro" bgImage={bgImage}>
+  <Content sectionName="intro" bgImage={optimizedBgImage.src}>
     <SectionTitle
       slot="title"
       chinese="關於我"
