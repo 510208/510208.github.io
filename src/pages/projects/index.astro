@@ -21,13 +21,21 @@ import SmallProjectCard from "@/components/page/Projects/SmallProjectCard.astro"
   <div class="flex flex-col gap-7">
     <BigProjectGrid />
 
-    <div class="flex flex-col justify-between gap-4 lg:h-[290px] lg:flex-row">
+    <div class="flex flex-col justify-start gap-4 lg:h-[290px] lg:flex-row">
       <SmallProjectCard
         title="CFBot"
         description="這是一款開源的Discord Bot框架，同時也內建許多實用的功能，讓你可以輕鬆地在Discord上創建自己的機器人。"
         projectLogo={CfBotLogo}
         backgroundImage={CfBotBg}
         link="https://github.com/510208/cfbot/"
+      />
+
+      <SmallProjectCard
+        title="MinePlayer"
+        description="一個簡單的Python庫，讓你可以輕鬆地在Python中取得Minecraft玩家的資訊，並且提供了一些實用的功能，例如獲取玩家的UUID等。"
+        projectLogo={MPLogo}
+        backgroundImage={CfBotBg}
+        link="https://github.com/510208/mineplayer/"
       />
     </div>
   </div>
