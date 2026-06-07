@@ -8,22 +8,23 @@ import LHBg from "@/assets/pages/projects/thumbnails/lighttp.svg";
 import SHBNBg from "@/assets/pages/projects/thumbnails/shblog-next.svg";
 ---
 
-<div class="flex h-85 flex-col justify-between gap-4 lg:flex-row">
+<!-- 主打區段 -->
+<div class="flex flex-col justify-between gap-4 lg:h-85 lg:flex-row">
   <Card
-    className="group sh-click-link relative w-1/2 cursor-pointer justify-center overflow-hidden py-13 pr-50 pl-[50px] transition-all duration-300 ease-in-out"
+    className="group sh-click-link relative min-h-[280px] w-full cursor-pointer justify-center overflow-hidden px-8 transition-all duration-300 ease-in-out lg:w-1/2 lg:py-13 lg:pr-50 lg:pl-[50px]"
     id="sh-card-lighttp-bg"
     data-link="https://github.com/510208/lighttp"
   >
     <div
-      class="absolute top-1/2 -right-1/3 -translate-y-1/2 transition-all duration-300 ease-in-out group-hover:right-[-20%]"
+      class="absolute top-1/2 -right-1/3 -translate-y-1/2 scale-75 opacity-75 transition-all duration-300 ease-in-out group-hover:right-[-20%] md:-right-[10%] md:scale-120 md:opacity-100 lg:-right-1/3 lg:scale-100"
     >
       <Image alt="Lighttp Thumbnail" src={LHBg} class="object-cover" />
     </div>
 
     <div
-      class="z-10 flex max-w-64 flex-col gap-[30px] transition-all duration-300 ease-in-out group-hover:gap-[40px]"
+      class="z-10 flex max-w-64 flex-col gap-4 transition-all duration-300 ease-in-out group-hover:gap-[40px] lg:gap-[30px]"
     >
-      <Image alt="Lighttp Logo" src={LHLogo} />
+      <Image alt="Lighttp Logo" src={LHLogo} class="scale-75 lg:scale-100" />
       <p class="text-sky-100/90">
         LigHTTP是一款開源的HTTP請求工具，目的是成為Postman的輕量平替。希望可以提供極為簡單且高效的HTTP請求體驗。
       </p>
@@ -31,12 +32,12 @@ import SHBNBg from "@/assets/pages/projects/thumbnails/shblog-next.svg";
   </Card>
 
   <Card
-    className="group sh-click-link relative w-1/2 cursor-pointer justify-center overflow-hidden py-13 pr-50 pl-[50px] transition-all duration-300 ease-in-out"
+    className="group sh-click-link relative min-h-[280px] w-full cursor-pointer justify-center overflow-hidden px-8 transition-all duration-300 ease-in-out lg:w-1/2 lg:py-13 lg:pr-50 lg:pl-[50px]"
     id="sh-card-shbn-bg"
     data-link="https://sh-blog-next.vercel.app/"
   >
     <div
-      class="absolute top-1/2 -right-1/4 z-0 -translate-y-1/2 transition-all duration-300 ease-in-out group-hover:right-[-20%]"
+      class="absolute top-1/2 -right-1/3 -translate-y-1/2 scale-75 opacity-75 transition-all duration-300 ease-in-out group-hover:right-[-20%] md:-right-[10%] md:scale-120 md:opacity-100 lg:-right-1/3 lg:scale-100"
     >
       <Image alt="SHBlog Next Thumbnail" src={SHBNBg} class="object-cover" />
     </div>
@@ -44,7 +45,11 @@ import SHBNBg from "@/assets/pages/projects/thumbnails/shblog-next.svg";
     <div
       class="z-10 flex max-w-64 flex-col gap-[30px] transition-all duration-300 ease-in-out group-hover:gap-[40px]"
     >
-      <Image alt="SHBlog Next Logo" src={SHBNLogo} />
+      <Image
+        alt="SHBlog Next Logo"
+        src={SHBNLogo}
+        class="scale-80 lg:scale-100"
+      />
       <p class="text-emerald-100/90">
         SHBlog
         Next是一個基於Astro的個人部落格框架，目標是提供一個簡單、個性化、快速且開箱即用的個人開發者部落格解決方案。
