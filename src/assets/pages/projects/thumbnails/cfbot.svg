@@ -1,5 +1,6 @@
 <svg width="400" height="294" viewBox="0 0 400 294" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="400" height="294" fill="#35363A" fill-opacity="0.9"/>
+<g clip-path="url(#clip0_530_2340)">
+<rect width="400" height="294" rx="10" fill="#35363A" fill-opacity="0.9"/>
 <rect width="400" height="294" rx="10" fill="#11111B" fill-opacity="0.1"/>
 <rect x="0.5" y="0.5" width="399" height="293" rx="9.5" stroke="#9F9FDE" stroke-opacity="0.2"/>
 <rect width="400" height="20" fill="#37373A"/>
@@ -37,4 +38,10 @@
 <rect x="137" y="182" width="86" height="6" fill="#37373A"/>
 <rect x="10" y="268" width="10" height="6" fill="#484850"/>
 <rect x="30" y="268" width="76" height="6" fill="#37373A"/>
+</g>
+<defs>
+<clipPath id="clip0_530_2340">
+<rect width="400" height="294" rx="10" fill="white"/>
+</clipPath>
+</defs>
 </svg>
