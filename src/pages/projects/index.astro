@@ -4,7 +4,12 @@ import PageLayout from "@/layouts/PageLayout.astro";
 import { Image } from "astro:assets";
 import BigProjectGrid from "@/components/page/Projects/BigProjectGrid.astro";
 
+import CfBotLogo from "@/assets/pages/projects/logos/cfbot.svg";
+import CfBotBg from "@/assets/pages/projects/thumbnails/cfbot.svg";
+import MPLogo from "@/assets/pages/projects/logos/mineplayer.svg";
+
 import "@styles/content.css";
+import SmallProjectCard from "@/components/page/Projects/SmallProjectCard.astro";
 ---
 
 <PageLayout
@@ -13,7 +18,19 @@ import "@styles/content.css";
   description="這是我做的一些開源專案，雖然還是不大成熟，但歡迎研究一下，可以提PR或Issue更好！"
   ogImage="/assets/website_og/projects_og.png"
 >
-  <BigProjectGrid />
+  <div class="flex flex-col gap-7">
+    <BigProjectGrid />
+
+    <div class="flex flex-col justify-between gap-4 lg:h-[290px] lg:flex-row">
+      <SmallProjectCard
+        title="CFBot"
+        description="這是一款開源的Discord Bot框架，同時也內建許多實用的功能，讓你可以輕鬆地在Discord上創建自己的機器人。"
+        projectLogo={CfBotLogo}
+        backgroundImage={CfBotBg}
+        link="https://github.com/510208/cfbot/"
+      />
+    </div>
+  </div>
 </PageLayout>
 
 <script>
