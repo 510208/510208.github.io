@@ -1,15 +1,18 @@
 ---
-import { Card } from "@/components/ui/card";
 import PageLayout from "@/layouts/PageLayout.astro";
-import { Image } from "astro:assets";
 import BigProjectGrid from "@/components/page/Projects/BigProjectGrid.astro";
+import { Button } from "@/components/ui/button";
 
 import CfBotLogo from "@/assets/pages/projects/logos/cfbot.svg";
 import CfBotBg from "@/assets/pages/projects/thumbnails/cfbot.svg";
 import MPLogo from "@/assets/pages/projects/logos/mineplayer.svg";
+import MPBg from "@/assets/pages/projects/thumbnails/mineplayer.svg";
+import BrowserHomepageBg from "@/assets/pages/projects/thumbnails/browser-homepage.svg";
 
 import "@styles/content.css";
 import SmallProjectCard from "@/components/page/Projects/SmallProjectCard.astro";
+
+import { FolderBookmark } from "lucide-react";
 ---
 
 <PageLayout
@@ -21,7 +24,7 @@ import SmallProjectCard from "@/components/page/Projects/SmallProjectCard.astro"
   <div class="flex flex-col gap-7">
     <BigProjectGrid />
 
-    <div class="flex flex-col justify-start gap-4 lg:h-[290px] lg:flex-row">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
       <SmallProjectCard
         title="CFBot"
         description="這是一款開源的Discord Bot框架，同時也內建許多實用的功能，讓你可以輕鬆地在Discord上創建自己的機器人。"
@@ -34,9 +37,35 @@ import SmallProjectCard from "@/components/page/Projects/SmallProjectCard.astro"
         title="MinePlayer"
         description="一個簡單的Python庫，讓你可以輕鬆地在Python中取得Minecraft玩家的資訊，並且提供了一些實用的功能，例如獲取玩家的UUID等。"
         projectLogo={MPLogo}
-        backgroundImage={CfBotBg}
+        backgroundImage={MPBg}
         link="https://github.com/510208/mineplayer/"
       />
+
+      <SmallProjectCard
+        title="browser-homepage"
+        description="一個簡單的瀏覽器首頁，基於React與Next.js開發，提供天氣預報、快速連結、時間與每日一句等功能，並具備一定程度的自訂性。"
+        backgroundImage={BrowserHomepageBg}
+        link="https://github.com/510208/browser-homepage/"
+      />
+    </div>
+
+    <div class="flex flex-col items-center gap-4">
+      <p class="text-center text-sm text-gray-500">
+        這裡展示的專案只是我眾多專案中的一部分，如果你對我的其他專案感興趣，歡迎前往
+        <a
+          href="https://github.com/510208"
+          target="_blank"
+          class="text-blue-500 hover:underline">我的GitHub頁面</a
+        >
+        查看更多內容！
+      </p>
+
+      <a href="/projects/list">
+        <Button variant="default" className="flex items-center gap-2 px-6!">
+          查看更多專案
+          <FolderBookmark />
+        </Button>
+      </a>
     </div>
   </div>
 </PageLayout>
