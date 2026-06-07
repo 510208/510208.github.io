@@ -79,6 +79,7 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 800 });
             <Button
               size="lg"
               variant="secondary"
+              aria-label="關於我"
               className="font-regular h-auto px-[30px]! py-2.5 text-lg"
             >
               關於我
@@ -87,19 +88,34 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 800 });
           </a>
 
           <a href="/projects">
-            <Button size="icon-hero" variant="ghost" className="h-full p-0">
+            <Button
+              size="icon-hero"
+              aria-label="專案列表"
+              variant="ghost"
+              className="h-full p-0"
+            >
               <FolderBookmark size={24} className="size-5" />
             </Button>
           </a>
 
           <a href="/friends">
-            <Button size="icon-hero" variant="ghost" className="h-full p-0">
+            <Button
+              size="icon-hero"
+              aria-label="朋友"
+              variant="ghost"
+              className="h-full p-0"
+            >
               <UsersRound size={24} className="size-5" />
             </Button>
           </a>
 
           <a href="/dashboard">
-            <Button size="icon-hero" variant="ghost" className="h-full p-0">
+            <Button
+              size="icon-hero"
+              aria-label="數據儀表板"
+              variant="ghost"
+              className="h-full p-0"
+            >
               <Gauge size={24} className="size-5" />
             </Button>
           </a>
