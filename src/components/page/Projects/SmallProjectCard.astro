@@ -5,10 +5,10 @@ import type { SvgComponent } from "astro/types";
 interface Props {
   title: string;
   description: string;
-  projectLogo?: SvgComponent;
+  ProjectLogo?: SvgComponent;
   link: string;
 }
-const { title, description, projectLogo, link }: Props = Astro.props;
+const { title, description, ProjectLogo, link }: Props = Astro.props;
 ---
 
 <Card
@@ -20,7 +20,7 @@ const { title, description, projectLogo, link }: Props = Astro.props;
   <div
     class="sh-other-card flex min-h-[120px] w-full flex-col gap-2.5 px-6 pt-[14px] pb-[30px]"
   >
-    {projectLogo && <projectLogo class="h-8.5" />}
+    {ProjectLogo && <ProjectLogo class="h-8.5" />}
     <h3 class="text-xl font-bold">{title}</h3>
 
     <p class="text-sm text-gray-400">
