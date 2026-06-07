@@ -52,16 +52,16 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
 
     <!-- 主框架 -->
     <div
-      class="absolute bottom-0 left-1/2 flex w-full max-w-[1246px] -translate-x-1/2 items-end justify-between overflow-hidden px-12 pb-30 lg:bottom-30 lg:bg-none! lg:px-0 lg:pb-0 xl:items-start"
+      class="absolute bottom-0 left-1/2 flex w-full max-w-[1246px] -translate-x-1/2 items-end justify-between px-8 pb-16 lg:bottom-30 lg:bg-none! lg:pb-0 xl:items-start xl:px-0"
       id="sh-hero-mainframe"
     >
       <!-- 左區段 -->
-      <div class="flex max-w-110 flex-col gap-15" id="sh-hero-mf-left">
-        <div class="relative -mb-10 flex">
+      <div class="flex max-w-110 flex-col gap-5 lg:gap-15" id="sh-hero-mf-left">
+        <div class="relative flex lg:-mb-10">
           <StatusBadge class="flex lg:hidden" />
         </div>
 
-        <h1 class="text-[96px]/[120%] font-black text-stone-200">
+        <h1 class="text-6xl font-black text-stone-200 lg:text-[96px]/[120%]">
           Sam<br />Hacker
         </h1>
 
@@ -156,12 +156,16 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
   document.addEventListener("DOMContentLoaded", () => {
     // 初始化
     gsap.set("#sh-hero-tachie img", { y: 100, opacity: 0 });
-    gsap.set("#sh-hero-mf-left > *", { y: 30, opacity: 0 });
+    gsap.set("#sh-hero-mf-left > *:not(h1)", { y: 30, opacity: 0 });
     gsap.set("#sh-hero-mf-right", { y: 50, opacity: 0 });
 
     // 右容器中的括號設到容器中間左右各50px的位置，製作展開至容器邊緣的動畫
     gsap.set("#sh-hero-mf-right-bracket", { x: -70, y: 30, opacity: 0 });
     gsap.set("#sh-hero-mf-left-bracket", { x: 70, y: -30, opacity: 0 });
+
+    // 標題的分割飛入動畫
+    const titleSplit = new SplitText("#sh-hero-mf-left h1", { type: "chars" });
+    gsap.set(titleSplit.chars, { y: 50, opacity: 0 });
 
     // 將右容器中的文字切分成單字，製作逐字由兩側聚合的動畫
     const quoteSplit = new SplitText("#sh-hero-mf-quote", { type: "chars" });
@@ -179,9 +183,19 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
     );
 
     tl.to(
-      "#sh-hero-mf-left > *",
+      "#sh-hero-mf-left > *:not(h1)",
       { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.1 },
       0.8,
+    ).to(
+      titleSplit.chars,
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power3.out",
+        stagger: 0.05,
+      },
+      0.7,
     );
 
     tl.to(
@@ -237,10 +251,9 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
     function beginParallaxScroll() {
       console.log("Parallax scroll enabled");
 
-      // 1. 強制讓 ScrollTrigger 重新整理
       ScrollTrigger.refresh();
 
-      // 2. 建立與滾動綁定的時間軸
+      // 建立與滾動綁定的時間軸
       const parallaxTl = gsap.timeline({
         scrollTrigger: {
           trigger: "#sh-hero-section",
@@ -250,21 +263,31 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
         },
       });
 
-      // 3. 統一控制在滾動進度 20% (0.2) 開始，到 100% (1.0) 結束
-
-      // 左區段：從 0.2 開始，持續 0.8（於 1.0 結束）
+      // 左區段
       parallaxTl.to(
-        "#sh-hero-mf-left > *",
+        "#sh-hero-mf-left > *:not(h1)",
         {
-          y: -150, // 建議加大數值，速度感會更明顯
+          y: -150,
           duration: 0.8,
           ease: "none",
-          stagger: 0.05, // 微調交錯時間，讓整體結構在 1.0 前完全就位
+          stagger: 0.05,
         },
         0.1,
       );
 
-      // 右區段：從 0.2 開始，持續 0.8（於 1.0 結束）
+      // 標題：分割後的單字分別製作視差，每個字的位移量都有微小差異
+      parallaxTl.to(
+        titleSplit.chars,
+        {
+          y: (index) => -220 - index * 20, // 每個字的位移量都稍微不同，製造更細緻的視差效果
+          duration: 0.9,
+          ease: "none",
+          stagger: 0.01,
+        },
+        0.1,
+      );
+
+      // 右區段
       parallaxTl.to(
         "#sh-hero-mf-right",
         {
@@ -275,7 +298,7 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
         0.2,
       );
 
-      // 立繪：從 0.2 開始，持續 0.8（於 1.0 結束）
+      // 立繪
       parallaxTl.to(
         "#sh-hero-tachie img",
         {
