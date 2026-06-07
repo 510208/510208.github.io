@@ -5,10 +5,15 @@ import type { SvgComponent } from "astro/types";
 interface Props {
   title: string;
   description: string;
-  ProjectLogo?: SvgComponent;
+  projectLogo?: SvgComponent;
   link: string;
 }
-const { title, description, ProjectLogo, link }: Props = Astro.props;
+const {
+  title,
+  description,
+  projectLogo: ProjectLogo,
+  link,
+}: Props = Astro.props;
 ---
 
 <Card
