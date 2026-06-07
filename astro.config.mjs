@@ -51,6 +51,7 @@ export default defineConfig({
       provider: fontProviders.local(),
       name: "Maple Font",
       cssVariable: "--font-maple",
+      subsets: ['latin'],
       options: {
         variants: [{
           src: ['./src/assets/fonts/SamhackerMapleFontMono-Regular.woff2'],
