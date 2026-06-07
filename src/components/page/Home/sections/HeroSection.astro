@@ -1,4 +1,5 @@
 ---
+import { getImage } from "astro:assets";
 import AnimateTitle from "@/components/page/Home/compose/hero/AnimateTitle.astro";
 import StatusBadge from "@/components/page/Home/compose/hero/StatusBadge.astro";
 import { Button } from "@/components/ui/button.tsx";
@@ -9,6 +10,8 @@ import CharacterImage from "@/assets/pages/home/misana-character_long.png";
 import BGGrid from "@/assets/pages/home/dark_bg-grid.svg";
 import RTBracket from "@/assets/pages/home/quote-right_top-brackets.svg";
 import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
+
+const optimizedImage = await getImage({ src: CharacterImage, width: 800 });
 ---
 
 <section
@@ -44,7 +47,7 @@ import LBBracket from "@/assets/pages/home/quote-left_bottom-brackets.svg";
       </div>
 
       <img
-        src={CharacterImage.src}
+        src={optimizedImage.src}
         alt="Hero Character"
         class="h-[90vh] w-auto max-w-none lg:h-[80vh]"
       />
