@@ -12,6 +12,8 @@ import partytown from "@astrojs/partytown";
 
 import sitemap from "@astrojs/sitemap";
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://510208.github.io",
@@ -88,4 +90,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+
+  adapter: cloudflare(),
 });
