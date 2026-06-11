@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 
 import cfbotLogo from "@/assets/pages/projects/cfbot_logo.svg";
 import shblogLogo from "@/assets/pages/projects/shblog-next_logo.svg";
+import lighttpLogo from "@/assets/pages/projects/lighttp_logo.svg";
 ---
 
 <head>
@@ -15,7 +16,7 @@ import shblogLogo from "@/assets/pages/projects/shblog-next_logo.svg";
 </head>
 <div>
   <!-- 顯示專案的Logo -->
-  <div class="hidden lg:flex justify-center align-middle gap-4">
+  <div class="hidden flex-wrap justify-center gap-10 align-middle lg:flex">
     <a
       href="https://github.com/510208/cfbot"
       class="sh-project-card flex justify-center align-middle"
@@ -24,7 +25,7 @@ import shblogLogo from "@/assets/pages/projects/shblog-next_logo.svg";
         src={cfbotLogo}
         alt="CFBot Logo"
         height={100}
-        class="invert-100 opacity-20 hover:opacity-100 transition-opacity duration-300"
+        class="opacity-20 invert-100 transition-opacity duration-300 hover:opacity-100"
         loading="lazy"
       />
     </a>
@@ -36,7 +37,19 @@ import shblogLogo from "@/assets/pages/projects/shblog-next_logo.svg";
         src={shblogLogo}
         alt="SHBlog Next Logo"
         height={70}
-        class="opacity-20 hover:opacity-100 transition-opacity duration-300"
+        class="opacity-20 transition-opacity duration-300 hover:opacity-100"
+        loading="lazy"
+      />
+    </a>
+    <a
+      href="https://github.com/510208/lighttp"
+      class="sh-project-card flex justify-center align-middle"
+    >
+      <Image
+        src={lighttpLogo}
+        alt="LigHTTP Logo"
+        height={70}
+        class="opacity-20 transition-opacity duration-300 hover:opacity-100"
         loading="lazy"
       />
     </a>
