@@ -48,6 +48,7 @@ import minecraftThumbnail from "@/assets/pages/equipments/software/minecraft.web
 import pycharmThumbnail from "@/assets/pages/equipments/software/pycharm.webp";
 import webstormThumbnail from "@/assets/pages/equipments/software/webstorm.webp";
 import thunderClientThumbnail from "@/assets/pages/equipments/software/thunder_client.webp";
+import lighttpThumbnail from "@/assets/pages/equipments/software/lighttp.webp";
 import wordThumbnail from "@/assets/pages/equipments/software/word.webp";
 
 const config: ShsiteConfig = {
@@ -322,6 +323,11 @@ const config: ShsiteConfig = {
       description:
         "集成在VSCode中的API測試工具，雖然Postman更好用，但我懶得開Postman了有夠麻煩",
       thumbnail: thunderClientThumbnail,
+      type: "software",
+    },{
+      name: "LigHTTP",
+      description: "由我自行開發的HTTP請求客戶端，使用Rust編寫，支援HTTP/1.1與HTTP/2協議，用來取代繁雜的Postman。",
+      thumbnail: lighttpThumbnail,
       type: "software",
     },
     {
