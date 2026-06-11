@@ -57,7 +57,7 @@ const config: ShsiteConfig = {
       { title: "Projects", href: "/projects", icon: FolderDot },
       { title: "Equipments", href: "/equipments", icon: LaptopMinimal },
       { title: "Dashboard", href: "/dashboard", icon: Gauge },
-      { title: "Blog", href: "https://samhacker.xyz/", icon: Newspaper },
+      { title: "Blog", href: "https://blog.samhacker.xyz/", icon: Newspaper },
     ],
   },
 
