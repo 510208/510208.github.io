@@ -193,6 +193,7 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
     // 動畫
     const tl = gsap.timeline({
       onComplete: beginParallaxScroll, // 動畫完成後啟用滾動事件監聽
+      delay: 0.2, // 整體動畫開始前的延遲
     });
 
     tl.to(
