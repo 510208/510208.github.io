@@ -190,3 +190,8 @@ a::-moz-selection {
 ::-webkit-scrollbar-thumb:hover {
   background-color: oklch(0.6 0.013 58.071);
 }
+
+html {
+  scrollbar-width: auto;
+  scrollbar-color: oklch(0.553 0.013 58.071) transparent;
+}
