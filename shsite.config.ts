@@ -36,6 +36,7 @@ import vscodeCover from "@/assets/pages/about/games/vscode_cover.png";
 import mouseThumbnail from "@/assets/pages/equipments/peripheral/logitech_g_pro_wireless.webp";
 import keyboardThumbnail from "@/assets/pages/equipments/peripheral/logitech_k380.webp";
 import headsetThumbnail from "@/assets/pages/equipments/peripheral/redmi_buds_6_lite.webp";
+import keyboardThumbnail2 from "@/assets/pages/equipments/peripheral/logitech_g512.webp";
 
 import neovimThumbnail from "@/assets/pages/equipments/software/neovim.webp";
 import vscodeThumbnail from "@/assets/pages/equipments/software/vscode.webp";
@@ -242,6 +243,12 @@ const config: ShsiteConfig = {
       name: "Logitech K380",
       description: "藍牙鍵盤，跟筆電內建的鍵盤換著用，筆電鍵盤才能用久一點",
       thumbnail: keyboardThumbnail,
+      type: "peripheral",
+    },
+    {
+      name: "Logitech G512",
+      description: "有線機械鍵盤，打起來很爽，現在用來取代K380當主要鍵盤了，機械鍵盤大法好w",
+      thumbnail: keyboardThumbnail2,
       type: "peripheral",
     },
     {
