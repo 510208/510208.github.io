@@ -11,6 +11,7 @@ import SelfIntroSection from "@components/page/Home/sections/SelfIntroSection.as
 import AwardsSection from "@/components/page/Home/sections/AwardsSection.astro";
 
 import SectionTitle from "@components/common/SectionTitle.astro";
+import WelcomeAnimation from "@components/core/WelcomeAnimation.astro";
 
 import bgImage from "@/assets/pages/home/dark_bg-intro.png";
 const optimizedBgImage = await getImage({ src: bgImage, width: 1200 });
@@ -22,6 +23,8 @@ import { Button } from "@ui/button";
   pageDescription="這裡是SamHacker的個人網站，歡迎來小站坐坐~~也歡迎交流技術、分享生活、互相認識認識。"
   pageOgImage="/assets/website_og/home_og.png"
 >
+  <WelcomeAnimation />
+
   <HeroSection />
 
   <!-- 關於 -->

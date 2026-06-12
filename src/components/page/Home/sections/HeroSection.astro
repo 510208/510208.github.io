@@ -172,7 +172,9 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 800 });
   gsap.registerPlugin(SplitText);
   gsap.registerPlugin(ScrollTrigger);
 
-  document.addEventListener("DOMContentLoaded", () => {
+  function onWelcomeFinished() {
+    console.log("Welcome animation finished, starting hero animations...");
+
     // 初始化
     gsap.set("#sh-hero-tachie img", { y: 100, opacity: 0 });
     gsap.set("#sh-hero-mf-left > *:not(h1)", { y: 30, opacity: 0 });
@@ -193,6 +195,7 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 800 });
     // 動畫
     const tl = gsap.timeline({
       onComplete: beginParallaxScroll, // 動畫完成後啟用滾動事件監聽
+      delay: 0.5,
     });
 
     tl.to(
@@ -328,5 +331,23 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 800 });
         0.05,
       );
     }
-  });
+  }
+
+  // 2. 核心觸發邏輯：相容首次訪問、重複訪問與 Astro View Transitions 頁面切換
+  function setupTrigger() {
+    const hasSeen = sessionStorage.getItem("hasSeenWelcome");
+    const hasOverlay = document.getElementById("welcome-overlay");
+
+    if (hasSeen || !hasOverlay) {
+      onWelcomeFinished();
+    } else {
+      window.addEventListener("welcomeFinished", onWelcomeFinished, {
+        once: true,
+      });
+    }
+  }
+
+  // 執行監聽初始化
+  document.addEventListener("DOMContentLoaded", setupTrigger);
+  document.addEventListener("astro:page-load", setupTrigger); // 確保 Astro 分頁切換時也能正常運作
 </script>
