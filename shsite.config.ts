@@ -36,6 +36,7 @@ import vscodeCover from "@/assets/pages/about/games/vscode_cover.png";
 import mouseThumbnail from "@/assets/pages/equipments/peripheral/logitech_g_pro_wireless.webp";
 import keyboardThumbnail from "@/assets/pages/equipments/peripheral/logitech_k380.webp";
 import headsetThumbnail from "@/assets/pages/equipments/peripheral/redmi_buds_6_lite.webp";
+import keyboardThumbnail2 from "@/assets/pages/equipments/peripheral/logitech_g512.webp";
 
 import neovimThumbnail from "@/assets/pages/equipments/software/neovim.webp";
 import vscodeThumbnail from "@/assets/pages/equipments/software/vscode.webp";
@@ -47,6 +48,7 @@ import minecraftThumbnail from "@/assets/pages/equipments/software/minecraft.web
 import pycharmThumbnail from "@/assets/pages/equipments/software/pycharm.webp";
 import webstormThumbnail from "@/assets/pages/equipments/software/webstorm.webp";
 import thunderClientThumbnail from "@/assets/pages/equipments/software/thunder_client.webp";
+import lighttpThumbnail from "@/assets/pages/equipments/software/lighttp.webp";
 import wordThumbnail from "@/assets/pages/equipments/software/word.webp";
 
 const config: ShsiteConfig = {
@@ -57,7 +59,7 @@ const config: ShsiteConfig = {
       { title: "Projects", href: "/projects", icon: FolderDot },
       { title: "Equipments", href: "/equipments", icon: LaptopMinimal },
       { title: "Dashboard", href: "/dashboard", icon: Gauge },
-      { title: "Blog", href: "https://samhacker.xyz/", icon: Newspaper },
+      { title: "Blog", href: "https://blog.samhacker.xyz/", icon: Newspaper },
     ],
   },
 
@@ -245,6 +247,12 @@ const config: ShsiteConfig = {
       type: "peripheral",
     },
     {
+      name: "Logitech G512",
+      description: "有線機械鍵盤，打起來很爽，現在用來取代K380當主要鍵盤了，機械鍵盤大法好w",
+      thumbnail: keyboardThumbnail2,
+      type: "peripheral",
+    },
+    {
       name: "RedMi Buds 6 Lite",
       description: "有ANC主動降噪，又便宜，邊打Code邊聽音樂真的很爽",
       thumbnail: headsetThumbnail,
@@ -315,6 +323,11 @@ const config: ShsiteConfig = {
       description:
         "集成在VSCode中的API測試工具，雖然Postman更好用，但我懶得開Postman了有夠麻煩",
       thumbnail: thunderClientThumbnail,
+      type: "software",
+    },{
+      name: "LigHTTP",
+      description: "由我自行開發的HTTP請求客戶端，使用Rust編寫，支援HTTP/1.1與HTTP/2協議，用來取代繁雜的Postman。",
+      thumbnail: lighttpThumbnail,
       type: "software",
     },
     {

@@ -84,3 +84,20 @@ import { FolderBookmark } from "lucide-react";
     });
   });
 </script>
+
+<script>
+  import { gsap } from "gsap";
+
+  // 卡片淡入效果
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.set(".sh-project-card", { opacity: 0, y: 20 });
+
+    gsap.to(".sh-project-card", {
+      opacity: 1,
+      y: 0,
+      stagger: 0.2,
+      duration: 0.4,
+      ease: "power2.out",
+    });
+  });
+</script>

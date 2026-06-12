@@ -26,10 +26,10 @@ const DevelopmentEquipments = config.equipments.filter(
   description="我平常使用的設備與工具。如果你有興趣的話，可以參考看看。"
   ogImage="/assets/website_og/equipments_og.png"
 >
-  <div class="container mx-auto px-4 pb-8 bg-transparent">
+  <div class="container mx-auto bg-transparent px-4 pb-8">
     <SectionTitle chinese="裝置" english="Device" />
-    <div class="w-[100%] justify-center flex gap-4">
-      <div class="text-center mb-8 w-full">
+    <div class="flex w-[100%] flex-col justify-center gap-4 lg:flex-row">
+      <div class="mb-8 w-full text-center">
         <Image
           src={laptopThumbnail}
           alt="GIGABYTE G6 KF (2024)"
@@ -40,7 +40,7 @@ const DevelopmentEquipments = config.equipments.filter(
           <span>Intel Core i7 13700H and NVIDIA GeForce RTX 4060</span>
         </small>
       </div>
-      <div class="text-center mb-8 w-full">
+      <div class="mb-8 w-full text-center">
         <Image
           src={phoneThumbnail}
           alt="RedMi Note 14 5G"
@@ -54,12 +54,12 @@ const DevelopmentEquipments = config.equipments.filter(
     </div>
   </div>
 
-  <div class="container mx-auto px-4 pb-8 bg-transparent">
+  <div class="container mx-auto mt-4 bg-transparent px-4 pb-8">
     <SectionTitle chinese="周邊設備" english="Peripheral" />
     <EquipmentsGrid equipments={PeripheralEquipments} />
   </div>
 
-  <div class="container mx-auto px-4 pb-8 bg-transparent">
+  <div class="container mx-auto mt-4 bg-transparent px-4 pb-8">
     <SectionTitle chinese="開發工具" english="Development" />
     <EquipmentsGrid equipments={DevelopmentEquipments} />
   </div>

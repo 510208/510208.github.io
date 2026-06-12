@@ -15,6 +15,7 @@ import kunweb04Photo from "@/assets/pages/friends/friend_photo/kunweb04.webp";
 import sorbet1686Photo from "@/assets/pages/friends/friend_photo/sorbet1686.webp";
 import lumuPhoto from "@/assets/pages/friends/friend_photo/lumu.webp";
 import ruixuePhoto from "@/assets/pages/friends/friend_photo/ruixue.webp";
+import yemoguPhoto from "@/assets/pages/friends/friend_photo/yemogu.jpg";
 
 const friends: FriendCardProps[] = [
   {
@@ -265,6 +266,25 @@ const friends: FriendCardProps[] = [
         icon: <Newspaper />,
         to: "https://blog.giveanornot.com/",
         label: "部落格",
+      },
+    ],
+  },
+  {
+    image: yemoguPhoto,
+    name: "野蘑菇",
+    slug: "yemogu",
+    description: (
+      <>
+        搭好我們是野蘑菇
+        在這裡和大家一起畫畫
+        由三位管理員一起經營•ᴗ•
+      </>
+    ),
+    links: [
+      {
+        icon: <SiInstagram />,
+        to: "https://www.instagram.com/yemogu._.810/",
+        label: "Instagram",
       },
     ],
   }

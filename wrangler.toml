@@ -1,0 +1,8 @@
+# 關閉實驗性的自動資源配置功能，避免部署時系統再次嘗試建立
+[placement]
+mode = "smart"
+
+# 手動綁定現有的 KV 命名空間
+[[kv_namespaces]]
+binding = "SESSION"
+id = "ad116c965a75b1b7a511da6685f9fd25"
