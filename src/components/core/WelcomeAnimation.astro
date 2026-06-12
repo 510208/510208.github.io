@@ -1,0 +1,57 @@
+---
+
+---
+
+<div
+  class="welcome-animation fixed top-0 left-0 z-999 flex h-screen w-screen items-center justify-center bg-stone-900"
+>
+  <div class="welcome-animation__content">
+    <h1>Welcome to My Portfolio</h1>
+    <p>Discover my projects and skills</p>
+  </div>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+
+  declare global {
+    interface Window {
+      __welcomeFinished?: boolean;
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const animation = document.querySelector(".welcome-animation");
+    if (!animation) return;
+
+    // 先行檢查：如果已經看過動畫，直接標記並跳過
+    if (sessionStorage.getItem("hasSeenWelcome")) {
+      (animation as HTMLElement).style.display = "none";
+      window.__welcomeFinished = true; // 📢 留存狀態紀錄
+      window.dispatchEvent(new CustomEvent("welcomeFinished"));
+      return;
+    }
+
+    const tl = gsap.timeline();
+    tl.to(animation, { opacity: 1, duration: 1 }).to(animation, {
+      opacity: 0,
+      duration: 1,
+      delay: 2,
+    });
+
+    tl.eventCallback("onComplete", () => {
+      (animation as HTMLElement).style.display = "none";
+      (animation as HTMLElement).style.opacity = "1";
+
+      sessionStorage.setItem("hasSeenWelcome", "true"); // 記得寫入看過的紀錄
+
+      console.log("Welcome animation completed, dispatching event...");
+
+      // 📢 關鍵改動：發送事件前，先在 window 掛上旗標（Flag）
+      window.__welcomeFinished = true;
+
+      // 發送自定義事件
+      window.dispatchEvent(new CustomEvent("welcomeFinished"));
+    });
+  });
+</script>
