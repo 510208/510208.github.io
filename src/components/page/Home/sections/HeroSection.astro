@@ -172,27 +172,50 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
   gsap.registerPlugin(SplitText);
   gsap.registerPlugin(ScrollTrigger);
 
-  function onWelcomeFinished() {
-    console.log("Welcome animation finished, starting hero animations...");
+  // 1. 建立全域或模組作用域變數，用來跨函式傳遞 SplitText 實例
+  let titleSplitInstance: any = null;
+  let quoteSplitInstance: any = null;
+  let isInitialized = false;
 
-    // 初始化
+  // 2. 頁面載入時「立即」執行的初始化函式
+  function initHeroAnimations() {
+    // 防止重複初始化（特別是在 Astro 切換頁面或重複觸發時）
+    if (isInitialized) return;
+
+    console.log(
+      "🚀 Immediate Initialization: Hiding elements and splitting text...",
+    );
+
+    // 預設狀態：將所有動畫元素隱藏並稍微位移
     gsap.set("#sh-hero-tachie img", { y: 100, opacity: 0 });
     gsap.set("#sh-hero-mf-left > *:not(h1)", { y: 30, opacity: 0 });
     gsap.set("#sh-hero-mf-right", { y: 50, opacity: 0 });
 
-    // 右容器中的括號設到容器中間左右各50px的位置，製作展開至容器邊緣的動畫
+    // 右容器中的括號
     gsap.set("#sh-hero-mf-right-bracket", { x: -70, y: 30, opacity: 0 });
     gsap.set("#sh-hero-mf-left-bracket", { x: 70, y: -30, opacity: 0 });
 
-    // 標題的分割飛入動畫
-    const titleSplit = new SplitText("#sh-hero-mf-left h1", { type: "chars" });
-    gsap.set(titleSplit.chars, { y: 50, opacity: 0 });
+    // 標題的分割飛入動畫（立刻分割並隱藏，避免文字閃爍）
+    titleSplitInstance = new SplitText("#sh-hero-mf-left h1", {
+      type: "chars",
+    });
+    gsap.set(titleSplitInstance.chars, { y: 50, opacity: 0 });
 
-    // 將右容器中的文字切分成單字，製作逐字由兩側聚合的動畫
-    const quoteSplit = new SplitText("#sh-hero-mf-quote", { type: "chars" });
-    // gsap.set(quoteSplit.chars, { y: 20, opacity: 0 });
+    // 將右容器中的文字切分成單字
+    quoteSplitInstance = new SplitText("#sh-hero-mf-quote", { type: "chars" });
 
-    // 動畫
+    isInitialized = true;
+  }
+
+  // 3. 開場動畫結束（或跳過開場）後，才真正執行播放的時間軸
+  function playHeroAnimations() {
+    console.log("🎬 Starting hero timeline animations...");
+
+    // 安全檢查：確保播放前一定有完成初始化
+    if (!isInitialized || !titleSplitInstance || !quoteSplitInstance) {
+      initHeroAnimations();
+    }
+
     const tl = gsap.timeline({
       onComplete: beginParallaxScroll, // 動畫完成後啟用滾動事件監聽
       delay: 0.5,
@@ -209,7 +232,7 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
       { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.1 },
       0.8,
     ).to(
-      titleSplit.chars,
+      titleSplitInstance.chars, // 使用初始化好的實例
       {
         y: 0,
         opacity: 1,
@@ -225,22 +248,19 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
       { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
       1.2,
     )
-      .from(quoteSplit.chars, {
+      .from(quoteSplitInstance.chars, {
+        // 使用初始化好的實例
         duration: 1.2,
-        opacity: 0, // 從透明度 0 開始
+        opacity: 0,
         x: (index, target, targets) => {
-          // 初始位置：前半段在左邊（-200），後半段在右邊（200）
-          // 動畫開始後，它們會往中間（原本的位置 0）匯合
           return index < targets.length / 2 ? -200 : 200;
         },
         rotation: (index, target, targets) => {
-          // 初始角度：搭配微小旋轉，飛入時會帶有轉正的效果
           return index < targets.length / 2 ? -15 : 15;
         },
         ease: "power3.out",
         stagger: {
           amount: 0.6,
-          // 因為是「往中間匯合」，from 設為 "edges" 會讓最兩側的字先飛，最後中間的字才出現，視覺上最流暢
           from: "edges",
         },
       })
@@ -269,13 +289,10 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
         1.7,
       );
 
-    // 動畫播放完成後允許使用者往下捲動，並啟用 ScrollTrigger 監聽滾動事件製作視差捲動效果
     function beginParallaxScroll() {
       console.log("Parallax scroll enabled");
-
       ScrollTrigger.refresh();
 
-      // 建立與滾動綁定的時間軸
       const parallaxTl = gsap.timeline({
         scrollTrigger: {
           trigger: "#sh-hero-section",
@@ -285,23 +302,16 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
         },
       });
 
-      // 左區段
       parallaxTl.to(
         "#sh-hero-mf-left > *:not(h1)",
-        {
-          y: -150,
-          duration: 0.8,
-          ease: "none",
-          stagger: 0.05,
-        },
+        { y: -150, duration: 0.8, ease: "none", stagger: 0.05 },
         0.1,
       );
 
-      // 標題：分割後的單字分別製作視差，每個字的位移量都有微小差異
       parallaxTl.to(
-        titleSplit.chars,
+        titleSplitInstance.chars,
         {
-          y: (index) => -220 - index * 20, // 每個字的位移量都稍微不同，製造更細緻的視差效果
+          y: (index) => -220 - index * 20,
           duration: 0.9,
           ease: "none",
           stagger: 0.01,
@@ -309,45 +319,54 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
         0.1,
       );
 
-      // 右區段
       parallaxTl.to(
         "#sh-hero-mf-right",
-        {
-          y: -200,
-          duration: 0.8,
-          ease: "none",
-        },
+        { y: -200, duration: 0.8, ease: "none" },
         0.2,
       );
-
-      // 立繪
       parallaxTl.to(
         "#sh-hero-tachie img",
-        {
-          y: -300,
-          duration: 0.8,
-          ease: "none",
-        },
+        { y: -300, duration: 0.8, ease: "none" },
         0.05,
       );
     }
   }
 
-  // 2. 核心觸發邏輯：相容首次訪問、重複訪問與 Astro View Transitions 頁面切換
+  // 4. 核心排程邏輯
   function setupTrigger() {
-    const hasSeen = sessionStorage.getItem("hasSeenWelcome");
-    const hasOverlay = document.getElementById("welcome-overlay");
+    // A. 無論如何，頁面一觸發此函式，立刻靜態初始化位置（隱藏元素）
+    initHeroAnimations();
 
-    if (hasSeen || !hasOverlay) {
-      onWelcomeFinished();
+    const hasSeen = sessionStorage.getItem("hasSeenWelcome");
+    const hasOverlay = document.querySelector(".welcome-animation"); // 配合您先前的 class 命名
+    const isAnimationAlreadyFinished =
+      (window as any).__welcomeFinished === true;
+
+    // B. 判斷播放時機
+    if (hasSeen || !hasOverlay || isAnimationAlreadyFinished) {
+      playHeroAnimations();
     } else {
-      window.addEventListener("welcomeFinished", onWelcomeFinished, {
+      window.addEventListener("welcomeFinished", playHeroAnimations, {
         once: true,
       });
     }
   }
 
-  // 執行監聽初始化
-  document.addEventListener("DOMContentLoaded", setupTrigger);
-  document.addEventListener("astro:page-load", setupTrigger); // 確保 Astro 分頁切換時也能正常運作
+  // 重置狀態的輔助函式（用於 Astro View Transitions 切換頁面時）
+  function resetState() {
+    isInitialized = false;
+    titleSplitInstance = null;
+    quoteSplitInstance = null;
+    setupTrigger();
+  }
+
+  // 監聽初始化
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupTrigger);
+  } else {
+    setupTrigger();
+  }
+
+  // 確保 Astro SPA 切換路由時重新正確初始化與播放
+  document.addEventListener("astro:page-load", resetState);
 </script>
