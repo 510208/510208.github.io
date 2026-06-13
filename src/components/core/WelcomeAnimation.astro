@@ -1,15 +1,72 @@
----
-
----
-
 <div
-  class="welcome-animation fixed top-0 left-0 z-999 flex h-screen w-screen items-center justify-center bg-stone-900"
+  class="welcome-animation justify-bottom fixed top-0 left-0 z-999 flex h-screen w-screen items-end bg-stone-900 text-stone-100"
 >
-  <div class="welcome-animation__content">
-    <h1>Welcome to My Portfolio</h1>
-    <p>Discover my projects and skills</p>
+  <div class="welcome-animation__outer-wrapper relative overflow-hidden">
+    <div class="welcome-animation__content flex items-center gap-6 p-2">
+      <h1
+        class="font-inter sh-fixed_text text-6xl font-bold whitespace-nowrap select-none md:text-8xl"
+      >
+        SAM
+      </h1>
+
+      <div class="sh-turning_window relative h-20 overflow-hidden md:h-28">
+        <div
+          class="sh-turning_container flex flex-col items-start justify-start"
+        >
+          <h1
+            class="font-inter sh-turning_item flex h-20 items-center text-6xl font-bold whitespace-nowrap text-stone-500 md:h-28 md:text-8xl"
+            data-turned="true"
+          >
+            DEV
+          </h1>
+          <h1
+            class="font-inter sh-turning_item flex h-20 items-center text-6xl font-bold whitespace-nowrap text-stone-500 md:h-28 md:text-8xl"
+            data-turned="false"
+          >
+            PAINT
+          </h1>
+          <h1
+            class="font-inter sh-turning_item flex h-20 items-center text-6xl font-bold whitespace-nowrap text-stone-500 md:h-28 md:text-8xl"
+            data-turned="false"
+          >
+            DESIGN
+          </h1>
+          <h1
+            class="font-inter sh-turning_item flex h-20 items-center text-6xl font-bold whitespace-nowrap text-stone-500 md:h-28 md:text-8xl"
+            data-turned="false"
+          >
+            BLOG
+          </h1>
+          <h1
+            class="font-inter sh-turning_item flex h-20 items-center text-6xl font-bold whitespace-nowrap text-stone-500 md:h-28 md:text-8xl"
+            data-turned="false"
+          >
+            HACKER
+          </h1>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<style>
+  .sh-turning_window {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 25%,
+      black 75%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 25%,
+      black 75%,
+      transparent 100%
+    );
+  }
+</style>
 
 <script>
   import { gsap } from "gsap";
@@ -22,24 +79,74 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     const animation = document.querySelector(".welcome-animation");
-    if (!animation) return;
+    const outerWrapper = document.querySelector(
+      ".welcome-animation__outer-wrapper",
+    );
+    const windowElement = document.querySelector(".sh-turning_window");
+    const container = document.querySelector(".sh-turning_container");
+    const items = document.querySelectorAll(".sh-turning_item");
 
+    if (
+      !animation ||
+      !outerWrapper ||
+      !windowElement ||
+      !container ||
+      items.length === 0
+    )
+      return;
+
+    const itemHeight = (items[0] as HTMLElement).offsetHeight;
+
+    (windowElement as HTMLElement).style.height = `${itemHeight}px`;
+
+    // 建立 GSAP 主時間軸
     const tl = gsap.timeline();
-    tl.delay(2);
 
-    tl.to(animation, { opacity: 1, duration: 1 }).to(animation, {
-      opacity: 0,
-      duration: 1,
+    // 初始化第一個元素的顏色
+    gsap.set(items[0], { color: "#f5f5f4" });
+
+    // 文字輪播滾動動畫
+    items.forEach((item, index) => {
+      if (index > 0) {
+        tl.to(container, {
+          // 使用動態量測到的 itemHeight 進行精確位移
+          y: -index * itemHeight,
+          duration: 0.6,
+          ease: "power2.inOut",
+          delay: 0.4,
+          onStart: () => {
+            items[index - 1].setAttribute("data-turned", "false");
+            item.setAttribute("data-turned", "true");
+          },
+        });
+
+        // 當前文字變色高亮，前一個文字恢復暗色
+        tl.to(item, { color: "#f5f5f4", duration: 0.3 }, "<");
+        tl.to(items[index - 1], { color: "#78716c", duration: 0.3 }, "<");
+      }
     });
 
+    // 兩端向中間收合關起來
+    tl.to(outerWrapper, {
+      width: 0,
+      duration: 0.8,
+      ease: "power3.inOut",
+      delay: 0.5,
+    });
+
+    // 全體容器淡出
+    tl.to(animation, {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power1.inOut",
+    });
+
+    // 動畫結束後的回呼函式
     tl.eventCallback("onComplete", () => {
       (animation as HTMLElement).style.display = "none";
       (animation as HTMLElement).style.opacity = "1";
 
-      // 📢 關鍵改動：發送事件前，先在 window 掛上旗標（Flag）
       window.__welcomeFinished = true;
-
-      // 發送自定義事件
       window.dispatchEvent(new CustomEvent("welcomeFinished"));
     });
   });
