@@ -172,12 +172,12 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
   gsap.registerPlugin(SplitText);
   gsap.registerPlugin(ScrollTrigger);
 
-  // 1. 建立全域或模組作用域變數，用來跨函式傳遞 SplitText 實例
+  // 跨函式傳遞 SplitText
   let titleSplitInstance: any = null;
   let quoteSplitInstance: any = null;
   let isInitialized = false;
 
-  // 2. 頁面載入時「立即」執行的初始化函式
+  // 初始化函式
   function initHeroAnimations() {
     // 防止重複初始化（特別是在 Astro 切換頁面或重複觸發時）
     if (isInitialized) return;
@@ -207,7 +207,7 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
     isInitialized = true;
   }
 
-  // 3. 開場動畫結束（或跳過開場）後，才真正執行播放的時間軸
+  // 播放時間軸
   function playHeroAnimations() {
     console.log("🎬 Starting hero timeline animations...");
 
@@ -332,18 +332,20 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
     }
   }
 
-  // 4. 核心排程邏輯
+  // 排程邏輯
   function setupTrigger() {
-    // A. 無論如何，頁面一觸發此函式，立刻靜態初始化位置（隱藏元素）
     initHeroAnimations();
 
-    const hasSeen = sessionStorage.getItem("hasSeenWelcome");
-    const hasOverlay = document.querySelector(".welcome-animation"); // 配合您先前的 class 命名
+    const hasOverlay = document.querySelector(".welcome-animation");
+    console.log("Checking for welcome animation overlay:", hasOverlay);
     const isAnimationAlreadyFinished =
       (window as any).__welcomeFinished === true;
+    console.log(
+      "Is welcome animation already finished?",
+      isAnimationAlreadyFinished,
+    );
 
-    // B. 判斷播放時機
-    if (hasSeen || !hasOverlay || isAnimationAlreadyFinished) {
+    if (!hasOverlay || isAnimationAlreadyFinished) {
       playHeroAnimations();
     } else {
       window.addEventListener("welcomeFinished", playHeroAnimations, {
@@ -352,7 +354,6 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
     }
   }
 
-  // 重置狀態的輔助函式（用於 Astro View Transitions 切換頁面時）
   function resetState() {
     isInitialized = false;
     titleSplitInstance = null;
@@ -360,13 +361,11 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
     setupTrigger();
   }
 
-  // 監聽初始化
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", setupTrigger);
   } else {
     setupTrigger();
   }
 
-  // 確保 Astro SPA 切換路由時重新正確初始化與播放
   document.addEventListener("astro:page-load", resetState);
 </script>

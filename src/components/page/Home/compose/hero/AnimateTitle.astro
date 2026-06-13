@@ -93,82 +93,123 @@ const {
   const pointerDot = document.getElementById("pointerDot");
   console.log("AnimateTitle mounted:", { container, insideLayer, pointerDot });
 
-  if (container && insideLayer && pointerDot) {
-    const circleRadius = parseInt(
-      container.getAttribute("data-radius") || "150",
-      10,
-    );
+  const splitOutside = new SplitText(".sh-layer-outside .sh-split-target", {
+    type: "chars",
+  });
+  const splitInside = new SplitText(".sh-layer-inside .sh-split-target", {
+    type: "chars",
+  });
 
-    const splitOutside = new SplitText(".sh-layer-outside .sh-split-target", {
-      type: "chars",
-    });
-    const splitInside = new SplitText(".sh-layer-inside .sh-split-target", {
-      type: "chars",
-    });
-
-    const introTimeline = gsap.timeline({
-      onComplete: initializePointerTracking,
-    });
-
+  function initHeroAnimations() {
     gsap.set([splitOutside.chars, splitInside.chars], { x: 100, opacity: 0 });
+  }
 
-    introTimeline.to([splitOutside.chars, splitInside.chars], {
-      x: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: "power3.out",
-      stagger: 0.05,
-    });
+  function playHeroAnimations() {
+    if (container && insideLayer && pointerDot) {
+      const circleRadius = parseInt(
+        container.getAttribute("data-radius") || "150",
+        10,
+      );
 
-    function initializePointerTracking() {
-      const maskSettings = { x: 0, y: 0, radius: 0 };
-      let isInsideContainer = false; // 追蹤滑鼠是否進入了文字容器的垂直範圍內
+      const introTimeline = gsap.timeline({
+        onComplete: initializePointerTracking,
+      });
 
-      function updateClipPath() {
-        gsap.set(insideLayer, {
-          clipPath: `circle(${maskSettings.radius}px at ${maskSettings.x}px ${maskSettings.y}px)`,
-        });
-        gsap.set(pointerDot, {
-          x: maskSettings.x,
-          y: maskSettings.y,
-        });
-      }
-
-      const xTo = gsap.quickTo(maskSettings, "x", {
-        duration: 0.4,
+      introTimeline.to([splitOutside.chars, splitInside.chars], {
+        x: 0,
+        opacity: 1,
+        duration: 0.8,
         ease: "power3.out",
-        onUpdate: updateClipPath,
-      });
-      const yTo = gsap.quickTo(maskSettings, "y", {
-        duration: 0.4,
-        ease: "power3.out",
-        onUpdate: updateClipPath,
-      });
-      const radiusTo = gsap.quickTo(maskSettings, "radius", {
-        duration: 0.3,
-        ease: "power2.out",
-        onUpdate: updateClipPath,
+        stagger: 0.05,
       });
 
-      // 核心修改：從 window 層級捕捉全局滑鼠座標，並轉換為容器相對座標
-      function handleGlobalPointerMove(e: PointerEvent) {
-        const rect = container!.getBoundingClientRect();
+      function initializePointerTracking() {
+        const maskSettings = { x: 0, y: 0, radius: 0 };
+        let isInsideContainer = false; // 追蹤滑鼠是否進入了文字容器的垂直範圍內
 
-        // 計算滑鼠相對於文字容器內部的 X 與 Y 座標
-        const relX = e.clientX - rect.left;
-        const relY = e.clientY - rect.top;
+        function updateClipPath() {
+          gsap.set(insideLayer, {
+            clipPath: `circle(${maskSettings.radius}px at ${maskSettings.x}px ${maskSettings.y}px)`,
+          });
+          gsap.set(pointerDot, {
+            x: maskSettings.x,
+            y: maskSettings.y,
+          });
+        }
 
-        // 檢查滑鼠當前是否位於文字容器的矩形範圍內
-        const isHovering =
-          e.clientX >= rect.left &&
-          e.clientX <= rect.right &&
-          e.clientY >= rect.top &&
-          e.clientY <= rect.bottom;
+        const xTo = gsap.quickTo(maskSettings, "x", {
+          duration: 0.4,
+          ease: "power3.out",
+          onUpdate: updateClipPath,
+        });
+        const yTo = gsap.quickTo(maskSettings, "y", {
+          duration: 0.4,
+          ease: "power3.out",
+          onUpdate: updateClipPath,
+        });
+        const radiusTo = gsap.quickTo(maskSettings, "radius", {
+          duration: 0.3,
+          ease: "power2.out",
+          onUpdate: updateClipPath,
+        });
 
-        if (isHovering) {
-          // 如果剛進入範圍，觸發類似 pointerenter 的放大效果
-          if (!isInsideContainer) {
-            isInsideContainer = true;
+        // 核心修改：從 window 層級捕捉全局滑鼠座標，並轉換為容器相對座標
+        function handleGlobalPointerMove(e: PointerEvent) {
+          const rect = container!.getBoundingClientRect();
+
+          // 計算滑鼠相對於文字容器內部的 X 與 Y 座標
+          const relX = e.clientX - rect.left;
+          const relY = e.clientY - rect.top;
+
+          // 檢查滑鼠當前是否位於文字容器的矩形範圍內
+          const isHovering =
+            e.clientX >= rect.left &&
+            e.clientX <= rect.right &&
+            e.clientY >= rect.top &&
+            e.clientY <= rect.bottom;
+
+          if (isHovering) {
+            // 如果剛進入範圍，觸發類似 pointerenter 的放大效果
+            if (!isInsideContainer) {
+              isInsideContainer = true;
+              radiusTo(circleRadius);
+              gsap.to(pointerDot, {
+                scale: 1,
+                duration: 0.2,
+                ease: "power2.out",
+              });
+            }
+
+            // 持續更新遮罩與點點位置
+            xTo(relX);
+            yTo(relY);
+          } else {
+            // 如果滑鼠離開了文字容器的範圍，觸發類似 pointerleave 的縮小
+            if (isInsideContainer) {
+              isInsideContainer = false;
+              radiusTo(0);
+              gsap.to(pointerDot, {
+                scale: 0,
+                duration: 0.2,
+                ease: "power2.in",
+              });
+            }
+          }
+        }
+
+        // 當點擊畫面的任何地方（包括上方覆蓋的容器），只要在範圍內就放大遮罩
+        function handleGlobalPointerDown(e: PointerEvent) {
+          const rect = container!.getBoundingClientRect();
+          const isHovering =
+            e.clientX >= rect.left &&
+            e.clientX <= rect.right &&
+            e.clientY >= rect.top &&
+            e.clientY <= rect.bottom;
+
+          if (isHovering) {
+            const relX = e.clientX - rect.left;
+            const relY = e.clientY - rect.top;
+            gsap.set(maskSettings, { x: relX, y: relY });
             radiusTo(circleRadius);
             gsap.to(pointerDot, {
               scale: 1,
@@ -176,49 +217,48 @@ const {
               ease: "power2.out",
             });
           }
+        }
 
-          // 持續更新遮罩與點點位置
-          xTo(relX);
-          yTo(relY);
-        } else {
-          // 如果滑鼠離開了文字容器的範圍，觸發類似 pointerleave 的縮小
+        function handleGlobalPointerUp() {
           if (isInsideContainer) {
-            isInsideContainer = false;
             radiusTo(0);
             gsap.to(pointerDot, { scale: 0, duration: 0.2, ease: "power2.in" });
           }
         }
+
+        // 將事件改綁在全局 window，徹底無視上方圖層的遮擋
+        window.addEventListener("pointermove", handleGlobalPointerMove);
+        window.addEventListener("pointerdown", handleGlobalPointerDown);
+        window.addEventListener("pointerup", handleGlobalPointerUp);
       }
-
-      // 當點擊畫面的任何地方（包括上方覆蓋的容器），只要在範圍內就放大遮罩
-      function handleGlobalPointerDown(e: PointerEvent) {
-        const rect = container!.getBoundingClientRect();
-        const isHovering =
-          e.clientX >= rect.left &&
-          e.clientX <= rect.right &&
-          e.clientY >= rect.top &&
-          e.clientY <= rect.bottom;
-
-        if (isHovering) {
-          const relX = e.clientX - rect.left;
-          const relY = e.clientY - rect.top;
-          gsap.set(maskSettings, { x: relX, y: relY });
-          radiusTo(circleRadius);
-          gsap.to(pointerDot, { scale: 1, duration: 0.2, ease: "power2.out" });
-        }
-      }
-
-      function handleGlobalPointerUp() {
-        if (isInsideContainer) {
-          radiusTo(0);
-          gsap.to(pointerDot, { scale: 0, duration: 0.2, ease: "power2.in" });
-        }
-      }
-
-      // 將事件改綁在全局 window，徹底無視上方圖層的遮擋
-      window.addEventListener("pointermove", handleGlobalPointerMove);
-      window.addEventListener("pointerdown", handleGlobalPointerDown);
-      window.addEventListener("pointerup", handleGlobalPointerUp);
     }
+  }
+
+  // 初始化函式：設定動畫並決定何時播放
+  function setupTrigger() {
+    initHeroAnimations();
+
+    const hasOverlay = document.querySelector(".welcome-animation");
+    console.log("Checking for welcome animation overlay:", hasOverlay);
+    const isAnimationAlreadyFinished =
+      (window as any).__welcomeFinished === true;
+    console.log(
+      "Is welcome animation already finished?",
+      isAnimationAlreadyFinished,
+    );
+
+    if (!hasOverlay || isAnimationAlreadyFinished) {
+      playHeroAnimations();
+    } else {
+      window.addEventListener("welcomeFinished", playHeroAnimations, {
+        once: true,
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupTrigger);
+  } else {
+    setupTrigger();
   }
 </script>

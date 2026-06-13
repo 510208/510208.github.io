@@ -24,28 +24,17 @@
     const animation = document.querySelector(".welcome-animation");
     if (!animation) return;
 
-    // 先行檢查：如果已經看過動畫，直接標記並跳過
-    if (sessionStorage.getItem("hasSeenWelcome")) {
-      (animation as HTMLElement).style.display = "none";
-      window.__welcomeFinished = true; // 📢 留存狀態紀錄
-      window.dispatchEvent(new CustomEvent("welcomeFinished"));
-      return;
-    }
-
     const tl = gsap.timeline();
+    tl.delay(2);
+
     tl.to(animation, { opacity: 1, duration: 1 }).to(animation, {
       opacity: 0,
       duration: 1,
-      delay: 3,
     });
 
     tl.eventCallback("onComplete", () => {
       (animation as HTMLElement).style.display = "none";
       (animation as HTMLElement).style.opacity = "1";
-
-      sessionStorage.setItem("hasSeenWelcome", "true"); // 記得寫入看過的紀錄
-
-      console.log("Welcome animation completed, dispatching event...");
 
       // 📢 關鍵改動：發送事件前，先在 window 掛上旗標（Flag）
       window.__welcomeFinished = true;
