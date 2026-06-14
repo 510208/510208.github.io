@@ -1,5 +1,5 @@
 ---
-import { ProjectsList } from "@components/page/Home/compose/projects/ProjectsList";
+import ProjectsList from "@components/page/Home/compose/projects/ProjectsList.astro";
 import PageLayout from "@/layouts/PageLayout.astro";
 
 import "@styles/content.css";
@@ -11,5 +11,5 @@ import "@styles/content.css";
   description="這裡是我目前做過所有公開的東西，歡迎各位考古一下，不過拜託鞭小力一點ww"
   ogImage="/assets/website_og/projects_og.png"
 >
-  <ProjectsList showFilter client:load />
+  <ProjectsList showFilter />
 </PageLayout>

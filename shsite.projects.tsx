@@ -88,7 +88,7 @@ export const PROJECTS: Project[] = [
       "https://opengraph.githubassets.com/b676db6baf586e2c3cdee86d071b1f0c641d532001434097a766ebf0f8f4fffb/510208/MD5Hashing-NEW",
     description: "MD5Hashing的最新版介面，用簡單的UI擄獲许多使用者愛用的心",
     html_url: "https://github.com/510208/MD5Hashing-NEW",
-    language: [{ name: "VisualBasic", icon: <SiVite /> }],
+    language: [{ name: "VisualBasic", icon: <SiVisualbasic /> }],
     topics: [
       "binary",
       "done",
