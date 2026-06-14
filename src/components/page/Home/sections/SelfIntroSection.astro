@@ -341,7 +341,6 @@ import config from "@shConfig";
   import DrawSVG from "gsap/DrawSVGPlugin";
 
   gsap.registerPlugin(ScrollTrigger);
-  gsap.registerPlugin(DrawSVG);
 
   document.addEventListener("DOMContentLoaded", () => {
     // 設定初始狀態
@@ -362,11 +361,6 @@ import config from "@shConfig";
         scale: 0.98,
         transformOrigin: "center",
       });
-    });
-
-    gsap.set("#sh-about-school-bg-decoration path", {
-      drawSVG: "0%",
-      fillOpacity: 0,
     });
 
     // 創建動畫時間線
@@ -399,32 +393,6 @@ import config from "@shConfig";
           opacity: 1,
           y: 0,
           scale: 1,
-          ease: "power2.out",
-        },
-        "-=0.2",
-      )
-      .to(
-        "#sh-about-school-bg-decoration path",
-        {
-          duration: 0.8,
-          drawSVG: "100%",
-          stagger: 0.05,
-          ease: "power1.inOut",
-        },
-        "<",
-      )
-      .to(
-        "#sh-about-school-bg-decoration path",
-        {
-          duration: 0.4,
-          // Ensure a numeric return to satisfy GSAP typing; always set to 1
-          fillOpacity: 1,
-          onStart: function () {
-            gsap.to("#sh-about-school-bg-decoration path", {
-              opacity: 1,
-              duration: 0.3,
-            });
-          },
           ease: "power2.out",
         },
         "-=0.2",
