@@ -1,5 +1,5 @@
 ---
-import { ProjectsList } from "@components/page/Home/compose/projects/ProjectsList";
+import ProjectsList from "@components/page/Home/compose/projects/ProjectsList.astro";
 import { Image } from "astro:assets";
 
 import cfbotLogo from "@/assets/pages/projects/cfbot_logo.svg";
@@ -7,13 +7,6 @@ import shblogLogo from "@/assets/pages/projects/shblog-next_logo.svg";
 import lighttpLogo from "@/assets/pages/projects/lighttp_logo.svg";
 ---
 
-<head>
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-  />
-</head>
 <div>
   <!-- 顯示專案的Logo -->
   <div class="hidden flex-wrap justify-center gap-10 align-middle lg:flex">
