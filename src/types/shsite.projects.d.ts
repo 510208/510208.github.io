@@ -1,6 +1,6 @@
 export interface LanguageProps {
   name: string;
-  icon: React.ReactNode;
+  icon: AstroComponentFactory | string; // Astro Component
 }
 
 export type Project = {

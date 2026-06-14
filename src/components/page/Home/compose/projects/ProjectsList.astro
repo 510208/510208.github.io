@@ -1,7 +1,6 @@
 ---
 import { PROJECTS } from "shsite.projects";
 import ProjectCard from "./ProjectCard.astro";
-import { ProjectFilter } from "./ProjectFilter";
 
 interface Props {
   showFilter?: boolean;
@@ -26,16 +25,6 @@ const uniqueStatuses = Array.from(
 ---
 
 <div class="space-y-6" id="projects-container">
-  {
-    showFilter && (
-      <ProjectFilter
-        client:load
-        uniqueStatuses={uniqueStatuses}
-        totalCount={displayProjects.length}
-      />
-    )
-  }
-
   {/* 專案網格 */}
   <div
     id="projects-grid"

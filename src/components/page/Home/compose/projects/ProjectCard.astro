@@ -1,8 +1,7 @@
 ---
 import type { Project } from "@/types/shsite.projects";
 import DevelopmentStatusBadge from "./DevelopmentStatusBadge.astro";
-import { Code, Scale, SquareArrowOutUpRight, Tag } from "@lucide/astro";
-import { ProjectTooltip } from "./ProjectTooltip";
+import { Code, Scale, SquareArrowOutUpRight } from "@lucide/astro";
 
 interface DisplaySectionProps {
   showStatus?: boolean;
@@ -24,7 +23,7 @@ const { project, className = "", displaySection } = Astro.props;
 
 const showStatus = displaySection?.showStatus !== false;
 const showLanguage = displaySection?.showLanguage !== false;
-const showTopics = displaySection?.showTopics !== false;
+// const showTopics = displaySection?.showTopics !== false;
 const showLicense = displaySection?.showLicense !== false;
 const showImage = displaySection?.showImage !== false;
 const showName = displaySection?.showName !== false;
@@ -107,7 +106,39 @@ const isDimmed = project.status === "eol" || project.status === "archived";
                   <Code size={16} />
                   <span>
                     {languages ? (
-                      languages.map((lang) => lang.name).join(", ")
+                      <div class="flex items-center gap-2">
+                        {(Array.isArray(languages)
+                          ? languages
+                          : [languages]
+                        ).map((lang) => {
+                          const CustomIcon = lang.icon;
+
+                          return (
+                            <div
+                              class="flex items-center gap-1"
+                              title={lang.name}
+                            >
+                              {typeof lang.icon === "string" ? (
+                                <div class="size-4">
+                                  <img
+                                    src={lang.icon}
+                                    alt={`${lang.name} 的圖示`}
+                                    class="h-4 w-4 object-contain"
+                                  />
+                                </div>
+                              ) : CustomIcon ? (
+                                <div class="size-4">
+                                  <CustomIcon size={16} />
+                                </div>
+                              ) : (
+                                <span class="text-xs text-gray-500">
+                                  {lang.name}
+                                </span>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
                     ) : (
                       <span>未知語言</span>
                     )}
