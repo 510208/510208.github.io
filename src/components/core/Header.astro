@@ -7,11 +7,19 @@ const links = config.navBar.links;
 ---
 
 <header
-  class="fixed top-4.5 left-1/2 z-50 w-full max-w-[1278px] -translate-x-1/2 px-4"
+  class="fixed top-4.5 left-1/2 z-50 w-full max-w-[1278px] -translate-x-1/2 px-4 md:px-0"
   transition:name="header"
 >
+  <!-- 背景模糊裝飾 -->
+  <div
+    class="absolute inset-0 -z-10 rounded-lg bg-stone-900/10 opacity-100 backdrop-blur-[6px]"
+    aria-hidden="true"
+  >
+  </div>
+
+  <!-- 主標頭 -->
   <nav
-    class="flex h-14 items-center justify-between rounded-lg border border-white/10 bg-neutral-900/50 px-2.5 backdrop-blur-[6px]"
+    class="flex h-14 items-center justify-between rounded-lg border border-white/10 bg-neutral-900/50 px-2.5"
   >
     <!-- Logo and Site Title -->
     <div class="flex items-center gap-2">
