@@ -13,9 +13,9 @@ import {
   Discord,
   Github,
   Gravatar,
+  Instagram,
   Pypi,
   Reddit,
-  Steam,
   Threads,
   Wakatime,
   X,
@@ -156,9 +156,9 @@ const config: ShsiteConfig = {
       href: "https://x.com/xux510208",
     },
     {
-      icon: Steam,
-      title: "Steam",
-      href: "https://steamcommunity.com/id/PB510208/",
+      icon: Instagram,
+      title: "Instagram",
+      href: "https://www.instagram.com/samhacker.xyz/",
     },
     {
       icon: Reddit,
