@@ -1,24 +1,24 @@
 import type { Project } from "@/types/shsite.projects";
 import {
-  SiAstro,
-  SiCloudflare,
-  SiDiscord,
-  SiHtml5,
-  SiCss,
-  SiJavascript,
-  SiJquery,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiPhp,
-  SiPython,
-  SiReact,
-  SiTailwindcss,
-  SiTypescript,
-  SiVite,
-} from '@icons-pack/react-simple-icons';
+  Astro,
+  Cloudflare,
+  Discord,
+  Html5,
+  Css,
+  Javascript,
+  Jquery,
+  Nextdotjs,
+  Nodedotjs,
+  Php,
+  Python,
+  React,
+  Tailwindcss,
+  Typescript,
+  Vite,
+} from 'simple-icons-astro';
 
 import SiMcreator from "@/assets/pages/projects/extend_lang_icon/mcreator.webp";
-import SiVisualbasic from "@/assets/pages/projects/extend_lang_icon/vb_net.svg";
+import Visualbasic from "@/assets/pages/projects/extend_lang_icon/vb_net.svg";
 
 // status: "on-going" - 仍在開發中
 // status: "completed" - 已完成開發
@@ -36,10 +36,10 @@ export const PROJECTS: Project[] = [
       "一款簡潔輕巧、專為亞洲語系內容打造的Astro個人部落格模板，高度可客製化，適合個人部落格使用。",
     html_url: "https://github.com/510208/sh-blog-next",
     language: [
-      { name: "Astro", icon: <SiAstro /> },
-      { name: "React", icon: <SiReact /> },
-      { name: "NodeJS", icon: <SiNodedotjs /> },
-      { name: "TypeScript", icon: <SiTypescript /> },
+      { name: "Astro", icon: Astro },
+      { name: "React", icon: React },
+      { name: "NodeJS", icon: Nodedotjs },
+      { name: "TypeScript", icon: Typescript },
     ],
     topics: [
       "astro",
@@ -61,7 +61,7 @@ export const PROJECTS: Project[] = [
     description:
       "這是一個高度可客製化、功能強大且完整的Discord機器人，專為Minecraft社群設計，提供多種實用功能和指令。",
     html_url: "https://github.com/510208/cfbot",
-    language: [{ name: "Python", icon: <SiPython /> }],
+    language: [{ name: "Python", icon: Python }],
     topics: ["discord-bot", "discord.py", "minecraft", "python", "open-source"],
     license: "GNU General Public License v3.0",
   },
@@ -74,10 +74,10 @@ export const PROJECTS: Project[] = [
       "一個簡單且高度可自訂的瀏覽器首頁，提供快速存取常用網站和搜尋引擎的功能。",
     html_url: "https://github.com/510208/browser-homepage",
     language: [
-      { name: "JavaScript", icon: <SiJavascript /> },
-      { name: "HTML5", icon: <SiHtml5 /> },
-      { name: "CSS3", icon: <SiTailwindcss /> },
-      { name: "ViteJS", icon: <SiVite /> },
+      { name: "JavaScript", icon: Javascript },
+      { name: "HTML5", icon: Html5 },
+      { name: "CSS3", icon: Tailwindcss },
+      { name: "ViteJS", icon: Vite },
     ],
     topics: ["homepage", "customizable", "javascript", "vite", "vitejs"],
   },
@@ -88,7 +88,7 @@ export const PROJECTS: Project[] = [
       "https://opengraph.githubassets.com/b676db6baf586e2c3cdee86d071b1f0c641d532001434097a766ebf0f8f4fffb/510208/MD5Hashing-NEW",
     description: "MD5Hashing的最新版介面，用簡單的UI擄獲许多使用者愛用的心",
     html_url: "https://github.com/510208/MD5Hashing-NEW",
-    language: [{ name: "VisualBasic", icon: <SiVisualbasic /> }],
+    language: [{ name: "VisualBasic", icon: Visualbasic }],
     topics: [
       "binary",
       "done",
@@ -113,7 +113,7 @@ export const PROJECTS: Project[] = [
     description:
       "本專案以 Cloudflare Workers 實作 API 路由，支援個人資訊查詢與 WakaTime API 代理。",
     html_url: "https://github.com/510208/personal-website-route",
-    language: [{ name: "JavaScript", icon: <SiJavascript /> }],
+    language: [{ name: "JavaScript", icon: Javascript }],
     topics: [
       "api",
       "cloudflare-workers",
@@ -130,7 +130,7 @@ export const PROJECTS: Project[] = [
       "https://opengraph.githubassets.com/c2f62548e4882a751ad58198d404733856c7c00b30fdd3da94f664cba48b3263/510208/510208.github.io",
     description: "我的個人網站，展示我的專案作品集、技能和友好連結。",
     html_url: "https://github.com/510208/510208.github.io",
-    language: [{ name: "React", icon: <SiReact /> }],
+    language: [{ name: "React", icon: React }],
     topics: ["personal-website", "react", "samhacker", "vite", "vitejs"],
     license: "GNU General Public License v3.0",
   },
@@ -142,7 +142,7 @@ export const PROJECTS: Project[] = [
     description:
       "一個用於生成微國家諾瓦雷克斯帝國虛構身分證的工具，支援多種格式和自訂選項。",
     html_url: "https://github.com/510208/id_generator",
-    language: [{name: "Python", icon: <SiPython />}],
+    language: [{name: "Python", icon: Python}],
     topics: ["id-generator", "微國", "yaml"],
     license: "GNU General Public License v3.0",
     status: "archived",
@@ -156,9 +156,9 @@ export const PROJECTS: Project[] = [
       "一個非常簡單土炮的 MRZ 產生器，用來產生符合「微國國際民航組織（MSICAO）」Doc 01 規定的微國護照可機讀區（MRZ）格式。並獲得MSICAO官方認可。",
     html_url: "https://github.com/510208/msicao-mrz-gen",
     language: [
-      { name: "HTML5", icon: <SiHtml5 /> },
-      { name: "CSS3", icon: <SiCss /> },
-      { name: "JavaScript", icon: <SiJavascript /> },
+      { name: "HTML5", icon: Html5 },
+      { name: "CSS3", icon: Css },
+      { name: "JavaScript", icon: Javascript },
     ],
     topics: ["mrz", "微國", "微國護照", "護照"],
     license: "GNU General Public License v3.0",
@@ -173,10 +173,10 @@ export const PROJECTS: Project[] = [
       "一個用於計算國中教育會考的計算機，幫助學生快速計算分數和成績。",
     html_url: "https://github.com/510208/cap-tool",
     language: [
-      { name: "NextJS", icon: <SiNextdotjs /> },
-      { name: "TypeScript", icon: <SiTypescript /> },
-      { name: "React", icon: <SiReact /> },
-      { name: "TailwindCSS", icon: <SiTailwindcss /> },
+      { name: "NextJS", icon: Nextdotjs },
+      { name: "TypeScript", icon: Typescript },
+      { name: "React", icon: React },
+      { name: "TailwindCSS", icon: Tailwindcss },
     ],
     topics: [
       "education",
@@ -195,7 +195,7 @@ export const PROJECTS: Project[] = [
     description:
       "MinePlayer 是一款簡單的模組，可以提供使用者解析Minecraft玩家的資訊，例如UUID、名稱歷史等。",
     html_url: "https://github.com/510208/minePlayer",
-    language: [{ name: "Python", icon: <SiPython /> }],
+    language: [{ name: "Python", icon: Python }],
     topics: [
       "minecraft",
       "minecraft-player",
@@ -214,7 +214,7 @@ export const PROJECTS: Project[] = [
     description:
       "Nether（原名 ObsidianCraftCoreBot）是一個提供給Minecraft社群使用的Discord機器人。目前已經由CFBot取代並終止開發",
     html_url: "https://github.com/510208/nether",
-    language: [{ name: "Python", icon: <SiPython /> }],
+    language: [{ name: "Python", icon: Python }],
     topics: [
       "minecraft",
       "minecraft-player",
@@ -233,7 +233,7 @@ export const PROJECTS: Project[] = [
     description:
       "mpTranslate 是一個用於翻譯 Minecraft 語言檔案的工具，支援多種語言和格式。",
     html_url: "https://github.com/510208/mpTranslate",
-    language: [{ name: "Python", icon: <SiPython /> }],
+    language: [{ name: "Python", icon: Python }],
     topics: [
       "minecraft",
       "minecraft-translation",
@@ -250,7 +250,7 @@ export const PROJECTS: Project[] = [
     description:
       "這是一款參考Forge平台的WorldHandler模組設計的Minecraft指令GUI版的輔助模組。它為有權限的玩家提供了一個方便的GUI介面來快速執行各種指令。",
     html_url: "https://github.com/510208/SamHacker-s-Command-GUI",
-    language: [{ name: "MCreator", icon: <img src={SiMcreator.src} /> }],
+    language: [{ name: "MCreator", icon: SiMcreator.src }],
     topics: [
       "minecraft",
       "minecraft-mod",
@@ -269,10 +269,10 @@ export const PROJECTS: Project[] = [
       "這是一款外連網址通知工具，它會自動將網站中的外部連結標記並在使用者點擊時發出通知，以提高網站的安全性和用戶體驗。",
     html_url: "https://github.com/510208/SafeCheck",
     language: [
-      { name: "HTML5", icon: <SiHtml5 /> },
-      { name: "CSS3", icon: <SiCss /> },
-      { name: "JavaScript", icon: <SiJavascript /> },
-      { name: "jQuery", icon: <SiJquery /> },
+      { name: "HTML5", icon: Html5 },
+      { name: "CSS3", icon: Css },
+      { name: "JavaScript", icon: Javascript },
+      { name: "jQuery", icon: Jquery },
     ],
     topics: ["external-link", "notification"],
     status: "archived",
@@ -286,7 +286,7 @@ export const PROJECTS: Project[] = [
     description:
       "這是SafeCheck的WordPress外掛版本，但使用者需要額外部署SafeCheck來實現完整功能。目前已封存並終止開發。",
     html_url: "https://github.com/510208/SafeCheck-WP",
-    language: [{ name: "PHP", icon: <SiPhp /> }],
+    language: [{ name: "PHP", icon: Php }],
     topics: ["wordpress", "plugin", "external-link", "notification"],
     status: "archived",
     license: "GNU General Public License v3.0",
@@ -300,9 +300,9 @@ export const PROJECTS: Project[] = [
       "一個使用純HTML、CSS和JavaScript製作的自訂瀏覽器新分頁，目前已由「SamHacker 的瀏覽器首頁」取代並終止開發。",
     html_url: "https://github.com/510208/custom-new-tab",
     language: [
-      { name: "HTML5", icon: <SiHtml5 /> },
-      { name: "CSS3", icon: <SiCss /> },
-      { name: "JavaScript", icon: <SiJavascript /> },
+      { name: "HTML5", icon: Html5 },
+      { name: "CSS3", icon: Css },
+      { name: "JavaScript", icon: Javascript },
     ],
     topics: ["browser", "new-tab", "extension", "customization"],
     status: "archived",
@@ -315,8 +315,8 @@ export const PROJECTS: Project[] = [
     description: "訪客只要到了你的網站，就會直接被瑞克搖！",
     html_url: "https://github.com/510208/sRickroll",
     language: [
-      { name: "JavaScript", icon: <SiJavascript /> },
-      { name: "jQuery", icon: <SiJquery /> },
+      { name: "JavaScript", icon: Javascript },
+      { name: "jQuery", icon: Jquery },
     ],
     topics: ["rickroll", "prank", "javascript", "jquery"],
     status: "archived",
@@ -330,9 +330,10 @@ export const PROJECTS: Project[] = [
     description:
       "一個用於選擇顏色的簡單工具，支援多種顏色格式和自訂選項，目前已封存並終止開發。",
     html_url: "https://github.com/510208/OoenColSelect",
-    language: [{ name: "Visual Basic", icon: <img src={SiVisualbasic.src} /> }],
+    language: [{ name: "Visual Basic", icon: Visualbasic.src }],
     topics: ["color-picker", "visual-basic", "vb6", "vb.net"],
     status: "archived",
+    license: "GNU General Public License v3.0",
   },
   // Random Num Selector
   {
@@ -342,10 +343,10 @@ export const PROJECTS: Project[] = [
       "這是一個簡單的工具，可以幫助使用者從指定範圍內隨機選取數字，適用於各種場合，如抽獎、遊戲等。",
     html_url: "https://github.com/510208/random-num",
     language: [
-      { name: "HTML5", icon: <SiHtml5 /> },
-      { name: "CSS3", icon: <SiCss /> },
-      { name: "JavaScript", icon: <SiJavascript /> },
-      { name: "jQuery", icon: <SiJquery /> },
+      { name: "HTML5", icon: Html5 },
+      { name: "CSS3", icon: Css },
+      { name: "JavaScript", icon: Javascript },
+      { name: "jQuery", icon: Jquery },
     ],
     topics: ["random-number-selector", "javascript", "jquery"],
     status: "completed",
@@ -359,13 +360,14 @@ export const PROJECTS: Project[] = [
       "這是一個簡單的工具，可以幫助使用者生成隨機密碼，支援多種選項和自訂設定，以提高密碼的安全性。",
     html_url: "https://github.com/510208/pwd-generator",
     language: [
-      { name: "HTML5", icon: <SiHtml5 /> },
-      { name: "CSS3", icon: <SiCss /> },
-      { name: "JavaScript", icon: <SiJavascript /> },
-      { name: "jQuery", icon: <SiJquery /> },
+      { name: "HTML5", icon: Html5 },
+      { name: "CSS3", icon: Css },
+      { name: "JavaScript", icon: Javascript },
+      { name: "jQuery", icon: Jquery },
     ],
     topics: ["random-password-generator", "javascript", "jquery"],
     status: "completed",
+    license: "GNU General Public License v3.0",
   },
   // 2048
   {
@@ -375,7 +377,7 @@ export const PROJECTS: Project[] = [
     description:
       "這是一個使用pygame編寫的2048遊戲，讓玩家可以在終端機或視窗中體驗這款經典遊戲。",
     html_url: "https://github.com/510208/2048-python",
-    language: [{ name: "Python", icon: <SiPython /> }],
+    language: [{ name: "Python", icon: Python }],
     topics: ["2048", "game", "pygame", "python"],
     status: "completed",
     license: "GNU Affero General Public License v3.0",
