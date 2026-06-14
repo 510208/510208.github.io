@@ -4,7 +4,7 @@ import { Info, MapPin, ThumbsUp, Phone, School, Share2 } from "@lucide/astro";
 import { Github } from "simple-icons-astro";
 
 import { Image } from "astro:assets";
-import tcfshImage from "@/assets/pages/home/tcfsh-stroke.svg";
+import TcfshImage from "@/assets/pages/home/tcfsh-stroke.svg";
 
 import { SkillCloud } from "@/components/page/Home/compose/self-intro/SkillCloud";
 import { GitHubInfo } from "@/components/page/Home/compose/self-intro/GitHubInfo";
@@ -73,11 +73,9 @@ import config from "@shConfig";
     >
     </div>
     <div class="absolute -bottom-4 left-0 flex w-full justify-center">
-      <Image
-        src={tcfshImage}
-        alt="台中一中大門線條圖"
+      <TcfshImage
         id="sh-about-school-bg-decoration"
-        class="pointer-events-none mx-auto w-4/5 opacity-10 transition-opacity duration-300 select-none group-hover:opacity-20"
+        class="pointer-events-none mx-auto h-auto w-4/5 text-stone-400 opacity-10 transition-opacity duration-300 select-none group-hover:opacity-20"
       />
     </div>
 
@@ -366,7 +364,7 @@ import config from "@shConfig";
       });
     });
 
-    gsap.set("#sh-about-school-bg-decoration", {
+    gsap.set("#sh-about-school-bg-decoration path", {
       drawSVG: "0%",
       fillOpacity: 0,
     });
@@ -391,13 +389,7 @@ import config from "@shConfig";
     })
       .to(
         "#sh-about-skills-card",
-        {
-          duration: 0.6,
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          ease: "power2.out",
-        },
+        { duration: 0.6, opacity: 1, y: 0, scale: 1, ease: "power2.out" },
         "-=0.2",
       )
       .to(
@@ -412,6 +404,32 @@ import config from "@shConfig";
         "-=0.2",
       )
       .to(
+        "#sh-about-school-bg-decoration path",
+        {
+          duration: 0.8,
+          drawSVG: "100%",
+          stagger: 0.05,
+          ease: "power1.inOut",
+        },
+        "<",
+      )
+      .to(
+        "#sh-about-school-bg-decoration path",
+        {
+          duration: 0.4,
+          // Ensure a numeric return to satisfy GSAP typing; always set to 1
+          fillOpacity: 1,
+          onStart: function () {
+            gsap.to("#sh-about-school-bg-decoration path", {
+              opacity: 1,
+              duration: 0.3,
+            });
+          },
+          ease: "power2.out",
+        },
+        "-=0.2",
+      )
+      .to(
         "#sh-about-contact-card",
         {
           duration: 0.6,
@@ -420,39 +438,22 @@ import config from "@shConfig";
           scale: 1,
           ease: "power2.out",
         },
-        "-=0.2",
+        "<0.4",
       )
+
       .to(
         "#sh-about-github-card",
-        {
-          duration: 0.6,
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          ease: "power2.out",
-        },
+        { duration: 0.6, opacity: 1, y: 0, scale: 1, ease: "power2.out" },
         "-=0.2",
       )
       .to(
         "#sh-about-location-card",
-        {
-          duration: 0.6,
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          ease: "power2.out",
-        },
+        { duration: 0.6, opacity: 1, y: 0, scale: 1, ease: "power2.out" },
         "-=0.2",
       )
       .to(
         "#sh-about-socials-card",
-        {
-          duration: 0.6,
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          ease: "power2.out",
-        },
+        { duration: 0.6, opacity: 1, y: 0, scale: 1, ease: "power2.out" },
         "-=0.2",
       );
 
