@@ -1,0 +1,150 @@
+---
+import type { Project } from "@/types/shsite.projects";
+import DevelopmentStatusBadge from "./DevelopmentStatusBadge.astro";
+import { Code, Scale, SquareArrowOutUpRight, Tag } from "@lucide/astro";
+import { ProjectTooltip } from "./ProjectTooltip";
+
+interface DisplaySectionProps {
+  showStatus?: boolean;
+  showLanguage?: boolean;
+  showTopics?: boolean;
+  showLicense?: boolean;
+  showImage?: boolean;
+  showName?: boolean;
+  showDescription?: boolean;
+}
+
+interface Props {
+  project: Project;
+  className?: string;
+  displaySection?: DisplaySectionProps;
+}
+
+const { project, className = "", displaySection } = Astro.props;
+
+const showStatus = displaySection?.showStatus !== false;
+const showLanguage = displaySection?.showLanguage !== false;
+const showTopics = displaySection?.showTopics !== false;
+const showLicense = displaySection?.showLicense !== false;
+const showImage = displaySection?.showImage !== false;
+const showName = displaySection?.showName !== false;
+const showDescription = displaySection?.showDescription !== false;
+
+const languages = project.language;
+
+const isDimmed = project.status === "eol" || project.status === "archived";
+---
+
+<a
+  href={project.html_url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={`group block w-full text-inherit no-underline ${className}`}
+  data-status={project.status ?? "on-going"}
+  data-name={project.name.toLowerCase()}
+  data-description={project.description?.toLowerCase() ?? ""}
+>
+  <div
+    class="group relative min-h-[400px] overflow-hidden rounded-xl border bg-stone-800 px-0 py-0 pb-6 shadow-sm transition-all duration-300 hover:bg-stone-900"
+    style={{ opacity: isDimmed ? "0.6" : "1" }}
+  >
+    {/* 背景模糊圖 */}
+    <div
+      class="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-stone-800"
+    >
+      <img
+        src={project.opengraphImageUrl}
+        alt={project.name}
+        class="h-full w-full scale-125 object-cover opacity-10 blur-lg transition-all duration-300 group-hover:blur-[2px]"
+      />
+    </div>
+
+    {/* 裝飾用右下角圖片 */}
+    {
+      showImage && (
+        <div class="pointer-events-none absolute -right-5 -bottom-0 z-0 origin-top-right -rotate-6 overflow-hidden rounded-xl bg-gray-300 shadow-lg transition-all duration-300 ease-in-out group-hover:-rotate-2">
+          <img
+            src={project.opengraphImageUrl}
+            alt={`${project.name} 的縮圖`}
+            class="block aspect-[2/1] h-40 max-w-none scale-110 object-cover brightness-70"
+          />
+        </div>
+      )
+    }
+
+    <div class="p-2">
+      <div
+        class="relative z-10 flex flex-col space-y-1.5 bg-transparent px-4 pt-4 pb-2"
+      >
+        {/* 開發狀態標籤 */}
+        {
+          showStatus && (
+            <div class="mb-2">
+              <DevelopmentStatusBadge status={project.status} />
+            </div>
+          )
+        }
+
+        {/* 標題 */}
+        {
+          showName && (
+            <h3 class="flex items-center space-x-2 text-xl leading-none font-bold tracking-tight text-white">
+              <span>{project.name}</span>
+              <SquareArrowOutUpRight
+                class="opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                size={18}
+              />
+            </h3>
+          )
+        }
+
+        <div class="text-sm text-gray-400">
+          <div class="my-2 flex min-h-[80px] flex-col gap-2">
+            {/* 所使用的程式語言 */}
+            {
+              showLanguage && (
+                <div class="flex items-center gap-1 align-middle">
+                  <Code size={16} />
+                  <span>
+                    {languages ? (
+                      languages.map((lang) => lang.name).join(", ")
+                    ) : (
+                      <span>未知語言</span>
+                    )}
+                  </span>
+                </div>
+              )
+            }
+
+            {/* 授權資訊 */}
+            {
+              showLicense && (
+                <div class="flex items-center gap-1">
+                  <Scale size={16} />
+                  {project.license ? (
+                    <span class="inline-flex items-center rounded-md border border-transparent bg-stone-700 px-2.5 py-0.5 text-xs font-semibold text-stone-100">
+                      {project.license}
+                    </span>
+                  ) : (
+                    <span class="inline-flex items-center rounded-md border border-stone-700 px-2.5 py-0.5 text-xs font-semibold text-stone-400">
+                      無授權資訊
+                    </span>
+                  )}
+                </div>
+              )
+            }
+          </div>
+
+          {/* 描述 */}
+          {
+            showDescription && (
+              <span class="mt-2 line-clamp-2 block text-sm text-muted-foreground">
+                {project.description}
+              </span>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

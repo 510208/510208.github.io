@@ -1,0 +1,59 @@
+---
+import { PROJECTS } from "shsite.projects";
+import ProjectCard from "./ProjectCard.astro";
+import { ProjectFilter } from "./ProjectFilter";
+
+interface Props {
+  showFilter?: boolean;
+  maxCards?: number;
+  className?: string;
+  displaySection?: any;
+}
+
+const {
+  showFilter = false,
+  maxCards,
+  className = "",
+  displaySection,
+} = Astro.props;
+
+const displayProjects =
+  maxCards && !showFilter ? PROJECTS.slice(0, maxCards) : PROJECTS;
+
+const uniqueStatuses = Array.from(
+  new Set(PROJECTS.map((p) => p.status?.toLowerCase()).filter(Boolean)),
+).sort() as string[];
+---
+
+<div class="space-y-6" id="projects-container">
+  {
+    showFilter && (
+      <ProjectFilter
+        client:load
+        uniqueStatuses={uniqueStatuses}
+        totalCount={displayProjects.length}
+      />
+    )
+  }
+
+  {/* 專案網格 */}
+  <div
+    id="projects-grid"
+    class={`grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 ${className}`}
+  >
+    {
+      displayProjects.map((project, index) => (
+        <ProjectCard
+          project={project}
+          displaySection={displaySection}
+          className={`sh-project-card sh-project-card-${index}`}
+        />
+      ))
+    }
+  </div>
+
+  {/* 無結果提示 */}
+  <div id="no-results" class="hidden py-12 text-center">
+    <div class="text-gray-500 dark:text-gray-400">沒有找到符合條件的專案</div>
+  </div>
+</div>
