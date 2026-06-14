@@ -95,6 +95,12 @@ import config from "@shConfig";
     id="sh-about-github-card"
     className="relative col-span-1 min-h-50 overflow-hidden will-change-transform hover:bg-stone-800 lg:col-span-2 lg:row-start-4"
   >
+    <!-- 背景裝飾 -->
+    <div
+      class="absolute -top-10 -right-10 h-60 w-60 rounded-full bg-gradient-to-tr from-emerald-500 via-teal-500 to-cyan-500 opacity-20 blur-3xl transition-opacity duration-300 group-hover:opacity-0"
+    >
+    </div>
+
     <CardContent className="relative z-10 flex gap-4">
       <GitHubInfo client:load />
     </CardContent>
@@ -105,6 +111,12 @@ import config from "@shConfig";
     id="sh-about-contact-card"
     className="relative col-span-1 row-span-1 min-h-50 overflow-hidden will-change-transform hover:bg-stone-800 lg:col-start-2 lg:row-start-3"
   >
+    <!-- 背景裝飾 -->
+    <div
+      class="absolute -top-10 -left-10 h-40 w-40 rounded-full bg-gradient-to-tr from-yellow-400 via-orange-500 to-red-500 opacity-20 blur-3xl transition-opacity duration-300 group-hover:opacity-0"
+    >
+    </div>
+
     <CardHeader className="relative z-10 flex items-center gap-2 font-bold">
       <Phone size={20} stroke-width={3} />聯絡我
     </CardHeader>
@@ -135,8 +147,14 @@ import config from "@shConfig";
   <!-- 位置資訊 -->
   <Card
     id="sh-about-location-card"
-    className="relative col-span-1 row-span-1 min-h-50 overflow-hidden will-change-transform hover:bg-stone-800 lg:col-start-3 lg:row-span-2 lg:row-start-3"
+    className="relative col-span-1 row-span-1 min-h-50 flex-col justify-between overflow-hidden will-change-transform hover:bg-stone-800 lg:col-start-3 lg:row-span-2 lg:row-start-3"
   >
+    <!-- 背景裝飾 -->
+    <div
+      class="absolute -top-10 -left-10 h-40 w-40 rounded-full bg-gradient-to-tr from-indigo-500 via-violet-500 to-purple-500 opacity-20 blur-3xl transition-opacity duration-300 group-hover:opacity-0"
+    >
+    </div>
+
     <canvas
       id="sh-about-location-cobe-canvas"
       class="pointer-events-none absolute -top-10 left-[85%] h-[300px] w-[300px] -translate-x-1/2 lg:top-1/2 lg:left-3/4 lg:h-[550px] lg:w-[550px] lg:-translate-x-1/4 lg:-translate-y-1/2"
@@ -145,6 +163,10 @@ import config from "@shConfig";
     <CardHeader className="relative z-10 flex items-center gap-2 font-bold">
       <MapPin size={20} stroke-width={3} />臺中市，臺灣
     </CardHeader>
+
+    <CardContent className="relative z-10">
+      <p>你可能不知道台灣在哪裡，看看這張圖吧！</p>
+    </CardContent>
   </Card>
 
   <!-- 技能雲 -->
@@ -152,6 +174,12 @@ import config from "@shConfig";
     id="sh-about-skills-card"
     className="group relative col-span-1 row-span-1 min-h-50 overflow-hidden pb-0 shadow will-change-transform hover:bg-neutral-800 lg:col-span-2 lg:col-start-3 lg:row-span-2 lg:row-start-1"
   >
+    <!-- 背景裝飾 -->
+    <div
+      class="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-gradient-to-tr from-pink-500 via-red-500 to-orange-500 opacity-20 blur-3xl transition-opacity duration-300 group-hover:opacity-0"
+    >
+    </div>
+
     <div
       class="absolute top-0 -right-25 flex h-full origin-center -rotate-90 items-center"
     >
@@ -178,6 +206,12 @@ import config from "@shConfig";
     id="sh-about-socials-card"
     className="relative col-span-1 min-h-50 overflow-hidden will-change-transform hover:bg-stone-800 lg:col-start-4 lg:row-span-2 lg:row-start-3"
   >
+    <!-- 背景裝飾 -->
+    <div
+      class="absolute top-2/3 left-2/3 h-60 w-60 rounded-full bg-gradient-to-tr from-emerald-500 via-teal-500 to-cyan-500 opacity-20 blur-3xl transition-opacity duration-300 group-hover:opacity-0"
+    >
+    </div>
+
     <CardHeader className="relative z-10 flex items-center gap-2 font-bold">
       <Share2 size={20} stroke-width={3} />社群媒體
     </CardHeader>
