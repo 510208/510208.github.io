@@ -29,6 +29,7 @@
     "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
     "astro": "^6.3.7",
+    "astro-critters": "^2.2.1",
     "astro-devtool-breakpoints": "^0.3.0",
     "astro-lenis": "^1.0.5",
     "astro-pages-hmr": "^0.1.2",

@@ -1,16 +1,13 @@
 // @ts-check
 import { defineConfig, fontProviders } from "astro/config";
+
 import tailwindcss from "@tailwindcss/vite";
-
 import react from "@astrojs/react";
-
 import devtoolBreakpoints from "astro-devtool-breakpoints";
-
 import lenis from "astro-lenis";
-
 import partytown from "@astrojs/partytown";
-
 import sitemap from "@astrojs/sitemap";
+import critters from 'astro-critters';
 
 // https://astro.build/config
 export default defineConfig({
@@ -79,7 +76,7 @@ export default defineConfig({
         return url;
       },
     },
-  }), sitemap()],
+  }), sitemap(), critters()],
 
   experimental: {
     rustCompiler: true
