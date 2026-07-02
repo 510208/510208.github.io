@@ -60,10 +60,6 @@ export default defineConfig({
 
   integrations: [react(), devtoolBreakpoints(), lenis(), sitemap(), critters()],
 
-  experimental: {
-    rustCompiler: true
-  },
-
   vite: {
     plugins: [tailwindcss()],
   },
