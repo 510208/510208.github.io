@@ -6,12 +6,63 @@ const { title, subtitle, description, ogImage } = Astro.props;
 ---
 
 <Layout pageName={title} pageDescription={description} pageOgImage={ogImage}>
-  <div
-    class="mx-6 mt-20 mb-10 w-auto lg:mx-auto lg:mt-30 lg:w-full lg:max-w-7xl lg:px-6"
-  >
+  <div>
     <PageHero title={title} subtitle={subtitle} />
-    <div class="h-16" aria-hidden="true"></div>
+    <!-- <div class="h-16" aria-hidden="true"></div> -->
     <!-- 留白 -->
-    <slot />
+    <div
+      id="sh-page_layout-content"
+      class="relative mx-6 mb-10 w-auto lg:mx-auto lg:mt-20 lg:w-full lg:max-w-7xl lg:px-6"
+    >
+      <slot />
+    </div>
   </div>
 </Layout>
+
+<style>
+  @media (min-width: 769px) {
+    #sh-page_layout-content::after {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 2.75rem;
+      height: 100%;
+      content: "";
+      border-left: 1px solid #292524;
+      background:
+        repeating-linear-gradient(
+          135deg,
+          transparent 0 0.5rem,
+          #292524 0.5rem 0.75rem
+        ),
+        transparent;
+      z-index: -5;
+    }
+
+    #sh-page_layout-content::before {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 2.75rem;
+      height: 100%;
+      content: "";
+      border-right: 1px solid #292524;
+      background:
+        repeating-linear-gradient(
+          135deg,
+          transparent 0 0.5rem,
+          #292524 0.5rem 0.75rem
+        ),
+        transparent;
+      z-index: -5;
+    }
+  }
+
+  #sh-page_layout-content {
+    background-image: url("/assets/content_background.svg");
+    /* 重複排列 */
+    background-repeat: repeat;
+    /* 置中 */
+    background-position: center;
+  }
+</style>
