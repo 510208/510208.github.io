@@ -8,9 +8,7 @@ const links = config.navBar.links;
 
 <header
   class="fixed top-4.5 left-1/2 z-50 w-full max-w-[1278px] -translate-x-1/2 px-4 lg:px-0"
-  transition:name="header"
 >
-  <!-- 背景模糊裝飾 -->
   <div
     class="absolute inset-0 -z-10 rounded-lg bg-stone-900/10 opacity-100 backdrop-blur-[6px]"
     aria-hidden="true"
@@ -20,6 +18,7 @@ const links = config.navBar.links;
   <!-- 主標頭 -->
   <nav
     class="flex h-14 items-center justify-between rounded-lg border border-white/10 bg-neutral-900/50 px-2.5"
+    transition:name="header"
   >
     <!-- Logo and Site Title -->
     <div class="flex items-center gap-2">
@@ -85,7 +84,6 @@ const links = config.navBar.links;
           rel="noopener noreferrer"
         >
           <Button
-            client:load
             variant="ghost"
             size="icon"
             className="hidden items-center justify-center rounded-lg hover:bg-white/5 sm:flex"
@@ -97,7 +95,6 @@ const links = config.navBar.links;
 
         <a href="/about" target="_blank" rel="noopener noreferrer">
           <Button
-            client:load
             variant="ghost"
             size="icon"
             className="hidden items-center justify-center rounded-lg hover:bg-white/5 sm:flex"
