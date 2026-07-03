@@ -61,7 +61,7 @@ function FriendCard({
                 aria-label={link.label}
               >
                 <Tooltip>
-                  <TooltipTrigger>
+                  <TooltipTrigger asChild>
                     <Button variant="ghost" size="icon" aria-label={link.label}>
                       {link.icon}
                     </Button>
