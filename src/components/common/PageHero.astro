@@ -1,11 +1,13 @@
 ---
 const { title, subtitle } = Astro.props;
+import Breadcrumbs from "../common/Breadcrumbs.astro";
 ---
 
 <section
   class="page-hero relative mx-6 mt-30 mb-10 w-auto lg:mx-auto lg:w-full lg:max-w-7xl lg:px-6"
   id="sh-hero-section"
 >
+  <div class="mb-2"><Breadcrumbs /></div>
   <h1 class="text-4xl font-bold" id="sh-hero-title-content">{title}</h1>
   <p class="mt-2 text-lg text-stone-500" id="sh-hero-description-content">
     {subtitle}
