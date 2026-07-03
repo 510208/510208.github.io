@@ -28,7 +28,7 @@ const getImageUrl = (source: any): string | null => {
 const imageUrl = getImageUrl(thumbnail);
 ---
 
-<Card className={cn("sh-equipments-card bg-stone-900/40", className)}>
+<Card className={cn("sh-equipments-card group bg-stone-900/40", className)}>
   <div class="align-center flex h-50 w-auto justify-center p-5">
     <img
       src={imageUrl}
@@ -36,6 +36,12 @@ const imageUrl = getImageUrl(thumbnail);
       class="h-[100%] max-h-50 w-auto max-w-50 object-contain"
     />
   </div>
+
+  <div
+    class="absolute bottom-0 left-0 h-1 w-0 bg-stone-500/50 transition-all duration-200 group-hover:w-full"
+  >
+  </div>
+
   <CardHeader>
     <CardTitle className="text-inter text-lg">{name}</CardTitle>
     <CardDescription>{description}</CardDescription>

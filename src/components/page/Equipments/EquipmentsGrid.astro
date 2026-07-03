@@ -15,11 +15,14 @@ const { equipments } = Astro.props;
 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
   {
     equipments.map((item) => (
-      <EquipmentsCard
-        name={item.name}
-        description={item.description}
-        thumbnail={item.thumbnail}
-      />
+      <div class="h-full transition-transform duration-200 hover:-translate-y-2">
+        <EquipmentsCard
+          name={item.name}
+          description={item.description}
+          thumbnail={item.thumbnail}
+          className="h-full"
+        />
+      </div>
     ))
   }
 </div>
