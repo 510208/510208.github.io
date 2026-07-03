@@ -19,9 +19,9 @@ const {
 const displayProjects =
   maxCards && !showFilter ? PROJECTS.slice(0, maxCards) : PROJECTS;
 
-const uniqueStatuses = Array.from(
-  new Set(PROJECTS.map((p) => p.status?.toLowerCase()).filter(Boolean)),
-).sort() as string[];
+// const uniqueStatuses = Array.from(
+//   new Set(PROJECTS.map((p) => p.status?.toLowerCase()).filter(Boolean)),
+// ).sort() as string[];
 ---
 
 <div class="space-y-6" id="projects-container">
@@ -43,6 +43,36 @@ const uniqueStatuses = Array.from(
 
   {/* 無結果提示 */}
   <div id="no-results" class="hidden py-12 text-center">
-    <div class="text-gray-500 dark:text-gray-400">沒有找到符合條件的專案</div>
+    <div class="text-gray-500">沒有找到符合條件的專案</div>
   </div>
 </div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  // 註冊 ScrollTrigger 插件
+  gsap.registerPlugin(ScrollTrigger);
+
+  const cards = document.querySelectorAll("#projects-grid .sh-project-card");
+  document.addEventListener("DOMContentLoaded", () => {
+    if (cards.length > 0) {
+      cards.forEach((card) => {
+        gsap.set(card, { opacity: 0, y: 40 });
+      });
+
+      ScrollTrigger.batch(cards, {
+        onEnter: (batch) => {
+          gsap.to(batch, {
+            opacity: 1,
+            y: 0,
+            stagger: 0.1,
+            duration: 0.6,
+            ease: "power2.out",
+          });
+        },
+        start: "top 80%",
+      });
+    }
+  });
+</script>
