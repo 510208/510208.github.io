@@ -43,80 +43,33 @@ const { title, subtitle, description, ogImage } = Astro.props;
 <script>
   import { gsap } from "gsap";
 
-  const gradients = document.querySelectorAll(".sh-gradient-animate");
+  document.addEventListener("DOMContentLoaded", () => {
+    const gradients = document.querySelectorAll(".sh-gradient-animate");
 
-  // 儲存滑鼠座標與排斥半徑
-  const mouse = { x: 0, y: 0 };
-  const avoidRadius = 250; // 排斥圈半徑（像素），可以依需求調整
-  const pushStrength = 60; // 被滑鼠彈開的力道
-
-  // 監聽滑鼠移動
-  window.addEventListener("mousemove", (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  });
-
-  gradients.forEach((el) => {
-    // 初始隨機位置
-    gsap.set(el, {
-      x: "random(-10, 90)vw",
-      y: "random(-10, 90)vh",
-      scale: "random(1, 2)",
-    });
-
-    function moveRandomly(target: Element) {
-      gsap.to(target, {
-        x: "random(-30, 110)vw",
-        y: "random(-30, 110)vh",
-        scale: "random(1, 2.5)",
-        duration: "random(5, 10)",
-        ease: "sine.inOut",
-        overwrite: "auto", // 允許滑鼠干涉時蓋過這個動畫
-        onComplete: () => moveRandomly(target),
+    gradients.forEach((el) => {
+      // 1. 初始隨機散落位置
+      gsap.set(el, {
+        x: "random(-20, 100)vw",
+        y: "random(-20, 100)vh",
+        scale: "random(1, 2)",
       });
-    }
 
-    // 啟動漂流
-    moveRandomly(el);
+      // 2. 定義一個「不斷尋找下一個隨機點」的函數
+      function moveRandomly(target: Element) {
+        gsap.to(target, {
+          x: "random(-40, 120)vw", // 稍微超出螢幕，邊緣才不會穿幫
+          y: "random(-40, 120)vh",
+          scale: "random(1, 2.5)",
+          duration: "random(5, 15)", // 移動時間拉長，速度會更優雅
+          ease: "sine.inOut", // 兩點交接時會柔和地減速再加速
 
-    // 檢查與滑鼠的距離
-    gsap.ticker.add(() => {
-      // 取得球目前的實際位置（相對於視窗）
-      const rect = el.getBoundingClientRect();
-      const ballX = rect.left + rect.width / 2;
-      const ballY = rect.top + rect.height / 2;
-
-      // 計算滑鼠與球中心的距離
-      const dx = ballX - mouse.x;
-      const dy = ballY - mouse.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      // 如果滑鼠靠近了排斥圈
-      if (distance < avoidRadius && mouse.x !== 0) {
-        // 計算排斥的方向與力道（越靠近推越遠）
-        const force = (avoidRadius - distance) / avoidRadius;
-        const pushX = (dx / distance) * force * pushStrength;
-        const pushY = (dy / distance) * force * pushStrength;
-
-        // 取得目前的 gsap 屬性值
-        const currentX = gsap.getProperty(el, "x") as number;
-        const currentY = gsap.getProperty(el, "y") as number;
-
-        // 微調球的位置，產生被滑鼠「推開」的物理感
-        gsap.to(el, {
-          x: currentX + pushX,
-          y: currentY + pushY,
-          duration: 0.8,
-          ease: "power2.out",
-          overwrite: "auto",
-          onComplete: () => {
-            // 離開滑鼠範圍後，如果停下來了，就繼續原本的隨機漂流
-            if (!gsap.isTweening(el)) {
-              moveRandomly(el);
-            }
-          },
+          // 核心：當這次移動完成時，再次呼叫自己，傳入下一個隨機點
+          onComplete: () => moveRandomly(target),
         });
       }
+
+      // 3. 啟動動畫
+      moveRandomly(el);
     });
   });
 </script>
