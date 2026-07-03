@@ -1,5 +1,13 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+// 如果你在 SSR 環境（如 Next.js），需要在使用之前註冊
+// 在這個組件內部註冊通常也是安全的
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(useGSAP);
+}
 
 export type WaterFallProps<T = unknown> = {
   /**
@@ -31,6 +39,18 @@ export type WaterFallProps<T = unknown> = {
    * 若仍取得不到，會在開發環境下 warn 並以 index 作為 fallback（不建議用於會動態增刪的列表）。
    */
   keyExtractor?: (item: T, index: number) => React.Key;
+  /**
+   * GSAP 動畫的交錯時間（以秒為單位）。預設為 0.1。
+   */
+  stagger?: number;
+  /**
+   * GSAP 動畫的持續時間（以秒為單位）。預設為 0.5。
+   */
+  duration?: number;
+  /**
+   * GSAP 動畫的垂直位移（以像素為單位）。預設為 50。
+   */
+  yOffset?: number;
 };
 
 /**
@@ -38,6 +58,7 @@ export type WaterFallProps<T = unknown> = {
  * - 以 CSS Columns 實作，需搭配 .break-inside-avoid 避免項目被分割。
  * - 預設欄數：1 / 2 / 3 / 4（對應 sm/lg/xl 斷點）。
  * - 預設欄間距：1rem。
+ * - 使用 GSAP 加入各欄依序由下往上淡入的效果。
  */
 export function WaterFall<T = unknown>({
   items,
@@ -47,7 +68,48 @@ export function WaterFall<T = unknown>({
   itemClassName,
   columnGap,
   keyExtractor,
+  stagger = 0.1,
+  duration = 0.5,
+  yOffset = 50,
 }: WaterFallProps<T>) {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const itemsRef = React.useRef<HTMLDivElement[]>([]);
+
+  // 輔助函式：收集項目引用
+  const addToRefs = (el: HTMLDivElement | null) => {
+    if (el && !itemsRef.current.includes(el)) {
+      itemsRef.current.push(el);
+    }
+  };
+
+  // 在組件掛載時執行 GSAP 動畫
+  useGSAP(() => {
+    // 確保只在容器和項目都存在時執行
+    if (containerRef.current && itemsRef.current.length > 0) {
+      // 設置項目的初始狀態（淡出和向下位移）
+      gsap.set(itemsRef.current, {
+        opacity: 0,
+        y: yOffset,
+      });
+
+      // 執行從初始狀態到目標狀態的動畫
+      gsap.to(itemsRef.current, {
+        opacity: 1,
+        y: 0,
+        stagger: stagger,
+        duration: duration,
+        ease: "power2.out", // 使用更平滑的緩動函數
+        overwrite: true, // 防止動畫疊加
+      });
+    }
+
+    // 清理函數：組件卸載時清除 refs 和動畫
+    return () => {
+      itemsRef.current = [];
+      gsap.killTweensOf(itemsRef.current);
+    };
+  }, [items, children, stagger, duration, yOffset, containerRef]); // 依賴項
+
   const style =
     columnGap !== undefined
       ? ({
@@ -77,6 +139,7 @@ export function WaterFall<T = unknown>({
 
   return (
     <div
+      ref={containerRef}
       className={cn(
         // 預設 1/2/3/4 欄與 1rem 欄間距
         "columns-1 sm:columns-2 lg:columns-3 [column-gap:1rem]",
@@ -89,6 +152,7 @@ export function WaterFall<T = unknown>({
             <div
               key={resolveKey(it, idx)}
               className={cn("mb-4 break-inside-avoid", itemClassName)}
+              ref={addToRefs}
             >
               {renderItem(it, idx)}
             </div>
@@ -103,6 +167,7 @@ export function WaterFall<T = unknown>({
               <div
                 key={childKey}
                 className={cn("mb-4 break-inside-avoid", itemClassName)}
+                ref={addToRefs}
               >
                 {child}
               </div>
