@@ -34,7 +34,7 @@ const { equipments } = Astro.props;
   const cards = document.querySelectorAll(".sh-equipments-card");
   document.addEventListener("DOMContentLoaded", () => {
     cards.forEach((card) => {
-      gsap.set(card, { opacity: 0, y: 20 });
+      gsap.set(card, { opacity: 0, y: 40 });
     });
 
     ScrollTrigger.batch(cards, {
@@ -42,7 +42,7 @@ const { equipments } = Astro.props;
         gsap.to(batch, {
           opacity: 1,
           y: 0,
-          stagger: 0.2,
+          stagger: 0.1,
           duration: 0.6,
           ease: "power2.out",
         });
