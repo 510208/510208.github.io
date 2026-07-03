@@ -17,65 +17,86 @@ import { Font } from "astro:assets";
 
 <!doctype html>
 <html lang="zh-Hant" dir="ltr">
-  <script is:inline>
-    //
-    //          ██
-    //        ████                                        █                         ██
-    //      ██                                          ██                         ██
-    //      ███         ██                     ███      ██      ██                ██   ██      ███
-    //        ███    ███ ███     ██  ██  ████  ███   █████   ███ ███     ████     ██ ███      ██ ██   ██ ███
-    //          ██  ██   ███    █████████████  ██████  ███  ██   ███    ██       █████       █████    ████
-    //          ██  █████████   ████ ███  ██   ██      ██   ██ ██████  ██     ███████████     ██      ███
-    //    █   ███   ████    ██ ███   ██   █   ██       ██   ████   ███ ████████   ██     █    ██████ ██
-    //      ███                                         ██
-    //
-    //           ----   owo    S A M H A C K E R ' s   P E R S O N A L   W E B S I T E    owo   ----
-    //
-    //   * 你是電神！
-    //   * 竟然被你發現了那我也沒必要躲起來了，去看看另一個可以用來藏神奇東西的地方吧
-    //   * 提示：跟這裡一樣，都是寫前端的人一定天天在看的東西
-    //
-    //  喔對，這裡是 SamHacker 的個人網站，歡迎你來到這裡，請尊重智慧財產權，感謝你
-    //
-  </script>
+  <head>
+    <script is:inline>
+      //
+      //          ██
+      //        ████                                        █                         ██
+      //      ██                                          ██                         ██
+      //      ███         ██                     ███      ██      ██                ██   ██      ███
+      //        ███    ███ ███     ██  ██  ████  ███   █████   ███ ███     ████     ██ ███      ██ ██   ██ ███
+      //          ██  ██   ███    █████████████  ██████  ███  ██   ███    ██       █████       █████    ████
+      //          ██  █████████   ████ ███  ██   ██      ██   ██ ██████  ██     ███████████     ██      ███
+      //    █   ███   ████    ██ ███   ██   █   ██       ██   ████   ███ ████████   ██     █    ██████ ██
+      //      ███                                         ██
+      //
+      //           ----   owo    S A M H A C K E R ' s   P E R S O N A L   W E B S I T E    owo   ----
+      //
+      //   * 你是電神！
+      //   * 竟然被你發現了那我也沒必要躲起來了，去看看另一個可以用來藏神奇東西的地方吧
+      //   * 提示：跟這裡一樣，都是寫前端的人一定天天在看的東西
+      //
+      //  喔對，這裡是 SamHacker 的個人網站，歡迎你來到這裡，請尊重智慧財產權，感謝你
+      //
+    </script>
 
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
-  />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-  <link rel="icon" href="/favicon.ico" />
-  <meta name="generator" content={Astro.generator} />
-  <meta
-    http-equiv="Cache-Control"
-    content="public, max-age=31536000, immutable"
-  />
-  <link rel="alternate" hreflang="x-default" href="https://samhacker.xyz/" />
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+    />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      http-equiv="Cache-Control"
+      content="public, max-age=31536000, immutable"
+    />
+    <link rel="alternate" hreflang="x-default" href="https://samhacker.xyz/" />
 
-  <link type="text/plain" rel="author" href={new URL("/humans.txt", baseUrl)} />
+    <link
+      type="text/plain"
+      rel="author"
+      href={new URL("/humans.txt", baseUrl)}
+    />
 
-  <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
-  <title>
-    {pageName ? `${pageName} - SamHacker` : "SamHacker"}
-  </title>
+    <title>
+      {pageName ? `${pageName} - SamHacker` : "SamHacker"}
+    </title>
 
-  <OgLayout
-    pageName={pageName}
-    pageDescription={pageDescription}
-    pageOgImage={pageOgImage}
-  />
+    <OgLayout
+      pageName={pageName}
+      pageDescription={pageDescription}
+      pageOgImage={pageOgImage}
+    />
 
-  <!-- Astro View Transitions -->
-  <!-- <ClientRouter /> -->
+    <!-- Astro View Transitions -->
+    <!-- <ClientRouter /> -->
 
-  <!-- Astro Font -->
-  <Font cssVariable="--font-noto" />
-  <Font cssVariable="--font-inter" />
-  <Font cssVariable="--font-chenyuluoyan" />
-  <Font cssVariable="--font-maple" />
+    <!-- Astro Font -->
+    <Font cssVariable="--font-noto" />
+    <Font cssVariable="--font-inter" />
+    <Font cssVariable="--font-chenyuluoyan" />
+    <Font cssVariable="--font-maple" />
+
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-MTT9N2D9");
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
 
   <body class="dark">
     <a
