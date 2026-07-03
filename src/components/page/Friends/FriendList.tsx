@@ -23,7 +23,7 @@ function FriendCard({
   links,
 }: FriendCardProps) {
   return (
-    <Card className="relative overflow-hidden bg-stone-900 p-4">
+    <Card className="relative overflow-hidden bg-stone-900/80 p-4 backdrop-blur-xs">
       {/* 裝飾性背景圖 - 右下角 */}
       <div className="pointer-events-none absolute -right-0 -bottom-0 h-[171px] w-[171px] opacity-40">
         <img
