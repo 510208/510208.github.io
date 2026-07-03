@@ -17,61 +17,65 @@ import { Font } from "astro:assets";
 
 <!doctype html>
 <html lang="zh-Hant" dir="ltr">
-  <!----------------------------------------------------------------------------------------------------------->
-  <!--         ██                                                                                            -->
-  <!--       ████                                        █                         ██                        -->
-  <!--     ██                                          ██                         ██                         -->
-  <!--     ███         ██                     ███      ██      ██                ██   ██      ███            -->
-  <!--       ███    ███ ███     ██  ██  ████  ███   █████   ███ ███     ████     ██ ███      ██ ██   ██ ███  -->
-  <!--         ██  ██   ███    █████████████  ██████  ███  ██   ███    ██       █████       █████    ████    -->
-  <!--         ██  █████████   ████ ███  ██   ██      ██   ██ ██████  ██     ███████████     ██      ███     -->
-  <!--   █   ███   ████    ██ ███   ██   █   ██       ██   ████   ███ ████████   ██     █    ██████ ██       -->
-  <!--     ███                                         ██                                                    -->
-  <!----------------------------------------------------------------------------------------------------------->
+  <script is:inline>
+    //
+    //          ██
+    //        ████                                        █                         ██
+    //      ██                                          ██                         ██
+    //      ███         ██                     ███      ██      ██                ██   ██      ███
+    //        ███    ███ ███     ██  ██  ████  ███   █████   ███ ███     ████     ██ ███      ██ ██   ██ ███
+    //          ██  ██   ███    █████████████  ██████  ███  ██   ███    ██       █████       █████    ████
+    //          ██  █████████   ████ ███  ██   ██      ██   ██ ██████  ██     ███████████     ██      ███
+    //    █   ███   ████    ██ ███   ██   █   ██       ██   ████   ███ ████████   ██     █    ██████ ██
+    //      ███                                         ██
+    //
+    //           ----   owo    S A M H A C K E R ' s   P E R S O N A L   W E B S I T E    owo   ----
+    //
+    //   * 你是電神！
+    //   * 竟然被你發現了那我也沒必要躲起來了，去看看另一個可以用來藏神奇東西的地方吧
+    //   * 提示：跟這裡一樣，都是寫前端的人一定天天在看的東西
+    //
+    //  喔對，這裡是 SamHacker 的個人網站，歡迎你來到這裡，請尊重智慧財產權，感謝你
+    //
+  </script>
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
-    />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <meta
-      http-equiv="Cache-Control"
-      content="public, max-age=31536000, immutable"
-    />
-    <link rel="alternate" hreflang="x-default" href="https://samhacker.xyz/" />
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+  />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="generator" content={Astro.generator} />
+  <meta
+    http-equiv="Cache-Control"
+    content="public, max-age=31536000, immutable"
+  />
+  <link rel="alternate" hreflang="x-default" href="https://samhacker.xyz/" />
 
-    <link
-      type="text/plain"
-      rel="author"
-      href={new URL("/humans.txt", baseUrl)}
-    />
+  <link type="text/plain" rel="author" href={new URL("/humans.txt", baseUrl)} />
 
-    <link rel="sitemap" href="/sitemap-index.xml" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <title>
-      {pageName ? `${pageName} - SamHacker` : "SamHacker"}
-    </title>
+  <title>
+    {pageName ? `${pageName} - SamHacker` : "SamHacker"}
+  </title>
 
-    <OgLayout
-      pageName={pageName}
-      pageDescription={pageDescription}
-      pageOgImage={pageOgImage}
-    />
+  <OgLayout
+    pageName={pageName}
+    pageDescription={pageDescription}
+    pageOgImage={pageOgImage}
+  />
 
-    <!-- Astro View Transitions -->
-    <!-- <ClientRouter /> -->
+  <!-- Astro View Transitions -->
+  <!-- <ClientRouter /> -->
 
-    <!-- Astro Font -->
-    <Font cssVariable="--font-noto" />
-    <Font cssVariable="--font-inter" />
-    <Font cssVariable="--font-chenyuluoyan" />
-    <Font cssVariable="--font-maple" />
-  </head>
+  <!-- Astro Font -->
+  <Font cssVariable="--font-noto" />
+  <Font cssVariable="--font-inter" />
+  <Font cssVariable="--font-chenyuluoyan" />
+  <Font cssVariable="--font-maple" />
 
   <body class="dark">
     <a
@@ -201,5 +205,31 @@ import { Font } from "astro:assets";
 
   if (typeof localStorage !== "undefined") {
     localStorage.setItem("theme", "dark");
+  }
+</script>
+
+<script>
+  // 確保整個 DOM 樹和所有資源（如圖片、樣式）都載入完成後才觸發
+  window.addEventListener("load", () => {
+    // 利用 requestIdleCallback 告訴瀏覽器：「等你完全沒事忙了（閒置時），再執行這個」
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(() => {
+        printEasterEgg();
+      });
+    } else {
+      // 舊版瀏覽器不支援的替代方案，用最低限度的延遲執行
+      setTimeout(printEasterEgg, 1);
+    }
+  });
+
+  function printEasterEgg() {
+    console.log(
+      "%c捕獲野生電神！！",
+      "color: #ff5e00; font-size: 20px; font-weight: bold; font-family: sans-serif; text-shadow: 2px 2px 0px rgba(0,0,0,0.1);",
+    );
+    console.log(
+      "%c既然都打開 Console 了，不如來我的 GitHub 逛逛吧！ >> https://github.com/510208",
+      "color: #fff; font-size: 14px;",
+    );
   }
 </script>
