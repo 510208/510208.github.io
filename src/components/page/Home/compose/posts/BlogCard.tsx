@@ -92,7 +92,7 @@ export default function BlogCard({
                   : "text-white"
               }`}
             >
-              {!isLoading && title}
+              {!isLoading && title ? title : "文章載入中..."}
             </h3>
             {/* Description */}
             {!isLoading && description && (
