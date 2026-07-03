@@ -12,4 +12,43 @@ import "@styles/content.css";
   ogImage="/assets/website_og/friends_og.png"
 >
   <FriendList client:load />
+
+  <div class="mt-8 flex">
+    <div
+      class="sh-sideline mx-auto w-full max-w-5xl overflow-hidden rounded-lg border bg-stone-800/20 px-10 py-8 shadow-lg backdrop-blur-md"
+    >
+      <h2 class="text-4xl font-bold">要交個朋友嗎？</h2>
+      <p class="mt-4">如果你也想成為我的朋友，歡迎透過以下方式聯絡我：</p>
+      <ul class="mt-4 list-inside list-disc text-lg">
+        <li>
+          <span class="font-semibold">Discord（推薦）：</span><a
+            href="https://discord.gg/CWCjhRGJ2e">加入我的 Discord 伺服器</a
+          >
+        </li>
+        <li>
+          <span class="font-semibold">Discord私訊：</span><a
+            href="https://discord.com/users/959977374471028779">@samhacker</a
+          >
+        </li>
+        <li>
+          <span class="font-semibold">電子郵件：</span><a
+            href="mailto:xux510208@gmail.com">xux510208@gmail.com</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
 </PageLayout>
+
+<style>
+  .sh-sideline::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #57534e;
+    border-radius: 0px;
+  }
+</style>
