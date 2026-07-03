@@ -58,6 +58,10 @@ export default defineConfig({
     }
   ],
 
+  experimental: {
+    chromeDevtoolsWorkspace: true,
+  },
+
   integrations: [react(), devtoolBreakpoints(), lenis(), sitemap(), critters()],
 
   vite: {
