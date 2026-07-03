@@ -42,7 +42,7 @@ function FriendCard({
       </div>
 
       {/* 下方線條（hover時展開） */}
-      <div className="absolute bottom-0 left-0 h-1 w-0 bg-stone-500/50 transition-all duration-300 group-hover:w-full" />
+      <div className="absolute bottom-0 left-0 h-1 w-0 bg-stone-500/50 transition-all duration-200 group-hover:w-full" />
 
       {/* 卡片內容 */}
       <div className="relative z-10 flex justify-start gap-4">

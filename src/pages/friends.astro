@@ -40,6 +40,12 @@ import "@styles/content.css";
   </div>
 </PageLayout>
 
+<script>
+  document.addEventListener("contextmenu", (event) => {
+    event.preventDefault(); // 鎖定右鍵選單
+  });
+</script>
+
 <style>
   .sh-sideline::before {
     content: "";
@@ -48,7 +54,13 @@ import "@styles/content.css";
     left: 0;
     width: 100%;
     height: 4px;
-    background-color: #57534e;
+    background-color: #57534e9f;
     border-radius: 0px;
+    transition: background-color 0.2s ease;
+  }
+
+  .sh-sideline:hover::before {
+    background-color: #57534e;
+    transition: background-color 0.2s ease;
   }
 </style>
