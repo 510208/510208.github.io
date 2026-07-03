@@ -78,32 +78,39 @@ const links = config.navBar.links;
 
       <!-- Action Buttons -->
       <div class="hidden items-center gap-2 md:flex">
-        <a
-          href="mailto:xux510208@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Button
+          variant="ghost"
+          size="icon"
+          className="hidden items-center justify-center rounded-lg hover:bg-white/5 sm:flex"
+          aria-label="Contact"
+          id="sh-header-contact_button"
         >
-          <Button
-            variant="ghost"
-            size="icon"
-            className="hidden items-center justify-center rounded-lg hover:bg-white/5 sm:flex"
-            aria-label="Contact"
-          >
-            <Mail size={18} />
-          </Button>
-        </a>
+          <Mail size={18} />
+        </Button>
 
-        <a href="/about" target="_blank" rel="noopener noreferrer">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="hidden items-center justify-center rounded-lg hover:bg-white/5 sm:flex"
-            aria-label="Info"
-          >
-            <Info size={18} />
-          </Button>
-        </a>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="hidden items-center justify-center rounded-lg hover:bg-white/5 sm:flex"
+          aria-label="Info"
+          id="sh-header-info_button"
+        >
+          <Info size={18} />
+        </Button>
       </div>
     </div>
   </nav>
 </header>
+
+<script>
+  const contactButton = document.getElementById("sh-header-contact_button");
+  const infoButton = document.getElementById("sh-header-info_button");
+
+  contactButton?.addEventListener("click", () => {
+    window.location.href = "mailto:xux510208@gmail.com";
+  });
+
+  infoButton?.addEventListener("click", () => {
+    window.location.href = "/about";
+  });
+</script>
