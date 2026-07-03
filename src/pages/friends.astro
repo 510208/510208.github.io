@@ -2,6 +2,8 @@
 import FriendList from "@/components/page/Friends/FriendList";
 import PageLayout from "@/layouts/PageLayout.astro";
 
+import { Toaster } from "@/components/ui/sonner";
+
 import "@styles/content.css";
 ---
 
@@ -38,11 +40,20 @@ import "@styles/content.css";
       </ul>
     </div>
   </div>
+
+  <Toaster client:load richColors position="bottom-center" />
 </PageLayout>
 
 <script>
+  import { toast } from "sonner";
+
   document.addEventListener("contextmenu", (event) => {
     event.preventDefault(); // 鎖定右鍵選單
+
+    toast.error("這個頁面禁止複製", {
+      description:
+        "不好意思，這個頁面因為有些朋友的資訊不想被複製，所以禁止右鍵選單。請尊重大家，不要破解右鍵，謝謝。",
+    });
   });
 </script>
 
@@ -62,5 +73,10 @@ import "@styles/content.css";
   .sh-sideline:hover::before {
     background-color: #57534e;
     transition: background-color 0.2s ease;
+  }
+
+  .toaster div[data-title] {
+    font-weight: bold !important;
+    font-size: 1.2rem !important;
   }
 </style>
