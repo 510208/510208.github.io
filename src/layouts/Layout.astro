@@ -11,6 +11,7 @@ import OgLayout from "./OgLayout.astro";
 
 const baseUrl = Astro.site;
 const { pageName, pageDescription, pageOgImage } = Astro.props;
+const pagePath = new URL(Astro.request.url).pathname;
 
 import { Font } from "astro:assets";
 ---
@@ -122,7 +123,7 @@ import { Font } from "astro:assets";
     <main id="main-content" tabindex="-1">
       <slot />
     </main>
-    <MobileFloatMenu />
+    <MobileFloatMenu current={pagePath} />
     <Footer />
 
     <ToTop />
