@@ -252,14 +252,14 @@ const friends: FriendCardProps[] = [
     name: "JN",
     slug: "giveanornot",
     description: <>
-      <p>
+      <>
         現居台北，家鄉台中大里草湖（有很好吃的 芋仔冰）
 
         工科高職電子科 、科技大學資工系學士
 
         曾經在 Livehouse 當票口，也在系統廠當 QA 測過伺服器
         現在在銀行做雲端工程師，很久沒寫程式了
-      </p>
+      </>
     </>,
     links: [
       {
