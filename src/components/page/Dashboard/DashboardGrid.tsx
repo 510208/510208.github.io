@@ -40,7 +40,7 @@ export function DashboardGrid() {
   // 顯示 Skeleton 載入狀態
   if (loading) {
     return (
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {[1, 2, 3].map((i) => (
           <DashboardCardSkeleton key={i} />
         ))}
