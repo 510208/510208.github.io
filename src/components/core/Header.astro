@@ -1,7 +1,7 @@
 ---
 import config from "@shConfig";
 import { Button } from "@ui/button.tsx";
-import { Mail, Info } from "lucide-react";
+import { Mail, Info, Link } from "@lucide/astro";
 
 const links = config.navBar.links;
 ---
@@ -21,7 +21,7 @@ const links = config.navBar.links;
     transition:name="header"
   >
     <!-- Logo and Site Title -->
-    <div class="flex items-center gap-2">
+    <a class="flex items-center gap-2" href="/">
       <div class="h-9 w-9 overflow-hidden rounded-lg">
         <img
           src="/favicon.png"
@@ -29,12 +29,12 @@ const links = config.navBar.links;
           class="h-full w-full object-cover"
         />
       </div>
-      <a class="hidden lg:block" href="/">
+      <div>
         <span class="font-funny text-3xl leading-none text-white capitalize">
           SamHacker
         </span>
-      </a>
-    </div>
+      </div>
+    </a>
 
     <!-- Navigation Links -->
     <div class="flex items-center gap-2 lg:gap-4">
@@ -78,6 +78,25 @@ const links = config.navBar.links;
         >
           <Info size={18} />
         </Button>
+      </div>
+
+      <div class="flex items-center gap-2 lg:hidden">
+        <a
+          href="https://lib.samhacker.xyz"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="連結列表"
+        >
+          <Button
+            className="flex items-center justify-center rounded-lg hover:bg-white/5"
+            variant="secondary"
+            aria-label="Info"
+            id="sh-header-info_button"
+          >
+            <Link size={18} />
+            關於我
+          </Button>
+        </a>
       </div>
     </div>
   </nav>
