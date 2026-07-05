@@ -2,7 +2,7 @@
 import Footer from "@components/core/Footer.astro";
 import HeaderBackground from "@components/core/HeaderBackground.astro";
 import Header from "@components/core/Header.astro";
-import { Spinner } from "@components/ui/spinner";
+import MobileFloatMenu from "@components/core/MobileFloatMenu.astro";
 
 import "@styles/global.css";
 
@@ -122,6 +122,7 @@ import { Font } from "astro:assets";
     <main id="main-content" tabindex="-1">
       <slot />
     </main>
+    <MobileFloatMenu />
     <Footer />
 
     <ToTop />
