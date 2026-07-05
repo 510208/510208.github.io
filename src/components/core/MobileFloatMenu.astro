@@ -36,7 +36,7 @@ const { current } = Astro.props;
                 <div
                   aria-label={`${link.title} 頁面`}
                   aria-current="page"
-                  data-actived="true"
+                  data-activated="true"
                   class="sh-text-primary sh-text-sm sh-font-medium flex items-center justify-center p-1"
                   id={`sh-mobile-navbar-${link.title.toLowerCase().replace(/\s+/g, "-")}`}
                 >
@@ -124,15 +124,18 @@ const { current } = Astro.props;
     const chevron = document.querySelector(
       "#sh-mobile-navbar-chevron",
     ) as HTMLElement | null;
+
+    // 這兩個改為「選配」元素
     const collapsedItem = document.querySelector(
-      "[data-actived]",
+      "[data-activated]",
     ) as HTMLElement | null;
     const expandedItem = document.querySelector(
       "[data-activated]",
     ) as HTMLElement | null;
 
-    if (!container || !nav || !chevron || !collapsedItem || !expandedItem) {
-      console.warn("未找到選單元素或切換按鈕，無法初始化展開動畫");
+    // 預檢查：只要核心的容器和箭頭在，動畫就可以初始化
+    if (!container || !nav || !chevron) {
+      console.warn("未找到核心選單元素或切換按鈕，無法初始化導航列功能。");
       return;
     }
 
@@ -150,47 +153,69 @@ const { current } = Astro.props;
       const startHeight = container.getBoundingClientRect().height;
 
       nav.setAttribute("data-state", "expanded");
-      collapsedItem.setAttribute("data-actived", "false");
-      expandedItem.setAttribute("data-activated", "true");
       container.setAttribute("aria-expanded", "true");
 
-      // 先切換顯示，量測展開後的目標寬度
-      gsap.set(collapsedItem, { position: "absolute", opacity: 1 });
-      gsap.set(expandedItem, { display: "flex", opacity: 0, scale: 0.85 });
+      // 安全設定屬性與初始動畫狀態
+      if (collapsedItem) {
+        collapsedItem.setAttribute("data-activated", "false");
+        gsap.set(collapsedItem, { position: "absolute", opacity: 1 });
+      }
+      if (expandedItem) {
+        expandedItem.setAttribute("data-activated", "true");
+        gsap.set(expandedItem, { display: "flex", opacity: 0, scale: 0.85 });
+      }
+
+      // 先切換顯示後，量測展開後的目標寬度
       const endWidth = container.getBoundingClientRect().width;
       const endHeight = container.getBoundingClientRect().height;
       gsap.set(container, { width: startWidth, height: startHeight });
 
-      // 使用 GSAP timeline 來控制動畫順序
-      gsap
-        .timeline({
-          onComplete: () => {
+      // 建立時間軸
+      const tl = gsap.timeline({
+        onComplete: () => {
+          if (collapsedItem) {
             gsap.set(collapsedItem, { position: "static", display: "none" });
-            gsap.set(container, { height: "auto" });
-            isAnimating = false;
-          },
-        })
-        .to(chevron, { rotate: 180, duration: 0.4, ease: "power2.inOut" }, 0) // 旋轉箭頭
-        .to(
-          // 展開容器
-          container,
-          {
-            width: endWidth,
-            height: endHeight,
-            borderRadius: 12,
-            duration: 0.4,
-            ease: "power3.inOut",
-          },
+          }
+          gsap.set(container, { height: "auto" });
+          isAnimating = false;
+        },
+      });
+
+      // 基礎動畫：箭頭與容器（不管有沒有 item 都會執行）
+      tl.to(
+        chevron,
+        { rotate: 180, duration: 0.4, ease: "power2.inOut" },
+        0,
+      ).to(
+        container,
+        {
+          width: endWidth,
+          height: endHeight,
+          borderRadius: 12,
+          duration: 0.4,
+          ease: "power3.inOut",
+        },
+        0,
+      );
+
+      // 條件式動畫：只有元素存在時才塞入時間軸
+      if (collapsedItem) {
+        tl.to(
+          collapsedItem,
+          { opacity: 0, duration: 0.2, ease: "power2.in" },
           0,
-        )
-        .to(collapsedItem, { opacity: 0, duration: 0.2, ease: "power2.in" }, 0) // 收起未展開版
-        .to(
-          // 顯示展開版
+        );
+      }
+      if (expandedItem) {
+        tl.to(
           expandedItem,
           { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.6)" },
           0.1,
-        )
-        .set(container, { width: "auto" });
+        );
+      }
+
+      // 最後補上寬度自適應
+      tl.set(container, { width: "auto" });
     };
 
     const collapse = () => {
@@ -203,50 +228,62 @@ const { current } = Astro.props;
       nav.setAttribute("data-state", "collapsed");
       container.setAttribute("aria-expanded", "false");
 
-      // 先讓「未展開版」可見以量測收合後的目標寬度
-      gsap.set(collapsedItem, {
-        display: "flex",
-        position: "absolute",
-        opacity: 0,
-        scale: 0.85,
-      });
+      if (collapsedItem) {
+        gsap.set(collapsedItem, {
+          display: "flex",
+          position: "absolute",
+          opacity: 0,
+          scale: 0.85,
+        });
+      }
+
       const endWidth = container.getBoundingClientRect().width;
       const endHeight = container.getBoundingClientRect().height;
       gsap.set(container, { width: startWidth, height: startHeight });
 
-      gsap
-        .timeline({
-          onComplete: () => {
-            collapsedItem.setAttribute("data-actived", "true");
+      const tl = gsap.timeline({
+        onComplete: () => {
+          if (collapsedItem) {
+            collapsedItem.setAttribute("data-activated", "true");
+            gsap.set(collapsedItem, { position: "static" });
+          }
+          if (expandedItem) {
             expandedItem.setAttribute("data-activated", "false");
             gsap.set(expandedItem, { display: "none" });
-            gsap.set(collapsedItem, { position: "static" });
-            gsap.set(container, { width: "auto", height: "auto" });
-            isAnimating = false;
-          },
-        })
-        .to(chevron, { rotate: 0, duration: 0.4, ease: "power2.inOut" }, 0)
-        .to(
-          container,
-          {
-            width: endWidth,
-            height: endHeight,
-            borderRadius: 9999,
-            duration: 0.4,
-            ease: "power3.inOut",
-          },
-          0,
-        )
-        .to(
+          }
+          gsap.set(container, { width: "auto", height: "auto" });
+          isAnimating = false;
+        },
+      });
+
+      // 基礎動畫
+      tl.to(chevron, { rotate: 0, duration: 0.4, ease: "power2.inOut" }, 0).to(
+        container,
+        {
+          width: endWidth,
+          height: endHeight,
+          borderRadius: 9999,
+          duration: 0.4,
+          ease: "power3.inOut",
+        },
+        0,
+      );
+
+      // 條件式動畫
+      if (expandedItem) {
+        tl.to(
           expandedItem,
           { opacity: 0, scale: 0.85, duration: 0.25, ease: "power2.in" },
           0,
-        )
-        .to(
+        );
+      }
+      if (collapsedItem) {
+        tl.to(
           collapsedItem,
           { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.6)" },
           0.1,
         );
+      }
     };
 
     container.addEventListener("click", (e) => {
