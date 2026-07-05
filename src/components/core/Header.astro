@@ -57,25 +57,6 @@ const links = config.navBar.links;
         }
       </div>
 
-      <div class="flex items-center gap-1 lg:hidden">
-        {
-          links.map((link, index) => (
-            <div class="flex items-center">
-              <a
-                href={link.href}
-                class="flex h-6 items-center px-2 text-sm font-medium text-white uppercase transition-colors hover:text-white/80"
-                aria-label={link.title}
-              >
-                <link.icon size={16} />
-              </a>
-              {index < links.length - 1 && (
-                <span class="hidden text-sm text-neutral-400 sm:block">/</span>
-              )}
-            </div>
-          ))
-        }
-      </div>
-
       <!-- Action Buttons -->
       <div class="hidden items-center gap-2 md:flex">
         <Button
