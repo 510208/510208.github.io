@@ -17,7 +17,7 @@ const { current } = Astro.props;
 <div class="sh-bg-gradient fixed bottom-0 left-0 z-50 min-h-25 w-dvw lg:hidden">
   <div
     id="sh-mobile-navbar-container"
-    class="sh-bg-shadow absolute bottom-10 left-1/2 flex -translate-x-1/2 items-center justify-center gap-3 rounded-xl bg-stone-700/40 px-2.5 py-1.5 backdrop-blur"
+    class="sh-bg-shadow absolute bottom-10 left-1/2 flex -translate-x-1/2 items-center justify-center gap-3 rounded-xl border border-stone-700/50 bg-stone-700/40 px-2.5 py-1.5 backdrop-blur"
   >
     <nav
       class="flex items-center gap-3"
@@ -65,13 +65,20 @@ const { current } = Astro.props;
             );
           } else {
             return (
-              <div
+              <a
+                href={link.href}
+                target={link.href.startsWith("http") ? "_blank" : "_self"}
+                rel={
+                  link.href.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
                 aria-label={`${link.title} 頁面`}
                 class={`sh-text-white sh-text-sm sh-font-medium sh-transition-colors sh-duration-300 sh-ease-in-out ${isActive ? "sh-text-primary" : "hover:sh-text-primary"} p-1`}
                 id={`sh-mobile-navbar-${link.title.toLowerCase().replace(/\s+/g, "-")}`}
               >
                 <link.icon size={20} className="text-neutral-400" />
-              </div>
+              </a>
             );
           }
         })
