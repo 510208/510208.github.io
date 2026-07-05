@@ -3,7 +3,7 @@ import type { SimpleIcon } from "simple-icons-astro";
 
 interface ShsiteConfig {
   navBar: {
-    links: { title: string; href: string; icon: LucideIcon }[];
+    links: { title: string; alt?: string; href: string; icon: LucideIcon }[];
   };
 
   rewards: {

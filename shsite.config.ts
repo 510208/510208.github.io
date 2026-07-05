@@ -54,12 +54,12 @@ import wordThumbnail from "@/assets/pages/equipments/software/word.webp";
 const config: ShsiteConfig = {
   navBar: {
     links: [
-      { title: "About", href: "/about", icon: Info },
-      { title: "Friends", href: "/friends", icon: Handshake },
-      { title: "Projects", href: "/projects", icon: FolderDot },
-      { title: "Equipments", href: "/equipments", icon: LaptopMinimal },
-      { title: "Dashboard", href: "/dashboard", icon: Gauge },
-      { title: "Blog", href: "https://blog.samhacker.xyz/", icon: Newspaper },
+      { title: "About", alt: "關於", href: "/about", icon: Info },
+      { title: "Friends", alt: "朋友", href: "/friends", icon: Handshake },
+      { title: "Projects", alt: "專案", href: "/projects", icon: FolderDot },
+      { title: "Equipments", alt: "設備", href: "/equipments", icon: LaptopMinimal },
+      { title: "Dashboard", alt: "儀表板", href: "/dashboard", icon: Gauge },
+      { title: "Blog", alt: "部落格", href: "https://blog.samhacker.xyz/", icon: Newspaper },
     ],
   },
 
