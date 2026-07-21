@@ -84,19 +84,22 @@ function FriendCard({
 }
 export default function FriendList() {
   return (
-    <WaterFall
-      items={friends}
-      className="columns-1 [column-gap:1rem] sm:columns-2 lg:columns-3"
-      renderItem={(friend) => (
-        <FriendCard
-          key={friend.slug}
-          image={friend.image}
-          name={friend.name}
-          slug={friend.slug}
-          description={friend.description}
-          links={friend.links}
-        />
-      )}
-    />
+    <>
+      <h2 className="sr-only">我的朋友們</h2>
+      <WaterFall
+        items={friends}
+        className="columns-1 [column-gap:1rem] sm:columns-2 lg:columns-3"
+        renderItem={(friend) => (
+          <FriendCard
+            key={friend.slug}
+            image={friend.image}
+            name={friend.name}
+            slug={friend.slug}
+            description={friend.description}
+            links={friend.links}
+          />
+        )}
+      />
+    </>
   );
 }
