@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { renderToString } from "react-dom/server";
+import { Pause, Play } from "lucide-react";
 
 interface Icon {
   x: number;
@@ -24,6 +25,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
   const [iconPositions, setIconPositions] = useState<Icon[]>([]);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
+  const [isPaused, setIsPaused] = useState(false); // WCAG 2.2.2 暫停狀態控制
   const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 });
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [targetRotation, setTargetRotation] = useState<{
@@ -40,6 +42,21 @@ export function IconCloud({ icons, images }: IconCloudProps) {
   const iconCanvasesRef = useRef<HTMLCanvasElement[]>([]);
   const imagesLoadedRef = useRef<boolean[]>([]);
 
+  // 1. 自動偵測系統 prefers-reduced-motion，若開啟則預設暫停
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (mediaQuery.matches) {
+      setIsPaused(true);
+    }
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsPaused(e.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
   // Create icon canvases once when icons/images change
   useEffect(() => {
     if (!icons && !images) return;
@@ -55,26 +72,19 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 
       if (offCtx) {
         if (images) {
-          // Handle image URLs directly
           const img = new Image();
           img.crossOrigin = "anonymous";
           img.src = items[index] as string;
           img.onload = () => {
             offCtx.clearRect(0, 0, offscreen.width, offscreen.height);
-
-            // Create circular clipping path
             offCtx.beginPath();
             offCtx.arc(20, 20, 20, 0, Math.PI * 2);
             offCtx.closePath();
             offCtx.clip();
-
-            // Draw the image
             offCtx.drawImage(img, 0, 0, 40, 40);
-
             imagesLoadedRef.current[index] = true;
           };
         } else {
-          // Handle SVG icons
           offCtx.scale(0.4, 0.4);
           const svgString = renderToString(item as React.ReactElement);
           const img = new Image();
@@ -98,7 +108,6 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     const newIcons: Icon[] = [];
     const numIcons = items.length || 20;
 
-    // Fibonacci sphere parameters
     const offset = 2 / numIcons;
     const increment = Math.PI * (3 - Math.sqrt(5));
 
@@ -242,7 +251,8 @@ export function IconCloud({ icons, images }: IconCloudProps) {
         if (progress >= 1) {
           setTargetRotation(null);
         }
-      } else if (!isDragging) {
+      } else if (!isDragging && !isPaused) {
+        // 2. 當 isPaused 為 true 時不更新角度，停止自動旋轉
         rotationRef.current = {
           x: rotationRef.current.x + (dy / canvas.height) * speed,
           y: rotationRef.current.y + (dx / canvas.width) * speed,
@@ -271,7 +281,6 @@ export function IconCloud({ icons, images }: IconCloudProps) {
         ctx.globalAlpha = opacity;
 
         if (icons || images) {
-          // Only try to render icons/images if they exist
           if (
             iconCanvasesRef.current[index] &&
             imagesLoadedRef.current[index]
@@ -279,7 +288,6 @@ export function IconCloud({ icons, images }: IconCloudProps) {
             ctx.drawImage(iconCanvasesRef.current[index], -20, -20, 40, 40);
           }
         } else {
-          // Show numbered circles if no icons/images are provided
           ctx.beginPath();
           ctx.arc(0, 0, 20, 0, Math.PI * 2);
           ctx.fillStyle = "#4444ff";
@@ -303,20 +311,39 @@ export function IconCloud({ icons, images }: IconCloudProps) {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [icons, images, iconPositions, isDragging, mousePos, targetRotation]);
+  }, [
+    icons,
+    images,
+    iconPositions,
+    isDragging,
+    isPaused,
+    mousePos,
+    targetRotation,
+  ]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      width={300}
-      height={300}
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
-      className="rounded-lg"
-      aria-label="Interactive 3D Icon Cloud"
-      role="img"
-    />
+    <div className="relative inline-block">
+      <canvas
+        ref={canvasRef}
+        width={300}
+        height={300}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        className="rounded-lg"
+        aria-label="Interactive 3D Icon Cloud"
+        role="img"
+      />
+      {/* WCAG 2.2.2 暫停/播放按鈕 */}
+      <button
+        type="button"
+        onClick={() => setIsPaused(!isPaused)}
+        aria-label={isPaused ? "播放 3D 圖示雲旋轉動畫" : "暫停 3D 圖示雲旋轉動畫"}
+        className="absolute top-2 right-2 rounded-full bg-neutral-900/80 p-2 text-neutral-200 backdrop-blur transition-colors hover:bg-neutral-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      >
+        {isPaused ? <Play size={16} /> : <Pause size={16} />}
+      </button>
+    </div>
   );
 }
