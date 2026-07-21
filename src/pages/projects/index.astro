@@ -96,14 +96,14 @@ import { FolderBookmark } from "lucide-react";
     cards.forEach((card) => {
       gsap.set(card, {
         opacity: 0,
-        // y: 20
+        y: 20,
       });
     });
 
     cards.forEach((card, index) => {
       gsap.to(card, {
         opacity: 1,
-        // y: 0,
+        y: 0,
         duration: 0.6,
         delay: index * 0.2,
         ease: "power3.out",
