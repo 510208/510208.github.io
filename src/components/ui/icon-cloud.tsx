@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { renderToString } from "react-dom/server";
 import { Pause, Play } from "lucide-react";
-
+import { Button } from "./button";
 interface Icon {
   x: number;
   y: number;
@@ -336,14 +336,16 @@ export function IconCloud({ icons, images }: IconCloudProps) {
         role="img"
       />
       {/* WCAG 2.2.2 暫停/播放按鈕 */}
-      <button
-        type="button"
+      <Button
+        variant="outline"
+        size="icon-sm"
         onClick={() => setIsPaused(!isPaused)}
-        aria-label={isPaused ? "播放 3D 圖示雲旋轉動畫" : "暫停 3D 圖示雲旋轉動畫"}
-        className="absolute top-2 right-2 rounded-full bg-neutral-900/80 p-2 text-neutral-200 backdrop-blur transition-colors hover:bg-neutral-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        aria-label={isPaused ? "播放 3D 圖示旋轉動畫" : "暫停 3D 圖示旋轉動畫"}
+        className="absolute top-2 right-2"
       >
+      
         {isPaused ? <Play size={16} /> : <Pause size={16} />}
-      </button>
+      </Button>
     </div>
   );
 }
