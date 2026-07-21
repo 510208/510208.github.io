@@ -19,17 +19,11 @@ const {
 ---
 
 <Card
-  className="sh-click-link sh-project-card relative flex min-h-[280px] w-full cursor-pointer justify-end overflow-hidden bg-[#272728]/60 p-0 backdrop-blur-xs"
+  className="sh-click-link sh-project-card sh-small-card relative flex min-h-[280px] w-full cursor-pointer justify-end overflow-hidden bg-[#272728]/60 p-0 backdrop-blur-xs"
   data-link={link}
 >
-  <div
-    class="absolute -right-14 -bottom-10 transition-transform duration-300 ease-in-out"
-  >
-    {
-      BackgroundImage && (
-        <BackgroundImage class="z-0 object-cover transition-transform duration-300 ease-in-out" />
-      )
-    }
+  <div class="sh-small-bg-img absolute -right-14 -bottom-10">
+    {BackgroundImage && <BackgroundImage class="z-0 object-cover" />}
   </div>
 
   <div
@@ -43,3 +37,51 @@ const {
     </p>
   </div>
 </Card>
+
+<style>
+  .sh-other-card {
+    background: linear-gradient(180deg, rgba(51, 51, 51, 0) 0%, #333 100%);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const smallCards = document.querySelectorAll(".sh-small-card");
+
+    smallCards.forEach((card) => {
+      const bgImg = card.querySelector(".sh-small-bg-img");
+
+      card.addEventListener("mouseenter", () => {
+        gsap.to(card, {
+          backgroundColor: "rgba(48, 48, 52, 0.2)",
+          backdropFilter: "blur(0px)",
+          duration: 0.3,
+          ease: "power2.out",
+        });
+
+        gsap.to(bgImg, {
+          y: -16,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      });
+
+      card.addEventListener("mouseleave", () => {
+        gsap.to(card, {
+          backgroundColor: "rgba(39, 39, 40, 0.6)",
+          backdropFilter: "blur(4px)",
+          duration: 0.3,
+          ease: "power2.out",
+        });
+
+        gsap.to(bgImg, {
+          y: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      });
+    });
+  });
+</script>
