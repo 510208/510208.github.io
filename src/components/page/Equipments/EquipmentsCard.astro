@@ -28,7 +28,12 @@ const getImageUrl = (source: any): string | null => {
 const imageUrl = getImageUrl(thumbnail);
 ---
 
-<Card className={cn("sh-equipments-card group bg-stone-900/40", className)}>
+<Card
+  className={cn(
+    "sh-equipments-card group overflow-hidden bg-stone-900/40",
+    className,
+  )}
+>
   <div class="align-center flex h-50 w-auto justify-center p-5">
     <img
       src={imageUrl}

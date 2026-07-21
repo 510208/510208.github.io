@@ -12,6 +12,7 @@ import friends from "@shFriends";
 import type { FriendCardProps } from "@/types/shsite.friends";
 
 function getFriendImageUrl(image: ImageMetadata | string): string {
+  console.log("getFriendImageUrl", image);
   return typeof image === "string" ? image : image.src;
 }
 
