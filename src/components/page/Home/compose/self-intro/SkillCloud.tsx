@@ -25,30 +25,6 @@ import {
   HoverCardContent,
 } from "@components/ui/hover-card";
 
-const SkillCloudItem = ({
-  icon,
-  title,
-  description,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}) => {
-  return (
-    <HoverCard>
-      <HoverCardTrigger asChild>
-        <div className="rounded-lg">{icon}</div>
-      </HoverCardTrigger>
-      <HoverCardContent>
-        <h3 className="text-lg font-semibold">
-          {icon} {title}
-        </h3>
-        <p>{description}</p>
-      </HoverCardContent>
-    </HoverCard>
-  );
-};
-
 export const SkillCloud = () => {
   const skills = [
     {
