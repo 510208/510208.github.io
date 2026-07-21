@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import {
   HoverCard,
@@ -9,21 +10,38 @@ import {
 import type { ShsiteConfig } from "@/types/shsite.config";
 
 const GameListClient = ({ game }: { game: ShsiteConfig["game"][0] }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <HoverCard>
-      <HoverCardTrigger className="flex justify-center">
-        <Card
-          className="aspect-2/3 h-auto w-full max-w-60 transition-all duration-300 hover:brightness-90"
-          style={{
-            backgroundImage: `url(${game.image.src})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        />
+    <HoverCard open={isOpen} onOpenChange={setIsOpen}>
+      <HoverCardTrigger asChild>
+        <button
+          type="button"
+          onFocus={() => setIsOpen(true)}
+          onBlur={() => setIsOpen(false)}
+          className="flex justify-center rounded-lg text-left focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+          aria-label={game.name}
+        >
+          <Card
+            className="aspect-2/3 h-auto w-full max-w-60 transition-all duration-300 hover:brightness-90"
+            style={{
+              backgroundImage: `url(${game.image.src})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          />
+        </button>
       </HoverCardTrigger>
-      <HoverCardContent className="flex w-100 gap-0.5">
-        {/* 左側遊戲縮圖 */}
+      <HoverCardContent
+        className="flex w-100 gap-0.5"
+        onFocusCapture={() => setIsOpen(true)}
+        onBlurCapture={(e) => {
+          if (!e.currentTarget.contains(e.relatedTarget)) {
+            setIsOpen(false);
+          }
+        }}
+      >
         <div className="flex-shrink-0">
           <img
             src={game.image.src}
@@ -41,7 +59,7 @@ const GameListClient = ({ game }: { game: ShsiteConfig["game"][0] }) => {
             href={game.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-block text-sm text-blue-500 hover:underline"
+            className="mt-4 inline-block text-sm text-blue-500 hover:underline focus-visible:ring-1 focus-visible:ring-blue-500 focus-visible:outline-none"
           >
             關於這款遊戲
           </a>

@@ -20,7 +20,10 @@ const {
 
 <Card
   className="sh-click-link sh-project-card sh-small-card relative flex min-h-[280px] w-full cursor-pointer justify-end overflow-hidden bg-[#272728]/60 p-0 backdrop-blur-xs"
+  tabIndex={0}
   data-link={link}
+  role="button"
+  aria-label={`前往 ${title} 專案頁面`}
 >
   <div class="sh-small-bg-img absolute -right-14 -bottom-10">
     {BackgroundImage && <BackgroundImage class="z-0 object-cover" />}

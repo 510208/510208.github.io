@@ -71,14 +71,27 @@ import { FolderBookmark } from "lucide-react";
 </PageLayout>
 
 <script>
-  // 點擊卡片時打開對應的GitHub頁面
+  // 點擊或鍵盤操作卡片時打開對應的連結
   document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".sh-click-link");
+    const cards = document.querySelectorAll<HTMLElement>(".sh-click-link");
+
     cards.forEach((card) => {
-      card.addEventListener("click", () => {
+      // 輔助函式：執行跳轉
+      const openLink = () => {
         const link = card.getAttribute("data-link");
         if (link) {
-          window.open(link, "_blank");
+          window.open(link, "_blank", "noopener,noreferrer");
+        }
+      };
+
+      // 處理滑鼠點擊
+      card.addEventListener("click", openLink);
+
+      // 處理鍵盤 Enter 與 Space 按鍵，並明確標註 KeyboardEvent 型別
+      card.addEventListener("keydown", (event: KeyboardEvent) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault(); // 防止空白鍵導致頁面向下滾動
+          openLink();
         }
       });
     });
