@@ -14,10 +14,12 @@ const { current } = Astro.props;
 ---
 
 <!-- 浮動選單 -->
-<div class="sh-bg-gradient fixed bottom-0 left-0 z-50 min-h-25 w-dvw lg:hidden">
+<div
+  class="sh-bg-gradient fixed bottom-0 left-0 z-50 min-h-25 w-dvw lg:hidden max-height-too-small:static max-height-too-small:min-h-0"
+>
   <div
     id="sh-mobile-navbar-container"
-    class="sh-bg-shadow absolute bottom-10 left-1/2 flex -translate-x-1/2 items-center justify-center gap-3 rounded-xl border border-stone-700/50 bg-stone-700/40 px-2.5 py-1.5 backdrop-blur"
+    class="sh-bg-shadow absolute bottom-10 left-1/2 flex -translate-x-1/2 items-center justify-center gap-3 rounded-xl border border-stone-700/50 bg-stone-700/40 px-2.5 py-1.5 backdrop-blur max-height-too-small:static max-height-too-small:mx-auto max-height-too-small:my-4 max-height-too-small:translate-x-0"
   >
     <nav
       class="flex items-center gap-3"

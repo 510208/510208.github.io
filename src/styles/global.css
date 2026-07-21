@@ -195,3 +195,6 @@ html {
   scrollbar-width: auto;
   scrollbar-color: oklch(0.553 0.013 58.071) transparent;
 }
+
+/* 定義符合a11y的寬高斷點 */
+@custom-variant max-height-too-small (@media (max-height: 500px));
