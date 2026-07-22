@@ -1,4 +1,4 @@
-import { Button } from "@components/ui/button";
+import { buttonVariants } from "@components/ui/button";
 import { UserPlus } from "lucide-react";
 import { SelfAvatar } from "./SelfAvatar";
 import { useEffect, useState } from "react";
@@ -28,14 +28,13 @@ export const GitHubInfo = () => {
             href="https://github.com/510208"
             target="_blank"
             rel="noopener noreferrer"
+            className={buttonVariants()}
           >
-            <Button>
-              <UserPlus />
-              關注
-              <Badge variant={"default"} className="ml-1 bg-gray-100">
-                {githubData ? githubData.followers : "–"}
-              </Badge>
-            </Button>
+            <UserPlus />
+            關注
+            <Badge variant={"default"} className="ml-1 bg-gray-100">
+              {githubData ? githubData.followers : "–"}
+            </Badge>
           </a>
         </div>
         <p className="mt-4 text-sm">

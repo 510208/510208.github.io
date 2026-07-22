@@ -16,7 +16,7 @@ import WelcomeAnimation from "@components/core/WelcomeAnimation.astro";
 import bgImage from "@/assets/pages/home/dark_bg-intro.png";
 const optimizedBgImage = await getImage({ src: bgImage, width: 1200 });
 
-import { Button } from "@ui/button";
+import { buttonVariants } from "@ui/button";
 
 const isDev = import.meta.env.DEV;
 ---
@@ -50,8 +50,8 @@ const isDev = import.meta.env.DEV;
     />
     <ProjectsSection />
     <div class="mt-4 flex w-full justify-center">
-      <a href="/projects">
-        <Button variant="outline">我的所有專案</Button>
+      <a href="/projects" class={buttonVariants({ variant: "outline" })}>
+        我的所有專案
       </a>
     </div>
   </Content>

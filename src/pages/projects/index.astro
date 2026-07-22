@@ -1,7 +1,8 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
 import BigProjectGrid from "@/components/page/Projects/BigProjectGrid.astro";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 import CfBotLogo from "@/assets/pages/projects/logos/cfbot.svg";
 import CfBotBg from "@/assets/pages/projects/thumbnails/cfbot.svg";
@@ -60,11 +61,15 @@ import { FolderBookmark } from "lucide-react";
         查看更多內容！
       </p>
 
-      <a href="/projects/list">
-        <Button variant="default" className="flex items-center gap-2 px-6!">
-          查看更多專案
-          <FolderBookmark />
-        </Button>
+      <a
+        href="/projects/list"
+        class={cn(
+          buttonVariants({ variant: "default" }),
+          "flex items-center gap-2 px-6! text-black!",
+        )}
+      >
+        <FolderBookmark />
+        查看更多專案
       </a>
     </div>
   </div>
