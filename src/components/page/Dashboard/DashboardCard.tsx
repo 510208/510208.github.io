@@ -77,7 +77,7 @@ function DashboardCard({
       : item.description;
 
   // 建立符合 HM1240404E 無障礙規範的連結提示字串
-  const linkAccessibleText = `查看 ${item.title} 數據統計（另開新視窗）`;
+  const linkAccessibleText = `查看${item.title}數據統計（另開新視窗）`;
 
   return (
     <a
