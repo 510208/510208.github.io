@@ -6,10 +6,11 @@ import {
 } from "@/components/ui/tooltip";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import WaterFall from "@/components/ui/waterfall";
 import friends from "@shFriends";
 import type { FriendCardProps } from "@/types/shsite.friends";
+import { cn } from "@/lib/utils";
 
 function getFriendImageUrl(image: ImageMetadata | string): string {
   console.log("getFriendImageUrl", image);
@@ -57,24 +58,27 @@ function FriendCard({
           <p className="text-sm">{description}</p>
           <div className="flex flex-wrap gap-2 text-xs">
             {links.map((link, index) => (
-              <a
-                key={index}
-                href={link.to}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={link.label}
-              >
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="ghost" size="icon" aria-label={link.label}>
-                      {link.icon}
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{link.label}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </a>
+              <Tooltip key={index}>
+                <TooltipTrigger asChild>
+                  <a
+                    href={link.to}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={link.label}
+                    className={cn(
+                      buttonVariants({
+                        variant: "ghost",
+                        size: "icon",
+                      }),
+                    )}
+                  >
+                    {link.icon}
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{link.label}</p>
+                </TooltipContent>
+              </Tooltip>
             ))}
           </div>
         </div>

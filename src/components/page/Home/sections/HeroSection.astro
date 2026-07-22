@@ -2,8 +2,8 @@
 import { getImage } from "astro:assets";
 import AnimateTitle from "@/components/page/Home/compose/hero/AnimateTitle.astro";
 import StatusBadge from "@/components/page/Home/compose/hero/StatusBadge.astro";
-import { Button } from "@/components/ui/button.tsx";
-import { ArrowRight, FolderBookmark, UsersRound, Gauge } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { ArrowRight, FolderBookmark, UsersRound, Gauge } from "@lucide/astro";
 import { Image } from "astro:assets";
 
 import CharacterImage from "@/assets/pages/home/misana-character_long.png";
@@ -78,49 +78,50 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
         </p>
 
         <div class="flex gap-2.5">
-          <a href="/about" aria-label="關於我按鈕的連結元件">
-            <Button
-              size="lg"
-              variant="secondary"
-              aria-label="關於我"
-              className="font-regular h-auto px-[30px]! py-2.5 text-lg"
-            >
-              關於我
-              <ArrowRight className="ml-2.5" />
-            </Button>
+          <a
+            href="/about"
+            aria-label="關於我"
+            class={buttonVariants({
+              variant: "secondary",
+              size: "lg",
+              className: "h-auto px-[30px]! py-2.5 text-lg!",
+            })}
+          >
+            關於我
+            <ArrowRight class="ml-2.5" />
           </a>
 
-          <a href="/projects" aria-label="專案列表">
-            <Button
-              size="icon-hero"
-              aria-label="專案列表"
-              variant="ghost"
-              className="h-full p-0"
-            >
-              <FolderBookmark size={24} className="size-5" />
-            </Button>
+          <a
+            href="/projects"
+            aria-label="專案列表"
+            class={buttonVariants({
+              variant: "ghost",
+              size: "icon-hero",
+            })}
+          >
+            <FolderBookmark size={24} class="size-5" />
           </a>
 
-          <a href="/friends" aria-label="朋友列表">
-            <Button
-              size="icon-hero"
-              aria-label="朋友"
-              variant="ghost"
-              className="h-full p-0"
-            >
-              <UsersRound size={24} className="size-5" />
-            </Button>
+          <a
+            href="/friends"
+            aria-label="朋友列表"
+            class={buttonVariants({
+              variant: "ghost",
+              size: "icon-hero",
+            })}
+          >
+            <UsersRound size={24} class="size-5" />
           </a>
 
-          <a href="/dashboard" aria-label="數據儀表板">
-            <Button
-              size="icon-hero"
-              aria-label="數據儀表板"
-              variant="ghost"
-              className="h-full p-0"
-            >
-              <Gauge size={24} className="size-5" />
-            </Button>
+          <a
+            href="/dashboard"
+            aria-label="數據儀表板"
+            class={buttonVariants({
+              variant: "ghost",
+              size: "icon-hero",
+            })}
+          >
+            <Gauge size={24} class="size-5" />
           </a>
         </div>
       </div>
