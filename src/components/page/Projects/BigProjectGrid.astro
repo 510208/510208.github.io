@@ -1,63 +1,51 @@
 ---
-import { Card } from "@/components/ui/card";
-import { Image } from "astro:assets";
+import BigProjectCard from "@/components/page/Projects/BigProjectCard.astro";
 
 import LHLogo from "@/assets/pages/projects/logos/lighttp.svg";
 import SHBNLogo from "@/assets/pages/projects/logos/shblog-next.svg";
 import LHBg from "@/assets/pages/projects/thumbnails/lighttp.svg";
 import SHBNBg from "@/assets/pages/projects/thumbnails/shblog-next.svg";
+
+const lighttpConfig = {
+  normalBg: "#272728",
+  hoverBg: "#393949",
+  normalOpacity: 0.8,
+  hoverOpacity: 0.8,
+};
+
+const shbnConfig = {
+  normalBg: "#1b241e",
+  hoverBg: "#263a2c",
+  normalOpacity: 0.8,
+  hoverOpacity: 0.9,
+};
 ---
 
 <!-- 主打區段 -->
 <div class="flex flex-col justify-between gap-4 lg:h-85 lg:flex-row">
-  <Card
-    className="sh-click-link sh-project-card sh-big-card relative min-h-[280px] w-full cursor-pointer justify-center overflow-hidden px-8 lg:w-1/2 lg:py-13 lg:pr-50 lg:pl-[50px]"
+  <BigProjectCard
     id="sh-card-lighttp-bg"
-    tabIndex={0}
-    data-link="https://github.com/510208/lighttp"
-    role="button"
-    aria-label="前往 LigHTTP 專案頁面"
+    title="LigHTTP"
+    description="LigHTTP是一款開源的HTTP請求工具，目的是成為Postman的輕量平替。希望可以提供極為簡單且高效的HTTP請求體驗。"
+    descriptionColorClass="text-sky-100/90"
+    link="https://github.com/510208/lighttp"
+    bgImg={LHBg}
+    config={lighttpConfig}
   >
-    <div
-      class="sh-card-bg-img absolute top-1/2 -right-1/3 -translate-y-1/2 scale-75 opacity-75 md:-right-[10%] md:scale-120 md:opacity-100 lg:-right-1/3 lg:scale-100"
-    >
-      <Image alt="" src={LHBg} class="object-cover" />
-    </div>
+    <LHLogo slot="logo" class="sh-animated-logo scale-75 lg:scale-100" />
+  </BigProjectCard>
 
-    <div
-      class="sh-card-content z-10 flex max-w-64 flex-col gap-4 lg:gap-[30px]"
-    >
-      <LHLogo class="sh-animated-logo scale-75 lg:scale-100" />
-      <h2 class="sr-only">LigHTTP</h2>
-      <p class="text-sky-100/90">
-        LigHTTP是一款開源的HTTP請求工具，目的是成為Postman的輕量平替。希望可以提供極為簡單且高效的HTTP請求體驗。
-      </p>
-    </div>
-  </Card>
-
-  <Card
-    className="sh-click-link sh-project-card sh-big-card relative min-h-[280px] w-full cursor-pointer justify-center overflow-hidden px-8 lg:w-1/2 lg:py-13 lg:pr-50 lg:pl-[50px]"
+  <BigProjectCard
     id="sh-card-shbn-bg"
-    tabIndex={0}
-    data-link="https://sh-blog-next.vercel.app/"
-    role="button"
-    aria-label="前往 SHBlog Next 專案頁面"
+    title="SHBlog Next"
+    description="SHBlog Next是一個基於Astro的個人部落格框架，目標是提供一個簡單、個性化、快速且開箱即用的個人開發者部落格解決方案。"
+    descriptionColorClass="text-emerald-100/90"
+    link="https://sh-blog-next.vercel.app/"
+    bgImg={SHBNBg}
+    config={shbnConfig}
   >
-    <div
-      class="sh-card-bg-img absolute top-1/2 -right-1/3 -translate-y-1/2 scale-75 opacity-75 md:-right-[10%] md:scale-120 md:opacity-100 lg:-right-1/3 lg:scale-100"
-    >
-      <Image alt="" src={SHBNBg} class="object-cover" />
-    </div>
-
-    <div class="sh-card-content z-10 flex max-w-64 flex-col gap-[30px]">
-      <h2 class="sr-only">SHBlog Next</h2>
-      <SHBNLogo class="sh-animated-logo scale-80 lg:scale-100" />
-      <p class="text-emerald-100/90">
-        SHBlog
-        Next是一個基於Astro的個人部落格框架，目標是提供一個簡單、個性化、快速且開箱即用的個人開發者部落格解決方案。
-      </p>
-    </div>
-  </Card>
+    <SHBNLogo slot="logo" class="sh-animated-logo scale-80 lg:scale-100" />
+  </BigProjectCard>
 </div>
 
 <style>
@@ -87,75 +75,3 @@ import SHBNBg from "@/assets/pages/projects/thumbnails/shblog-next.svg";
     background-color: #1b241e;
   }
 </style>
-
-<script>
-  import { gsap } from "gsap";
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const bigCards = document.querySelectorAll(".sh-big-card");
-
-    const cardConfigs = {
-      "sh-card-lighttp-bg": {
-        normalBg: "#272728",
-        hoverBg: "#393949",
-        normalOpacity: 0.8,
-        hoverOpacity: 0.8,
-      },
-      "sh-card-shbn-bg": {
-        normalBg: "#1b241e",
-        hoverBg: "#263a2c",
-        normalOpacity: 0.8,
-        hoverOpacity: 0.9,
-      },
-    };
-
-    bigCards.forEach((card) => {
-      const cardId = card.id as keyof typeof cardConfigs;
-      const config = cardConfigs[cardId];
-      const bgImg = card.querySelector(".sh-card-bg-img");
-      const content = card.querySelector(".sh-card-content");
-
-      if (!config) return;
-
-      const tl = gsap.timeline({ paused: true });
-
-      tl.to(
-        card,
-        {
-          backgroundColor: config.hoverBg,
-          "--sh-grad-opacity": config.hoverOpacity,
-          duration: 0.3,
-          ease: "power2.out",
-        },
-        0,
-      );
-
-      if (bgImg) {
-        tl.to(
-          bgImg,
-          {
-            right: "-20%",
-            duration: 0.3,
-            ease: "power2.out",
-          },
-          0,
-        );
-      }
-
-      if (content) {
-        tl.to(
-          content,
-          {
-            gap: "40px",
-            duration: 0.3,
-            ease: "power2.out",
-          },
-          0,
-        );
-      }
-
-      card.addEventListener("mouseenter", () => tl.play());
-      card.addEventListener("mouseleave", () => tl.reverse());
-    });
-  });
-</script>

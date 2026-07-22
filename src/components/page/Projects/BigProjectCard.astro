@@ -1,0 +1,106 @@
+---
+import { Card } from "@/components/ui/card";
+import { Image } from "astro:assets";
+
+interface Config {
+  normalBg: string;
+  hoverBg: string;
+  normalOpacity: number;
+  hoverOpacity: number;
+}
+
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  descriptionColorClass: string;
+  link: string;
+  bgImg: ImageMetadata;
+  config: Config;
+}
+
+const { id, title, description, descriptionColorClass, link, bgImg, config } =
+  Astro.props;
+---
+
+<Card
+  className="sh-click-link sh-project-card sh-big-card relative min-h-[280px] w-full cursor-pointer justify-center overflow-hidden px-8 lg:w-1/2 lg:py-13 lg:pr-50 lg:pl-[50px]"
+  id={id}
+  tabIndex={0}
+  data-link={link}
+  data-config={JSON.stringify(config)}
+  role="button"
+  aria-label={`前往 ${title} 專案頁面`}
+>
+  <div
+    class="sh-card-bg-img absolute top-1/2 -right-1/3 -translate-y-1/2 scale-75 opacity-75 md:-right-[10%] md:scale-120 md:opacity-100 lg:-right-1/3 lg:scale-100"
+  >
+    <Image alt="" src={bgImg} class="object-cover" />
+  </div>
+
+  <div class="sh-card-content z-10 flex max-w-64 flex-col gap-4 lg:gap-[30px]">
+    <slot name="logo" />
+    <h2 class="sr-only">{title}</h2>
+    <p class={descriptionColorClass}>
+      {description}
+    </p>
+  </div>
+</Card>
+
+<script>
+  import { gsap } from "gsap";
+
+  // 避免在多個卡片實例中重複綁定事件，使用腳本模組層級事件監聽
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".sh-big-card");
+
+    cards.forEach((card) => {
+      const configAttr = card.getAttribute("data-config");
+      if (!configAttr) return;
+
+      const config = JSON.parse(configAttr);
+      const bgImg = card.querySelector(".sh-card-bg-img");
+      const content = card.querySelector(".sh-card-content");
+
+      const tl = gsap.timeline({ paused: true });
+
+      tl.to(
+        card,
+        {
+          backgroundColor: config.hoverBg,
+          "--sh-grad-opacity": config.hoverOpacity,
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        0,
+      );
+
+      if (bgImg) {
+        tl.to(
+          bgImg,
+          {
+            right: "-20%",
+            duration: 0.3,
+            ease: "power2.out",
+          },
+          0,
+        );
+      }
+
+      if (content) {
+        tl.to(
+          content,
+          {
+            gap: "40px",
+            duration: 0.3,
+            ease: "power2.out",
+          },
+          0,
+        );
+      }
+
+      card.addEventListener("mouseenter", () => tl.play());
+      card.addEventListener("mouseleave", () => tl.reverse());
+    });
+  });
+</script>
