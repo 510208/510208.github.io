@@ -13,7 +13,6 @@ import type { FriendCardProps } from "@/types/shsite.friends";
 import { cn } from "@/lib/utils";
 
 function getFriendImageUrl(image: ImageMetadata | string): string {
-  console.log("getFriendImageUrl", image);
   return typeof image === "string" ? image : image.src;
 }
 
@@ -64,7 +63,7 @@ function FriendCard({
                     href={link.to}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={link.label}
+                    aria-label={`${name}的${link.label}（另開新視窗）`}
                     className={cn(
                       buttonVariants({
                         variant: "ghost",
