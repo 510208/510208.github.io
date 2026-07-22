@@ -84,21 +84,6 @@ import backgroundImage from "@/assets/core/footer_bg.png";
         <p class="text-sm text-gray-400">
           &copy; <span id="sh-footer-year">2025</span> SamHacker. All rights reserved.
         </p>
-        <div class="flex items-center gap-4">
-          {
-            config.socialLinks.slice(0, 6).map((link, index) => (
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-gray-400 transition-colors hover:text-white"
-                aria-label={link.title}
-              >
-                <link.icon class="h-6 w-6" />
-              </a>
-            ))
-          }
-        </div>
       </div>
     </div>
 
