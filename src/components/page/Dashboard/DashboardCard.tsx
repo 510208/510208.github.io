@@ -1,15 +1,8 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import { type DashboardFeature } from "@/lib/dashboard/types";
 import { Skeleton } from "@ui/skeleton";
-
-// 動態導入 GSAP 以避免服務端渲染問題
-let gsap: any = null;
-
-if (typeof window !== "undefined") {
-  import("gsap").then((module) => {
-    gsap = module.gsap;
-  });
-}
 
 // 提取數字部分用於動畫
 const extractNumber = (val: string | number): number => {
@@ -52,22 +45,14 @@ function DashboardCard({
   index: number;
   hexToRgba: (hex: string, alpha: number) => string;
 }) {
-  const numberRef = useRef<HTMLParagraphElement>(null);
+  const containerRef = useRef<HTMLAnchorElement>(null);
   const [animatedValue, setAnimatedValue] = useState(0);
-  const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  // 使用 useGSAP 處理動畫，自動處理組件生命週期與記憶體回收
+  useGSAP(
+    () => {
+      if (item.description === undefined) return;
 
-  // 客戶端動畫效果
-  useEffect(() => {
-    if (
-      isClient &&
-      item.description !== undefined &&
-      gsap &&
-      numberRef.current
-    ) {
       const targetValue = extractNumber(item.description);
 
       gsap.to(
@@ -82,16 +67,27 @@ function DashboardCard({
           },
         },
       );
-    }
-  }, [isClient, item.description, index]);
+    },
+    { scope: containerRef, dependencies: [item.description, index] },
+  );
 
   const displayValue =
-    isClient && item.description !== undefined
+    item.description !== undefined
       ? preserveOriginalFormat(animatedValue, item.description)
       : item.description;
 
+  // 建立符合 HM1240404E 無障礙規範的連結提示字串
+  const linkAccessibleText = `查看 ${item.title} 數據統計（另開新視窗）`;
+
   return (
-    <a href={item.link} target="_blank" rel="noopener noreferrer">
+    <a
+      ref={containerRef}
+      href={item.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={linkAccessibleText}
+      aria-label={linkAccessibleText}
+    >
       <div
         className="group overflow-hidden rounded-lg border border-stone-700 bg-stone-800/50 px-2 py-8 shadow-lg backdrop-blur-md transition-all duration-200 hover:-translate-y-2 hover:bg-stone-700"
         style={{
@@ -114,10 +110,7 @@ function DashboardCard({
 
         <div className="absolute bottom-0 left-0 h-1 w-0 bg-stone-500/50 transition-all duration-200 group-hover:w-full"></div>
 
-        <p
-          ref={numberRef}
-          className="text-center font-mono text-3xl font-bold text-white"
-        >
+        <p className="text-center font-mono text-3xl font-bold text-white">
           {displayValue}
         </p>
       </div>
