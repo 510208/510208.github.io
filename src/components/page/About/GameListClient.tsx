@@ -8,6 +8,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import type { ShsiteConfig } from "@/types/shsite.config";
+import { ExternalLink } from "lucide-react";
 
 const GameListClient = ({ game }: { game: ShsiteConfig["game"][0] }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,9 +60,13 @@ const GameListClient = ({ game }: { game: ShsiteConfig["game"][0] }) => {
             href={game.link}
             target="_blank"
             rel="noopener noreferrer"
+            title={`${game.name} - 遊戲資訊（另開新視窗）`}
+            aria-label={`關於 ${game.name} 這款遊戲的資訊（另開新視窗）`}
             className="mt-4 inline-block text-sm text-blue-500 hover:underline focus-visible:ring-1 focus-visible:ring-blue-500 focus-visible:outline-none"
           >
             關於這款遊戲
+            <ExternalLink className="ml-1 inline-block size-3" />
+            <span className="sr-only">（另開新視窗）</span>
           </a>
         </div>
       </HoverCardContent>
