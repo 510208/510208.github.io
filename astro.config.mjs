@@ -2,6 +2,7 @@
 import { defineConfig, fontProviders } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
+
 import react from "@astrojs/react";
 import devtoolBreakpoints from "astro-devtool-breakpoints";
 import lenis from "astro-lenis";
@@ -17,7 +18,7 @@ export default defineConfig({
       name: 'Noto Sans TC',
       cssVariable: '--font-noto',
       provider: fontProviders.fontsource(),
-      weights: ['100', '200', '400', '500', '700'],
+      weights: ['100', '200', '400', '500', '700', '900'],
       subsets: ['chinese-traditional', 'latin'], 
       fallbacks: [],
     },
@@ -37,7 +38,7 @@ export default defineConfig({
       fallbacks: ["sans-serif"],
       options: {
         variants: [{
-          src: ['./src/assets/fonts/ChenYuluoyan-2.0-Thin.woff2'],
+          src: ['./src/assets/fonts/ChenYuluoyan-2.0-Thin.woff2?subsets'],
           weight: 'normal',
           style: 'normal'
         }]
