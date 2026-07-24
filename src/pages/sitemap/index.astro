@@ -1,0 +1,95 @@
+---
+import config from "@shConfig";
+
+import PageLayout from "@/layouts/PageLayout.astro";
+import SingleKey from "@/components/page/sitemap/SingleKey.astro";
+import SectionTitle from "@components/common/SectionTitle.astro";
+import LinkCard from "@/components/page/sitemap/LinkCard.astro";
+import { FolderDot, Home } from "@lucide/astro";
+
+// 過濾外部網站
+const links = config.navBar.links.filter(
+  (link) => !link.href.startsWith("http"),
+);
+// 在最前方注入「首頁」連結
+links.unshift({
+  href: "/",
+  alt: "首頁",
+  description: "此頁面提供卡片形式的個人資訊概覽、專案Logo、得獎經歷等資訊",
+  title: "Home",
+  icon: Home,
+});
+// 在Projects後方注入All Projects連結
+const projectsIndex = links.findIndex((link) => link.href === "/projects");
+if (projectsIndex !== -1) {
+  links.splice(projectsIndex + 1, 0, {
+    href: "/projects/list",
+    alt: "所有專案",
+    description:
+      "此頁面列出所有我曾在GitHub或其他開發平台上傳的專案，並提供它們的資訊",
+    title: "All Projects",
+    icon: FolderDot,
+  });
+}
+---
+
+<PageLayout
+  title="網站導覽"
+  subtitle="有時候，其實你只需要一張地圖"
+  description="這裡是關於我的一些介紹，包含了我的背景、興趣、以及這個網站的故事。如果你想更了解我的話，可以參考看看。"
+  ogImage="/assets/website_og/sitemap_og.png"
+>
+  <section class="mt-8 flex">
+    <div
+      class="sh-sideline mx-auto w-full overflow-hidden rounded-lg border bg-stone-800/90 p-6 shadow-lg backdrop-blur-md"
+    >
+      <h2 class="text-3xl font-bold">定位點與快速鍵</h2>
+      <p class="mt-4 text-gray-300">
+        這個網站已經根據無障礙網頁設計原則來建置、並嘗試向數位發展部無障礙網頁空間服務網申請無障礙標章中。此網站的主要內容分為上方功能區塊（頁首）、中央內容區塊、下方功能區塊（頁尾）。
+      </p>
+      <ul class="mt-4 list-inside list-disc text-lg text-gray-300">
+        <li>
+          每個頁面最前方都有一個「跳到主要內容」連結，您可以透過先按下<SingleKey
+            >Tab</SingleKey
+          >鍵後按<SingleKey>Enter</SingleKey
+          >鍵來執行該連結。執行該連結後可直接前往該頁的<SingleKey
+            >#main-content</SingleKey
+          >
+        </li>
+        <li>
+          本站並未提供站內搜尋功能，所有頁面皆可從頁首導覽列、本頁面或頁尾選單中前往
+        </li>
+        <li>
+          您可以從頁首前往各介紹頁面，包括關於、朋友、專案概覽、裝備列表、數據儀表板與部落格頁面（外連頁面，前往<SingleKey
+            >blog.samhacker.xyz</SingleKey
+          >），惟部分頁面（如所有專案列表）需由其父級頁面（如專案概覽）前往之<SingleKey
+            >#main-header</SingleKey
+          >
+        </li>
+        <li>
+          您可從頁尾前往各頁面，連結目標與頁首一致；頁尾亦有外連連結，前往與本站有關之各社群網站
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="mt-8">
+    <SectionTitle chinese="主要頁面" english="Main Pages" />
+
+    <p class="mb-4 text-gray-300">
+      以下是本站的網站導覽，您可以透過這個導覽快速前往各頁面。
+    </p>
+    <div
+      class="grid list-inside list-disc grid-cols-1 gap-4 text-lg text-gray-300 md:grid-cols-2 lg:grid-cols-3"
+    >
+      {
+        links.map((link) => (
+          <LinkCard href={link.href}>
+            <Fragment slot="title">{link.alt}</Fragment>
+            {link.description}
+          </LinkCard>
+        ))
+      }
+    </div>
+  </section>
+</PageLayout>
