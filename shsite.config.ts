@@ -6,6 +6,7 @@ import {
   FolderDot,
   LaptopMinimal,
   Gauge,
+  MapPin,
 } from "lucide-react";
 import {
   Astro,
@@ -54,11 +55,12 @@ import wordThumbnail from "@/assets/pages/equipments/software/word.webp";
 const config: ShsiteConfig = {
   navBar: {
     links: [
-      { title: "About", alt: "關於", href: "/about", icon: Info },
-      { title: "Friends", alt: "朋友", href: "/friends", icon: Handshake },
-      { title: "Projects", alt: "專案", href: "/projects", icon: FolderDot },
-      { title: "Equipments", alt: "設備", href: "/equipments", icon: LaptopMinimal },
-      { title: "Dashboard", alt: "儀表板", href: "/dashboard", icon: Gauge },
+      { title: "About", alt: "關於頁面", href: "/about", icon: Info, description: "此頁面透過純文字方式介紹此網站與開發者之相關資訊" },
+      { title: "Friends", alt: "朋友", href: "/friends", icon: Handshake, description: "此頁面提供類似於友情連結的功能，介紹我的朋友們" },
+      { title: "Projects", alt: "專案", href: "/projects", icon: FolderDot, description: "此頁面以卡片形式介紹我較為重要值得推薦的一些專案" },
+      { title: "Equipments", alt: "設備", href: "/equipments", icon: LaptopMinimal, description: "此頁面列出我目前使用的電腦與相關周邊、以及開發過程中使用的軟體等，非商業推廣" },
+      { title: "Dashboard", alt: "儀表板", href: "/dashboard", icon: Gauge, description: "此頁面會動態更新，提供我的各種統計。如開發總時長、YouTube訂閱、GitHub等" },
+      { title: "Map", alt: "網站導覽", href: "/sitemap", icon: MapPin, description: "目前頁面。此頁面列出當前本網站所有頁面的整理，以符合a11y要求" },
       { title: "Blog", alt: "部落格", href: "https://blog.samhacker.xyz/", icon: Newspaper },
     ],
   },
