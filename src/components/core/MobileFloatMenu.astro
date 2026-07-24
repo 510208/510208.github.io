@@ -19,10 +19,10 @@ const { current } = Astro.props;
 >
   <div
     id="sh-mobile-navbar-container"
-    class="sh-bg-shadow absolute bottom-10 left-1/2 flex -translate-x-1/2 items-center justify-center gap-3 rounded-xl border border-stone-700/50 bg-stone-700/40 px-2.5 py-1.5 backdrop-blur max-height-too-small:static max-height-too-small:mx-auto max-height-too-small:my-4 max-height-too-small:translate-x-0"
+    class="sh-bg-shadow absolute bottom-10 left-1/2 flex -translate-x-1/2 items-center justify-center gap-3 rounded-xl border border-stone-700/50 bg-stone-700/40 px-2.5 py-1 backdrop-blur max-height-too-small:static max-height-too-small:mx-auto max-height-too-small:my-4 max-height-too-small:translate-x-0"
   >
     <nav
-      class="flex items-center gap-3"
+      class="flex h-8 items-center gap-3"
       tabindex="0"
       id="sh-mobile-navbar"
       aria-label="手機版選單"
@@ -33,37 +33,25 @@ const { current } = Astro.props;
           const isActive = current === link.href;
           if (link.href === current) {
             return (
-              <>
-                {/* 未展開版 - 將 data-actived 修正為 data-activated */}
-                <div
-                  aria-label={`${link.title} 頁面`}
-                  aria-current="page"
-                  data-activated="true"
-                  class="sh-text-primary sh-text-sm sh-font-medium flex items-center justify-center p-1"
-                  id={`sh-mobile-navbar-${link.title.toLowerCase().replace(/\s+/g, "-")}`}
-                >
-                  <link.icon size={20} className="text-neutral-100" />
-                </div>
-
-                {/* 展開版 - 移除會干擾 Flip 外掛量測的 data-[activated] Tailwind 隱藏類別 */}
-                <div
-                  aria-label={`${link.title} 頁面`}
-                  aria-current="page"
-                  data-activated="false"
-                  class="sh-text-primary sh-text-sm sh-font-medium hidden items-center justify-center gap-2.5 rounded-sm bg-stone-100 px-2.5 py-1.5"
-                  id={`sh-mobile-navbar-${link.title.toLowerCase().replace(/\s+/g, "-")}-expanded`}
-                >
-                  <link.icon size={22} className="text-stone-950" />
-                  <div class="flex flex-col items-start justify-center">
-                    <span class="text-sm font-medium text-stone-900">
-                      {link.alt}
-                    </span>
-                    <span class="text-xs font-normal text-stone-700">
-                      {link.title}
-                    </span>
+              <div
+                aria-label={`目前頁面：${link.alt} (${link.title})`}
+                aria-current="page"
+                id="sh-mobile-navbar-active-item"
+                class="active-item"
+              >
+                <div id="sh-active-bg" aria-hidden="true" />
+                <div class="active-content-inner">
+                  <link.icon
+                    id="sh-active-icon"
+                    size={20}
+                    className="text-neutral-100"
+                  />
+                  <div id="sh-active-text-wrapper" aria-hidden="true">
+                    <span class="active-title">{link.alt}</span>
+                    <span class="active-subtitle">{link.title}</span>
                   </div>
                 </div>
-              </>
+              </div>
             );
           } else {
             return (
@@ -75,8 +63,8 @@ const { current } = Astro.props;
                     ? "noopener noreferrer"
                     : undefined
                 }
-                aria-label={`${link.title} 頁面`}
-                class={`sh-text-white sh-text-sm sh-font-medium sh-transition-colors sh-duration-300 sh-ease-in-out ${isActive ? "sh-text-primary" : "hover:sh-text-primary"} p-1`}
+                aria-label={`前往 ${link.title}`}
+                class={`nav-link sh-text-white sh-text-sm sh-font-medium sh-transition-colors sh-duration-300 sh-ease-in-out hover:sh-text-primary`}
                 id={`sh-mobile-navbar-${link.title.toLowerCase().replace(/\s+/g, "-")}`}
               >
                 <link.icon size={20} className="text-neutral-400" />
@@ -90,11 +78,19 @@ const { current } = Astro.props;
 
     <Separator orientation="vertical" />
 
-    <ChevronUp
-      size={16}
-      id="sh-mobile-navbar-chevron"
-      class="text-neutral-400"
-    />
+    <button
+      id="sh-mobile-navbar-toggle-btn"
+      type="button"
+      aria-expanded="false"
+      aria-controls="sh-active-text-wrapper"
+      aria-label="展開詳細導航資訊"
+    >
+      <ChevronUp
+        size={16}
+        id="sh-mobile-navbar-chevron"
+        class="text-neutral-400"
+      />
+    </button>
   </div>
 </div>
 
@@ -112,195 +108,223 @@ const { current } = Astro.props;
   .sh-bg-shadow {
     box-shadow: 0 4px 20px -6px rgba(255, 255, 255, 0.2);
   }
+
+  #sh-mobile-navbar-toggle-btn {
+    background: transparent;
+    border: none;
+    padding: 6px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+
+  .nav-link {
+    padding: 4px 4px;
+  }
+
+  #sh-mobile-navbar-toggle-btn:focus-visible,
+  .nav-link:focus-visible {
+    outline: 2px solid #f5f5f4;
+    outline-offset: 2px;
+  }
+
+  .active-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 4px;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+  #sh-active-bg {
+    position: absolute;
+    inset: 0;
+    background-color: #f5f5f4;
+    border-radius: 8px;
+    opacity: 0;
+    transform: scale(0.9);
+    z-index: 1;
+  }
+  .active-content-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0px;
+  }
+  #sh-active-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .active-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1c1917;
+    line-height: 1.2;
+  }
+  .active-subtitle {
+    font-size: 10px;
+    font-weight: 400;
+    color: #44403c;
+    line-height: 1;
+    margin-top: 2px;
+  }
 </style>
 
 <script>
   import gsap from "gsap";
-  import { Flip } from "gsap/Flip";
-  gsap.registerPlugin(Flip);
 
   document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector(
       "#sh-mobile-navbar-container",
     ) as HTMLElement | null;
-    const nav = document.querySelector(
-      "#sh-mobile-navbar",
+    const toggleBtn = document.querySelector(
+      "#sh-mobile-navbar-toggle-btn",
     ) as HTMLElement | null;
     const chevron = document.querySelector(
       "#sh-mobile-navbar-chevron",
     ) as HTMLElement | null;
 
-    const collapsedItem = document.querySelector(
-      '[data-activated="true"]',
+    const activeItem = document.querySelector(
+      ".active-item",
     ) as HTMLElement | null;
-    const expandedItem = document.querySelector(
-      '[data-activated="false"]',
+    const activeBg = document.querySelector(
+      "#sh-active-bg",
+    ) as HTMLElement | null;
+    const activeIcon = document.querySelector(
+      "#sh-active-icon",
+    ) as HTMLElement | null;
+    const textWrapper = document.querySelector(
+      "#sh-active-text-wrapper",
+    ) as HTMLElement | null;
+    const activeContentInner = document.querySelector(
+      ".active-content-inner",
     ) as HTMLElement | null;
 
-    if (!container || !nav || !chevron) {
-      console.warn("未找到核心選單元素或切換按鈕，無法初始化導航列功能。");
+    if (
+      !container ||
+      !toggleBtn ||
+      !chevron ||
+      !activeBg ||
+      !textWrapper ||
+      !activeIcon ||
+      !activeItem ||
+      !activeContentInner
+    ) {
+      console.warn("未找到核心選單元素，無法初始化導航列動畫。");
       return;
     }
 
-    // A11y：確保鍵盤使用者能點選容器
-    if (!container.getAttribute("role"))
-      container.setAttribute("role", "button");
-    if (!container.getAttribute("tabindex"))
-      container.setAttribute("tabindex", "0");
+    // A11y：容器本身可作為點擊觸發區
     container.setAttribute("aria-expanded", "false");
 
-    // 初始狀態
-    gsap.set(chevron, { rotate: 0, transformOrigin: "50% 50%" });
-    gsap.set([container, chevron], { willChange: "transform, opacity" });
+    gsap.set([container, chevron, activeBg, textWrapper, activeItem], {
+      willChange: "transform, opacity, width, padding",
+    });
 
-    let isAnimating = false;
+    let isExpanded = false;
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    const toggleNavbar = (shouldExpand: boolean) => {
-      if (isAnimating) return;
+    const tl = gsap.timeline({ paused: true });
 
-      const targetState = shouldExpand ? "expanded" : "collapsed";
-      if (nav.dataset.state === targetState) return;
+    tl.to(chevron, { rotate: 180, duration: 0.35, ease: "power2.inOut" }, 0)
+      .to(
+        activeItem,
+        {
+          paddingTop: 10,
+          paddingBottom: 10,
+          paddingLeft: 12,
+          paddingRight: 12,
+          duration: 0.35,
+          ease: "power3.inOut",
+        },
+        0,
+      )
+      .to(
+        toggleBtn,
+        {
+          paddingTop: 18,
+          paddingBottom: 18,
+          duration: 0.35,
+          ease: "power3.inOut",
+        },
+        0,
+      )
+      .to(
+        activeContentInner,
+        { gap: 10, duration: 0.35, ease: "power3.inOut" },
+        0,
+      )
+      .to(
+        activeBg,
+        { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.2)" },
+        0,
+      )
+      .to(activeIcon, { color: "#1c1917", duration: 0.25 }, 0)
+      .to(
+        textWrapper,
+        { width: "auto", opacity: 1, duration: 0.35, ease: "power3.inOut" },
+        0.04,
+      );
 
-      // 無障礙支援：如果使用者開啟「減少動態效果」，直接切換
+    if (prefersReducedMotion) {
+      tl.progress(0).pause();
+    }
+
+    const setAriaAndRadius = (expanded: boolean) => {
+      container.style.borderRadius = expanded ? "16px" : "9999px";
+      container.setAttribute("aria-expanded", expanded ? "true" : "false");
+      toggleBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
+      toggleBtn.setAttribute(
+        "aria-label",
+        expanded ? "收合詳細導航資訊" : "展開詳細導航資訊",
+      );
+    };
+
+    const toggleNavbar = () => {
+      if (tl.isActive()) return;
+
+      isExpanded = !isExpanded;
+      setAriaAndRadius(isExpanded);
+
       if (prefersReducedMotion) {
-        nav.setAttribute("data-state", targetState);
-        container.setAttribute(
-          "aria-expanded",
-          shouldExpand ? "true" : "false",
-        );
-        if (collapsedItem) {
-          collapsedItem.setAttribute(
-            "data-activated",
-            shouldExpand ? "false" : "true",
-          );
-          collapsedItem.style.display = shouldExpand ? "none" : "flex";
-        }
-        if (expandedItem) {
-          expandedItem.setAttribute(
-            "data-activated",
-            shouldExpand ? "true" : "false",
-          );
-          expandedItem.style.display = shouldExpand ? "flex" : "none";
-        }
-        gsap.set(chevron, { rotate: shouldExpand ? 180 : 0 });
+        tl.progress(isExpanded ? 1 : 0);
         return;
       }
 
-      isAnimating = true;
-
-      // 記錄變化前的容器狀態
-      const state = Flip.getState(container, { props: "borderRadius" });
-
-      // 瞬間切換 DOM 狀態
-      nav.setAttribute("data-state", targetState);
-      container.setAttribute("aria-expanded", shouldExpand ? "true" : "false");
-
-      if (shouldExpand) {
-        container.style.borderRadius = "12px";
-
-        // 將舊元素設為絕對定位，使其不佔據空間，並保持可見以便進行淡出
-        if (collapsedItem) {
-          collapsedItem.setAttribute("data-activated", "false");
-          gsap.set(collapsedItem, { position: "absolute", opacity: 1 });
-        }
-        if (expandedItem) {
-          expandedItem.setAttribute("data-activated", "true");
-          // 新元素設為靜態定位，讓容器能正確計算出「只包含新元素」的真實終點寬高
-          gsap.set(expandedItem, {
-            display: "flex",
-            position: "static",
-            opacity: 0,
-            scale: 0.85,
-          });
-        }
-      } else {
-        container.style.borderRadius = "9999px";
-
-        // 反過來，收合時將展開的元素設為絕對定位
-        if (expandedItem) {
-          expandedItem.setAttribute("data-activated", "false");
-          gsap.set(expandedItem, { position: "absolute", opacity: 1 });
-        }
-        if (collapsedItem) {
-          collapsedItem.setAttribute("data-activated", "true");
-          gsap.set(collapsedItem, {
-            display: "flex",
-            position: "static",
-            opacity: 0,
-            scale: 0.85,
-          });
-        }
-      }
-
-      // 調用 GPU 縮放動畫
-      Flip.from(state, {
-        duration: 0.35,
-        ease: "power2.inOut",
-        scale: true,
-        onComplete: () => {
-          // 動態結束後，把舊元素徹底隱藏，並恢復定位狀態以利下次量測
-          if (shouldExpand) {
-            if (collapsedItem)
-              gsap.set(collapsedItem, { display: "none", position: "static" });
-          } else {
-            if (expandedItem)
-              gsap.set(expandedItem, { display: "none", position: "static" });
-          }
-          isAnimating = false;
-        },
-      });
-
-      // 文字內容的淡入與箭頭旋轉動畫
-      const tl = gsap.timeline();
-      tl.to(
-        chevron,
-        {
-          rotate: shouldExpand ? 180 : 0,
-          duration: 0.35,
-          ease: "power2.inOut",
-        },
-        0,
-      );
-
-      if (shouldExpand) {
-        if (collapsedItem)
-          tl.to(collapsedItem, { opacity: 0, duration: 0.15 }, 0); // 舊的淡出
-        if (expandedItem)
-          tl.to(
-            expandedItem,
-            { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(1.5)" },
-            0.1,
-          ); // 新的淡入
-      } else {
-        if (expandedItem)
-          tl.to(expandedItem, { opacity: 0, duration: 0.15 }, 0); // 舊的淡出
-        if (collapsedItem)
-          tl.to(
-            collapsedItem,
-            { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(1.5)" },
-            0.1,
-          ); // 新的淡入
-      }
+      isExpanded ? tl.play() : tl.reverse();
     };
 
-    const expand = () => toggleNavbar(true);
-    const collapse = () => toggleNavbar(false);
-
-    // 點擊事件
+    // 點擊整個膠囊觸發（排除點擊 nav-link 本身）
     container.addEventListener("click", (e) => {
+      if ((e.target as HTMLElement).closest(".nav-link")) return;
       e.stopPropagation();
-      nav.dataset.state === "expanded" ? collapse() : expand();
+      toggleNavbar();
     });
 
+    // 點擊外部收合
     document.addEventListener("click", (e) => {
-      if (
-        nav.dataset.state === "expanded" &&
-        !container.contains(e.target as Node)
-      ) {
-        collapse();
+      if (isExpanded && !container.contains(e.target as Node)) {
+        toggleNavbar();
+      }
+    });
+
+    // ESC 收合並還焦點
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isExpanded) {
+        toggleNavbar();
+        toggleBtn.focus();
       }
     });
   });
