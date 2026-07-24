@@ -198,3 +198,8 @@ html {
 
 /* 定義符合a11y的寬高斷點 */
 @custom-variant max-height-too-small (@media (max-height: 500px));
+
+ul,
+ol {
+  @apply list-inside font-normal text-foreground/80 marker:text-sm marker:leading-6 marker:font-normal marker:text-foreground/50;
+}
