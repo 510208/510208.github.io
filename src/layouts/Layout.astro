@@ -11,7 +11,10 @@ import OgLayout from "./OgLayout.astro";
 
 const baseUrl = Astro.site;
 const { pageName, pageDescription, pageOgImage } = Astro.props;
-const pagePath = new URL(Astro.request.url).pathname;
+const pagePath = Astro.url.pathname.endsWith("/")
+  ? Astro.url.pathname.slice(0, -1)
+  : Astro.url.pathname;
+// const pagePath = new URL(Astro.request.url).pathname;
 
 import { Font } from "astro:assets";
 ---
