@@ -1,7 +1,6 @@
 ---
 import config from "@shConfig";
-import { Separator } from "@/components/ui/separator";
-import { ChevronUp } from "@lucide/astro";
+import { ChevronUp } from "lucide-react";
 
 const links = config.navBar.links;
 
@@ -95,7 +94,7 @@ const { current } = Astro.props;
       <ChevronUp
         size={16}
         id="sh-mobile-navbar-chevron"
-        class="text-neutral-400"
+        className="text-neutral-400"
       />
     </button>
   </div>
