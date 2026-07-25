@@ -30,7 +30,14 @@ const { current } = Astro.props;
     >
       {
         links.map((link) => {
-          // const isActive = current === link.href;
+          const isActive = current === link.href;
+
+          // 如果沒有任何頁面帶有isActive = true，就跳出警告
+          if (!isActive && link.href === current) {
+            console.warn(
+              `[MobileFloatMenu Warning] 無法找到符合條件的頁面：${link.title} (${link.href})`,
+            );
+          }
           if (link.href === current) {
             return (
               <div
@@ -76,7 +83,7 @@ const { current } = Astro.props;
       }
     </nav>
 
-    <Separator orientation="vertical" />
+    <!-- <Separator orientation="vertical" /> -->
 
     <button
       id="sh-mobile-navbar-toggle-btn"
@@ -183,7 +190,8 @@ const { current } = Astro.props;
 <script>
   import gsap from "gsap";
 
-  document.addEventListener("DOMContentLoaded", () => {
+  /** 初始化手機版導航列動畫與互動 */
+  const initMobileNavbar = () => {
     const container = document.querySelector(
       "#sh-mobile-navbar-container",
     ) as HTMLElement | null;
@@ -221,19 +229,18 @@ const { current } = Astro.props;
       !activeContentInner
     ) {
       console.warn("未找到核心選單元素，無法初始化導航列動畫。", {
-        container: container,
-        toggleBtn: toggleBtn,
-        chevron: chevron,
-        activeBg: activeBg,
-        textWrapper: textWrapper,
-        activeIcon: activeIcon,
-        activeItem: activeItem,
-        activeContentInner: activeContentInner,
+        container,
+        toggleBtn,
+        chevron,
+        activeBg,
+        textWrapper,
+        activeIcon,
+        activeItem,
+        activeContentInner,
       });
       return;
     }
 
-    // A11y：容器本身可作為點擊觸發區
     container.setAttribute("aria-expanded", "false");
 
     gsap.set([container, chevron, activeBg, textWrapper, activeItem], {
@@ -315,26 +322,26 @@ const { current } = Astro.props;
       isExpanded ? tl.play() : tl.reverse();
     };
 
-    // 點擊整個膠囊觸發（排除點擊 nav-link 本身）
     container.addEventListener("click", (e) => {
       if ((e.target as HTMLElement).closest(".nav-link")) return;
       e.stopPropagation();
       toggleNavbar();
     });
 
-    // 點擊外部收合
     document.addEventListener("click", (e) => {
       if (isExpanded && !container.contains(e.target as Node)) {
         toggleNavbar();
       }
     });
 
-    // ESC 收合並還焦點
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && isExpanded) {
         toggleNavbar();
         toggleBtn.focus();
       }
     });
-  });
+  };
+
+  document.addEventListener("DOMContentLoaded", initMobileNavbar);
+  document.addEventListener("astro:page-load", initMobileNavbar);
 </script>
