@@ -27,74 +27,76 @@ const isDev = import.meta.env.DEV;
 >
   {!isDev && <WelcomeAnimation />}
 
-  <HeroSection />
+  <div transition:name="main-content">
+    <HeroSection />
 
-  <!-- 關於 -->
-  <Content sectionName="intro" bgImage={optimizedBgImage.src}>
-    <SectionTitle
-      slot="title"
-      chinese="關於我"
-      english="About Me"
-      id="sh-intro-title"
-    />
-    <SelfIntroSection />
-  </Content>
+    <!-- 關於 -->
+    <Content sectionName="intro" bgImage={optimizedBgImage.src}>
+      <SectionTitle
+        slot="title"
+        chinese="關於我"
+        english="About Me"
+        id="sh-intro-title"
+      />
+      <SelfIntroSection />
+    </Content>
 
-  <!-- 專案 -->
-  <Content sectionName="projects">
-    <SectionTitle
-      slot="title"
-      chinese="專案"
-      english="Projects"
-      id="sh-projects-title"
-    />
-    <ProjectsSection />
-    <div class="mt-4 flex w-full justify-center">
-      <a href="/projects" class={buttonVariants({ variant: "outline" })}>
-        我的所有專案
-      </a>
-    </div>
-  </Content>
+    <!-- 專案 -->
+    <Content sectionName="projects">
+      <SectionTitle
+        slot="title"
+        chinese="專案"
+        english="Projects"
+        id="sh-projects-title"
+      />
+      <ProjectsSection />
+      <div class="mt-4 flex w-full justify-center">
+        <a href="/projects" class={buttonVariants({ variant: "outline" })}>
+          我的所有專案
+        </a>
+      </div>
+    </Content>
 
-  <!-- 文章 -->
-  <Content
-    sectionName="posts"
-    class="bg-linear-to-br from-transparent to-emerald-900/30"
-  >
-    <SectionTitle
-      slot="title"
-      chinese="文章"
-      english="Blog Posts"
-      id="sh-posts-title"
-    />
-    <PostsSection />
-  </Content>
-
-  <!-- 得獎經歷 -->
-  <Content sectionName="rewards">
-    <SectionTitle
-      slot="title"
-      chinese="得獎經歷"
-      english="Rewards"
-      id="sh-rewards-title"
-    />
-    <AwardsSection />
-  </Content>
-
-  <!-- 結尾 -->
-  <Content sectionName="outro" class="bg-emerald-500/60 lg:py-30">
-    <div
-      slot="title"
-      id="sh-outro-title-animation"
-      class="flex min-h-[70vh] flex-col justify-center gap-6 lg:min-h-[190px]"
+    <!-- 文章 -->
+    <Content
+      sectionName="posts"
+      class="bg-linear-to-br from-transparent to-emerald-900/30"
     >
-      <h2 class="text-5xl font-extrabold">好了，大概就寫到這裡吧！</h2>
-      <h2 class="text-5xl font-extrabold">畢竟我也不知道後面要寫些什麼？</h2>
-      <h2 class="text-5xl font-extrabold">
-        你有想法嗎？或許可以聯絡我聊聊喔！
-      </h2>
-    </div>
-  </Content>
+      <SectionTitle
+        slot="title"
+        chinese="文章"
+        english="Blog Posts"
+        id="sh-posts-title"
+      />
+      <PostsSection />
+    </Content>
+
+    <!-- 得獎經歷 -->
+    <Content sectionName="rewards">
+      <SectionTitle
+        slot="title"
+        chinese="得獎經歷"
+        english="Rewards"
+        id="sh-rewards-title"
+      />
+      <AwardsSection />
+    </Content>
+
+    <!-- 結尾 -->
+    <Content sectionName="outro" class="bg-emerald-500/60 lg:py-30">
+      <div
+        slot="title"
+        id="sh-outro-title-animation"
+        class="flex min-h-[70vh] flex-col justify-center gap-6 lg:min-h-[190px]"
+      >
+        <h2 class="text-5xl font-extrabold">好了，大概就寫到這裡吧！</h2>
+        <h2 class="text-5xl font-extrabold">畢竟我也不知道後面要寫些什麼？</h2>
+        <h2 class="text-5xl font-extrabold">
+          你有想法嗎？或許可以聯絡我聊聊喔！
+        </h2>
+      </div>
+    </Content>
+  </div>
 </Layout>
 
 <script>

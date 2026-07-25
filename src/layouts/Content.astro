@@ -19,7 +19,6 @@ const { sectionName, bgImage, class: className }: Props = Astro.props;
   style={bgImage
     ? `background-image: url(${typeof bgImage === "string" ? bgImage : bgImage?.src}); background-size: cover; background-position: bottom center;`
     : undefined}
-  transition:name="main-content"
 >
   <div
     class="mb-10 w-full max-w-sm lg:max-w-6xl"
