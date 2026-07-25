@@ -238,6 +238,12 @@ const { current } = Astro.props;
         activeItem,
         activeContentInner,
       });
+
+      // 隱藏向上箭頭按鈕，避免使用者誤以為可以展開選單
+      if (toggleBtn) {
+        toggleBtn.style.display = "none";
+      }
+
       return;
     }
 
