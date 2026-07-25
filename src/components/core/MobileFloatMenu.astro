@@ -30,7 +30,7 @@ const { current } = Astro.props;
     >
       {
         links.map((link) => {
-          const isActive = current === link.href;
+          // const isActive = current === link.href;
           if (link.href === current) {
             return (
               <div
@@ -220,7 +220,16 @@ const { current } = Astro.props;
       !activeItem ||
       !activeContentInner
     ) {
-      console.warn("未找到核心選單元素，無法初始化導航列動畫。");
+      console.warn("未找到核心選單元素，無法初始化導航列動畫。", {
+        container: container,
+        toggleBtn: toggleBtn,
+        chevron: chevron,
+        activeBg: activeBg,
+        textWrapper: textWrapper,
+        activeIcon: activeIcon,
+        activeItem: activeItem,
+        activeContentInner: activeContentInner,
+      });
       return;
     }
 
