@@ -23,7 +23,7 @@ export const GitHubInfo = () => {
       <SelfAvatar />
       <div className="flex-1">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-bold">SamHacker</h2>
+          <h3 className="text-lg font-bold">SamHacker</h3>
           <a
             href="https://github.com/510208"
             target="_blank"
