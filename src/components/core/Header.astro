@@ -1,7 +1,8 @@
 ---
 import config from "@shConfig";
-import { Button } from "@ui/button.tsx";
+import { buttonVariants } from "@ui/button.tsx";
 import { Mail, Info, Link } from "@lucide/astro";
+import { cn } from "@/lib/utils";
 
 const links = config.navBar.links;
 ---
@@ -56,58 +57,48 @@ const links = config.navBar.links;
 
       <!-- Action Buttons -->
       <div class="hidden items-center gap-2 md:flex">
-        <Button
-          variant="ghost"
-          size="icon"
-          className="hidden items-center justify-center rounded-lg hover:bg-white/5 sm:flex"
+        <a
+          class={cn(
+            buttonVariants({ variant: "ghost", size: "icon" }),
+            "hidden items-center justify-center rounded-lg hover:bg-white/5 sm:flex",
+          )}
+          href="mailto:xux510208@gmail.com"
           aria-label="Contact"
           id="sh-header-contact_button"
         >
           <Mail size={18} />
-        </Button>
+        </a>
 
-        <Button
-          variant="ghost"
-          size="icon"
-          className="hidden items-center justify-center rounded-lg hover:bg-white/5 sm:flex"
+        <a
+          class={cn(
+            buttonVariants({ variant: "ghost", size: "icon" }),
+            "hidden items-center justify-center rounded-lg hover:bg-white/5 sm:flex",
+          )}
+          href="/about"
           aria-label="Info"
           id="sh-header-info_button"
         >
           <Info size={18} />
-        </Button>
+        </a>
       </div>
 
       <div class="flex items-center gap-2 lg:hidden">
         <a
+          class={cn(
+            buttonVariants({ variant: "ghost", size: "icon" }),
+            "flex items-center justify-center rounded-lg hover:bg-white/5",
+          )}
+          aria-label="About"
+          id="sh-header-about_button"
           href="https://lib.samhacker.xyz"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="連結列表"
         >
-          <Button
-            className="flex items-center justify-center rounded-lg hover:bg-white/5"
-            variant="secondary"
-            aria-label="Info"
-            id="sh-header-info_button"
-          >
-            <Link size={18} />
-            關於我
-          </Button>
+          <Link size={18} />
+          更多連結
         </a>
       </div>
     </div>
   </nav>
 </header>
-
-<script>
-  const contactButton = document.getElementById("sh-header-contact_button");
-  const infoButton = document.getElementById("sh-header-info_button");
-
-  contactButton?.addEventListener("click", () => {
-    window.location.href = "mailto:xux510208@gmail.com";
-  });
-
-  infoButton?.addEventListener("click", () => {
-    window.location.href = "/about";
-  });
-</script>
