@@ -4,6 +4,9 @@ import { buttonVariants } from "@ui/button.tsx";
 import { Mail, Info, Link } from "@lucide/astro";
 import { cn } from "@/lib/utils";
 
+import { Image } from "astro:assets";
+import Logo from "@/assets/core/samhacker.svg";
+
 const links = config.navBar.links;
 ---
 
@@ -27,9 +30,12 @@ const links = config.navBar.links;
         <img src="/favicon.png" alt="" class="h-full w-full object-cover" />
       </div>
       <div>
-        <span class="font-funny text-3xl leading-none text-white capitalize">
-          SamHacker
-        </span>
+        <Image
+          src={Logo}
+          alt="SamHacker"
+          class="opacity-100 invert transition-opacity duration-100 hover:opacity-80"
+          height={24}
+        />
       </div>
     </a>
 
