@@ -21,7 +21,7 @@ export default defineConfig({
       cssVariable: '--font-noto',
       provider: fontProviders.fontsource(),
       weights: ['100', '200', '400', '500', '700', '900'],
-      subsets: ['chinese-traditional', 'latin'], 
+      subsets: ['chinese-traditional', 'latin'],
       fallbacks: [],
     },
     {
@@ -36,7 +36,7 @@ export default defineConfig({
       provider: fontProviders.local(),
       name: "ChenYuluoyan 2.0",
       cssVariable: "--font-chenyuluoyan",
-      subsets: ['chinese-traditional', 'latin'], 
+      subsets: ['chinese-traditional', 'latin'],
       fallbacks: ["sans-serif"],
       options: {
         variants: [{
@@ -63,6 +63,7 @@ export default defineConfig({
 
   experimental: {
     chromeDevtoolsWorkspace: true,
+    incrementalBuild: true,
   },
 
   integrations: [react(), devtoolBreakpoints(), lenis(), sitemap(), critters(), mdx()],
