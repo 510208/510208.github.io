@@ -1,7 +1,7 @@
 @import "./global.css";
 
 .content-text {
-  @apply text-black/80 dark:text-white/80;
+  @apply text-black/80;
   @apply mb-2;
 }
 
