@@ -4,7 +4,6 @@ import { buttonVariants } from "@ui/button.tsx";
 import { Mail, Info, Link } from "@lucide/astro";
 import { cn } from "@/lib/utils";
 
-import { Image } from "astro:assets";
 import Logo from "@/assets/core/samhacker.svg";
 
 const links = config.navBar.links;
@@ -30,12 +29,12 @@ const links = config.navBar.links;
         <img src="/favicon.png" alt="" class="h-full w-full object-cover" />
       </div>
       <div>
-        <Image
-          src={Logo}
-          alt="SamHacker"
-          class="opacity-100 invert transition-opacity duration-100 hover:opacity-80"
-          height={24}
+        <Logo
+          id="sh-header-logo"
+          aria-hidden
+          class="h-6 opacity-100 transition-opacity duration-100 hover:opacity-80"
         />
+        <p class="sr-only">SamHacker的個人網站</p>
       </div>
     </a>
 
@@ -108,3 +107,79 @@ const links = config.navBar.links;
     </div>
   </nav>
 </header>
+
+<script>
+  import { gsap } from "gsap";
+  import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+
+  gsap.registerPlugin(DrawSVGPlugin);
+
+  const OVERLAP = 0.1; // 固定重疊時間
+
+  const logoContainer = document.querySelector("#sh-header-logo");
+  const paths = document.querySelectorAll("#sh-header-logo path");
+  // console.log("logoContainer: ", logoContainer);
+
+  function animateSequence(
+    targetTimeline: gsap.core.Timeline,
+    type: "draw" | "erase",
+    timelinePosition: string | number = 0,
+    speed = 700,
+  ) {
+    (paths as NodeListOf<SVGPathElement>).forEach((path, index) => {
+      const length = DrawSVGPlugin.getLength(path);
+      const pathDuration = length / speed;
+
+      // 計算每個 path 的加入時間點
+      // 每筆序列的第一個 path 使用傳入的初始位置，後續的 path 則套用重疊時間
+      const pos = index === 0 ? timelinePosition : `-=${OVERLAP}`;
+
+      if (type === "draw") {
+        targetTimeline.set(path, { drawSVG: "0% 0%" }, pos);
+
+        targetTimeline.to(
+          path,
+          {
+            duration: pathDuration,
+            drawSVG: "0% 100%",
+            ease: "none",
+          },
+          pos,
+        );
+      } else {
+        targetTimeline.to(
+          path,
+          {
+            duration: pathDuration,
+            drawSVG: "100% 100%",
+            ease: "none",
+          },
+          pos,
+        );
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.set(paths, { drawSVG: "0% 0%" });
+    const initTl = gsap.timeline();
+    animateSequence(initTl, "draw", 0);
+
+    let isAnimating = false;
+
+    (logoContainer as HTMLElement).addEventListener("mouseenter", () => {
+      // 確保進場動畫已跑完，且當前沒有正在執行的 Hover 動畫
+      if (initTl.isActive() || isAnimating) return;
+      isAnimating = true;
+
+      const hoverTl = gsap.timeline({
+        onComplete: () => {
+          isAnimating = false;
+        },
+      });
+
+      animateSequence(hoverTl, "erase", 0, 1000);
+      animateSequence(hoverTl, "draw", 0.2, 1000);
+    });
+  });
+</script>
