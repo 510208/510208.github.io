@@ -9,6 +9,8 @@ import lenis from "astro-lenis";
 import sitemap from "@astrojs/sitemap";
 import critters from 'astro-critters';
 
+import mdx from '@astrojs/mdx';
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://samhacker.xyz",
@@ -63,7 +65,7 @@ export default defineConfig({
     chromeDevtoolsWorkspace: true,
   },
 
-  integrations: [react(), devtoolBreakpoints(), lenis(), sitemap(), critters()],
+  integrations: [react(), devtoolBreakpoints(), lenis(), sitemap(), critters(), mdx()],
 
   vite: {
     plugins: [tailwindcss()],
