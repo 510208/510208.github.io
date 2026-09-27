@@ -84,6 +84,12 @@
     // 檢查localStorage中是否已經播放過
     const nextPlayTime = localStorage.getItem("nextWelcomeAnimationPlayTime");
     if (nextPlayTime) {
+      gsap.to(animation, {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power1.inOut",
+      });
+
       (animation as HTMLElement).style.display = "none";
       (animation as HTMLElement).style.opacity = "1";
 
