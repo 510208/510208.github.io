@@ -30,6 +30,8 @@ const { current } = Astro.props;
       {
         links.map((link) => {
           const isActive = current === link.href;
+          const isExternal = link.href.startsWith("http");
+          const accessibleName = link.alt ?? link.title;
 
           // 如果沒有任何頁面帶有isActive = true，就跳出警告
           if (!isActive && link.href === current) {
@@ -63,13 +65,14 @@ const { current } = Astro.props;
             return (
               <a
                 href={link.href}
-                target={link.href.startsWith("http") ? "_blank" : "_self"}
-                rel={
-                  link.href.startsWith("http")
-                    ? "noopener noreferrer"
+                target={isExternal ? "_blank" : "_self"}
+                rel={isExternal ? "noopener noreferrer" : undefined}
+                title={
+                  isExternal
+                    ? `前往 ${accessibleName}（另開新視窗）`
                     : undefined
                 }
-                aria-label={`前往 ${link.title}`}
+                aria-label={`前往 ${accessibleName}${isExternal ? "（另開新視窗）" : ""}`}
                 class={`nav-link sh-text-white sh-text-sm sh-font-medium sh-transition-colors sh-duration-300 sh-ease-in-out hover:sh-text-primary`}
                 id={`sh-mobile-navbar-${link.title.toLowerCase().replace(/\s+/g, "-")}`}
               >
