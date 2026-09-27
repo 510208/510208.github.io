@@ -4,8 +4,7 @@ import { defineConfig, fontProviders } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
 import react from "@astrojs/react";
-import devtoolBreakpoints from "astro-devtool-breakpoints";
-import lenis from "astro-lenis";
+import devtoolBreakpoints from "@/plugins/astro-devtool-breakpoints";
 import sitemap from "@astrojs/sitemap";
 import critters from 'astro-critters';
 import fontSubsetPlugin from "@/plugins/astroFontSubset";
@@ -70,7 +69,6 @@ export default defineConfig({
   integrations: [
     react(),
     devtoolBreakpoints(),
-    lenis(),
     sitemap(),
     critters(),
     mdx(),
