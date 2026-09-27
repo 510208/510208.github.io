@@ -86,7 +86,7 @@ import { Font } from "astro:assets";
     <Font cssVariable="--font-chenyuluoyan" />
     <Font cssVariable="--font-maple" />
 
-    <!-- Google Tag Manager -->
+    <!-- #region Google Tag Manager -->
     <script is:inline>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -100,6 +100,7 @@ import { Font } from "astro:assets";
       })(window, document, "script", "dataLayer", "GTM-MTT9N2D9");
     </script>
     <!-- End Google Tag Manager -->
+    <!-- #endregion -->
   </head>
 
   <body class="dark">
@@ -131,7 +132,7 @@ import { Font } from "astro:assets";
 
     <ToTop />
 
-    <!-- Google Tag Manager (noscript) -->
+    <!-- #region Google Tag Manager (noscript) -->
     <noscript>
       <iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-MTT9N2D9"
@@ -140,6 +141,7 @@ import { Font } from "astro:assets";
         style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <!-- #endregion -->
 
     <script>
       import gsap from "gsap";
@@ -147,7 +149,7 @@ import { Font } from "astro:assets";
       // 取得 Loading 元素
       const getIndicator = () => document.getElementById("loading-indicator");
 
-      // 1. 點擊連結，開始 SSR 抓取 (由下往上浮現)
+      // 點擊連結，開始 SSR 抓取 (由下往上浮現)
       document.addEventListener("astro:before-preparation", () => {
         console.log("開始載入新頁面...");
 
@@ -166,7 +168,7 @@ import { Font } from "astro:assets";
         }
       });
 
-      // 2. 頁面內容載入並切換完成 (縮小或向下淡出)
+      // 頁面內容載入並切換完成 (縮小或向下淡出)
       document.addEventListener("astro:page-load", () => {
         console.log("新頁面載入完成！");
         const el = getIndicator();
@@ -245,5 +247,48 @@ import { Font } from "astro:assets";
       "%c既然都打開 Console 了，不如來我的 GitHub 逛逛吧！ >> https://github.com/510208",
       "color: #fff; font-size: 14px;",
     );
+  }
+</script>
+
+<script>
+  // 定義載入 Lenis 的函式
+  async function initLenis() {
+    // 使用動態 import，打包工具（Vite）會自動把 Lenis 分拆成獨立 package
+    const { default: Lenis } = await import("lenis");
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }
+
+  // 確保在頁面載入完成後，且主執行緒閒置時才觸發
+  if ("requestIdleCallback" in window) {
+    window.addEventListener("load", () => {
+      requestIdleCallback(() => {
+        initLenis();
+      });
+    });
+  } else {
+    // 針對不支援 requestIdleCallback 的舊瀏覽器備援（延遲 1 秒）
+    if ("requestIdleCallback" in globalThis) {
+      globalThis.addEventListener("load", () => {
+        requestIdleCallback(() => {
+          initLenis();
+        });
+      });
+    } else {
+      globalThis.addEventListener("load", () => {
+        setTimeout(initLenis, 1000);
+      });
+    }
   }
 </script>
