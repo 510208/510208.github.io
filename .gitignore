@@ -1,6 +1,9 @@
 # build output
 dist/
 
+# Agent Temp
+tmp/
+
 # generated types
 .astro/
 
