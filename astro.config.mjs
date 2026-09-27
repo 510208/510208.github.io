@@ -7,9 +7,15 @@ import react from "@astrojs/react";
 import devtoolBreakpoints from "@/plugins/astro-devtool-breakpoints";
 import sitemap from "@astrojs/sitemap";
 import critters from 'astro-critters';
+import { visualizer } from 'rollup-plugin-visualizer';
 import fontSubsetPlugin from "@/plugins/astroFontSubset";
 
 import mdx from '@astrojs/mdx';
+
+const isAnalyze =
+  process.env.ANALYZE === 'true' ||
+  process.argv.includes('--analyzer') ||
+  process.argv.includes('anls');
 
 // https://astro.build/config
 export default defineConfig({
@@ -79,6 +85,15 @@ export default defineConfig({
   ],
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      isAnalyze && visualizer({
+        emitFile: true,
+        filename: 'stats.html',
+        open: true, // 打包完成後自動在瀏覽器打開分析圖表
+        gzipSize: true,
+        brotliSize: true,
+      }),
+    ],
   },
 });
