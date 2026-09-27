@@ -51,6 +51,8 @@ import Logo from "@/assets/core/samhacker.svg";
                 config.navBar.links.map((link) => (
                   <a
                     href={link.href}
+                    title={link.title}
+                    aria-label={link.title}
                     class="flex items-center gap-2 text-gray-400 transition-colors hover:text-white"
                   >
                     <link.icon size={16} class="mr-2" />

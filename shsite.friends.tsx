@@ -83,6 +83,8 @@ const friends: FriendCardProps[] = [
           href="https://discord.gg/CKGwRtFcFw"
           target="_blank"
           rel="noopener noreferrer"
+          title="夜間部 Discord 伺服器（另開新視窗）"
+          aria-label="夜間部 Discord 伺服器（另開新視窗）"
           className="hyperlink"
         >
           https://discord.gg/CKGwRtFcFw
@@ -189,6 +191,8 @@ const friends: FriendCardProps[] = [
           href="https://youtube.com/channel/UCDGmv1oiOAvu9d0V6qKTGjA?si=Ugeg7pOVdvkEoF7N"
           target="_blank"
           rel="noopener noreferrer"
+          title="前往璐沐的 YouTube 頻道（另開新視窗）"
+          aria-label="前往璐沐的 YouTube 頻道（另開新視窗）"
           className="hyperlink"
         >
           點我前往

@@ -53,7 +53,7 @@ function FriendCard({
         </Avatar>
         <div className="w-full space-y-1">
           <h3 className="text-lg font-bold">{name}</h3>
-          <h4 className="text-sm font-semibold opacity-30">@{slug}</h4>
+          <h4 className="text-sm font-semibold text-stone-400">@{slug}</h4>
           <p className="text-sm">{description}</p>
           <div className="flex flex-wrap gap-2 text-xs">
             {links.map((link, index) => (
@@ -63,6 +63,7 @@ function FriendCard({
                     href={link.to}
                     target="_blank"
                     rel="noopener noreferrer"
+                    title={`${name}的${link.label}（另開新視窗）`}
                     aria-label={`${name}的${link.label}（另開新視窗）`}
                     className={cn(
                       buttonVariants({

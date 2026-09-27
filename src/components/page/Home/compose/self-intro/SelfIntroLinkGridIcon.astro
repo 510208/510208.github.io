@@ -1,12 +1,19 @@
 ---
-const { href } = Astro.props;
+interface Props {
+  href: string;
+  title: string;
+}
+
+const { href, title } = Astro.props;
 ---
 
 <a
   href={href}
   target="_blank"
   rel="noopener noreferrer"
-  class="relative z-10 flex items-center justify-center"
+  title={`${title}（另開新視窗）`}
+  aria-label={`${title}（另開新視窗）`}
+  class="relative z-10 flex items-center justify-center rounded focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
 >
   <div
     class="group relative flex aspect-square w-full items-center justify-center"

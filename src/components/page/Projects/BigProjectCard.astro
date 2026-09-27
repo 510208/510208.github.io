@@ -23,29 +23,36 @@ const { id, title, description, descriptionColorClass, link, bgImg, config } =
   Astro.props;
 ---
 
-<Card
-  className="sh-click-link sh-project-card sh-big-card relative min-h-[280px] w-full cursor-pointer justify-center overflow-hidden px-8 lg:w-1/2 lg:py-13 lg:pr-50 lg:pl-[50px]"
-  id={id}
-  tabIndex={0}
-  data-link={link}
-  data-config={JSON.stringify(config)}
-  role="button"
+<a
+  href={link}
+  target="_blank"
+  rel="noopener noreferrer"
+  title={`前往 ${title} 專案頁面（另開新視窗）`}
   aria-label={`前往 ${title} 專案頁面（另開新視窗）`}
+  class="sh-project-card sh-big-card block w-full rounded-xl text-inherit no-underline focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none lg:w-1/2"
+  data-config={JSON.stringify(config)}
 >
-  <div
-    class="sh-card-bg-img absolute top-1/2 -right-1/3 -translate-y-1/2 scale-75 opacity-75 md:-right-[10%] md:scale-120 md:opacity-100 lg:-right-1/3 lg:scale-100"
+  <Card
+    className="relative h-full min-h-[280px] w-full cursor-pointer justify-center overflow-hidden px-8 lg:py-13 lg:pr-50 lg:pl-[50px]"
+    id={id}
   >
-    <Image alt="" src={bgImg} class="object-cover" />
-  </div>
+    <div
+      class="sh-card-bg-img absolute top-1/2 -right-1/3 -translate-y-1/2 scale-75 opacity-75 md:-right-[10%] md:scale-120 md:opacity-100 lg:-right-1/3 lg:scale-100"
+    >
+      <Image alt="" src={bgImg} class="object-cover" />
+    </div>
 
-  <div class="sh-card-content z-10 flex max-w-64 flex-col gap-4 lg:gap-[30px]">
-    <slot name="logo" />
-    <h2 class="sr-only">{title}</h2>
-    <p class={descriptionColorClass}>
-      {description}
-    </p>
-  </div>
-</Card>
+    <div
+      class="sh-card-content z-10 flex max-w-64 flex-col gap-4 lg:gap-[30px]"
+    >
+      <slot name="logo" />
+      <h2 class="sr-only">{title}</h2>
+      <p class={descriptionColorClass}>
+        {description}
+      </p>
+    </div>
+  </Card>
+</a>
 
 <script>
   import { gsap } from "gsap";
@@ -59,13 +66,16 @@ const { id, title, description, descriptionColorClass, link, bgImg, config } =
       if (!configAttr) return;
 
       const config = JSON.parse(configAttr);
+      const surface = card.querySelector('[data-slot="card"]');
       const bgImg = card.querySelector(".sh-card-bg-img");
       const content = card.querySelector(".sh-card-content");
+
+      if (!surface) return;
 
       const tl = gsap.timeline({ paused: true });
 
       tl.to(
-        card,
+        surface,
         {
           backgroundColor: config.hoverBg,
           "--sh-grad-opacity": config.hoverOpacity,
@@ -101,6 +111,8 @@ const { id, title, description, descriptionColorClass, link, bgImg, config } =
 
       card.addEventListener("mouseenter", () => tl.play());
       card.addEventListener("mouseleave", () => tl.reverse());
+      card.addEventListener("focus", () => tl.play());
+      card.addEventListener("blur", () => tl.reverse());
     });
   });
 </script>

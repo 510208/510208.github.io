@@ -18,28 +18,33 @@ const {
 }: Props = Astro.props;
 ---
 
-<Card
-  className="sh-click-link sh-project-card sh-small-card relative flex min-h-[280px] w-full cursor-pointer justify-end overflow-hidden bg-[#272728]/60 p-0 backdrop-blur-xs"
-  tabIndex={0}
-  data-link={link}
-  role="button"
+<a
+  href={link}
+  target="_blank"
+  rel="noopener noreferrer"
+  title={`前往 ${title} 專案頁面（另開新視窗）`}
   aria-label={`前往 ${title} 專案頁面（另開新視窗）`}
+  class="sh-project-card sh-small-card block h-full rounded-xl text-inherit no-underline focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
 >
-  <div class="sh-small-bg-img absolute -right-14 -bottom-10">
-    {BackgroundImage && <BackgroundImage class="z-0 object-cover" />}
-  </div>
-
-  <div
-    class="sh-other-card z-10 flex min-h-[120px] w-full flex-col gap-2.5 px-6 pt-[14px] pb-[30px]"
+  <Card
+    className="relative flex h-full min-h-[280px] w-full cursor-pointer justify-end overflow-hidden bg-[#272728]/60 p-0 backdrop-blur-xs"
   >
-    {ProjectLogo && <ProjectLogo class="h-8.5" />}
-    <h2 class="text-xl font-bold">{title}</h2>
+    <div class="sh-small-bg-img absolute -right-14 -bottom-10">
+      {BackgroundImage && <BackgroundImage class="z-0 object-cover" />}
+    </div>
 
-    <p class="text-sm text-gray-400">
-      {description}
-    </p>
-  </div>
-</Card>
+    <div
+      class="sh-other-card z-10 flex min-h-[120px] w-full flex-col gap-2.5 px-6 pt-[14px] pb-[30px]"
+    >
+      {ProjectLogo && <ProjectLogo class="h-8.5" />}
+      <h2 class="text-xl font-bold">{title}</h2>
+
+      <p class="text-sm text-gray-400">
+        {description}
+      </p>
+    </div>
+  </Card>
+</a>
 
 <style>
   .sh-other-card {
@@ -54,10 +59,13 @@ const {
     const smallCards = document.querySelectorAll(".sh-small-card");
 
     smallCards.forEach((card) => {
+      const surface = card.querySelector('[data-slot="card"]');
       const bgImg = card.querySelector(".sh-small-bg-img");
 
+      if (!surface) return;
+
       card.addEventListener("mouseenter", () => {
-        gsap.to(card, {
+        gsap.to(surface, {
           backgroundColor: "rgba(48, 48, 52, 0.2)",
           backdropFilter: "blur(0px)",
           duration: 0.3,
@@ -72,7 +80,7 @@ const {
       });
 
       card.addEventListener("mouseleave", () => {
-        gsap.to(card, {
+        gsap.to(surface, {
           backgroundColor: "rgba(39, 39, 40, 0.6)",
           backdropFilter: "blur(4px)",
           duration: 0.3,
@@ -84,6 +92,26 @@ const {
           duration: 0.3,
           ease: "power2.out",
         });
+      });
+
+      card.addEventListener("focus", () => {
+        gsap.to(surface, {
+          backgroundColor: "rgba(48, 48, 52, 0.2)",
+          backdropFilter: "blur(0px)",
+          duration: 0.3,
+          ease: "power2.out",
+        });
+        gsap.to(bgImg, { y: -16, duration: 0.3, ease: "power2.out" });
+      });
+
+      card.addEventListener("blur", () => {
+        gsap.to(surface, {
+          backgroundColor: "rgba(39, 39, 40, 0.6)",
+          backdropFilter: "blur(4px)",
+          duration: 0.3,
+          ease: "power2.out",
+        });
+        gsap.to(bgImg, { y: 0, duration: 0.3, ease: "power2.out" });
       });
     });
   });

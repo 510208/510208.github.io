@@ -28,6 +28,8 @@ export const GitHubInfo = () => {
             href="https://github.com/510208"
             target="_blank"
             rel="noopener noreferrer"
+            title="關注 SamHacker 的 GitHub 個人頁面（另開新視窗）"
+            aria-label="關注 SamHacker 的 GitHub 個人頁面（另開新視窗）"
             className={buttonVariants()}
           >
             <UserPlus />

@@ -4,6 +4,7 @@ import { SquareArrowOutUpRight } from "@lucide/astro";
 
 interface Props {
   href: string;
+  label: string;
   target?: string;
   rel?: string;
   class?: string;
@@ -11,6 +12,7 @@ interface Props {
 
 const {
   href,
+  label,
   target = "_blank",
   rel = "noopener noreferrer",
   class: className = "",
@@ -21,6 +23,8 @@ const {
   href={href}
   target={target}
   rel={rel}
+  title={`${label}（另開新視窗）`}
+  aria-label={`${label}（另開新視窗）`}
   class={cn(
     "group overflow-hidden hover:-translate-y-2 relative rounded-xl border border-stone-800 bg-stone-900/60 backdrop-blur-md p-6 transition-all duration-200 hover:border-stone-700 hover:bg-stone-800/50",
     className,

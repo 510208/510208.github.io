@@ -51,11 +51,14 @@ import { FolderBookmark } from "lucide-react";
     </div>
 
     <div class="flex flex-col items-center gap-4">
-      <p class="text-center text-sm text-gray-500">
+      <p class="text-center text-sm text-gray-400">
         這裡展示的專案只是我眾多專案中的一部分，如果你對我的其他專案感興趣，歡迎前往
         <a
           href="https://github.com/510208"
           target="_blank"
+          rel="noopener noreferrer"
+          title="我的GitHub頁面（另開新視窗）"
+          aria-label="我的GitHub頁面（另開新視窗）"
           class="text-blue-500 hover:underline">我的GitHub頁面</a
         >
         查看更多內容！
@@ -74,34 +77,6 @@ import { FolderBookmark } from "lucide-react";
     </div>
   </div>
 </PageLayout>
-
-<script>
-  // 點擊或鍵盤操作卡片時打開對應的連結
-  document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll<HTMLElement>(".sh-click-link");
-
-    cards.forEach((card) => {
-      // 輔助函式：執行跳轉
-      const openLink = () => {
-        const link = card.getAttribute("data-link");
-        if (link) {
-          window.open(link, "_blank", "noopener,noreferrer");
-        }
-      };
-
-      // 處理滑鼠點擊
-      card.addEventListener("click", openLink);
-
-      // 處理鍵盤 Enter 與 Space 按鍵，並明確標註 KeyboardEvent 型別
-      card.addEventListener("keydown", (event: KeyboardEvent) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault(); // 防止空白鍵導致頁面向下滾動
-          openLink();
-        }
-      });
-    });
-  });
-</script>
 
 <script>
   import { gsap } from "gsap";

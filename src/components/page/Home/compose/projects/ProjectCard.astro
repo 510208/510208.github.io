@@ -38,6 +38,8 @@ const isDimmed = project.status === "eol" || project.status === "archived";
   href={project.html_url}
   target="_blank"
   rel="noopener noreferrer"
+  title={`前往 ${project.name} 專案頁面（另開新視窗）`}
+  aria-label={`前往 ${project.name} 專案頁面（另開新視窗）`}
   class={`group block w-full text-inherit no-underline ${className}`}
   data-status={project.status ?? "on-going"}
   data-name={project.name.toLowerCase()}
@@ -131,7 +133,7 @@ const isDimmed = project.status === "eol" || project.status === "archived";
                                   <CustomIcon size={16} />
                                 </div>
                               ) : (
-                                <span class="text-xs text-gray-500">
+                                <span class="text-xs text-gray-400">
                                   {lang.name}
                                 </span>
                               )}
