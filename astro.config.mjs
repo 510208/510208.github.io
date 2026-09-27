@@ -8,6 +8,7 @@ import devtoolBreakpoints from "astro-devtool-breakpoints";
 import lenis from "astro-lenis";
 import sitemap from "@astrojs/sitemap";
 import critters from 'astro-critters';
+import fontSubsetPlugin from "@/plugins/astroFontSubset";
 
 import mdx from '@astrojs/mdx';
 
@@ -66,7 +67,18 @@ export default defineConfig({
     incrementalBuild: true,
   },
 
-  integrations: [react(), devtoolBreakpoints(), lenis(), sitemap(), critters(), mdx()],
+  integrations: [
+    react(),
+    devtoolBreakpoints(),
+    lenis(),
+    sitemap(),
+    critters(),
+    mdx(),
+    fontSubsetPlugin({
+      targetClass: 'font-funny',
+      targetFontPrefix: 'ChenYuluoyan',
+    }),
+  ],
 
   vite: {
     plugins: [tailwindcss()],
