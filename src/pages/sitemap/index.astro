@@ -84,7 +84,7 @@ if (projectsIndex !== -1) {
     >
       {
         links.map((link) => (
-          <LinkCard href={link.href}>
+          <LinkCard href={link.href} label={link.alt ?? link.title}>
             <Fragment slot="title">{link.alt}</Fragment>
             {link.description}
           </LinkCard>
