@@ -171,6 +171,10 @@ a::-moz-selection {
   text-shadow: none;
 }
 
+a:focus {
+  @apply focus-visible:rounded focus-visible:ring-2 focus-visible:ring-ring focus-visible:transition-all focus-visible:duration-100 focus-visible:outline-none;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
