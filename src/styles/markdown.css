@@ -114,7 +114,7 @@
       }
 
       & .citation-wrapper {
-        @apply mt-2 text-sm text-neutral-500 transition-colors delay-100 duration-300 group-hover:text-neutral-400;
+        @apply mt-2 text-sm text-neutral-400 transition-colors delay-100 duration-300 group-hover:text-neutral-300;
 
         /* 在引用人前方用偽元素加上一條橫線 */
         & cite.blockquote-citation::before {

@@ -94,7 +94,7 @@ export default function BlogCard({
         </div>
 
         {/* Metadata - 固定放在底部 */}
-        <div className="flex flex-wrap items-center gap-3 text-sm text-neutral-500">
+        <div className="flex flex-wrap items-center gap-3 text-sm text-neutral-400">
           {!isLoading && isHydrated ? (
             <>
               {/* 文章發表日期 */}
