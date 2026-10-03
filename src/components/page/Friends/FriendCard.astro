@@ -1,0 +1,42 @@
+---
+import { Card } from "@/components/ui/card";
+import { UserAvatar, UserLinks } from "./FriendCardInteractive";
+import type { FriendCardProps } from "@/types/shsite.friends";
+
+const { image, name, slug, description, links } =
+  Astro.props as FriendCardProps;
+const imageUrl = typeof image === "string" ? image : image.src;
+---
+
+<Card
+  className="group relative overflow-hidden bg-stone-900/80 p-4 backdrop-blur-xs transition-transform duration-200 hover:-translate-y-2"
+>
+  <div
+    class="pointer-events-none absolute -right-0 -bottom-0 h-[171px] w-[171px] opacity-40"
+  >
+    <img
+      src={imageUrl}
+      alt=""
+      aria-hidden="true"
+      class="h-full w-full object-cover"
+    />
+    <div
+      class="absolute inset-0"
+      style="background: radial-gradient(circle at bottom right, rgba(28,25,23,0) 0%, rgba(28,25,23,1) 68.75%);"
+    >
+    </div>
+  </div>
+  <div
+    class="absolute bottom-0 left-0 h-1 w-0 bg-stone-500/50 transition-all duration-200 group-hover:w-full"
+  >
+  </div>
+  <div class="relative z-10 flex justify-start gap-4">
+    <UserAvatar image={imageUrl} name={name} client:load />
+    <div class="w-full space-y-1">
+      <h3 class="text-lg font-bold">{name}</h3>
+      <h4 class="text-sm font-semibold text-stone-400">@{slug}</h4>
+      <p class="text-sm" set:html={description} />
+      <UserLinks links={links} name={name} client:load />
+    </div>
+  </div>
+</Card>

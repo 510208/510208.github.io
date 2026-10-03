@@ -1,5 +1,5 @@
 ---
-import FriendList from "@/components/page/Friends/FriendList";
+import FriendList from "@/components/page/Friends/FriendList.astro";
 import PageLayout from "@/layouts/PageLayout.astro";
 
 import { Toaster } from "@/components/ui/sonner";
@@ -13,7 +13,7 @@ import "@styles/content.css";
   description="這個頁面列出了我的所有朋友們，順便幫他們宣傳一下下。歡迎來逛逛喔~~"
   ogImage="/assets/website_og/friends_og.png"
 >
-  <FriendList client:load />
+  <FriendList />
 
   <div class="mt-8 flex">
     <div

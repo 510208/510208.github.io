@@ -1,0 +1,16 @@
+---
+import WaterFall from "@/components/ui/waterfall.astro";
+import FriendCard from "./FriendCard.astro";
+import friends from "@shFriends";
+---
+
+<h2 class="sr-only">我的朋友們</h2>
+<WaterFall className="columns-1 [column-gap:1rem] sm:columns-2 lg:columns-3">
+  {
+    friends.map((friend) => (
+      <div class="mb-4 break-inside-avoid">
+        <FriendCard {...friend} />
+      </div>
+    ))
+  }
+</WaterFall>
