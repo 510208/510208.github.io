@@ -4,11 +4,16 @@ import Breadcrumbs from "../common/Breadcrumbs.astro";
 ---
 
 <section
-  class="page-hero relative mx-6 mt-30 mb-10 w-auto md:mx-20 lg:mx-auto lg:w-full lg:max-w-4xl lg:px-6 xl:max-w-6xl"
+  class="page-hero gsap-reveal relative mx-6 mt-30 mb-10 w-auto md:mx-20 lg:mx-auto lg:w-full lg:max-w-4xl lg:px-6 xl:max-w-6xl"
   id="sh-hero-section"
 >
   <div class="mb-2"><Breadcrumbs /></div>
-  <h1 class="text-4xl font-black" id="sh-hero-title-content">{title}</h1>
+
+  <h1 class="sr-only">{title}</h1>
+
+  <h1 class="text-4xl font-black" aria-hidden="true" id="sh-hero-title-content">
+    {title}
+  </h1>
   <p class="mt-2 text-lg text-stone-400" id="sh-hero-description-content">
     {subtitle}
   </p>
@@ -18,43 +23,65 @@ import Breadcrumbs from "../common/Breadcrumbs.astro";
   import { gsap } from "gsap";
   import SplitText from "gsap/SplitText";
 
-  document.addEventListener("DOMContentLoaded", () => {
-    gsap.registerPlugin(SplitText);
+  gsap.registerPlugin(SplitText);
 
-    // 等下一幀確保元素已渲染/可視
-    requestAnimationFrame(() => {
-      const titleEl = document.getElementById("sh-hero-title-content");
-      console.log("PageHero animation script loaded", {
-        titleElExists: !!titleEl,
-      });
+  let splitTextInstance: SplitText | null = null;
 
-      // 偵錯：檢查拆字後的字元數
-      const splitText = new SplitText(titleEl, { type: "chars" });
-      console.log("split chars count:", (splitText.chars || []).length);
+  function initPageHeroAnimation() {
+    const heroSection = document.getElementById("sh-hero-section");
+    const titleEl = document.getElementById("sh-hero-title-content");
+    const descEl = document.getElementById("sh-hero-description-content");
 
-      gsap.set(splitText.chars, { opacity: 0, x: 50 });
+    if (!heroSection || !titleEl || !descEl) return;
 
-      // 確保副標題有明確的起始狀態
-      gsap.set("#sh-hero-description-content", { opacity: 0, x: 20 });
+    // 若先前已拆分過，先復原 DOM 結構以確保安全
+    if (splitTextInstance) {
+      splitTextInstance.revert();
+      splitTextInstance = null;
+    }
 
-      const tl = gsap.timeline({ repeat: 0 });
+    // 1. 執行拆字（此時 heroSection 受 gsap-reveal 保護仍為隱藏狀態，不會產生 FOUC）
+    splitTextInstance = new SplitText(titleEl, { type: "chars" });
 
-      tl.to(splitText.chars, {
+    // 2. 設置拆字後字元與副標題的動畫起始偏移動作 (使用 autoAlpha)
+    gsap.set(splitTextInstance.chars, { autoAlpha: 0, x: 50 });
+    gsap.set(descEl, { autoAlpha: 0, x: 20 });
+
+    // 3. 準備就緒後，解除最外層容器的 FOUC 隱藏限制
+    gsap.set(heroSection, { autoAlpha: 1 });
+
+    // 4. 建立時間軸動畫並播放
+    const tl = gsap.timeline({ repeat: 0 });
+
+    tl.to(splitTextInstance.chars, {
+      duration: 0.8,
+      autoAlpha: 1,
+      x: 0,
+      ease: "power2.out",
+      stagger: 0.1,
+    });
+
+    tl.to(
+      descEl,
+      {
         duration: 0.8,
-        opacity: 1,
+        autoAlpha: 1,
         x: 0,
         ease: "power2.out",
-        stagger: 0.1,
-      });
+      },
+      "-=0.3",
+    );
+  }
 
-      tl.fromTo(
-        "#sh-hero-description-content",
-        { opacity: 0, x: 20 },
-        { duration: 0.8, opacity: 1, x: 0, ease: "power2.out" },
-        "-=0.3",
-      );
-    });
-  });
+  // 靜態載入與相容生命週期觸發
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPageHeroAnimation);
+  } else {
+    initPageHeroAnimation();
+  }
+
+  // 支援 Astro 切換頁面事件
+  document.addEventListener("astro:page-load", initPageHeroAnimation);
 </script>
 
 <style>
