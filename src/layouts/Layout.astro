@@ -20,7 +20,7 @@ import { Font } from "astro:assets";
 ---
 
 <!doctype html>
-<html lang="zh-Hant" dir="ltr">
+<html lang="zh-Hant" dir="ltr" class="no-js">
   <head>
     <script is:inline>
       //
@@ -42,6 +42,11 @@ import { Font } from "astro:assets";
       //
       //  喔對，這裡是 SamHacker 的個人網站，歡迎你來到這裡，請尊重智慧財產權，感謝你
       //
+    </script>
+
+    <script is:inline>
+      // FOUC Protection
+      document.documentElement.classList.remove("no-js");
     </script>
 
     <meta charset="UTF-8" />

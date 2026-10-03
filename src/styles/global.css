@@ -207,3 +207,10 @@ ul,
 ol {
   @apply list-inside font-normal text-foreground/80 marker:text-sm marker:leading-6 marker:font-normal marker:text-foreground/50;
 }
+
+@utility gsap-reveal {
+  :root:not(.no-js) & {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
