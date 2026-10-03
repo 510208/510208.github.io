@@ -4,6 +4,7 @@ import { Separator } from "@ui/separator";
 import { Image } from "astro:assets";
 
 import backgroundImage from "@/assets/core/footer_bg.png";
+import a11yBadge from "@/assets/core/badges/a11y_moda_aa-verified.png";
 
 import Logo from "@/assets/core/samhacker.svg";
 ---
@@ -19,7 +20,7 @@ import Logo from "@/assets/core/samhacker.svg";
     class="pointer-events-none absolute top-0 left-0 h-full w-full object-cover object-top opacity-30 select-none"
   />
 
-  <div class="mx-auto max-w-7xl py-12">
+  <div class="z-10 mx-auto max-w-7xl py-12">
     <div>
       <div class="flex justify-between gap-10">
         <div class="mb-4 h-fit w-full lg:mb-10">
@@ -87,10 +88,24 @@ import Logo from "@/assets/core/samhacker.svg";
 
       <Separator className="mb-10" />
 
-      <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+      <div class="flex items-center justify-between gap-6 md:flex-row">
         <p class="text-sm text-gray-400">
           &copy; <span id="sh-footer-year">2025</span> SamHacker. All rights reserved.
         </p>
+
+        <a
+          href="https://accessibility.moda.gov.tw/Applications/Detail?category=20260728155925"
+          title="無障礙網站"
+          class="mt-2"
+        >
+          <Image
+            src={a11yBadge}
+            width="88"
+            height="31"
+            alt="通過AA無障礙網頁檢測"
+            class="z-20 border-none opacity-100"
+          />
+        </a>
       </div>
     </div>
 
