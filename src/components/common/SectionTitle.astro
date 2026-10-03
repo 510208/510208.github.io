@@ -11,8 +11,11 @@ const { chinese, english, id } = Astro.props;
 <div
   class="sh-section-title gsap-reveal relative mb-4 flex w-full items-center"
 >
+  <h2 class="sr-only">{chinese}</h2>
+
   <h2
     class="sh-title-animation flex items-center gap-4 text-3xl font-bold"
+    aria-hidden="true"
     id={id}
   >
     {chinese}

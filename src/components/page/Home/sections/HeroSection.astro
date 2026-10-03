@@ -42,7 +42,6 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
     >
       <div class="relative -mb-4 flex w-full items-center justify-center">
         <div class="w-10"></div>
-
         <StatusBadge class="hidden lg:flex" />
       </div>
 
@@ -64,11 +63,16 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
           <StatusBadge class="flex lg:hidden" />
         </div>
 
-        <h1
-          class="gsap-reveal text-6xl font-black text-stone-200 lg:text-[96px]/[120%]"
+        <!-- 螢幕閱讀器用 -->
+        <h1 class="sr-only">SamHacker</h1>
+
+        <!-- 主標題 -->
+        <div
+          class="h1-visual gsap-reveal text-6xl font-black text-stone-200 lg:text-[96px]/[120%]"
+          aria-hidden="true"
         >
           Sam<br />Hacker
-        </h1>
+        </div>
 
         <p class="gsap-reveal text-lg text-stone-300">
           我是一個熱愛分享技術的高中生，<br />
@@ -76,7 +80,8 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
           我的目標是讓更多人能夠輕鬆學習和應用技術。
         </p>
 
-        <div class="http://localhost:4321/ flex gap-2.5">
+        <!-- 按鈕連結容器 -->
+        <div class="gsap-reveal flex gap-2.5">
           <a
             href="/about"
             aria-label="關於我"
@@ -114,7 +119,7 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
 
           <a
             href="/dashboard"
-            aria-label="數據儀表板"
+            aria-label="儀表板"
             class={buttonVariants({
               variant: "ghost",
               size: "icon-hero",
@@ -133,12 +138,14 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
         <Image
           src={RTBracket}
           alt=""
+          aria-hidden="true"
           class="gsap-reveal absolute top-0 right-0 opacity-50"
           id="sh-hero-mf-right-bracket"
         />
         <Image
           src={LBBracket}
           alt=""
+          aria-hidden="true"
           class="gsap-reveal absolute bottom-0 left-0 opacity-50"
           id="sh-hero-mf-left-bracket"
         />
@@ -146,6 +153,7 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
         <p
           class="gsap-reveal text-center font-funny text-3xl text-stone-300"
           id="sh-hero-mf-quote"
+          aria-hidden="true"
         >
           正因為曾經淋過雨，<br />
           才會想為他人撐一把傘。
