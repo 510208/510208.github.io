@@ -4,9 +4,16 @@ interface FriendCardProps {
   image: ImageMetadata | string;
   name: string;
   slug: string;
-  description: React.ReactNode;
+  description: string;
   links: {
-    icon: React.ReactNode;
+    icon:
+      | "Earth"
+      | "Github"
+      | "Instagram"
+      | "Newspaper"
+      | "Twitch"
+      | "Youtube"
+      | "Discord";
     to: string;
     label: string;
   }[];
