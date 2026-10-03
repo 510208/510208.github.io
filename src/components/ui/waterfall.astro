@@ -1,0 +1,58 @@
+---
+import { cn } from "@/lib/utils";
+
+interface Props {
+  className?: string;
+  itemClassName?: string;
+  columnGap?: number | string;
+  stagger?: number;
+  duration?: number;
+  yOffset?: number;
+}
+
+const {
+  className = "",
+  itemClassName = "",
+  columnGap,
+  stagger = 0.1,
+  duration = 0.5,
+  yOffset = 50,
+} = Astro.props;
+
+const style = columnGap !== undefined
+  ? `column-gap: ${typeof columnGap === "number" ? `${columnGap}px` : columnGap};`
+  : undefined;
+---
+
+<div
+  class={cn("columns-1 sm:columns-2 lg:columns-3 [column-gap:1rem]", className)}
+  style={style}
+  data-waterfall
+  data-stagger={stagger}
+  data-duration={duration}
+  data-y-offset={yOffset}
+>
+  <slot />
+</div>
+
+<script>
+  import gsap from "gsap";
+
+  document.querySelectorAll<HTMLElement>("[data-waterfall]").forEach((container) => {
+    const items = Array.from(container.children) as HTMLElement[];
+    if (!items.length) return;
+
+    const yOffset = Number(container.dataset.yOffset ?? 50);
+    const stagger = Number(container.dataset.stagger ?? 0.1);
+    const duration = Number(container.dataset.duration ?? 0.5);
+    gsap.set(items, { opacity: 0, y: yOffset });
+    gsap.to(items, {
+      opacity: 1,
+      y: 0,
+      stagger,
+      duration,
+      ease: "power2.out",
+      overwrite: true,
+    });
+  });
+</script>
