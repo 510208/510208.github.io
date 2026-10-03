@@ -19,6 +19,7 @@ a:not(
   sup a,
   div[data-slot="dialog-content"] a,
   div.grid a,
+  div.flex a,
   [data-slot^="card"] a
 ) {
   @apply text-emerald-300 transition-all duration-300 hover:text-emerald-400;
