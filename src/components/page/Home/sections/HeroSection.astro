@@ -49,7 +49,7 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
       <img
         src={optimizedImage.src}
         alt="個人角色立繪"
-        class="sh-don_t_ctxmenu h-[90vh] w-auto max-w-none lg:h-[80vh]"
+        class="sh-don_t_ctxmenu gsap-reveal h-[90vh] w-auto max-w-none lg:h-[80vh]"
       />
     </div>
 
@@ -60,21 +60,23 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
     >
       <!-- 左區段 -->
       <div class="flex max-w-110 flex-col gap-5 lg:gap-15" id="sh-hero-mf-left">
-        <div class="relative flex lg:-mb-10">
+        <div class="gsap-reveal relative flex lg:-mb-10">
           <StatusBadge class="flex lg:hidden" />
         </div>
 
-        <h1 class="text-6xl font-black text-stone-200 lg:text-[96px]/[120%]">
+        <h1
+          class="gsap-reveal text-6xl font-black text-stone-200 lg:text-[96px]/[120%]"
+        >
           Sam<br />Hacker
         </h1>
 
-        <p class="text-lg text-stone-300">
+        <p class="gsap-reveal text-lg text-stone-300">
           我是一個熱愛分享技術的高中生，<br />
           專注於 Minecraft 開服、網站建設、開源軟體等領域。<br />
           我的目標是讓更多人能夠輕鬆學習和應用技術。
         </p>
 
-        <div class="flex gap-2.5">
+        <div class="http://localhost:4321/ flex gap-2.5">
           <a
             href="/about"
             aria-label="關於我"
@@ -125,24 +127,24 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
 
       <!-- 右區段 -->
       <div
-        class="relative mt-10 hidden max-h-[150px] min-h-[150px] w-full max-w-100 items-center justify-center lg:flex"
+        class="gsap-reveal relative mt-10 hidden max-h-[150px] min-h-[150px] w-full max-w-100 items-center justify-center lg:flex"
         id="sh-hero-mf-right"
       >
         <Image
           src={RTBracket}
           alt=""
-          class="absolute top-0 right-0 opacity-50"
+          class="gsap-reveal absolute top-0 right-0 opacity-50"
           id="sh-hero-mf-right-bracket"
         />
         <Image
           src={LBBracket}
           alt=""
-          class="absolute bottom-0 left-0 opacity-50"
+          class="gsap-reveal absolute bottom-0 left-0 opacity-50"
           id="sh-hero-mf-left-bracket"
         />
 
         <p
-          class="text-center font-funny text-3xl text-stone-300"
+          class="gsap-reveal text-center font-funny text-3xl text-stone-300"
           id="sh-hero-mf-quote"
         >
           正因為曾經淋過雨，<br />
@@ -180,30 +182,26 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
 
   // 初始化函式
   function initHeroAnimations() {
-    // 防止重複初始化（特別是在 Astro 切換頁面或重複觸發時）
     if (isInitialized) return;
 
-    console.log(
-      "🚀 Immediate Initialization: Hiding elements and splitting text...",
-    );
-
-    // 預設狀態：將所有動畫元素隱藏並稍微位移
-    gsap.set("#sh-hero-tachie img", { y: 100, opacity: 0 });
-    gsap.set("#sh-hero-mf-left > *:not(h1)", { y: 30, opacity: 0 });
-    gsap.set("#sh-hero-mf-right", { y: 50, opacity: 0 });
-
-    // 右容器中的括號
-    gsap.set("#sh-hero-mf-right-bracket", { x: -70, y: 30, opacity: 0 });
-    gsap.set("#sh-hero-mf-left-bracket", { x: 70, y: -30, opacity: 0 });
-
-    // 標題的分割飛入動畫（立刻分割並隱藏，避免文字閃爍）
+    // SplitText
     titleSplitInstance = new SplitText("#sh-hero-mf-left h1", {
       type: "chars",
     });
-    gsap.set(titleSplitInstance.chars, { y: 50, opacity: 0 });
-
-    // 將右容器中的文字切分成單字
     quoteSplitInstance = new SplitText("#sh-hero-mf-quote", { type: "chars" });
+
+    // 初始偏移
+    gsap.set("#sh-hero-tachie img", { y: 100, autoAlpha: 0 });
+    gsap.set("#sh-hero-mf-left > *:not(h1)", { y: 30, autoAlpha: 0 });
+    gsap.set("#sh-hero-mf-right", { y: 50, autoAlpha: 0 });
+    gsap.set("#sh-hero-mf-right-bracket", { x: -70, y: 30, autoAlpha: 0 });
+    gsap.set("#sh-hero-mf-left-bracket", { x: 70, y: -30, autoAlpha: 0 });
+
+    // SplitText初始狀態
+    gsap.set(titleSplitInstance.chars, { y: 50, autoAlpha: 0 });
+
+    gsap.set("#sh-hero-mf-left h1", { autoAlpha: 1 });
+    gsap.set("#sh-hero-mf-quote", { autoAlpha: 1 });
 
     isInitialized = true;
   }
@@ -224,19 +222,19 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
 
     tl.to(
       "#sh-hero-tachie img",
-      { y: 0, opacity: 1, duration: 0.7, ease: "power2.out" },
+      { y: 0, autoAlpha: 1, duration: 0.7, ease: "power2.out" },
       0.5,
     );
 
     tl.to(
       "#sh-hero-mf-left > *:not(h1)",
-      { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.1 },
+      { y: 0, autoAlpha: 1, duration: 0.6, ease: "power2.out", stagger: 0.1 },
       0.8,
     ).to(
       titleSplitInstance.chars, // 使用初始化好的實例
       {
         y: 0,
-        opacity: 1,
+        autoAlpha: 1,
         duration: 1.2,
         ease: "power3.out",
         stagger: 0.05,
@@ -246,7 +244,7 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
 
     tl.to(
       "#sh-hero-mf-right",
-      { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+      { y: 0, autoAlpha: 1, duration: 0.6, ease: "power2.out" },
       1.2,
     )
       .from(quoteSplitInstance.chars, {
@@ -270,7 +268,7 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
         {
           x: 0,
           y: 0,
-          opacity: 1,
+          autoAlpha: 1,
           duration: 0.5,
           ease: "power2.out",
           delay: 0.2,
@@ -282,7 +280,7 @@ const optimizedImage = await getImage({ src: CharacterImage, width: 540 });
         {
           x: 0,
           y: 0,
-          opacity: 1,
+          autoAlpha: 1,
           duration: 0.5,
           ease: "power2.out",
           delay: 0.2,

@@ -15,7 +15,7 @@ const {
 ---
 
 <div
-  class="sh-text-mask-block pointer-events-none relative h-fit w-full cursor-none touch-pan-y overflow-hidden select-none"
+  class="sh-text-mask-block pointer-events-none gsap-reveal relative h-fit w-full cursor-none touch-pan-y overflow-hidden select-none"
   id="textContainer"
   data-radius={radius}
   aria-hidden="true"
@@ -102,10 +102,13 @@ const {
   });
 
   function initHeroAnimations() {
+    gsap.set("#textContainer", { autoAlpha: 0 });
     gsap.set([splitOutside.chars, splitInside.chars], { x: 100, opacity: 0 });
   }
 
   function playHeroAnimations() {
+    gsap.to("#textContainer", { duration: 0.8, autoAlpha: 1 });
+
     if (container && insideLayer && pointerDot) {
       const circleRadius = parseInt(
         container.getAttribute("data-radius") || "150",
