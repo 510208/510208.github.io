@@ -8,7 +8,9 @@ interface Props {
 const { chinese, english, id } = Astro.props;
 ---
 
-<div class="sh-section-title relative mb-4 flex w-full items-center">
+<div
+  class="sh-section-title gsap-reveal relative mb-4 flex w-full items-center"
+>
   <h2
     class="sh-title-animation flex items-center gap-4 text-3xl font-bold"
     id={id}
@@ -31,27 +33,28 @@ const { chinese, english, id } = Astro.props;
   import { SplitText } from "gsap/SplitText";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-  gsap.registerPlugin(SplitText);
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(SplitText, ScrollTrigger);
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const titleContainers = document.querySelectorAll(".sh-title-animation");
+  function initTitleAnimations() {
+    const sectionTitles = document.querySelectorAll(".sh-section-title");
 
-    titleContainers.forEach((titleContainer) => {
-      const decorationLine = titleContainer.querySelector(
+    sectionTitles.forEach((sectionTitle) => {
+      const titleContainer = sectionTitle.querySelector(".sh-title-animation");
+      const decorationLine = sectionTitle.querySelector(
         ".sh-title-decoration-animation",
       );
-      const backgroundText = titleContainer.parentElement?.querySelector(
+      const backgroundText = sectionTitle.querySelector(
         ".sh-title-background-animation",
       );
 
-      if (!backgroundText) return;
+      if (!titleContainer || !decorationLine || !backgroundText) return;
 
+      // 1. 初始化 SplitText
       const split = new SplitText(backgroundText, { type: "chars" });
 
-      // 設置初始狀態
+      // 2. 設置組件內部子元件的動畫起始狀態
       gsap.set(titleContainer, {
-        opacity: 0,
+        autoAlpha: 0,
         x: -50,
       });
 
@@ -62,27 +65,30 @@ const { chinese, english, id } = Astro.props;
       gsap.set(split.chars, {
         x: 0,
         filter: "blur(5px)",
-        opacity: 0.3,
+        autoAlpha: 0.3,
       });
 
-      // 建立時間軸動畫
+      // 3. 子元件初始化完成後，解鎖最外層容器 (gsap-reveal) 顯現
+      gsap.set(sectionTitle, { autoAlpha: 1 });
+
+      // 4. 建立 ScrollTrigger 時間軸動畫
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: titleContainer,
+          trigger: sectionTitle,
           start: "top 80%",
           toggleActions: "play none none reverse",
         },
       });
 
-      // 1. 標題從左邊淡入
+      // 步驟一：標題從左邊淡入
       tl.to(titleContainer, {
         duration: 0.8,
-        opacity: 1,
+        autoAlpha: 1,
         x: 0,
         ease: "power2.out",
       });
 
-      // 2. 裝飾線條長度漸漸變長
+      // 步驟二：裝飾線條延伸
       tl.to(
         decorationLine,
         {
@@ -93,7 +99,7 @@ const { chinese, english, id } = Astro.props;
         "-=0.2",
       );
 
-      // 3. 背景文字展開動畫
+      // 步驟三：背景文字散射與清晰化
       tl.to(
         split.chars,
         {
@@ -106,12 +112,21 @@ const { chinese, english, id } = Astro.props;
             return charOffset * fontSize;
           },
           filter: "blur(0px)",
-          opacity: 0.3,
+          autoAlpha: 0.3,
           ease: "power2.out",
           stagger: 0.08,
         },
         "-=0.3",
       );
     });
-  });
+  }
+
+  // 相容 DOM 初次載入與 Astro 切換頁面生命週期
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initTitleAnimations);
+  } else {
+    initTitleAnimations();
+  }
+
+  document.addEventListener("astro:page-load", initTitleAnimations);
 </script>
