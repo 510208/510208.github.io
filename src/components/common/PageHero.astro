@@ -40,17 +40,14 @@ import Breadcrumbs from "../common/Breadcrumbs.astro";
       splitTextInstance = null;
     }
 
-    // 1. 執行拆字（此時 heroSection 受 gsap-reveal 保護仍為隱藏狀態，不會產生 FOUC）
+    // 拆字
     splitTextInstance = new SplitText(titleEl, { type: "chars" });
-
-    // 2. 設置拆字後字元與副標題的動畫起始偏移動作 (使用 autoAlpha)
     gsap.set(splitTextInstance.chars, { autoAlpha: 0, x: 50 });
     gsap.set(descEl, { autoAlpha: 0, x: 20 });
 
-    // 3. 準備就緒後，解除最外層容器的 FOUC 隱藏限制
     gsap.set(heroSection, { autoAlpha: 1 });
 
-    // 4. 建立時間軸動畫並播放
+    // 動畫開始
     const tl = gsap.timeline({ repeat: 0 });
 
     tl.to(splitTextInstance.chars, {
