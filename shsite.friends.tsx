@@ -16,6 +16,7 @@ import sorbet1686Photo from "@/assets/pages/friends/friend_photo/sorbet1686.webp
 import lumuPhoto from "@/assets/pages/friends/friend_photo/lumu.webp";
 import ruixuePhoto from "@/assets/pages/friends/friend_photo/ruixue.webp";
 import yemoguPhoto from "@/assets/pages/friends/friend_photo/yemogu.jpg";
+import emPhoto from "@/assets/pages/friends/friend_photo/elvis_mao.jpg";
 
 const friends: FriendCardProps[] = [
   {
@@ -291,6 +292,31 @@ const friends: FriendCardProps[] = [
         label: "Instagram",
       },
     ],
+  },
+  {
+    image: emPhoto,
+    name: "毛哥EM",
+    slug: "elvismao",
+    description: (
+      <>全端工程龍</>
+    ),
+    links: [
+      {
+        icon: <SiGithub />,
+        to: "https://github.com/elvisdragonmao",
+        label: "GitHub",
+      },
+      {
+        icon: <SiDiscord />,
+        to: "https://dc.elvismao.com/",
+        label: "Discord",
+      },
+      {
+        icon: <Newspaper />,
+        to: "https://emtech.cc/",
+        label: "Blog",
+      },
+    ]
   }
 ];
 
