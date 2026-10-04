@@ -1,8 +1,6 @@
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { type DashboardFeature } from "./types";
 
-import { Octokit } from "octokit";
-
 export type GitHubData = {
   login: string;
   followers: number;
@@ -41,13 +39,19 @@ export async function fetchGitHubData(): Promise<GitHubData | null> {
     }
 
     // 快取過期或不存在，重新取得資料
-    const octokit = new Octokit();
-    const response = await octokit.rest.users.getByUsername({
-      username: "510208",
+    const response = await fetch("https://api.github.com/users/510208", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
     });
-    console.log("Fetched fresh GitHub data:", response.data);
+    if (!response.ok) {
+      console.error("Failed to fetch GitHub data:", response.statusText);
+      return null;
+    }
 
-    const githubData = response.data as GitHubData;
+    const githubData = (await response.json()) as GitHubData;
+    console.log("Fetched fresh GitHub data:", githubData);
 
     // 將新資料儲存至 localStorage
     const cacheData: CachedGitHubData = {
