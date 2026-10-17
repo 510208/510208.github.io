@@ -39,12 +39,15 @@ export async function fetchGitHubData(): Promise<GitHubData | null> {
     }
 
     // 快取過期或不存在，重新取得資料
-    const response = await fetch("https://api.github.com/users/510208", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
+    const response = await fetch(
+      "https://api.samhacker.xyz/github/user/510208",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+        },
       },
-    });
+    );
     if (!response.ok) {
       console.error("Failed to fetch GitHub data:", response.statusText);
       return null;
