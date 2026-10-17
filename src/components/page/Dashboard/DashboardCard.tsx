@@ -95,6 +95,10 @@ function DashboardCard({
         }}
       >
         <div className="mb-4 flex items-center justify-center gap-1 tracking-widest">
+          <item.image
+            className="mr-2 size-6 rotate-0 transition-transform group-hover:-rotate-12"
+            color={item.color.primary}
+          />
           <h2
             className="font text-xl text-white"
             style={{
@@ -103,16 +107,6 @@ function DashboardCard({
           >
             {item.title}
           </h2>
-        </div>
-
-        <div
-          className="absolute -top-10 -left-10 opacity-10 transition-opacity delay-10 duration-300 group-hover:opacity-40"
-          aria-hidden
-        >
-          <item.image
-            className="h-32 w-32 -rotate-12 transition-transform group-hover:-rotate-2"
-            color={item.color.primary}
-          />
         </div>
 
         <div className="absolute bottom-0 left-0 h-1 w-0 bg-stone-500/50 transition-all duration-200 group-hover:w-full"></div>
