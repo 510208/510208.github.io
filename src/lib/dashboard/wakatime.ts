@@ -51,7 +51,7 @@ async function fetchWakaTimeData(): Promise<WakaTimeData | null> {
 function buildWakaTimeCard(data: WakaTimeData | null): DashboardFeature {
   if (!data) {
     return {
-      title: "累計開發時間",
+      title: "開發時間",
       description: "載入中...",
       link: "https://wakatime.com/@SamHacker",
       image: SiWakatime,
@@ -63,13 +63,15 @@ function buildWakaTimeCard(data: WakaTimeData | null): DashboardFeature {
   // 透過total_seconds計算更精確的時間顯示
   const hours = Math.floor(data?.total_seconds / 3600);
   const minutes = Math.floor((data?.total_seconds % 3600) / 60);
-  const formattedTime = data ? `${hours} 小時 ${minutes} 分鐘` : "載入中...";
+  const formattedTime = data
+    ? `${minutes > 30 ? hours + 1 : hours} 小時`
+    : "載入中...";
   if (data) {
     data.text = formattedTime;
   }
 
   return {
-    title: "累計開發時間",
+    title: "開發時間",
     description: data?.text || "載入中...",
     link: "https://wakatime.com/@SamHacker",
     image: SiWakatime,

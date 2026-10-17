@@ -79,7 +79,7 @@ function buildInstagramFollowerCard(
 ): DashboardFeature {
   if (!data) {
     return {
-      title: "Instagram 粉絲人數",
+      title: "粉絲人數",
       description: "Unable to fetch Instagram user data.",
       link: "https://www.Instagram.com/@samhacker.xyz",
       image: SiInstagram,
@@ -89,7 +89,7 @@ function buildInstagramFollowerCard(
   }
 
   return {
-    title: "Instagram 粉絲人數",
+    title: "粉絲人數",
     description: `${data.followersCount} 位`,
     link: `https://www.Instagram.com/@samhacker.xyz`,
     image: SiInstagram,

@@ -72,7 +72,7 @@ export async function fetchWebsiteData(): Promise<WebsiteData | null> {
 function buildWebsiteFollowerCard(data: WebsiteData | null): DashboardFeature {
   if (!data) {
     return {
-      title: "本站瀏覽次數",
+      title: "瀏覽次數",
       description: "Unable to fetch data.",
       link: "https://www.website.com/@samhacker.xyz",
       image: Globe,
@@ -82,7 +82,7 @@ function buildWebsiteFollowerCard(data: WebsiteData | null): DashboardFeature {
   }
 
   return {
-    title: "本站瀏覽次數",
+    title: "瀏覽次數",
     description: `${data.data.totalViews} 人`,
     link: `https://www.website.com/@samhacker.xyz`,
     image: Globe,

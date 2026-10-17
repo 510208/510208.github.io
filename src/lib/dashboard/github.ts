@@ -78,7 +78,7 @@ export async function fetchGitHubData(): Promise<GitHubData | null> {
 function buildGitHubFollowerCard(data: GitHubData | null): DashboardFeature {
   if (!data) {
     return {
-      title: "GitHub 關注者",
+      title: "關注者",
       description: "Unable to fetch GitHub user data.",
       link: "https://github.com/510208",
       image: SiGithub,
@@ -88,7 +88,7 @@ function buildGitHubFollowerCard(data: GitHubData | null): DashboardFeature {
   }
 
   return {
-    title: "GitHub 關注者",
+    title: "關注者",
     description: `${data.followers} 位`,
     link: `https://github.com/${data.login}`,
     image: SiGithub,

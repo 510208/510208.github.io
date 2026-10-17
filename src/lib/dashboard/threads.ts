@@ -82,7 +82,7 @@ export async function fetchThreadsData(): Promise<ThreadsData | null> {
 function buildThreadsFollowerCard(data: ThreadsData | null): DashboardFeature {
   if (!data) {
     return {
-      title: "Threads 粉絲人數",
+      title: "粉絲人數",
       description: "Unable to fetch Threads user data.",
       link: "https://www.threads.com/@samhacker.xyz",
       image: SiThreads,
@@ -92,7 +92,7 @@ function buildThreadsFollowerCard(data: ThreadsData | null): DashboardFeature {
   }
 
   return {
-    title: "Threads 粉絲人數",
+    title: "粉絲人數",
     description: `${data.data[0].total_value.value} 位`,
     link: `https://www.threads.com/@samhacker.xyz`,
     image: SiThreads,

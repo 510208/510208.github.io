@@ -53,7 +53,7 @@ async function fetchYTData(): Promise<YouTubeData | null> {
 
 function buildYouTubeCard(data: YouTubeData | null): DashboardFeature {
   return {
-    title: "YouTube 訂閱人數",
+    title: "訂閱人數",
     description:
       `${data?.statistics.subscriberCount.toString()} 人` || "載入中...",
     link: "https://www.youtube.com/channel/UC6orwHdQNVzwHsA6M7HYD9g",
