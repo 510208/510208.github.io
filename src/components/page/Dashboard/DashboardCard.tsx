@@ -94,7 +94,13 @@ function DashboardCard({
           background: `radial-gradient(at bottom right, ${hexToRgba(item.color.primary, 0.3)} 0%, rgba(255,255,255,0.1) 30%)`,
         }}
       >
-        <div className="mb-4 flex items-center justify-center gap-1 tracking-widest">
+        <p className="text-center font-mono text-3xl font-bold text-white">
+          {displayValue}
+        </p>
+
+        <div className="absolute bottom-0 left-0 h-1 w-0 bg-stone-500/50 transition-all duration-200 group-hover:w-full"></div>
+
+        <div className="mt-4 flex items-center justify-center gap-1 tracking-widest">
           <item.image
             className="mr-2 size-6 rotate-0 transition-transform group-hover:-rotate-12"
             color={item.color.primary}
@@ -108,12 +114,6 @@ function DashboardCard({
             {item.title}
           </h2>
         </div>
-
-        <div className="absolute bottom-0 left-0 h-1 w-0 bg-stone-500/50 transition-all duration-200 group-hover:w-full"></div>
-
-        <p className="text-center font-mono text-3xl font-bold text-white">
-          {displayValue}
-        </p>
       </div>
     </a>
   );
