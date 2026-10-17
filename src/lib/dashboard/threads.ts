@@ -83,7 +83,7 @@ function buildThreadsFollowerCard(data: ThreadsData | null): DashboardFeature {
   if (!data) {
     return {
       title: "粉絲人數",
-      description: "Unable to fetch Threads user data.",
+      description: "N/A",
       link: "https://www.threads.com/@samhacker.xyz",
       image: SiThreads,
       source: "Meta Graph API",

@@ -73,7 +73,7 @@ function buildWebsiteFollowerCard(data: WebsiteData | null): DashboardFeature {
   if (!data) {
     return {
       title: "瀏覽次數",
-      description: "Unable to fetch data.",
+      description: "N/A",
       link: "https://www.website.com/@samhacker.xyz",
       image: Globe,
       source: "Google Analytics API",

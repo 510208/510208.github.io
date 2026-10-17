@@ -80,7 +80,7 @@ function buildInstagramFollowerCard(
   if (!data) {
     return {
       title: "粉絲人數",
-      description: "Unable to fetch Instagram user data.",
+      description: "N/A",
       link: "https://www.Instagram.com/@samhacker.xyz",
       image: SiInstagram,
       source: "Meta Graph API",

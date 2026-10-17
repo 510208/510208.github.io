@@ -65,7 +65,7 @@ function buildWakaTimeCard(data: WakaTimeData | null): DashboardFeature {
   const minutes = Math.floor((data?.total_seconds % 3600) / 60);
   const formattedTime = data
     ? `${minutes > 30 ? hours + 1 : hours} 小時`
-    : "載入中...";
+    : "N/A";
   if (data) {
     data.text = formattedTime;
   }

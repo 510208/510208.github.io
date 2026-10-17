@@ -79,7 +79,7 @@ function buildGitHubFollowerCard(data: GitHubData | null): DashboardFeature {
   if (!data) {
     return {
       title: "關注者",
-      description: "Unable to fetch GitHub user data.",
+      description: "N/A",
       link: "https://github.com/510208",
       image: SiGithub,
       source: "GitHub API",
@@ -101,7 +101,7 @@ function buildGitHubRepoCard(data: GitHubData | null): DashboardFeature {
   if (!data) {
     return {
       title: "GitHub 公開儲存庫",
-      description: "無法取得 GitHub 使用者資料。",
+      description: "N/A",
       link: "https://github.com/510208",
       image: SiGithub,
       source: "GitHub API",

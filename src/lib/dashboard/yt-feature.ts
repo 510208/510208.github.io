@@ -52,6 +52,16 @@ async function fetchYTData(): Promise<YouTubeData | null> {
 }
 
 function buildYouTubeCard(data: YouTubeData | null): DashboardFeature {
+  if (!data) {
+    return {
+      title: "訂閱人數",
+      description: "N/A",
+      link: "https://www.youtube.com/channel/UC6orwHdQNVzwHsA6M7HYD9g",
+      image: SiYoutube,
+      source: "YouTube API",
+      color: { primary: "#FF0000" },
+    };
+  }
   return {
     title: "訂閱人數",
     description:
