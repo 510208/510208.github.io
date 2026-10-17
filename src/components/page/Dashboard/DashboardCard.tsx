@@ -91,13 +91,10 @@ function DashboardCard({
       <div
         className="group overflow-hidden rounded-lg border border-stone-700 bg-stone-800/50 px-2 py-8 shadow-lg backdrop-blur-md transition-all duration-200 hover:-translate-y-2 hover:bg-stone-700"
         style={{
-          background: `radial-gradient(at bottom center, ${hexToRgba(item.color.primary, 0.3)} 0%, rgba(255,255,255,0.1) 30%)`,
+          background: `radial-gradient(at bottom right, ${hexToRgba(item.color.primary, 0.3)} 0%, rgba(255,255,255,0.1) 30%)`,
         }}
       >
         <div className="mb-4 flex items-center justify-center gap-1 tracking-widest">
-          <div className="mr-2 flex items-center justify-center rounded-lg border-none bg-transparent p-2">
-            <item.image className="h-6 w-6" color={item.color.primary} />
-          </div>
           <h2
             className="font text-xl text-white"
             style={{
@@ -106,6 +103,16 @@ function DashboardCard({
           >
             {item.title}
           </h2>
+        </div>
+
+        <div
+          className="absolute -top-10 -left-10 opacity-10 transition-opacity delay-10 duration-300 group-hover:opacity-40"
+          aria-hidden
+        >
+          <item.image
+            className="h-32 w-32 -rotate-12 transition-transform group-hover:-rotate-2"
+            color={item.color.primary}
+          />
         </div>
 
         <div className="absolute bottom-0 left-0 h-1 w-0 bg-stone-500/50 transition-all duration-200 group-hover:w-full"></div>
