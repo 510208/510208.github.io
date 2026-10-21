@@ -136,5 +136,14 @@ const friends: FriendCardProps[] = [
       link("Newspaper", "https://emtech.cc/", "Blog"),
     ],
   },
+  {
+    image: "https://itousouta.me/assets/brand/avatar.webp",
+    name: "itouSouta",
+    slug: "itou_souta",
+    description: "電神菜菜撈撈",
+    links: [
+      link("Earth", "https://itousouta.me", "個人網站"),
+    ],
+  },
 ];
 export default friends;
